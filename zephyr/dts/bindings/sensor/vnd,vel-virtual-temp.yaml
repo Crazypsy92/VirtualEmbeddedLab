@@ -1,0 +1,22 @@
+description: Deterministic in-memory VirtualEmbeddedLab temperature sensor
+compatible: "vnd,vel-virtual-temp"
+include: sensor-device.yaml
+properties:
+  initial-millicelsius:
+    type: int
+    required: true
+    description: Initial temperature in milli-degrees Celsius
+  step-millicelsius:
+    type: int
+    required: true
+    description: Positive change per sample within a 128-sample cycle
+  instance-id:
+    type: int
+    required: true
+  fail-after:
+    type: int
+    default: 0
+    description: Return EIO after this many successful fetches, zero disables
+  unavailable:
+    type: boolean
+    description: Deliberately fail initialization for a negative runtime test

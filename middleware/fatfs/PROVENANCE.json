@@ -1,0 +1,26 @@
+{
+  "source": "https://github.com/abbrev/fatfs and official patch text preserved in the original transcript",
+  "version": "R0.16 + patch-1 + patch-2",
+  "recovery": "Source hashes match all five original project hashes. Original ZIP and patch files were not recovered.",
+  "source_files": {
+    "upstream/ff.c": "3c30280ffe2d0fb19a5241d9ed9f20a2c3911c2861652ebf6ad57f74fb369250",
+    "upstream/ff.h": "86099100a6ef3c3623dfbeaacb3a2613ff266df76aad1386513042b831c5b733",
+    "upstream/diskio.h": "2279ac777bc7a8a317b1b44519df8604e4cdd0cd3b1608861eed3c78045d89c6",
+    "upstream/original/ff.c": "e54e1d7d3c5b916a8593cd3c7075d2baf440bb1b4298ba46df32906767e805dd",
+    "upstream/original/ffconf.h": "add5829629dd40c9c8b76bd5f53e1491475aaa53f0d80c29d262185853d358dc"
+  },
+  "downloads": [
+    {
+      "url": "https://elm-chan.org/fsw/ff/patch/ff16p1.diff",
+      "sha256": "dac04cadc3bba98c02a5cc7f81eb4855905baf0f00fafbc3aef6c2e995b14805",
+      "bytes": 2727,
+      "recovery": "Regenerated unified diff between recovered source states. URL identifies the historical patch; this hash describes the local regenerated diff."
+    },
+    {
+      "url": "https://elm-chan.org/fsw/ff/patch/ff16p2.diff",
+      "sha256": "33a04c74fbb02bc1ad9622e2d02e491763ef12eca97d19fd5740ce43544b70a1",
+      "bytes": 2201,
+      "recovery": "Regenerated unified diff between recovered source states. URL identifies the historical patch; this hash describes the local regenerated diff."
+    }
+  ]
+}

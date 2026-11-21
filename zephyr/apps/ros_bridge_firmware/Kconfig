@@ -1,0 +1,3 @@
+mainmenu "VEL sensor demo"
+source "Kconfig.zephyr"
+rsource "../../drivers/sensor/vel_virtual_sensor/Kconfig"

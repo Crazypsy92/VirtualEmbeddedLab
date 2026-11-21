@@ -1,0 +1,13 @@
+# Storage HAL contracts
+
+The C11 HAL consists of an operation table plus an opaque backend context; the HAL header has no POSIX types. The caller owns context/config/buffer lifetime. Initialize each context before first use, never reinitialize an open context, and use it from one thread only in v1.
+
+The Host config specifies an existing absolute root directory, one leaf name, sector count, create-new and read-only flags. Sectors are 512 bytes; sector count is bounded by INT64_MAX/512. Requests check count, LBA, overflow and caller-declared buffer length before access. The buffer must actually have that declared length. Closed devices reject I/O and geometry requests.
+
+The backend walks every directory component using openat with O_DIRECTORY|O_NOFOLLOW. Images use O_NOFOLLOW, must be regular single-link files and hold flock until close. Creation is O_CREAT|O_EXCL and never overwrites. Existing files are never truncated. There is no root-directory creation, image deletion or format-existing function. A failed creation may leave a new incomplete file; later opens report geometry mismatch and do not repair it automatically. Geometry is rechecked before I/O and sync.
+
+Transfer results retain actual bytes_completed and blocks_completed on failure. There is no rollback. EINTR is retried; short positive system calls are reported as BD_SHORT_IO. Fault read_on/write_on/sync_on are independent 1-based valid-operation call numbers, with zero disabled; use N+1 to fail after N successful operations. Triggers are one-shot. partial_blocks commits full sectors before failure, clamped below the request count. short_io then deliberately performs a 511-byte partial syscall. Reset disables the plan and clears counters/hits. Invalid requests and protected writes do not count as valid operations.
+
+Sync checks fsync. Close checks close and releases the descriptor; it does not imply a successful durable sync. Call sync explicitly. Status reports open/read-only state. diskio maps invalid/range to RES_PARERR, closed/unbound to RES_NOTRDY, read-only to RES_WRPRT and I/O/short/geometry failures to RES_ERROR. Drive 0 supports CTRL_SYNC, GET_SECTOR_COUNT, GET_SECTOR_SIZE=512, GET_BLOCK_SIZE=1. No FatFs code calls POSIX.
+
+FatFs is single-volume, single-thread, CP437 SFN, no exFAT/LFN/RTOS hooks. Change vel_disk_bind only while unmounted. Format is an application policy: demo and tests format only their just-created exclusive image. Test images live under build in unique temporary directories; destructive corruption cases never open an existing user image. A future MCU backend can replace the ops without changing ff.c, but concurrency and lifecycle require a separate design.

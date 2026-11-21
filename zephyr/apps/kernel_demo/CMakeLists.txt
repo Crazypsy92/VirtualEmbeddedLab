@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.20.0)
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+project(vel_kernel C)
+target_sources(app PRIVATE src/main.c)
+target_include_directories(app PRIVATE ../../common)
+target_compile_options(app PRIVATE -std=c11 -Wall -Wextra -Werror -Wconversion -Wshadow)

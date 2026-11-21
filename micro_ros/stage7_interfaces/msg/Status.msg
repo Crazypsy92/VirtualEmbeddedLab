@@ -1,0 +1,14 @@
+uint32 boot_id
+uint32 session_id
+uint32 request_id
+uint32 opcode
+uint32 result
+uint32 state
+uint32 period_ms
+uint32 sampled
+uint32 published
+uint32 start_effects
+uint32 rate_effects
+uint32 errors
+uint32 heap_live
+uint32 stack_unused

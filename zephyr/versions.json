@@ -1,0 +1,26 @@
+{
+  "version": "4.4.2",
+  "sources": {
+    "zephyr": {
+      "commit": "dccb09599635bdff17633fa7e9dab014b91dce90",
+      "url": "https://codeload.github.com/zephyrproject-rtos/zephyr/tar.gz/dccb09599635bdff17633fa7e9dab014b91dce90",
+      "sha256": "f4c6bc6ad9f741759ac6bebbd5e378f827fe73cee851a0c35950fd0c0da0d909",
+      "archive": "zephyr.tar.gz",
+      "archive_root": "zephyr-dccb09599635bdff17633fa7e9dab014b91dce90"
+    },
+    "cmsis": {
+      "commit": "512cc7e895e8491696b61f7ba8066b4a182569b8",
+      "url": "https://codeload.github.com/zephyrproject-rtos/cmsis/tar.gz/512cc7e895e8491696b61f7ba8066b4a182569b8",
+      "sha256": "425f802d1a4e7c962738572cd193fb41dfa1e83e1b75469f8f3f2158a7168e2b",
+      "archive": "cmsis.tar.gz",
+      "archive_root": "cmsis-512cc7e895e8491696b61f7ba8066b4a182569b8"
+    },
+    "cmsis_6": {
+      "commit": "30a859f44ef8ab4dc8f84b03ed586fd16ccf9d74",
+      "url": "https://codeload.github.com/zephyrproject-rtos/CMSIS_6/tar.gz/30a859f44ef8ab4dc8f84b03ed586fd16ccf9d74",
+      "sha256": "2abdac3b892f0c9786bd15fc18728aa05463d919df726f9a837ed51457975bd3",
+      "archive": "cmsis_6.tar.gz",
+      "archive_root": "CMSIS_6-30a859f44ef8ab4dc8f84b03ed586fd16ccf9d74"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+/ {
+    sensor_a: virtual-temp-a {
+        compatible = "vnd,vel-virtual-temp";
+        status = "okay";
+        initial-millicelsius = <25000>;
+        step-millicelsius = <25>;
+        instance-id = <0>;
+    };
+    sensor_b: virtual-temp-b {
+        compatible = "vnd,vel-virtual-temp";
+        status = "okay";
+        initial-millicelsius = <30000>;
+        step-millicelsius = <40>;
+        instance-id = <1>;
+    };
+    sensor_bad: virtual-temp-bad {
+        compatible = "vnd,vel-virtual-temp";
+        status = "okay";
+        initial-millicelsius = <0>;
+        step-millicelsius = <1>;
+        instance-id = <2>;
+        unavailable;
+    };
+};

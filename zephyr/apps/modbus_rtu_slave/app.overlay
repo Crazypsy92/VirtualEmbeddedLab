@@ -1,0 +1,1 @@
+&uart1 { status = "okay"; rtu: modbus { compatible = "zephyr,modbus-serial"; status = "okay"; de-gpios = <&gpio0 16 0>; re-gpios = <&gpio0 17 0>; }; };

@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.20)
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+project(vel_gateway C)
+set(GW_PORT 15020 CACHE STRING "Loopback TCP port")
+target_sources(app PRIVATE src/main.c)
+target_compile_definitions(app PRIVATE GW_PORT=${GW_PORT})
+target_compile_options(app PRIVATE -Wall -Wextra -Werror)
+
+set(GW_RUNTIME_MS 300000 CACHE STRING "Bounded runtime in milliseconds")
+target_compile_definitions(app PRIVATE GW_RUNTIME_MS=${GW_RUNTIME_MS})

@@ -1,0 +1,6 @@
+config VEL_VIRTUAL_SENSOR
+    bool "VirtualEmbeddedLab virtual temperature sensor"
+    depends on SENSOR
+    default y
+    help
+      Deterministic per-instance virtual sensor with no MMIO or physical bus.

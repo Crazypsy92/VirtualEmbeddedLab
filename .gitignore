@@ -1,0 +1,30 @@
+# Build outputs and generated artifacts (kept local only)
+/build/
+*.elf
+*.bin
+*.map
+*.img
+*.a
+*.o
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+venv/
+.venv/
+env/
+
+# Acceptance evidence (regenerated locally; not distributed)
+/evidence/
+
+# Editor / IDE / OS
+.trae/
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.20.0)
+get_filename_component(VEL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../.." ABSOLUTE)
+list(APPEND DTS_ROOT ${VEL_ROOT})
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+project(vel_sensor C)
+target_sources(app PRIVATE src/main.c)
+target_sources_ifdef(CONFIG_VEL_VIRTUAL_SENSOR app PRIVATE ${VEL_ROOT}/drivers/sensor/vel_virtual_sensor/vel_virtual_sensor.c)
+target_include_directories(app PRIVATE ${VEL_ROOT}/common)
+target_compile_options(app PRIVATE -std=c11 -Wall -Wextra -Werror -Wconversion -Wshadow)
+
+target_sources(app PRIVATE ${VEL_ROOT}/../protocol/src/vel_wire.c)
+target_include_directories(app PRIVATE ${VEL_ROOT}/../protocol/include)

@@ -1,0 +1,7 @@
+# Gateway architecture
+
+Independent pymodbus TCP master -> Linux loopback -> Zephyr native_sim offloaded socket -> MBAP stream parser -> bounded job queue -> one Zephyr RTU worker -> official Modbus Client -> native PTY -> byte-only Host relay -> original Stage8.2 RTU slave -> unchanged GPIO/register callbacks. Responses follow the reverse path. The slave control UART remains separate for real GPIO emulator input injection.
+
+Gateway and slave are separate Linux executables, not shared register arrays. Relay connects dynamically discovered slave endpoints of their UART1 PTYs, uses raw mode and forwards unchanged bytes. Its normal path contains no CRC or RTU parser. Independent direct RTU master comparisons detach the relay first to ensure exclusive serial access. On fault reconnection raw terminal setup discards stale OS input, establishing a fresh transport boundary; delivery during a detached relay is not claimed.
+
+All new sources, builds and runtime files are isolated: zephyr/apps/modbus_tcp_gateway, host/modbus_tcp_master, sibling gateway_stage8_3_ws. Reuse fixed Stage8.2 pymodbus/pyserial venv without installing/upgrading dependencies. Earlier firmware/configurations remain unchanged. Optional evidence-directory overrides isolate full historical reruns. --mode all runs every new group and fresh Stage8.2 acceptance, which includes Stage8.1 and 133 historical tests. Narrow modes are partial checks only. Owned process groups, deadlines and exit logs bound every run. Stage8.4 is outside scope.

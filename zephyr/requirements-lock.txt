@@ -1,0 +1,16 @@
+Jinja2==3.1.6
+MarkupSafe==3.0.4
+PyYAML==6.0.4
+anytree==2.13.0
+colorama==0.4.6
+docopt==0.6.2
+intelhex==2.3.0
+packaging==26.3
+pyelftools==0.33
+pykwalify==1.8.0
+pymodbus==3.11.4
+pyserial==3.5
+python-dateutil==4.0.0
+ruamel.yaml==0.19.1
+tzdata==2026.6
+west==1.5.0
