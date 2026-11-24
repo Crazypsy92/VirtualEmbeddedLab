@@ -9,7 +9,7 @@ import subprocess
 import time
 
 from vel_env import ROOT, tool_environment, work
-from vel_gui_features import BY_ID, capabilities, invocation
+from vel_gui_features import BY_ID, capabilities, dependencies_for, invocation
 from vel_jobs import BusyWorkspace, workspace_lock
 
 EVIDENCE = ("VEL_STAGE1_EVIDENCE", "VEL_STAGE3_EVIDENCE", "VEL_STAGE4_EVIDENCE",
@@ -66,7 +66,7 @@ def run(args, resolve=invocation):
     try:
         if ctypes.CDLL(None, use_errno=True).prctl(36, 1, 0, 0, 0) != 0:  # PR_SET_CHILD_SUBREAPER
             raise OSError(ctypes.get_errno(), "Cannot enable owned process cleanup")
-        argv = resolve(args.feature, args.mode, args.folder, capabilities(BY_ID[args.feature].dependencies))
+        argv = resolve(args.feature, args.mode, args.folder, capabilities(dependencies_for(BY_ID[args.feature], args.mode)))
         result["command"] = argv
         env = tool_environment()
         env["PYTHONUNBUFFERED"] = "1"
@@ -96,7 +96,7 @@ def run(args, resolve=invocation):
                 elif cancelled:
                     result.update(status="CANCELLED", exit=130)
                 else:
-                    outcome = "COMPLETED" if args.mode == "交互会话" else "PASS"
+                    outcome = "COMPLETED" if args.mode in ("交互会话", "多节点总线") else "PASS"
                     result.update(status=outcome if proc.returncode == 0 else "FAIL", exit=proc.returncode)
             finally:
                 if proc.poll() is None:

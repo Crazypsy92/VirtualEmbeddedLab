@@ -26,7 +26,7 @@ python3 scripts/vel.py reliability --mode quick
 
 图形实验入口为 `python3 scripts/vel.py dashboard`（WSLg + Tkinter）。Modbus RTU 的「RTU 协议检查」页支持 FC01/02/03/04/05/06/0F/10，可查看实际 TX/RX、逐字节字段、CRC 和写后回读。日志页保留本次会话记录。[Stage 8.2-R2 使用与验收](docs/modbus_rtu_inspector_report.md)
 
-CAN 提供标准帧、扩展帧交互发送与 IDE 过滤，保留原 Loopback 自检。[CAN-H1 使用与验收](docs/can_loopback_inspector_report.md) 未恢复的 micro-ROS 环境显示不可执行。运行 `python3 scripts/vel.py dashboard --advanced` 查看寄存器，或加 `--live` 启动实时 FreeRTOS 监控。
+CAN 提供标准帧、扩展帧交互发送与 IDE 过滤，保留原 Loopback 自检，并可用 [多节点总线模式](docs/can_h2_multinode_report.md) 观察软件仲裁与错误恢复。[CAN-H1 使用与验收](docs/can_loopback_inspector_report.md) 未恢复的 micro-ROS 环境显示不可执行。运行 `python3 scripts/vel.py dashboard --advanced` 查看寄存器，或加 `--live` 启动实时 FreeRTOS 监控。
 
 验收入口为 python3 scripts/accept_gui_h1.py。更多信息见 [功能范围](docs/gui_h1_capabilities.md) 和 [验收报告](docs/gui_h1_report.md)。没有 WSLg 时可加 --headless 执行注册表和作业生命周期检查。
 

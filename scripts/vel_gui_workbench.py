@@ -11,9 +11,10 @@ import time
 import tkinter as tk
 from tkinter import ttk
 
+from vel_can_bus_panel import BusPanel
 from vel_can_panel import CanPanel
 from vel_env import ROOT, tool_environment, work
-from vel_gui_features import BY_ID, CATEGORIES, FEATURES, capabilities, invocation
+from vel_gui_features import BY_ID, CATEGORIES, FEATURES, capabilities, dependencies_for, invocation
 from vel_gui_results import output_summary
 from vel_rtu_panel import ProtocolPanel
 
@@ -42,6 +43,7 @@ class Workbench:
         self.runs = work("gui-h1/runs")
         self.runs.mkdir(parents=True, exist_ok=True)
         self.feature = None
+        self.running_mode = None
         self.job = self.folder = self.running_feature = None
         self.available = None
         self.closing = False
@@ -166,9 +168,10 @@ class Workbench:
         bar = ttk.Frame(self.panel)
         bar.pack(fill="x", pady=7)
         modes = tuple(feature.modes)
-        self.mode.set(modes[0] if modes else "不可执行")
-        mode = ttk.Combobox(bar, textvariable=self.mode, values=modes, state="readonly", width=33)
-        mode.pack(side="left")
+        mode_choice = self.running_mode if self.job and self.running_feature == feature.id else None
+        self.mode.set(mode_choice or (modes[0] if modes else "不可执行"))
+        self.mode_picker = ttk.Combobox(bar, textvariable=self.mode, values=modes, state="readonly", width=33)
+        self.mode_picker.pack(side="left")
         self.start_button = ttk.Button(bar, text="启动实验", command=self.start)
         self.start_button.pack(side="left", padx=7)
         ttk.Label(bar, textvariable=self.state).pack(side="left", padx=5)
@@ -179,8 +182,21 @@ class Workbench:
             if self.live and self.running_feature == "rtu" and hasattr(self, "last_snapshot"):
                 self.present(self.last_snapshot)
         if feature.id == "can":
-            self.can_panel = CanPanel(self.panel, ProtocolPanel.tree, self.send)
+            self.render_can()
+            self.mode_picker.bind("<<ComboboxSelected>>", lambda _: self.change_can_mode())
+        self.update_controls()
+
+    def render_can(self):
+        if self.can_panel:
+            self.can_panel.destroy()
+            self.can_panel = None
+        view = {"交互会话": CanPanel, "多节点总线": BusPanel}.get(self.mode.get())
+        if view:
+            self.can_panel = view(self.panel, ProtocolPanel.tree, self.send)
             self.can_panel.pack(fill="both", expand=True)
+
+    def change_can_mode(self):
+        self.render_can()
         self.update_controls()
 
     def render_modbus(self, parent):
@@ -228,7 +244,7 @@ class Workbench:
         if self.history_folder and not self.job:
             ttk.Button(bar, text="载入最近历史", command=self.load_history_log).pack(side="left", padx=4)
         ttk.Combobox(bar, textvariable=self.log_source, state="readonly", width=18,
-                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
+                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "can-bus.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
         if self.advanced:
             ttk.Button(bar, text="打开寄存器与实时 RTOS 监控", command=self.open_advanced).pack(side="left", padx=5)
         self.log_path = ttk.Label(self.content, wraplength=650)
@@ -264,12 +280,14 @@ class Workbench:
         if not self.feature:
             return
         feature = self.feature
-        missing = [dep for dep in feature.dependencies if not (self.available or {}).get(dep)]
+        dependencies = dependencies_for(feature, self.mode.get())
+        missing = [dep for dep in dependencies if not (self.available or {}).get(dep)]
         executable = self.available is not None and not missing and bool(feature.modes)
         self.details.set("状态：正在探测" if self.available is None else
                          f"UNAVAILABLE · {feature.unavailable or '缺少 ' + ', '.join(missing)}" if not executable
-                         else "可执行 · " + ("、".join(feature.dependencies) or "内置入口"))
+                         else "可执行 · " + ("、".join(dependencies) or "内置入口"))
         self.start_button.configure(state="normal" if executable and not self.job else "disabled")
+        self.mode_picker.configure(state="disabled" if self.job and self.running_feature == feature.id else "readonly")
         self.state.set("LIVE · 运行中" if self.job and self.running_feature == feature.id else "未运行 / 查看历史")
         if self.live and self.running_feature == feature.id:
             self.state.set("LIVE · 已连接")
@@ -315,6 +333,7 @@ class Workbench:
         self.tail_key = None
         self.live = self.pending = False
         self.running_feature = self.feature.id
+        self.running_mode = self.mode.get()
         self.last_error = None
         if self.table:
             for key in self.table.get_children():
@@ -363,7 +382,8 @@ class Workbench:
             self.job.stdin.write((json.dumps(data) + "\n").encode())
             self.job.stdin.flush()
             self.pending = True
-            self.status.set("等待 CAN API 回环…" if self.running_feature == "can" else "等待真实 Modbus 回读…")
+            self.status.set("等待 Host CAN 总线事件…" if self.running_mode == "多节点总线" else
+                            "等待 CAN API 回环…" if self.running_feature == "can" else "等待真实 Modbus 回读…")
         except OSError as error:
             self.status.set(str(error))
         self.update_controls()
@@ -390,11 +410,12 @@ class Workbench:
                 continue
             kind = event.get("event")
             if kind in ("can_ready", "can_result", "can_error"):
+                backend = "Host CAN Bus Model" if self.running_mode == "多节点总线" else "CAN API Loopback"
                 if kind == "can_ready":
                     self.live = True
-                    self.status.set("LIVE · CAN 软件回环已连接")
+                    self.status.set(f"LIVE · {backend} 已连接")
                 elif kind == "can_result":
-                    self.status.set("LIVE · CAN API 批次已完成")
+                    self.status.set(f"LIVE · {backend} 操作已完成")
                 else:
                     self.last_error = event.get("reason")
                     self.status.set(self.last_error or "CAN 会话错误")
@@ -470,7 +491,10 @@ class Workbench:
             path = self.folder / "rtu-transactions.jsonl" if self.folder and self.running_feature == "rtu" else None
             self.inspector.update_log(path)
         if self.can_panel:
-            path = self.folder / "can-transactions.jsonl" if self.folder and self.running_feature == "can" else None
+            path = None
+            if self.folder and self.running_feature == "can" and self.running_mode == self.mode.get():
+                path = self.folder / ("can-bus.jsonl" if self.running_mode == "多节点总线"
+                                      else "can-transactions.jsonl")
             self.can_panel.update_log(path)
         self.refresh_log()
         if self.closing and not self.job and not (self.detail_window and self.detail_window.winfo_exists()):

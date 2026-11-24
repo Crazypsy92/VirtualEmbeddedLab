@@ -28,11 +28,12 @@ FEATURES = (
             {"单项实验": ("stage4_case.py", "kernel")}, ("qemu-system-arm", "Zephyr ELF")),
     Feature("gpio", "GPIO / EXTI", "GPIO / EXTI", "Renode", "运行 STM32F103 模拟 GPIO、外部中断和 UART 检查。",
             {"单项实验": ("accept_stage8_1.py", "--backend", "renode")}, ("arm-none-eabi-gcc", "gdb-multiarch", "Renode cache")),
-    Feature("can", "CAN Loopback · 帧实验台", "CAN", "Zephyr native_sim 软件 Loopback / CAN API 帧级",
-            "发送 Classical CAN 标准帧与扩展帧，按 IDE 过滤并对照真实 TX/RX。",
+    Feature("can", "CAN Loopback · 帧实验台", "CAN", "Zephyr CAN API Loopback / Host CAN Bus Model",
+            "在 Zephyr 回环中查看 API 帧，或在 Host 总线模型中实验多节点通信、仲裁和错误恢复。",
             {"交互会话": ("vel_gui_can.py",),
+             "多节点总线": ("vel_can_bus.py",),
              "单项实验": ("accept_stage8_1.py", "--backend", "native_sim")}, ("Zephyr",),
-            "CAN API 事务 JSONL"),
+            "CAN API / Host 总线事件 JSONL"),
     Feature("rtu", "Modbus RTU · 协议检查与 GPIO", "Modbus", "Zephyr native_sim / PTY",
             "执行八种 RTU 操作，查看真实帧、字段和 CRC，写入后复核设备状态。",
             {"交互会话": ("vel_gui_modbus.py",),
@@ -93,16 +94,20 @@ def capabilities(dependencies=None):
             "Renode cache": (work("simulation_stage8_1_ws") / "renode-1.17.0.tar.gz").is_file()}
 
 
+def dependencies_for(feature, mode):
+    return () if feature.id == "can" and mode == "多节点总线" else feature.dependencies
+
+
 def invocation(feature, mode, folder, available):
     item = BY_ID.get(feature)
     if item is None or not isinstance(mode, str) or mode not in item.modes:
         raise ValueError("Unknown feature or mode.")
-    if missing := [dep for dep in item.dependencies if not available.get(dep)]:
+    if missing := [dep for dep in dependencies_for(item, mode) if not available.get(dep)]:
         raise ValueError("Missing dependencies: " + ", ".join(missing))
     script, *args = item.modes[mode]
     path = ROOT / "scripts" / script
     if not path.is_file():
         raise ValueError(f"Missing entrypoint: {script}")
-    if script in ("vel_gui_modbus.py", "vel_gui_can.py"):
+    if script in ("vel_gui_modbus.py", "vel_gui_can.py", "vel_can_bus.py"):
         args.append(str(folder))
     return [sys.executable, str(path), *args]

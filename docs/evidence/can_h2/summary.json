@@ -1,0 +1,141 @@
+{
+  "status": "PASS",
+  "base": "8c842eeeba5420e31e4aeeefd6cd421dbc62262c",
+  "normal": {
+    "frames": 1002,
+    "deliveries": 2004,
+    "duplicates": 0,
+    "mismatches": 0,
+    "lost": 0,
+    "source_frame_counts": {
+      "A": 334,
+      "B": 334,
+      "C": 334
+    },
+    "filtered_cases": 2,
+    "intentional_offline_cases": 1
+  },
+  "arbitration": {
+    "rounds": 252,
+    "contested": 144,
+    "initial_contests": 108,
+    "same_key_conflicts": 36
+  },
+  "error_state_transitions": [
+    {
+      "reason": "ACK_MISSING",
+      "before": "Error Active",
+      "after": "Error Passive",
+      "tec": 128,
+      "rec": 0
+    },
+    {
+      "reason": "TX_ERROR",
+      "before": "Error Passive",
+      "after": "Bus-Off",
+      "tec": 256,
+      "rec": 0
+    },
+    {
+      "reason": "RECOVERY_REQUEST",
+      "before": "Bus-Off",
+      "after": "Recovery",
+      "tec": 256,
+      "rec": 0
+    },
+    {
+      "reason": "IDLE_1",
+      "before": "Recovery",
+      "after": "Error Active",
+      "tec": 0,
+      "rec": 0
+    }
+  ],
+  "checks": {
+    "ipc-final": 0,
+    "wslg-final": 0,
+    "canh1": 0,
+    "legacy": 0,
+    "rtuh2": 0,
+    "guih1": 0,
+    "fault": 0,
+    "gateway": 0,
+    "historical": 1
+  },
+  "historical_133": "BLOCKED",
+  "historical_gate_output": [
+    "$ /usr/bin/python3 /home/bridge/projects/stm32/VirtualEmbeddedLab/scripts/accept_stage7.py",
+    "Stage 7 dependency set requires ROS 2 Lyrical. Active ROS: jazzy",
+    "Missing recovered project input: micro_ros/dependencies.lock.json",
+    "Missing recovered project input: micro_ros/arm/colcon.meta",
+    "Missing recovered project input: micro_ros/stage7_arm.meta"
+  ],
+  "socketcan": "BLOCKED: no CAP_NET_ADMIN",
+  "hardware": "NOT TESTED",
+  "logs": {
+    "build/can-h2/ipc-final/command.log": {
+      "bytes": 1193,
+      "sha256": "7d0d64b62d1c8f0434390353695db4a94bfbe8afd7a9326e1689687dac81bd78"
+    },
+    "build/can-h2/wslg-final/command.log": {
+      "bytes": 344,
+      "sha256": "d77476428a8604687bca3508c9ec53e30fddb858ef5fc5233cd4d7013c557bdb"
+    },
+    "build/can-h2/canh1/command.log": {
+      "bytes": 1112,
+      "sha256": "20036cf4ff30d9ef45287e2a6289f390eed0314f0cb8645b0f3f72f5c3c318e0"
+    },
+    "build/can-h2/legacy/command.log": {
+      "bytes": 10096,
+      "sha256": "4bd2c34f751c194863eea3131aa646a22be96489ce5b41d12c181dd4a0bfef55"
+    },
+    "build/can-h2/rtuh2/command.log": {
+      "bytes": 951,
+      "sha256": "f3cb355aa4e85d2c296d68e492e966360f0351df7fa970a78ab8ffcc769357e5"
+    },
+    "build/can-h2/guih1/command.log": {
+      "bytes": 867,
+      "sha256": "5755377bebdc25534cb7301a247df1547dd2ecc24f92bc7bbbcbc1e5e58f5855"
+    },
+    "build/can-h2/fault/command.log": {
+      "bytes": 20,
+      "sha256": "788416c973e3d505016065a5438d1d652d6eeeab1a063dc0b824d537dc327377"
+    },
+    "build/can-h2/gateway/command.log": {
+      "bytes": 1141,
+      "sha256": "5f3c01eeda011056d9ce46b5b1f5c87c7fdb57912196c5274c3910819e609b91"
+    },
+    "build/can-h2/historical/command.log": {
+      "bytes": 539,
+      "sha256": "f0098928f4b36c683f10767ba0e95ea7c51e5f075f5d1b16bd6faa967b0ac164"
+    },
+    "build/can-h2/ipc-final/work/can-h2-test/test_message_delivery_filter_and_rejoin-xnawh02s/can-bus.jsonl": {
+      "bytes": 1946626,
+      "sha256": "e46025b9d7f9621711f02bb1caa21b17f41be008986fc4409a8176b9595dd8ad"
+    },
+    "build/can-h2/ipc-final/work/can-h2-test/test_contested_rounds_and_retry-m3_f278o/can-bus.jsonl": {
+      "bytes": 550131,
+      "sha256": "70c32eb47c6e8864401077a8b63cad9d734f54aad7031bca43b8abd0197095f9"
+    },
+    "build/can-h2/ipc-final/work/can-h2-test/test_fault_confinement_recovery_with_live_peers-qf7n9gtd/can-bus.jsonl": {
+      "bytes": 82470,
+      "sha256": "674dcf7256ef5bea1da39714f33aafa019e3c94fea47300b942afb718e8ef4c6"
+    },
+    "build/can-h2/wslg-final/work/gui-h1/runs/can-tksnwym4/can-bus.jsonl": {
+      "bytes": 77439,
+      "sha256": "ee939f518a737f2d43341cb9ecc68f31a68d47bffbe14952dc92094793e35772"
+    },
+    "build/can-h2/wslg-final/work/gui-h1/runs/can-tksnwym4/result.json": {
+      "bytes": 417,
+      "sha256": "f92c033cf01987f9060d2fc99519b59331e762d316ef9cdf491ad6de968dfbd5"
+    },
+    "build/can-h2/historical/work/simulation_stage8_1_ws/runs/qemu_regression-42193374476669.log": {
+      "bytes": 340,
+      "sha256": "3e91ecc5f411a3a119766576d258a91954bdf2d9678a5f3d9ba5835a9bcffd72"
+    },
+    "build/can-h2/legacy/stage8_1/native_sim/acceptance.json": {
+      "bytes": 8698,
+      "sha256": "3941d40e74267514d7ab36bab97b9ee418b38f9d69d729dcd9cbf44e33f413fc"
+    }
+  }
+}

@@ -12,7 +12,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 from vel_env import tool_environment, work
-from vel_gui_features import BY_ID, CATEGORIES, FEATURES, capabilities, invocation
+from vel_gui_features import BY_ID, CATEGORIES, FEATURES, capabilities, dependencies_for, invocation
 from vel_jobs import workspace_lock
 
 ENV = tool_environment()
@@ -31,7 +31,7 @@ class Registry(unittest.TestCase):
                 self.assertEqual(cmd[0], sys.executable)
                 with self.assertRaises(ValueError):
                     invocation(f.id, mode + "; arbitrary", ROOT, flags)
-                if f.dependencies:
+                if dependencies_for(f, mode):
                     with self.assertRaises(ValueError):
                         invocation(f.id, mode, ROOT, {})
         self.assertFalse(BY_ID["micro"].modes)
