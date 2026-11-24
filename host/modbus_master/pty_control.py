@@ -6,9 +6,10 @@ import time
 from pymodbus.client import ModbusSerialClient
 
 
-def wait_rx_ready(control_fd, timeout=0.15):
+def wait_rx_ready(control_fd, timeout=0.15, *, sequence=None):
     """Wait for one UART0 acknowledgement before sending the next RTU frame."""
-    if os.write(control_fd, b"R") != 1:
+    request = b"R" if sequence is None else b"T" + sequence.to_bytes(4, "big")
+    if os.write(control_fd, request) != len(request):
         raise OSError("Could not request native_sim RTU receive-ready")
     if not select.select([control_fd], [], [], timeout)[0]:
         raise TimeoutError("native_sim RTU receive-ready acknowledgement timed out")

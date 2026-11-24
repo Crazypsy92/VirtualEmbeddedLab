@@ -1,0 +1,71 @@
+{
+  "base": "f302b85940d811ff10495b93e021b2d0e2b802c6",
+  "logs": {
+    "frames": {
+      "exit": 0,
+      "log": "build/rtu-h2/frames/command.log",
+      "sha256": "d079c672fcab70adf03bb992931ffbcc00afd5a956ac6653374e54c2a3ecaf6c"
+    },
+    "uart": {
+      "exit": 0,
+      "log": "build/rtu-h2/uart/command.log",
+      "sha256": "32ca1387a9d6ce14bc508c6c8e20048bfeb43384b1daddb3c849a29734211138"
+    },
+    "final": {
+      "exit": 0,
+      "log": "build/rtu-h2/final/command.log",
+      "sha256": "e119bf8eed8de508356418dc35edf896e3fe0a52ddcddfd986a9d9d365b1ca01"
+    },
+    "guih1": {
+      "exit": 0,
+      "log": "build/rtu-h2/guih1/command.log",
+      "sha256": "a85e8ed9c3207dd86d03d05359f707a08db17fbd18fe508a69b00bf61221fd4d"
+    },
+    "fault": {
+      "exit": 0,
+      "log": "build/rtu-h2/fault/command.log",
+      "sha256": "788416c973e3d505016065a5438d1d652d6eeeab1a063dc0b824d537dc327377"
+    },
+    "protocol": {
+      "exit": 0,
+      "log": "build/rtu-h2/protocol/command.log",
+      "sha256": "f41dc6583ff35a07c3b635b25665d569e234f815a27ef3b9d43a78997969ec97"
+    },
+    "gateway": {
+      "exit": 0,
+      "log": "build/rtu-h2/gateway/command.log",
+      "sha256": "363e42dcee52316a7c61ec771f967b0dd90a1934ead16bc551a0010f577ba90d"
+    },
+    "native81": {
+      "exit": 0,
+      "log": "build/rtu-h2/native81/command.log",
+      "sha256": "3d3f9b0af4e8b775de4c9412b8b1eba285859f2a9bcb8e4f06effc888423dadc"
+    },
+    "renode-cache": {
+      "exit": 0,
+      "log": "build/rtu-h2/renode-cache/command.log",
+      "sha256": "3a4070442954274f1bc6df77b7a8b7f604726604b55ea962242451910c069ebd"
+    },
+    "stage81": {
+      "exit": 1,
+      "log": "build/rtu-h2/stage81/command.log",
+      "sha256": "e245a6c1771cb77c5c7f80d72044c3d45c842819cbe3528b65ba6cf5774788c7"
+    }
+  },
+  "historical_133": "BLOCKED",
+  "historical_dependency_log": [
+    "$ /usr/bin/python3 /home/bridge/projects/stm32/VirtualEmbeddedLab/scripts/accept_stage7.py",
+    "Stage 7 dependency set requires ROS 2 Lyrical. Active ROS: jazzy",
+    "Missing recovered project input: micro_ros/dependencies.lock.json",
+    "Missing recovered project input: micro_ros/arm/colcon.meta",
+    "Missing recovered project input: micro_ros/stage7_arm.meta"
+  ],
+  "gui": {
+    "transactions": 27,
+    "matched": 26,
+    "time_outs": 1,
+    "direction_events": 186,
+    "firmware_exit": 0
+  },
+  "physical_rs485": "NOT TESTED"
+}

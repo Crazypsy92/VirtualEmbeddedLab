@@ -11,6 +11,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 from vel_rtu_frames import crc16, decode, pair
+from vel_rtu_layers import direction_event
 
 VECTORS = [
     ("0101000000083dcc", "01010105918b", [1, 0, 1, 0, 0, 0, 0, 0]),
@@ -154,12 +155,51 @@ class Window(unittest.TestCase):
                     details = [panel.detail.item(i, "values") for i in panel.detail.get_children()]
                     self.assertTrue(any(row[0] == "TX" and row[1] == "11" and "500" in row[-1]
                                         for row in details), details)
+                    layers = panel.layers
+                    for fc in (3, 6, 15, 16):
+                        iid = next(i for i, row in panel.rows.items() if row["tx"]["function_code"] == fc)
+                        panel.list.selection_set(iid)
+                        panel.show_selected()
+                        layers.detail.selection_set("tx:2")
+                        layers.select_field()
+                        self.assertEqual(layers.hex_view.get(*layers.hex_view.tag_ranges("highlight")), "00 00"
+                                         if fc != 6 else "00 01")
+                        layers.open_uart()
+                        self.assertEqual(layers.uart_rows.selection(), ("tx:2",))
+                        self.assertEqual(layers.uart_rows.item("tx:0", "values")[3:14],
+                                         ("0", "1", "0", "0", "0", "0", "0", "0", "0", "1", "1"))
+                        layers.open_adu()
+                        layers.tabs.select(layers.rs485)
+                        self.assertTrue(layers.timeline.get_children())
+                        layers.tabs.select(layers.compare)
+                        self.assertTrue(layers.comparison.get_children())
+                    for tx_hex, rx_hex, status in (
+                            ("010300000002c40b", "018302c0f1", "EXCEPTION"),
+                            ("0101000000083dcc", "010101059100", "CRC_ERROR")):
+                        sample = pair(bytes.fromhex(tx_hex), bytes.fromhex(rx_hex))
+                        sample.update(sequence=-1, monotonic_ns=0, finished_ns=0)
+                        layers.present(sample)
+                        self.assertIn(status, layers.compare_note.get())
+                        self.assertIn(rx_hex.upper(), layers.raw.get().replace(" ", ""))
+                    panel.list.selection_set(candidates[0])
+                    panel.show_selected()
+                    layers.detail.selection_set("tx:7")
+                    layers.select_field()
+                    layers.open_uart()
+                    window = hex(root.winfo_id())
+                    h2 = os.environ.get("VEL_H2_SCREENSHOTS")
+                    if h2:
+                        for mode in ("adu", "uart", "rs485", "compare"):
+                            layers.tabs.select(getattr(layers, mode))
+                            root.update()
+                            root.after(110)
+                            root.update()
+                            subprocess.run(["import", "-window", window, str(Path(h2) / f"{mode}.png")],
+                                           check=True, timeout=12)
                     if screenshots:
+                        layers.tabs.select(layers.adu)
                         root.update_idletasks()
-                        window = subprocess.check_output(["xdotool", "search", "--onlyvisible", "--pid",
-                                                          str(os.getpid()), "--name", "VirtualEmbeddedLab"], text=True)
-                        subprocess.run(["import", "-window", window.splitlines()[-1], screenshots],
-                                       check=True, timeout=12)
+                        subprocess.run(["import", "-window", window, screenshots], check=True, timeout=12)
                     app.close()
                     stage += 1
                     return
@@ -192,6 +232,24 @@ class Window(unittest.TestCase):
                             and item["latency_ms"] <= 150 for item in passed))
         log = (folder / "slave.log").read_text()
         self.assertIn("INPUT bits=5", log)
+        events = {}
+        for line in log.splitlines():
+            if event := direction_event(line):
+                events.setdefault(event["sequence"], []).append(event)
+        self.assertEqual(set(events), {x["sequence"] for x in reports})
+        for item in reports:
+            series = events[item["sequence"]]
+            self.assertEqual(series[0]["kind"], "READY")
+            self.assertEqual([e["sim_ms"] for e in series], sorted(e["sim_ms"] for e in series))
+            if item["status"] == "TIMEOUT":
+                self.assertFalse(any(e["de"] for e in series))
+                self.assertNotIn("RESPONSE_PREPARED", [e["kind"] for e in series])
+                continue
+            self.assertEqual([e["kind"] for e in series if e["kind"] != "GPIO"],
+                             ["READY", "RX_DISPATCH", "RESPONSE_PREPARED"])
+            changes = [(e["de"], e["re"]) for e in series if e["kind"] == "GPIO"]
+            self.assertEqual(changes, [(0, 0), (1, 0), (0, 0), (0, 1)], (item["sequence"], series))
+        print(f"{len(events)} transaction IDs matched firmware direction events")
         supervisor = json.loads((folder / "result.json").read_text())
         slave = json.loads((folder / "slave-exit.json").read_text())
         self.assertEqual(supervisor["status"], "CANCELLED")

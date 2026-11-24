@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from vel_rtu_frames import FC_NAMES
+from vel_rtu_layer_view import LayerView
 
 
 class ProtocolPanel(ttk.Frame):
@@ -17,7 +18,6 @@ class ProtocolPanel(ttk.Frame):
         self.offset = 0
         self.choice = tk.StringVar()
         self.message = tk.StringVar(value="启动交互会话后可发送请求。")
-        self.raw = tk.StringVar()
         options = ttk.Frame(self)
         options.pack(fill="x")
         self.functions = {f"{code:02X}  {name}": code for code, name in FC_NAMES.items()}
@@ -52,11 +52,9 @@ class ProtocolPanel(ttk.Frame):
                                     ("ms", "耗时 ms", 70), ("status", "结果", 108),
                                     ("purpose", "用途", 108)], 5)
         self.list.bind("<<TreeviewSelect>>", self.show_selected)
-        raw = ttk.Entry(bottom, textvariable=self.raw, state="readonly", font=("Monospace", 10))
-        raw.pack(fill="x", pady=(3, 3))
-        self.detail = self.tree(bottom, [("direction", "方向", 53), ("offset", "偏移", 52),
-                                         ("hex", "HEX", 54), ("field", "字段", 219),
-                                         ("value", "解码值", 300)], 8)
+        self.layers = LayerView(bottom, self.tree)
+        self.raw = self.layers.raw
+        self.detail = self.layers.detail
 
     @staticmethod
     def tree(parent, columns, height):
@@ -118,13 +116,13 @@ class ProtocolPanel(ttk.Frame):
     def clear(self):
         self.rows.clear()
         self.list.delete(*self.list.get_children())
-        self.detail.delete(*self.detail.get_children())
-        self.raw.set("")
+        self.layers.present(None)
 
     def update_log(self, path):
         if path != self.path:
             self.path, self.offset, self.result_time = path, 0, None
             self.clear()
+        self.layers.set_log(path.with_name("slave.log") if path else None)
         if path is None or not path.is_file():
             return
         with path.open("rb") as log:
@@ -159,28 +157,5 @@ class ProtocolPanel(ttk.Frame):
 
     def show_selected(self, _event=None):
         selected = self.list.selection()
-        if not selected:
-            return
-        record = self.rows[selected[0]]
-        self.detail.delete(*self.detail.get_children())
-        self.raw.set("    ".join(f"{key.upper()}  {self.spaced(record[key]['raw_hex']) or '—'}" for key in ("tx", "rx")))
-        for key in ("tx", "rx"):
-            frame = record[key]
-            for field in frame["decoded_fields"]:
-                value = field["value"]
-                if isinstance(value, list):
-                    value = "  ".join(f"{bit['address']}={bit['value']}" for bit in value)
-                else:
-                    value = f"{value}  /  0x{value:X}"
-                for i, byte in enumerate(self.spaced(field["raw_hex"]).split()):
-                    self.detail.insert("", "end", values=(key.upper(), field["offset"] + i, byte,
-                                                           field["name"], value))
-            if frame["crc_ok"] is not None:
-                self.detail.insert("", "end", values=(key.upper(), "—", "—", "CRC 校验",
-                    f"{self.crc_label(frame['crc_ok'])} · 计算 0x{frame['crc_computed']:04X} · 帧 0x{frame['crc_received']:04X}"))
-        if record["error"]:
-            self.detail.insert("", "end", values=("—", "—", "—", record["status"], record["error"]))
-
-    @staticmethod
-    def spaced(hex_text):
-        return " ".join(hex_text[i:i+2].upper() for i in range(0, len(hex_text), 2))
+        if selected and selected[0] in self.rows:
+            self.layers.present(self.rows[selected[0]])

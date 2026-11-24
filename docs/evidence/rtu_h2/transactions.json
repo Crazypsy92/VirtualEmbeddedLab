@@ -1,0 +1,5596 @@
+[
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "0101000000083dcc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3d",
+            "value": 61
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52285,
+        "crc_computed": 52285,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010101005188",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "00",
+            "value": [
+              {
+                "address": 0,
+                "value": 0
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 0
+              },
+              {
+                "address": 3,
+                "value": 0
+              },
+              {
+                "address": 4,
+                "value": 0
+              },
+              {
+                "address": 5,
+                "value": 0
+              },
+              {
+                "address": 6,
+                "value": 0
+              },
+              {
+                "address": 7,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "51",
+            "value": 81
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "88",
+            "value": 136
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 34897,
+        "crc_computed": 34897,
+        "status": "OK",
+        "error": null,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 1,
+      "monotonic_ns": 39441211678279,
+      "tx_ns": 39441222684562,
+      "rx_ns": 39441253517870,
+      "finished_ns": 39441253603564,
+      "purpose": "请求",
+      "latency_ms": 30.833308,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 1,
+        "sim_ms": 60,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 1,
+        "sim_ms": 90,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 1,
+        "sim_ms": 90,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 1,
+        "sim_ms": 90,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 1,
+        "sim_ms": 90,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 1,
+        "sim_ms": 90,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 1,
+        "sim_ms": 90,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "01020000000479c9",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 2,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0004",
+            "value": 4
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "79",
+            "value": 121
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "c9",
+            "value": 201
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 51577,
+        "crc_computed": 51577,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 4
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "01020100a188",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 2,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "00",
+            "value": [
+              {
+                "address": 0,
+                "value": 0
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 0
+              },
+              {
+                "address": 3,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "a1",
+            "value": 161
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "88",
+            "value": 136
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 34977,
+        "crc_computed": 34977,
+        "status": "OK",
+        "error": null,
+        "values": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 2,
+      "monotonic_ns": 39441253775350,
+      "tx_ns": 39441262455283,
+      "rx_ns": 39441284307832,
+      "finished_ns": 39441284418953,
+      "purpose": "请求",
+      "latency_ms": 21.852549,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 2,
+        "sim_ms": 100,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 2,
+        "sim_ms": 120,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 2,
+        "sim_ms": 120,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 2,
+        "sim_ms": 120,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 2,
+        "sim_ms": 120,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 2,
+        "sim_ms": 120,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 2,
+        "sim_ms": 120,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010300000008440c",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "44",
+            "value": 68
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "0c",
+            "value": 12
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 3140,
+        "crc_computed": 3140,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "0103100001000a01f400000064000000000000f365",
+        "byte_length": 21,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "10",
+            "value": 16
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 0",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 5,
+            "length": 2,
+            "name": "寄存器 1",
+            "raw_hex": "000a",
+            "value": 10
+          },
+          {
+            "offset": 7,
+            "length": 2,
+            "name": "寄存器 2",
+            "raw_hex": "01f4",
+            "value": 500
+          },
+          {
+            "offset": 9,
+            "length": 2,
+            "name": "寄存器 3",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 11,
+            "length": 2,
+            "name": "寄存器 4",
+            "raw_hex": "0064",
+            "value": 100
+          },
+          {
+            "offset": 13,
+            "length": 2,
+            "name": "寄存器 5",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 15,
+            "length": 2,
+            "name": "寄存器 6",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 17,
+            "length": 2,
+            "name": "寄存器 7",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 19,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "f3",
+            "value": 243
+          },
+          {
+            "offset": 20,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "65",
+            "value": 101
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 26099,
+        "crc_computed": 26099,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          10,
+          500,
+          0,
+          100,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 3,
+      "monotonic_ns": 39441284706866,
+      "tx_ns": 39441302740364,
+      "rx_ns": 39441334498377,
+      "finished_ns": 39441334597285,
+      "purpose": "请求",
+      "latency_ms": 31.758013,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 3,
+        "sim_ms": 140,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 3,
+        "sim_ms": 170,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 3,
+        "sim_ms": 170,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 3,
+        "sim_ms": 170,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 3,
+        "sim_ms": 170,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 3,
+        "sim_ms": 170,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 3,
+        "sim_ms": 170,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010400000008f1cc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "f1",
+            "value": 241
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52465,
+        "crc_computed": 52465,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010410000100c80000000400030000000000008ba5",
+        "byte_length": 21,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "10",
+            "value": 16
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 0",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 5,
+            "length": 2,
+            "name": "寄存器 1",
+            "raw_hex": "00c8",
+            "value": 200
+          },
+          {
+            "offset": 7,
+            "length": 2,
+            "name": "寄存器 2",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 9,
+            "length": 2,
+            "name": "寄存器 3",
+            "raw_hex": "0004",
+            "value": 4
+          },
+          {
+            "offset": 11,
+            "length": 2,
+            "name": "寄存器 4",
+            "raw_hex": "0003",
+            "value": 3
+          },
+          {
+            "offset": 13,
+            "length": 2,
+            "name": "寄存器 5",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 15,
+            "length": 2,
+            "name": "寄存器 6",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 17,
+            "length": 2,
+            "name": "寄存器 7",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 19,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "8b",
+            "value": 139
+          },
+          {
+            "offset": 20,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "a5",
+            "value": 165
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 42379,
+        "crc_computed": 42379,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          200,
+          0,
+          4,
+          3,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 4,
+      "monotonic_ns": 39441334843352,
+      "tx_ns": 39441342445914,
+      "rx_ns": 39441364759064,
+      "finished_ns": 39441364874589,
+      "purpose": "请求",
+      "latency_ms": 22.31315,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 4,
+        "sim_ms": 180,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 4,
+        "sim_ms": 200,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 4,
+        "sim_ms": 200,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 4,
+        "sim_ms": 200,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 4,
+        "sim_ms": 200,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 4,
+        "sim_ms": 200,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 4,
+        "sim_ms": 200,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "0101000000083dcc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3d",
+            "value": 61
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52285,
+        "crc_computed": 52285,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010101005188",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "00",
+            "value": [
+              {
+                "address": 0,
+                "value": 0
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 0
+              },
+              {
+                "address": 3,
+                "value": 0
+              },
+              {
+                "address": 4,
+                "value": 0
+              },
+              {
+                "address": 5,
+                "value": 0
+              },
+              {
+                "address": 6,
+                "value": 0
+              },
+              {
+                "address": 7,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "51",
+            "value": 81
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "88",
+            "value": 136
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 34897,
+        "crc_computed": 34897,
+        "status": "OK",
+        "error": null,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 5,
+      "monotonic_ns": 39441476235713,
+      "tx_ns": 39441482527951,
+      "rx_ns": 39441514312694,
+      "finished_ns": 39441514414404,
+      "purpose": "请求",
+      "latency_ms": 31.784743,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 5,
+        "sim_ms": 320,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 5,
+        "sim_ms": 350,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 5,
+        "sim_ms": 350,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 5,
+        "sim_ms": 350,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 5,
+        "sim_ms": 350,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 5,
+        "sim_ms": 350,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 5,
+        "sim_ms": 350,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "01020000000479c9",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 2,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0004",
+            "value": 4
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "79",
+            "value": 121
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "c9",
+            "value": 201
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 51577,
+        "crc_computed": 51577,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 4
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "01020105618b",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 2,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "05",
+            "value": [
+              {
+                "address": 0,
+                "value": 1
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 1
+              },
+              {
+                "address": 3,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "61",
+            "value": 97
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "8b",
+            "value": 139
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 35681,
+        "crc_computed": 35681,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 6,
+      "monotonic_ns": 39441515141795,
+      "tx_ns": 39441522446733,
+      "rx_ns": 39441543619143,
+      "finished_ns": 39441543697828,
+      "purpose": "请求",
+      "latency_ms": 21.17241,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 6,
+        "sim_ms": 360,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 6,
+        "sim_ms": 380,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 6,
+        "sim_ms": 380,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 6,
+        "sim_ms": 380,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 6,
+        "sim_ms": 380,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 6,
+        "sim_ms": 380,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 6,
+        "sim_ms": 380,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010300000008440c",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "44",
+            "value": 68
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "0c",
+            "value": 12
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 3140,
+        "crc_computed": 3140,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "0103100001000a01f400000064000000000000f365",
+        "byte_length": 21,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "10",
+            "value": 16
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 0",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 5,
+            "length": 2,
+            "name": "寄存器 1",
+            "raw_hex": "000a",
+            "value": 10
+          },
+          {
+            "offset": 7,
+            "length": 2,
+            "name": "寄存器 2",
+            "raw_hex": "01f4",
+            "value": 500
+          },
+          {
+            "offset": 9,
+            "length": 2,
+            "name": "寄存器 3",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 11,
+            "length": 2,
+            "name": "寄存器 4",
+            "raw_hex": "0064",
+            "value": 100
+          },
+          {
+            "offset": 13,
+            "length": 2,
+            "name": "寄存器 5",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 15,
+            "length": 2,
+            "name": "寄存器 6",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 17,
+            "length": 2,
+            "name": "寄存器 7",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 19,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "f3",
+            "value": 243
+          },
+          {
+            "offset": 20,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "65",
+            "value": 101
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 26099,
+        "crc_computed": 26099,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          10,
+          500,
+          0,
+          100,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 7,
+      "monotonic_ns": 39441543910359,
+      "tx_ns": 39441563044153,
+      "rx_ns": 39441593816496,
+      "finished_ns": 39441593897083,
+      "purpose": "请求",
+      "latency_ms": 30.772343,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 7,
+        "sim_ms": 400,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 7,
+        "sim_ms": 430,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 7,
+        "sim_ms": 430,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 7,
+        "sim_ms": 430,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 7,
+        "sim_ms": 430,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 7,
+        "sim_ms": 430,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 7,
+        "sim_ms": 430,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010400000008f1cc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "f1",
+            "value": 241
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52465,
+        "crc_computed": 52465,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010410000101cc0000000800070000000500008521",
+        "byte_length": 21,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "10",
+            "value": 16
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 0",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 5,
+            "length": 2,
+            "name": "寄存器 1",
+            "raw_hex": "01cc",
+            "value": 460
+          },
+          {
+            "offset": 7,
+            "length": 2,
+            "name": "寄存器 2",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 9,
+            "length": 2,
+            "name": "寄存器 3",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 11,
+            "length": 2,
+            "name": "寄存器 4",
+            "raw_hex": "0007",
+            "value": 7
+          },
+          {
+            "offset": 13,
+            "length": 2,
+            "name": "寄存器 5",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 15,
+            "length": 2,
+            "name": "寄存器 6",
+            "raw_hex": "0005",
+            "value": 5
+          },
+          {
+            "offset": 17,
+            "length": 2,
+            "name": "寄存器 7",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 19,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "85",
+            "value": 133
+          },
+          {
+            "offset": 20,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "21",
+            "value": 33
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 8581,
+        "crc_computed": 8581,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          460,
+          0,
+          8,
+          7,
+          0,
+          5,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 8,
+      "monotonic_ns": 39441594082084,
+      "tx_ns": 39441602669717,
+      "rx_ns": 39441625284895,
+      "finished_ns": 39441625665508,
+      "purpose": "请求",
+      "latency_ms": 22.615178,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 8,
+        "sim_ms": 440,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 8,
+        "sim_ms": 460,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 8,
+        "sim_ms": 460,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 8,
+        "sim_ms": 460,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 8,
+        "sim_ms": 460,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 8,
+        "sim_ms": 460,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 8,
+        "sim_ms": 460,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "0101000000083dcc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3d",
+            "value": 61
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52285,
+        "crc_computed": 52285,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010101005188",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "00",
+            "value": [
+              {
+                "address": 0,
+                "value": 0
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 0
+              },
+              {
+                "address": 3,
+                "value": 0
+              },
+              {
+                "address": 4,
+                "value": 0
+              },
+              {
+                "address": 5,
+                "value": 0
+              },
+              {
+                "address": 6,
+                "value": 0
+              },
+              {
+                "address": 7,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "51",
+            "value": 81
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "88",
+            "value": 136
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 34897,
+        "crc_computed": 34897,
+        "status": "OK",
+        "error": null,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 9,
+      "monotonic_ns": 39441762505934,
+      "tx_ns": 39441763076499,
+      "rx_ns": 39441795885881,
+      "finished_ns": 39441796138954,
+      "purpose": "请求",
+      "latency_ms": 32.809382,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 9,
+        "sim_ms": 600,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 9,
+        "sim_ms": 630,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 9,
+        "sim_ms": 630,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 9,
+        "sim_ms": 630,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 9,
+        "sim_ms": 630,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 9,
+        "sim_ms": 630,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 9,
+        "sim_ms": 630,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "01020000000479c9",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 2,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0004",
+            "value": 4
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "79",
+            "value": 121
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "c9",
+            "value": 201
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 51577,
+        "crc_computed": 51577,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 4
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "01020105618b",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 2,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "05",
+            "value": [
+              {
+                "address": 0,
+                "value": 1
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 1
+              },
+              {
+                "address": 3,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "61",
+            "value": 97
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "8b",
+            "value": 139
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 35681,
+        "crc_computed": 35681,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 10,
+      "monotonic_ns": 39441963920744,
+      "tx_ns": 39441983306947,
+      "rx_ns": 39442004177979,
+      "finished_ns": 39442004243998,
+      "purpose": "请求",
+      "latency_ms": 20.871032,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 10,
+        "sim_ms": 820,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 10,
+        "sim_ms": 840,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 10,
+        "sim_ms": 840,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 10,
+        "sim_ms": 840,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 10,
+        "sim_ms": 840,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 10,
+        "sim_ms": 840,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 10,
+        "sim_ms": 840,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010300000002c40b",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0002",
+            "value": 2
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "c4",
+            "value": 196
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "0b",
+            "value": 11
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 3012,
+        "crc_computed": 3012,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 2
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "0103040001000a2bf4",
+        "byte_length": 9,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 0",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 5,
+            "length": 2,
+            "name": "寄存器 1",
+            "raw_hex": "000a",
+            "value": 10
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "2b",
+            "value": 43
+          },
+          {
+            "offset": 8,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "f4",
+            "value": 244
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 62507,
+        "crc_computed": 62507,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          10
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 11,
+      "monotonic_ns": 39442165282539,
+      "tx_ns": 39442183245730,
+      "rx_ns": 39442214195775,
+      "finished_ns": 39442214258593,
+      "purpose": "请求",
+      "latency_ms": 30.950045,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 11,
+        "sim_ms": 1020,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 11,
+        "sim_ms": 1050,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 11,
+        "sim_ms": 1050,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 11,
+        "sim_ms": 1050,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 11,
+        "sim_ms": 1050,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 11,
+        "sim_ms": 1050,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 11,
+        "sim_ms": 1050,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "01040006000291ca",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0006",
+            "value": 6
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0002",
+            "value": 2
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "91",
+            "value": 145
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "ca",
+            "value": 202
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 51857,
+        "crc_computed": 51857,
+        "status": "OK",
+        "error": null,
+        "address": 6,
+        "quantity": 2
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "01040400050000eb85",
+        "byte_length": 9,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 6",
+            "raw_hex": "0005",
+            "value": 5
+          },
+          {
+            "offset": 5,
+            "length": 2,
+            "name": "寄存器 7",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "eb",
+            "value": 235
+          },
+          {
+            "offset": 8,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "85",
+            "value": 133
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 34283,
+        "crc_computed": 34283,
+        "status": "OK",
+        "error": null,
+        "values": [
+          5,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 12,
+      "monotonic_ns": 39442366796178,
+      "tx_ns": 39442382837414,
+      "rx_ns": 39442404903691,
+      "finished_ns": 39442404967009,
+      "purpose": "请求",
+      "latency_ms": 22.066277,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 12,
+        "sim_ms": 1220,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 12,
+        "sim_ms": 1240,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 12,
+        "sim_ms": 1240,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 12,
+        "sim_ms": 1240,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 12,
+        "sim_ms": 1240,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 12,
+        "sim_ms": 1240,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 12,
+        "sim_ms": 1240,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "01050000ff008c3a",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 5,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "05",
+            "value": 5
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "线圈编码",
+            "raw_hex": "ff00",
+            "value": 65280
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "8c",
+            "value": 140
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "3a",
+            "value": 58
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 14988,
+        "crc_computed": 14988,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "values": [
+          65280
+        ]
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "01050000ff008c3a",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 5,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "05",
+            "value": 5
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "线圈编码",
+            "raw_hex": "ff00",
+            "value": 65280
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "8c",
+            "value": 140
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "3a",
+            "value": 58
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 14988,
+        "crc_computed": 14988,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "values": [
+          65280
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 13,
+      "monotonic_ns": 39442569129853,
+      "tx_ns": 39442583064881,
+      "rx_ns": 39442614520772,
+      "finished_ns": 39442614578588,
+      "purpose": "请求",
+      "latency_ms": 31.455891,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 13,
+        "sim_ms": 1420,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 13,
+        "sim_ms": 1450,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 13,
+        "sim_ms": 1450,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 13,
+        "sim_ms": 1450,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 13,
+        "sim_ms": 1450,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 13,
+        "sim_ms": 1450,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 13,
+        "sim_ms": 1450,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "0101000000083dcc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3d",
+            "value": 61
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52285,
+        "crc_computed": 52285,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010101019048",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "01",
+            "value": [
+              {
+                "address": 0,
+                "value": 1
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 0
+              },
+              {
+                "address": 3,
+                "value": 0
+              },
+              {
+                "address": 4,
+                "value": 0
+              },
+              {
+                "address": 5,
+                "value": 0
+              },
+              {
+                "address": 6,
+                "value": 0
+              },
+              {
+                "address": 7,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "90",
+            "value": 144
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "48",
+            "value": 72
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 18576,
+        "crc_computed": 18576,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 14,
+      "monotonic_ns": 39442614693021,
+      "tx_ns": 39442623164370,
+      "rx_ns": 39442645316972,
+      "finished_ns": 39442645381291,
+      "purpose": "写入回读",
+      "latency_ms": 22.152602,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 14,
+        "sim_ms": 1460,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 14,
+        "sim_ms": 1480,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 14,
+        "sim_ms": 1480,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 14,
+        "sim_ms": 1480,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 14,
+        "sim_ms": 1480,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 14,
+        "sim_ms": 1480,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 14,
+        "sim_ms": 1480,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010400070001800b",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0007",
+            "value": 7
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "80",
+            "value": 128
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "0b",
+            "value": 11
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 2944,
+        "crc_computed": 2944,
+        "status": "OK",
+        "error": null,
+        "address": 7,
+        "quantity": 1
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010402000178f0",
+        "byte_length": 7,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 7",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "78",
+            "value": 120
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "f0",
+            "value": 240
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 61560,
+        "crc_computed": 61560,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 15,
+      "monotonic_ns": 39442645511428,
+      "tx_ns": 39442663519264,
+      "rx_ns": 39442693996366,
+      "finished_ns": 39442694055042,
+      "purpose": "GPIO 位图回读",
+      "latency_ms": 30.477102,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 15,
+        "sim_ms": 1500,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 15,
+        "sim_ms": 1530,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 15,
+        "sim_ms": 1530,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 15,
+        "sim_ms": 1530,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 15,
+        "sim_ms": 1530,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 15,
+        "sim_ms": 1530,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 15,
+        "sim_ms": 1530,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010500000000cdca",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 5,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "05",
+            "value": 5
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "线圈编码",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "cd",
+            "value": 205
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "ca",
+            "value": 202
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 51917,
+        "crc_computed": 51917,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "values": [
+          0
+        ]
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010500000000cdca",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 5,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "05",
+            "value": 5
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "线圈编码",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "cd",
+            "value": 205
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "ca",
+            "value": 202
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 51917,
+        "crc_computed": 51917,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "values": [
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 16,
+      "monotonic_ns": 39442871361732,
+      "tx_ns": 39442883064433,
+      "rx_ns": 39442904939263,
+      "finished_ns": 39442905002237,
+      "purpose": "请求",
+      "latency_ms": 21.87483,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 16,
+        "sim_ms": 1720,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 16,
+        "sim_ms": 1740,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 16,
+        "sim_ms": 1740,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 16,
+        "sim_ms": 1740,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 16,
+        "sim_ms": 1740,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 16,
+        "sim_ms": 1740,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 16,
+        "sim_ms": 1740,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "0101000000083dcc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3d",
+            "value": 61
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52285,
+        "crc_computed": 52285,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010101005188",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "00",
+            "value": [
+              {
+                "address": 0,
+                "value": 0
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 0
+              },
+              {
+                "address": 3,
+                "value": 0
+              },
+              {
+                "address": 4,
+                "value": 0
+              },
+              {
+                "address": 5,
+                "value": 0
+              },
+              {
+                "address": 6,
+                "value": 0
+              },
+              {
+                "address": 7,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "51",
+            "value": 81
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "88",
+            "value": 136
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 34897,
+        "crc_computed": 34897,
+        "status": "OK",
+        "error": null,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 17,
+      "monotonic_ns": 39442905130784,
+      "tx_ns": 39442923138900,
+      "rx_ns": 39442954199462,
+      "finished_ns": 39442954307618,
+      "purpose": "写入回读",
+      "latency_ms": 31.060562,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 17,
+        "sim_ms": 1760,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 17,
+        "sim_ms": 1790,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 17,
+        "sim_ms": 1790,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 17,
+        "sim_ms": 1790,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 17,
+        "sim_ms": 1790,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 17,
+        "sim_ms": 1790,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 17,
+        "sim_ms": 1790,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010400070001800b",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0007",
+            "value": 7
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "80",
+            "value": 128
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "0b",
+            "value": 11
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 2944,
+        "crc_computed": 2944,
+        "status": "OK",
+        "error": null,
+        "address": 7,
+        "quantity": 1
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "0104020000b930",
+        "byte_length": 7,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 7",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "b9",
+            "value": 185
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "30",
+            "value": 48
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 12473,
+        "crc_computed": 12473,
+        "status": "OK",
+        "error": null,
+        "values": [
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 18,
+      "monotonic_ns": 39442954610094,
+      "tx_ns": 39442963551427,
+      "rx_ns": 39442985102390,
+      "finished_ns": 39442985188454,
+      "purpose": "GPIO 位图回读",
+      "latency_ms": 21.550963,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 18,
+        "sim_ms": 1800,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 18,
+        "sim_ms": 1820,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 18,
+        "sim_ms": 1820,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 18,
+        "sim_ms": 1820,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 18,
+        "sim_ms": 1820,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 18,
+        "sim_ms": 1820,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 18,
+        "sim_ms": 1820,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010600010014d805",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 6,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "06",
+            "value": 6
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "地址",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "寄存器值",
+            "raw_hex": "0014",
+            "value": 20
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "d8",
+            "value": 216
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "05",
+            "value": 5
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 1496,
+        "crc_computed": 1496,
+        "status": "OK",
+        "error": null,
+        "address": 1,
+        "values": [
+          20
+        ]
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010600010014d805",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 6,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "06",
+            "value": 6
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "地址",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "寄存器值",
+            "raw_hex": "0014",
+            "value": 20
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "d8",
+            "value": 216
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "05",
+            "value": 5
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 1496,
+        "crc_computed": 1496,
+        "status": "OK",
+        "error": null,
+        "address": 1,
+        "values": [
+          20
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 19,
+      "monotonic_ns": 39443072455468,
+      "tx_ns": 39443083142086,
+      "rx_ns": 39443114493829,
+      "finished_ns": 39443114556403,
+      "purpose": "请求",
+      "latency_ms": 31.351743,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 19,
+        "sim_ms": 1920,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 19,
+        "sim_ms": 1950,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 19,
+        "sim_ms": 1950,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 19,
+        "sim_ms": 1950,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 19,
+        "sim_ms": 1950,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 19,
+        "sim_ms": 1950,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 19,
+        "sim_ms": 1950,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010300010001d5ca",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "d5",
+            "value": 213
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "ca",
+            "value": 202
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 51925,
+        "crc_computed": 51925,
+        "status": "OK",
+        "error": null,
+        "address": 1,
+        "quantity": 1
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "0103020014b84b",
+        "byte_length": 7,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 1",
+            "raw_hex": "0014",
+            "value": 20
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "b8",
+            "value": 184
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "4b",
+            "value": 75
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 19384,
+        "crc_computed": 19384,
+        "status": "OK",
+        "error": null,
+        "values": [
+          20
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 20,
+      "monotonic_ns": 39443114698645,
+      "tx_ns": 39443123042123,
+      "rx_ns": 39443145484620,
+      "finished_ns": 39443145610569,
+      "purpose": "写入回读",
+      "latency_ms": 22.442497,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 20,
+        "sim_ms": 1960,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 20,
+        "sim_ms": 1980,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 20,
+        "sim_ms": 1980,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 20,
+        "sim_ms": 1980,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 20,
+        "sim_ms": 1980,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 20,
+        "sim_ms": 1980,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 20,
+        "sim_ms": 1980,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010f0000000801053e96",
+        "byte_length": 10,
+        "slave_id": 1,
+        "function_code": 15,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "0f",
+            "value": 15
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "05",
+            "value": [
+              {
+                "address": 0,
+                "value": 1
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 1
+              },
+              {
+                "address": 3,
+                "value": 0
+              },
+              {
+                "address": 4,
+                "value": 0
+              },
+              {
+                "address": 5,
+                "value": 0
+              },
+              {
+                "address": 6,
+                "value": 0
+              },
+              {
+                "address": 7,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 8,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3e",
+            "value": 62
+          },
+          {
+            "offset": 9,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "96",
+            "value": 150
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 38462,
+        "crc_computed": 38462,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8,
+        "values": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "010f00000008540d",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 15,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "0f",
+            "value": 15
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "54",
+            "value": 84
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "0d",
+            "value": 13
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 3412,
+        "crc_computed": 3412,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 21,
+      "monotonic_ns": 39443274263811,
+      "tx_ns": 39443282675661,
+      "rx_ns": 39443314403950,
+      "finished_ns": 39443314464625,
+      "purpose": "请求",
+      "latency_ms": 31.728289,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 21,
+        "sim_ms": 2120,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 21,
+        "sim_ms": 2150,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 21,
+        "sim_ms": 2150,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 21,
+        "sim_ms": 2150,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 21,
+        "sim_ms": 2150,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 21,
+        "sim_ms": 2150,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 21,
+        "sim_ms": 2150,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "0101000000083dcc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3d",
+            "value": 61
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52285,
+        "crc_computed": 52285,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "01010105918b",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "05",
+            "value": [
+              {
+                "address": 0,
+                "value": 1
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 1
+              },
+              {
+                "address": 3,
+                "value": 0
+              },
+              {
+                "address": 4,
+                "value": 0
+              },
+              {
+                "address": 5,
+                "value": 0
+              },
+              {
+                "address": 6,
+                "value": 0
+              },
+              {
+                "address": 7,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "91",
+            "value": 145
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "8b",
+            "value": 139
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 35729,
+        "crc_computed": 35729,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 22,
+      "monotonic_ns": 39443314612464,
+      "tx_ns": 39443322596990,
+      "rx_ns": 39443344435335,
+      "finished_ns": 39443344539792,
+      "purpose": "写入回读",
+      "latency_ms": 21.838345,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 22,
+        "sim_ms": 2160,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 22,
+        "sim_ms": 2180,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 22,
+        "sim_ms": 2180,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 22,
+        "sim_ms": 2180,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 22,
+        "sim_ms": 2180,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 22,
+        "sim_ms": 2180,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 22,
+        "sim_ms": 2180,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "010400070001800b",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0007",
+            "value": 7
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "80",
+            "value": 128
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "0b",
+            "value": 11
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 2944,
+        "crc_computed": 2944,
+        "status": "OK",
+        "error": null,
+        "address": 7,
+        "quantity": 1
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "01040200057933",
+        "byte_length": 7,
+        "slave_id": 1,
+        "function_code": 4,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "04",
+            "value": 4
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 7",
+            "raw_hex": "0005",
+            "value": 5
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "79",
+            "value": 121
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "33",
+            "value": 51
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 13177,
+        "crc_computed": 13177,
+        "status": "OK",
+        "error": null,
+        "values": [
+          5
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 23,
+      "monotonic_ns": 39443344861660,
+      "tx_ns": 39443363063995,
+      "rx_ns": 39443394537389,
+      "finished_ns": 39443394638148,
+      "purpose": "GPIO 位图回读",
+      "latency_ms": 31.473394,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 23,
+        "sim_ms": 2200,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 23,
+        "sim_ms": 2230,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 23,
+        "sim_ms": 2230,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 23,
+        "sim_ms": 2230,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 23,
+        "sim_ms": 2230,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 23,
+        "sim_ms": 2230,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 23,
+        "sim_ms": 2230,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "011000000003060001000a01f4fb55",
+        "byte_length": 15,
+        "slave_id": 1,
+        "function_code": 16,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "10",
+            "value": 16
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0003",
+            "value": 3
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "06",
+            "value": 6
+          },
+          {
+            "offset": 7,
+            "length": 2,
+            "name": "寄存器 0",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 9,
+            "length": 2,
+            "name": "寄存器 1",
+            "raw_hex": "000a",
+            "value": 10
+          },
+          {
+            "offset": 11,
+            "length": 2,
+            "name": "寄存器 2",
+            "raw_hex": "01f4",
+            "value": 500
+          },
+          {
+            "offset": 13,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "fb",
+            "value": 251
+          },
+          {
+            "offset": 14,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "55",
+            "value": 85
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 22011,
+        "crc_computed": 22011,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 3,
+        "values": [
+          1,
+          10,
+          500
+        ]
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "0110000000038008",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 16,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "10",
+            "value": 16
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0003",
+            "value": 3
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "80",
+            "value": 128
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "08",
+            "value": 8
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 2176,
+        "crc_computed": 2176,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 3
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 24,
+      "monotonic_ns": 39443477168004,
+      "tx_ns": 39443482727524,
+      "rx_ns": 39443504435822,
+      "finished_ns": 39443504528684,
+      "purpose": "请求",
+      "latency_ms": 21.708298,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 24,
+        "sim_ms": 2320,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 24,
+        "sim_ms": 2340,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 24,
+        "sim_ms": 2340,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 24,
+        "sim_ms": 2340,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 24,
+        "sim_ms": 2340,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 24,
+        "sim_ms": 2340,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 24,
+        "sim_ms": 2340,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "01030000000305cb",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0003",
+            "value": 3
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "05",
+            "value": 5
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cb",
+            "value": 203
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 51973,
+        "crc_computed": 51973,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 3
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "0103060001000a01f43ca0",
+        "byte_length": 11,
+        "slave_id": 1,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "06",
+            "value": 6
+          },
+          {
+            "offset": 3,
+            "length": 2,
+            "name": "寄存器 0",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 5,
+            "length": 2,
+            "name": "寄存器 1",
+            "raw_hex": "000a",
+            "value": 10
+          },
+          {
+            "offset": 7,
+            "length": 2,
+            "name": "寄存器 2",
+            "raw_hex": "01f4",
+            "value": 500
+          },
+          {
+            "offset": 9,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3c",
+            "value": 60
+          },
+          {
+            "offset": 10,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "a0",
+            "value": 160
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 41020,
+        "crc_computed": 41020,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          10,
+          500
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 25,
+      "monotonic_ns": 39443504823763,
+      "tx_ns": 39443523867353,
+      "rx_ns": 39443555021877,
+      "finished_ns": 39443555123936,
+      "purpose": "写入回读",
+      "latency_ms": 31.154524,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 25,
+        "sim_ms": 2360,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 25,
+        "sim_ms": 2390,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 25,
+        "sim_ms": 2390,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 25,
+        "sim_ms": 2390,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 25,
+        "sim_ms": 2390,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 25,
+        "sim_ms": 2390,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 25,
+        "sim_ms": 2390,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "0203000000018439",
+        "byte_length": 8,
+        "slave_id": 2,
+        "function_code": 3,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "02",
+            "value": 2
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "03",
+            "value": 3
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0001",
+            "value": 1
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "84",
+            "value": 132
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "39",
+            "value": 57
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 14724,
+        "crc_computed": 14724,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 1
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "",
+        "byte_length": 0,
+        "slave_id": null,
+        "function_code": null,
+        "decoded_fields": [],
+        "crc_ok": null,
+        "crc_received": null,
+        "crc_computed": null,
+        "status": "PARTIAL",
+        "error": "ADU 不完整"
+      },
+      "matched": false,
+      "status": "TIMEOUT",
+      "error": "未收到响应",
+      "sequence": 26,
+      "monotonic_ns": 39443679642593,
+      "tx_ns": 39443682705461,
+      "rx_ns": null,
+      "finished_ns": 39443834165680,
+      "purpose": "请求",
+      "latency_ms": null,
+      "transport_error": "Modbus Error: [Input/Output] No response received after 0 retries, continue with next request",
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 26,
+        "sim_ms": 2520,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 26,
+        "sim_ms": 2540,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 26,
+        "sim_ms": 2540,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 26,
+        "sim_ms": 2540,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  },
+  {
+    "transaction": {
+      "tx": {
+        "direction": "TX",
+        "raw_hex": "0101000000083dcc",
+        "byte_length": 8,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 2,
+            "name": "起始地址",
+            "raw_hex": "0000",
+            "value": 0
+          },
+          {
+            "offset": 4,
+            "length": 2,
+            "name": "数量",
+            "raw_hex": "0008",
+            "value": 8
+          },
+          {
+            "offset": 6,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "3d",
+            "value": 61
+          },
+          {
+            "offset": 7,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "cc",
+            "value": 204
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 52285,
+        "crc_computed": 52285,
+        "status": "OK",
+        "error": null,
+        "address": 0,
+        "quantity": 8
+      },
+      "rx": {
+        "direction": "RX",
+        "raw_hex": "01010105918b",
+        "byte_length": 6,
+        "slave_id": 1,
+        "function_code": 1,
+        "decoded_fields": [
+          {
+            "offset": 0,
+            "length": 1,
+            "name": "从站地址",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 1,
+            "length": 1,
+            "name": "功能码",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 2,
+            "length": 1,
+            "name": "Byte Count",
+            "raw_hex": "01",
+            "value": 1
+          },
+          {
+            "offset": 3,
+            "length": 1,
+            "name": "线圈 / DI 位数据（低位先）",
+            "raw_hex": "05",
+            "value": [
+              {
+                "address": 0,
+                "value": 1
+              },
+              {
+                "address": 1,
+                "value": 0
+              },
+              {
+                "address": 2,
+                "value": 1
+              },
+              {
+                "address": 3,
+                "value": 0
+              },
+              {
+                "address": 4,
+                "value": 0
+              },
+              {
+                "address": 5,
+                "value": 0
+              },
+              {
+                "address": 6,
+                "value": 0
+              },
+              {
+                "address": 7,
+                "value": 0
+              }
+            ]
+          },
+          {
+            "offset": 4,
+            "length": 1,
+            "name": "CRC Lo",
+            "raw_hex": "91",
+            "value": 145
+          },
+          {
+            "offset": 5,
+            "length": 1,
+            "name": "CRC Hi",
+            "raw_hex": "8b",
+            "value": 139
+          }
+        ],
+        "crc_ok": true,
+        "crc_received": 35729,
+        "crc_computed": 35729,
+        "status": "OK",
+        "error": null,
+        "values": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "matched": true,
+      "status": "PASS",
+      "error": null,
+      "sequence": 27,
+      "monotonic_ns": 39443981144582,
+      "tx_ns": 39443982286315,
+      "rx_ns": 39444013996688,
+      "finished_ns": 39444014068515,
+      "purpose": "请求",
+      "latency_ms": 31.710373,
+      "transport_error": null,
+      "pre_tx_rx_hex": ""
+    },
+    "firmware_events": [
+      {
+        "sequence": 27,
+        "sim_ms": 2820,
+        "kind": "READY",
+        "de": 0,
+        "re": 1
+      },
+      {
+        "sequence": 27,
+        "sim_ms": 2850,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 27,
+        "sim_ms": 2850,
+        "kind": "RX_DISPATCH",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 27,
+        "sim_ms": 2850,
+        "kind": "RESPONSE_PREPARED",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 27,
+        "sim_ms": 2850,
+        "kind": "GPIO",
+        "de": 1,
+        "re": 0
+      },
+      {
+        "sequence": 27,
+        "sim_ms": 2850,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 0
+      },
+      {
+        "sequence": 27,
+        "sim_ms": 2850,
+        "kind": "GPIO",
+        "de": 0,
+        "re": 1
+      }
+    ]
+  }
+]

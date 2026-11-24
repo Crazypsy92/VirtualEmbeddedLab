@@ -59,7 +59,7 @@ class RecordedMaster:
         error = None
         caught = None
         try:
-            wait_rx_ready(self.control)
+            wait_rx_ready(self.control, sequence=self.sequence)
             result = getattr(self.client, method)(*args, device_id=device_id, **kwargs)
             if result.isError():
                 error = str(result)
