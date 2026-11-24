@@ -16,6 +16,7 @@ from tkinter import ttk
 
 from vel_env import ROOT, tool_environment, work
 from vel_jobs import lock_status
+from vel_inspector import snapshot
 
 BG = "#101926"
 PANEL = "#182538"
@@ -124,6 +125,28 @@ VIEWS = (
 )
 
 
+# Register names follow the MPS2 AN385 models in QEMU 8.2.2.
+PERIPHERALS = (
+    ("UART0", "0x40004000", "实时采样 / 命令串口",
+     (("CTRL", "uart_ctrl"), ("STATE", "uart_state"), ("BAUDDIV", "uart_div"))),
+    ("UART1–4", "0x40005000、0x40006000、0x40007000、0x40009000", "已建模，未采样", ()),
+    ("APB Timer 0", "0x40000000", "实时采样",
+     (("CTRL", "timer_ctrl"), ("VALUE", "timer_value"), ("RELOAD", "timer_reload"))),
+    ("APB Timer 1", "0x40001000", "已建模，未采样", ()),
+    ("双定时器", "0x40002000", "已建模，未采样", ()),
+    ("Watchdog", "0x40008000", "已建模，未采样", ()),
+    ("SPI / PL022", "0x40020000、0x40021000、0x40026000、0x40027000", "已建模，未采样", ()),
+    ("I²C", "0x40022000、0x40023000、0x40029000、0x4002A000", "已建模，未采样", ()),
+    ("GPIO 0–3", "0x40010000–0x40013000", "AN385 为占位；虚拟 GPIO 另见历史测试", ()),
+    ("外接 ADC 接口", "0x40025000", "仅 PL022 控制器，未接 ADC 模型", ()),
+    ("DMA / I²S", "—", "无可用采样；I²S 为占位", ()),
+)
+CORE = (("SCB", "CPUID", "cpuid"), ("SCB", "ICSR", "icsr"), ("SCB", "VTOR", "vtor"),
+        ("SysTick", "LOAD", "systick_load"), ("SysTick", "VAL", "systick_value"),
+        ("NVIC", "ISER0", "nvic_enabled"), ("NVIC", "ISPR0", "nvic_pending"))
+TASK_STATES = {0: "运行", 1: "就绪", 2: "阻塞", 3: "挂起", 4: "删除"}
+
+
 class Dashboard:
     def __init__(self, window):
         self.window = window
@@ -136,6 +159,8 @@ class Dashboard:
         self.stop_at = None
         self.closing = False
         self.last_log = None
+        self.inspector_log = None
+        self.command_pending = None
         self.sample_paths = {}
         self.buttons = []
         self.status = tk.StringVar(value="就绪 · 可查看已有采样，或启动一次新测试")
@@ -173,9 +198,9 @@ class Dashboard:
                   style="Muted.TLabel").pack(anchor="w", pady=(4, 12))
         bar = ttk.Frame(frame)
         bar.pack(fill="x", pady=(0, 10))
-        for label, action in [("运行 Cortex-M3", "arm"), ("运行 Zephyr 内核", "zephyr"),
-                              ("运行 FreeRTOS", "freertos"), ("运行外设测试", "sensor"),
-                              ("运行网关验收", "gateway")]:
+        for label, action in [("启动实时监控", "inspector"), ("Cortex-M3 测试", "arm"),
+                              ("Zephyr 测试", "zephyr"), ("FreeRTOS 测试", "freertos"),
+                              ("外设测试", "sensor"), ("网关验收", "gateway")]:
             button = ttk.Button(bar, text=label, command=lambda name=action: self.start(name))
             button.pack(side="left", padx=(0, 5))
             self.buttons.append(button)
@@ -186,9 +211,10 @@ class Dashboard:
         self.tabs = ttk.Notebook(frame)
         self.tabs.pack(fill="both", expand=True)
         self.tables = {}
+        self.render_inspector()
         for title, sources in VIEWS:
             view = ttk.Frame(self.tabs, padding=12)
-            self.tabs.add(view, text=title)
+            self.tabs.add(view, text=title + " · 历史")
             ttk.Label(view, text="以下为模拟器输出的最近样本。空值表示该样本未提供此项。",
                       style="Muted.TLabel").pack(anchor="w", pady=(0, 8))
             table = ttk.Treeview(view, columns=("module", "name", "value"), show="headings")
@@ -220,6 +246,126 @@ class Dashboard:
         self.log_box.pack(side="left", fill="both", expand=True)
         scroll.pack(side="right", fill="y")
 
+    def grid_table(self, parent, columns, height=9):
+        table = ttk.Treeview(parent, columns=[key for key, _, _ in columns],
+                             show="headings", height=height)
+        for key, title, width in columns:
+            table.heading(key, text=title)
+            table.column(key, width=width, anchor="w")
+        return table
+
+    def render_inspector(self):
+        core = ttk.Frame(self.tabs, padding=12)
+        peripherals = ttk.Frame(self.tabs, padding=12)
+        tasks = ttk.Frame(self.tabs, padding=12)
+        self.tabs.add(core, text="内核寄存器")
+        self.tabs.add(peripherals, text="片上外设")
+        self.tabs.add(tasks, text="RTOS 任务")
+        self.live_text = tk.StringVar(value="等待实时监控 · QEMU MPS2 AN385")
+        for view in (core, peripherals, tasks):
+            ttk.Label(view, textvariable=self.live_text, style="Muted.TLabel").pack(anchor="w", pady=(0, 8))
+        self.core_table = self.grid_table(core, (("block", "模块", 150),
+                                                ("register", "寄存器", 150), ("value", "值", 210)))
+        self.core_table.pack(fill="both", expand=True)
+        for block, label, key in CORE:
+            self.core_table.insert("", "end", iid=key, values=(block, label, "—"))
+        self.peripheral_table = self.grid_table(peripherals, (("device", "片上模块", 150),
+                                                             ("address", "基地址", 400),
+                                                             ("support", "本目标支持状态", 320)), 11)
+        self.peripheral_table.pack(fill="both", expand=True)
+        for name, address, support, _ in PERIPHERALS:
+            self.peripheral_table.insert("", "end", iid=name, values=(name, address, support))
+        self.register_text = tk.StringVar(value="选择外设查看寄存器与当前值")
+        ttk.Label(peripherals, textvariable=self.register_text, style="Status.TLabel").pack(anchor="w", pady=10)
+        self.peripheral_table.selection_set("UART0")
+        self.peripheral_table.bind("<<TreeviewSelect>>", lambda _: self.show_peripheral())
+        self.live_values = {}
+        bar = ttk.Frame(tasks)
+        bar.pack(fill="x", pady=(0, 8))
+        self.task_summary = tk.StringVar(value="等待 FreeRTOS 快照")
+        ttk.Label(bar, textvariable=self.task_summary).pack(side="left")
+        self.pause_worker = ttk.Button(bar, text="挂起 Producer", command=lambda: self.send_worker(b"p"))
+        self.resume_worker = ttk.Button(bar, text="恢复 Producer", command=lambda: self.send_worker(b"r"))
+        for button in (self.resume_worker, self.pause_worker):
+            button.pack(side="right", padx=3)
+            button.configure(state="disabled")
+        self.task_table = self.grid_table(tasks, (("id", "ID", 70), ("task", "任务", 180),
+                                                 ("state", "调度状态", 120), ("priority", "优先级", 90),
+                                                 ("stack", "最小栈余量（字）", 180)), 8)
+        self.task_table.pack(fill="both", expand=True)
+        ttk.Label(tasks, text="操作仅作用于实时演示固件的 Producer；任务状态由 FreeRTOS 返回。",
+                  style="Muted.TLabel").pack(anchor="w", pady=8)
+
+    def show_peripheral(self):
+        selected = self.peripheral_table.selection()
+        if not selected:
+            return
+        name, _, support, registers = next(item for item in PERIPHERALS if item[0] == selected[0])
+        values = [f"{label}  0x{self.live_values[key]:08X}" if key in self.live_values else f"{label}  —"
+                  for label, key in registers]
+        self.register_text.set(f"{name}   " + ("    |    ".join(values) if values else support))
+
+    def send_worker(self, command):
+        if not self.job or self.job_name != "inspector" or self.job.poll() is not None:
+            return
+        if not self.live_values or self.command_pending:
+            return
+        try:
+            self.job.stdin.write(command)
+            self.job.stdin.flush()
+            self.command_pending = (self.live_values.get("commands", 0), time.monotonic() + 3)
+        except OSError:
+            self.status.set("命令发送失败，实时监控已结束。")
+
+    def refresh_inspector(self):
+        live = bool(self.job and self.job_name == "inspector" and not self.stop_at)
+        values, tasks = snapshot(tail(self.inspector_log)) if self.inspector_log else ({}, [])
+        stamp = None
+        if values and self.inspector_log:
+            try:
+                stamp = self.inspector_log.stat().st_mtime
+            except OSError:
+                pass
+        fresh = bool(live and stamp and time.time() - stamp < 2)
+        if stamp:
+            when = datetime.fromtimestamp(stamp).strftime("%H:%M:%S")
+            self.live_text.set(f"QEMU MPS2 AN385  ·  {'实时采样' if fresh else '最近快照'}  ·  {when}")
+        elif live:
+            self.live_text.set("QEMU MPS2 AN385  ·  等待构建或首个采样")
+        self.live_values = values
+        for _, _, key in CORE:
+            self.core_table.set(key, "value", f"0x{values[key]:08X}" if key in values else "—")
+        self.show_peripheral()
+        if values:
+            self.task_summary.set(f"Tick {values['tick']}   ·   切换 {values.get('switches', '—')}   ·   "
+                                  f"队列 {values.get('queue', '—')}/4   ·   空闲堆 {values.get('heap', '—')} B")
+        current = set()
+        producer_state = None
+        for name, task in sorted(tasks, key=lambda item: item[1]["id"]):
+            ident = str(task["id"])
+            current.add(ident)
+            if name == "Producer":
+                producer_state = task["state"]
+            row = (ident, name, TASK_STATES.get(task["state"], "未知"), task["priority"], task["stack_words"])
+            if self.task_table.exists(ident):
+                self.task_table.item(ident, values=row)
+            else:
+                self.task_table.insert("", "end", iid=ident, values=row)
+        for ident in set(self.task_table.get_children()) - current:
+            self.task_table.delete(ident)
+        if self.command_pending:
+            before, until = self.command_pending
+            if values.get("commands", 0) > before:
+                self.status.set("实时监控运行中 · 已收到固件确认")
+                self.command_pending = None
+            elif time.monotonic() > until or not live:
+                self.command_pending = None
+                if live:
+                    self.status.set("实时监控运行中 · 等待固件确认超时")
+        ready = fresh and not self.command_pending and producer_state is not None
+        self.pause_worker.configure(state="normal" if ready and producer_state != 3 else "disabled")
+        self.resume_worker.configure(state="normal" if ready and producer_state == 3 else "disabled")
+
     def start(self, action):
         if self.job is not None:
             return
@@ -234,7 +380,9 @@ class Dashboard:
                        "zephyr":"build/zephyr/kernel/zephyr/zephyr.elf",
                        "sensor":"build/zephyr/sensor/zephyr/zephyr.elf"}.get(action, "build"))
         command = [sys.executable, ROOT / "scripts/vel.py", action]
-        if action == "gateway":
+        if action == "inspector":
+            command = [sys.executable, ROOT / "scripts/vel_inspector.py"]
+        elif action == "gateway":
             busy, owner = lock_status(work("gateway_stage8_3_ws") / "accept.lock")
             if busy:
                 self.status.set("网关已有任务，请在原终端检查 jobs -l 或等待结束。")
@@ -255,11 +403,16 @@ class Dashboard:
             self.status.set(f"固件还未构建。请先在终端运行 python3 scripts/vel.py {target}。")
             return
         self.log = path
+        if action == "inspector":
+            self.inspector_log = path
+            self.command_pending = None
+            self.tabs.select(2)
         self.log_choice.set("本次任务")
         self.job_name = action
         try:
             with path.open("w") as output:
                 self.job = subprocess.Popen(command, cwd=ROOT, env=env, stdout=output,
+                                            stdin=subprocess.PIPE if action == "inspector" else None,
                                             stderr=subprocess.STDOUT, start_new_session=True)
         except OSError as error:
             self.status.set(str(error))
@@ -273,7 +426,13 @@ class Dashboard:
     def cancel(self):
         if self.job and self.job.poll() is None and self.stop_at is None:
             self.status.set("正在停止并清理本次任务…")
-            self.job.terminate()
+            try:
+                if self.job_name == "inspector":
+                    os.killpg(self.job.pid, signal.SIGTERM)
+                else:
+                    self.job.terminate()
+            except ProcessLookupError:
+                pass
             self.stop_at = time.monotonic() + 18
             self.stop_button.configure(state="disabled")
 
@@ -295,6 +454,8 @@ class Dashboard:
             elif rc is not None:
                 result = "已停止" if self.stop_at else ("通过" if rc == 0 else f"失败 · 退出码 {rc}")
                 self.status.set(f"{self.job_name} · {result} · 日志见「日志」页")
+                if self.job.stdin:
+                    self.job.stdin.close()
                 self.job = None
                 self.stop_button.configure(state="disabled")
                 for button in self.buttons:
@@ -302,6 +463,7 @@ class Dashboard:
         if self.closing and self.job is None:
             self.window.destroy()
             return
+        self.refresh_inspector()
         busy, owner = lock_status(work("gateway_stage8_3_ws") / "accept.lock")
         self.lock_text.set(f"网关工作区 · {'运行中，PID '+str(owner.get('pid', '未知')) if busy else '空闲'}")
         for table, sources in self.tables.items():
@@ -339,13 +501,22 @@ class Dashboard:
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--advanced", action="store_true", help="open the register and RTOS monitor")
+    parser.add_argument("--live", action="store_true", help="start the live firmware on launch")
     parser.add_argument("--self-test", action="store_true", help="initialize and exercise the WSLg window")
     args = parser.parse_args()
     try:
         root = tk.Tk()
     except tk.TclError as error:
         raise SystemExit(f"无法打开窗口，请确认当前 WSL 已启用 WSLg。{error}")
+    if not (args.live or args.advanced or args.self_test):
+        from vel_gui_workbench import Workbench
+        Workbench(root, advanced=lambda window: Dashboard(window))
+        root.mainloop()
+        return 0
     app = Dashboard(root)
+    if args.live and not args.self_test:
+        root.after_idle(lambda: app.start("inspector"))
     if args.self_test:
         app.start("arm")
         deadline = time.monotonic() + 20

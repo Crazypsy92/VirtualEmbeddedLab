@@ -24,7 +24,9 @@ python3 scripts/vel.py gateway --mode all
 python3 scripts/vel.py reliability --mode quick
 ```
 
-打开 WSLg 图形窗口可执行 python3 scripts/vel.py dashboard。控制台分为内核、外设、RTOS 和日志页，读取实际仿真输出，并显示采样时间。可启动 Cortex-M3、Zephyr 内核、FreeRTOS、外设和网关验收。停止按钮只停止该窗口启动的任务。
+图形实验入口是 python3 scripts/vel.py dashboard（WSLg + Tkinter）。左侧选择功能；Modbus 默认是 RTU 控制 GPIO。启动会话后，可读 DO、DI 和寄存器，单独设置 DO，再由 FC01 与从站位图确认。CAN 提供 Loopback 测试；未恢复的 micro-ROS 环境显示不可执行。日志页能看本次运行、原始 RTU 字节和从站日志。运行 python3 scripts/vel.py dashboard --advanced 查看寄存器，或加 --live 启动实时 FreeRTOS 监控。
+
+验收入口为 python3 scripts/accept_gui_h1.py。更多信息见 [功能范围](docs/gui_h1_capabilities.md) 和 [验收报告](docs/gui_h1_report.md)。没有 WSLg 时可加 --headless 执行注册表和作业生命周期检查。
 
 网关在启动时会显示当前步骤及日志位置。如果此前终端用 Ctrl+Z 挂起了进程，回到原终端运行 jobs -l 和 fg，恢复运行，或恢复后按 Ctrl+C 停止。新版入口收到 Ctrl+Z 时会取消运行并释放工作区锁。
 
