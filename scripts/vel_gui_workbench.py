@@ -14,6 +14,7 @@ from tkinter import ttk
 from vel_env import ROOT, tool_environment, work
 from vel_gui_features import BY_ID, CATEGORIES, FEATURES, capabilities, invocation
 from vel_gui_results import output_summary
+from vel_rtu_panel import ProtocolPanel
 
 STATES = {"PASS": "通过", "COMPLETED": "会话结束", "FAIL": "失败", "CANCELLED": "已取消", "TIMEOUT": "超时",
           "BUSY": "工作区占用", "UNAVAILABLE": "依赖不可用"}
@@ -62,6 +63,7 @@ class Workbench:
         self.tail_key = None
         self.log_source = tk.StringVar(value="console.log")
         self.render()
+        self.log_source.trace_add("write", self.refresh_log)
         self.select(CATEGORIES[0])
         threading.Thread(target=self.check_dependencies, daemon=True).start()
         self.window.after(120, self.refresh)
@@ -106,6 +108,7 @@ class Workbench:
         self.feature = None
         self.start_button = None
         self.ops = []
+        self.inspector = None
         self.table = None
         self.log_box = None
         self.tail_key = None
@@ -120,6 +123,7 @@ class Workbench:
             return
         if category == CATEGORIES[-1]:
             self.render_logs()
+            self.refresh_log()
             return
         entries = [x for x in FEATURES if x.category == category]
         self.choice.set(entries[0].title)
@@ -150,6 +154,7 @@ class Workbench:
         for widget in self.panel.winfo_children():
             widget.destroy()
         self.ops = []
+        self.inspector = None
         self.table = None
         ttk.Label(self.panel, text=feature.description, wraplength=650).pack(anchor="w")
         ttk.Label(self.panel, text=f"后端：{feature.backend}  ·  结果：{feature.evidence}",
@@ -173,6 +178,12 @@ class Workbench:
         self.update_controls()
 
     def render_modbus(self, parent):
+        tabs = ttk.Notebook(parent)
+        tabs.pack(fill="both", expand=True)
+        self.inspector = ProtocolPanel(tabs, self.send)
+        tabs.add(self.inspector, text="RTU 协议检查")
+        parent = ttk.Frame(tabs, padding=5)
+        tabs.add(parent, text="GPIO 与状态")
         row = ttk.Frame(parent)
         row.pack(fill="x", pady=4)
         ttk.Combobox(row, textvariable=self.output, values=[f"DO_{i}" for i in range(8)],
@@ -211,7 +222,7 @@ class Workbench:
         if self.history_folder and not self.job:
             ttk.Button(bar, text="载入最近历史", command=self.load_history_log).pack(side="left", padx=4)
         ttk.Combobox(bar, textvariable=self.log_source, state="readonly", width=18,
-                     values=("console.log", "rtu-wire.jsonl", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
+                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
         if self.advanced:
             ttk.Button(bar, text="打开寄存器与实时 RTOS 监控", command=self.open_advanced).pack(side="left", padx=5)
         self.log_path = ttk.Label(self.content, wraplength=650)
@@ -256,8 +267,11 @@ class Workbench:
         self.state.set("LIVE · 运行中" if self.job and self.running_feature == feature.id else "未运行 / 查看历史")
         if self.live and self.running_feature == feature.id:
             self.state.set("LIVE · 已连接")
+        connected = self.live and self.running_feature == feature.id and not self.pending
         for widget in self.ops:
-            widget.configure(state="normal" if self.live and not self.pending else "disabled")
+            widget.configure(state="normal" if connected else "disabled")
+        if self.inspector:
+            self.inspector.set_active(connected)
         if getattr(self, "history_id", None) != feature.id:
             self.load_history(feature.id)
 
@@ -377,11 +391,37 @@ class Workbench:
                 self.status.set("LIVE · FC05 已由 FC01 和 GPIO 位图确认" if
                                 event.get("request", {}).get("op") == "write" else
                                 "LIVE · 已读取实际 DO / DI / 寄存器")
+            elif kind == "protocol_result":
+                if self.inspector:
+                    self.inspector.outcome(event)
+                self.status.set("LIVE · 实际请求已完成")
             elif kind in ("operation_error", "session_error"):
+                if kind == "session_error":
+                    self.live = False
+                if self.inspector:
+                    self.inspector.outcome(event)
                 self.last_error = f"{kind} · {event.get('reason', 'N/A')}"
                 self.status.set(self.last_error)
-            if kind in ("ready", "result", "operation_error", "session_error"):
+            if kind in ("ready", "result", "protocol_result", "operation_error", "session_error"):
                 self.pending = False
+
+    def refresh_log(self, *_):
+        if self.log_box and self.folder:
+            p = self.folder / self.log_source.get()
+            size = p.stat().st_size if p.is_file() else 0
+            if self.tail_key != (p, size):
+                content = "N/A · 本次没有该日志"
+                if p.is_file():
+                    with p.open("rb") as raw:
+                        raw.seek(max(0, size - 28000))
+                        content = raw.read(28000).decode(errors="replace")
+                self.log_box.configure(state="normal")
+                self.log_box.delete("1.0", "end")
+                self.log_box.insert("1.0", content)
+                self.log_box.configure(state="disabled")
+                self.log_box.see("end")
+                self.log_path.configure(text=str(p))
+                self.tail_key = (p, size)
 
     def refresh(self):
         if not self.inbox.empty():
@@ -405,22 +445,10 @@ class Workbench:
                         self.table.set(key, "value", "N/A（会话结束）")
                 self.history_id = None
                 self.stop.configure(state="disabled")
-        if self.log_box and self.folder:
-            p = self.folder / self.log_source.get()
-            size = p.stat().st_size if p.is_file() else 0
-            if self.tail_key != (p, size):
-                content = "N/A · 本次没有该日志"
-                if p.is_file():
-                    with p.open("rb") as raw:
-                        raw.seek(max(0, size - 28000))
-                        content = raw.read(28000).decode(errors="replace")
-                self.log_box.configure(state="normal")
-                self.log_box.delete("1.0", "end")
-                self.log_box.insert("1.0", content)
-                self.log_box.configure(state="disabled")
-                self.log_box.see("end")
-                self.log_path.configure(text=str(p))
-                self.tail_key = (p, size)
+        if self.inspector:
+            path = self.folder / "rtu-transactions.jsonl" if self.folder and self.running_feature == "rtu" else None
+            self.inspector.update_log(path)
+        self.refresh_log()
         if self.closing and not self.job and not (self.detail_window and self.detail_window.winfo_exists()):
             self.window.destroy()
             return

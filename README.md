@@ -24,7 +24,9 @@ python3 scripts/vel.py gateway --mode all
 python3 scripts/vel.py reliability --mode quick
 ```
 
-图形实验入口是 python3 scripts/vel.py dashboard（WSLg + Tkinter）。左侧选择功能；Modbus 默认是 RTU 控制 GPIO。启动会话后，可读 DO、DI 和寄存器，单独设置 DO，再由 FC01 与从站位图确认。CAN 提供 Loopback 测试；未恢复的 micro-ROS 环境显示不可执行。日志页能看本次运行、原始 RTU 字节和从站日志。运行 python3 scripts/vel.py dashboard --advanced 查看寄存器，或加 --live 启动实时 FreeRTOS 监控。
+图形实验入口为 `python3 scripts/vel.py dashboard`（WSLg + Tkinter）。Modbus RTU 的「RTU 协议检查」页支持 FC01/02/03/04/05/06/0F/10，可查看实际 TX/RX、逐字节字段、CRC 和写后回读。日志页保留本次会话记录。[Stage 8.2-R2 使用与验收](docs/modbus_rtu_inspector_report.md)
+
+CAN 提供 Loopback 测试，未恢复的 micro-ROS 环境显示不可执行。运行 `python3 scripts/vel.py dashboard --advanced` 查看寄存器，或加 `--live` 启动实时 FreeRTOS 监控。
 
 验收入口为 python3 scripts/accept_gui_h1.py。更多信息见 [功能范围](docs/gui_h1_capabilities.md) 和 [验收报告](docs/gui_h1_report.md)。没有 WSLg 时可加 --headless 执行注册表和作业生命周期检查。
 

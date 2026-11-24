@@ -10,10 +10,9 @@ import sys
 import time
 import tty
 
-from pymodbus.client import ModbusSerialClient
-
 from vel_env import ROOT, native_build
 from vel_jobs import install_cancel_handlers
+from vel_rtu_session import RecordedMaster, SessionTransportError, run_protocol, validate_protocol
 
 APP = ROOT / "zephyr/apps/modbus_rtu_slave"
 
@@ -26,6 +25,9 @@ def validate(request):
     if not isinstance(request, dict):
         raise ValueError("Expected an operation object.")
     op = request.get("op")
+    if op == "protocol":
+        validate_protocol(request)
+        return op
     if op == "read" and set(request) == {"op"}:
         return op
     if (op == "write" and set(request) == {"op", "index", "value"}
@@ -76,8 +78,12 @@ def session(folder):
     slave_log = folder / "slave.log"
     argv = [build / "zephyr/zephyr.exe", "-rt", "-stop_at=115"]
     event("step", phase="slave", command=list(map(str, argv)))
-    with slave_log.open("w") as log, (folder / "rtu-wire.jsonl").open("w") as wire:
-        process = subprocess.Popen(argv, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT)
+    with (slave_log.open("w") as log, (folder / "rtu-wire.jsonl").open("w") as wire,
+          (folder / "rtu-transactions.jsonl").open("w") as transactions):
+        # The worker owns the slave shutdown. Separate its process group so the
+        # supervisor's worker cancellation cannot deliver a second SIGTERM.
+        process = subprocess.Popen(argv, stdin=subprocess.DEVNULL, stdout=log,
+                                   stderr=subprocess.STDOUT, start_new_session=True)
         client = None
         control = None
         try:
@@ -85,24 +91,8 @@ def session(folder):
             control = os.open(ctl, os.O_RDWR | os.O_NOCTTY)
             tty.setraw(control)
 
-            def trace(sending, data):
-                wire.write(json.dumps({"time": time.time(), "direction": "tx" if sending else "rx",
-                                       "hex": data.hex()}) + "\n")
-                wire.flush()
-                return data
-
-            client = ModbusSerialClient(serial_port, baudrate=115200, parity="N",
-                                        timeout=.6, retries=0, trace_packet=trace)
-            if not client.connect():
-                raise RuntimeError("Cannot open RTU slave PTY.")
-
-            def call(method, *args, **kwargs):
-                # Native PTY turnaround is scheduled on simulator ticks.
-                time.sleep(.02)
-                result = getattr(client, method)(*args, device_id=1, **kwargs)
-                if result.isError():
-                    raise RuntimeError(f"{method}: {result}")
-                return result
+            client = RecordedMaster(serial_port, control, wire, transactions)
+            call = client.call
 
             def readback():
                 coils = call("read_coils", 0, count=8).bits[:8]
@@ -119,6 +109,10 @@ def session(folder):
                 try:
                     req = json.loads(line)
                     op = validate(req)
+                    if op == "protocol":
+                        outcome = run_protocol(req, call)
+                        event("protocol_result", request=req, **outcome)
+                        continue
                     if op == "write":
                         call("write_coil", req["index"], req["value"])
                     elif op == "input":
@@ -138,6 +132,8 @@ def session(folder):
                     if op == "input" and data["registers"][6] != req["mask"]:
                         raise RuntimeError("FC02/IR6 did not confirm the input stimulus.")
                     event("result", request=req, **data)
+                except SessionTransportError:
+                    raise
                 except (ValueError, OSError, RuntimeError) as error:
                     event("operation_error", reason=str(error))
         finally:

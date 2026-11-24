@@ -1,0 +1,1100 @@
+[
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "010600010000d80b",
+      "byte_length": 8,
+      "slave_id": 1,
+      "function_code": 6,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "06",
+          "value": 6
+        },
+        {
+          "offset": 2,
+          "length": 2,
+          "name": "地址",
+          "raw_hex": "0001",
+          "value": 1
+        },
+        {
+          "offset": 4,
+          "length": 2,
+          "name": "寄存器值",
+          "raw_hex": "0000",
+          "value": 0
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "d8",
+          "value": 216
+        },
+        {
+          "offset": 7,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "0b",
+          "value": 11
+        }
+      ],
+      "crc_ok": false,
+      "crc_received": 3032,
+      "crc_computed": 2776,
+      "status": "CRC_ERROR",
+      "error": "CRC16-Modbus 不匹配",
+      "address": 1,
+      "values": [
+        0
+      ]
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "",
+      "byte_length": 0,
+      "slave_id": null,
+      "function_code": null,
+      "decoded_fields": [],
+      "crc_ok": null,
+      "crc_received": null,
+      "crc_computed": null,
+      "status": "PARTIAL",
+      "error": "ADU 不完整"
+    },
+    "matched": false,
+    "status": "CRC_ERROR",
+    "error": "CRC16-Modbus 不匹配",
+    "sequence": 22,
+    "tx_ns": 36645395898107,
+    "rx_ns": null
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "0203000000018439",
+      "byte_length": 8,
+      "slave_id": 2,
+      "function_code": 3,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "02",
+          "value": 2
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "03",
+          "value": 3
+        },
+        {
+          "offset": 2,
+          "length": 2,
+          "name": "起始地址",
+          "raw_hex": "0000",
+          "value": 0
+        },
+        {
+          "offset": 4,
+          "length": 2,
+          "name": "数量",
+          "raw_hex": "0001",
+          "value": 1
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "84",
+          "value": 132
+        },
+        {
+          "offset": 7,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "39",
+          "value": 57
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 14724,
+      "crc_computed": 14724,
+      "status": "OK",
+      "error": null,
+      "address": 0,
+      "quantity": 1
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "",
+      "byte_length": 0,
+      "slave_id": null,
+      "function_code": null,
+      "decoded_fields": [],
+      "crc_ok": null,
+      "crc_received": null,
+      "crc_computed": null,
+      "status": "PARTIAL",
+      "error": "ADU 不完整"
+    },
+    "matched": false,
+    "status": "TIMEOUT",
+    "error": "未收到响应",
+    "sequence": 23,
+    "tx_ns": 36645574661055,
+    "rx_ns": null
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "014100000001fc05",
+      "byte_length": 8,
+      "slave_id": 1,
+      "function_code": 65,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "41",
+          "value": 65
+        },
+        {
+          "offset": 2,
+          "length": 4,
+          "name": "未解析数据",
+          "raw_hex": "00000001",
+          "value": 1
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "fc",
+          "value": 252
+        },
+        {
+          "offset": 7,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "05",
+          "value": 5
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 1532,
+      "crc_computed": 1532,
+      "status": "UNKNOWN_FUNCTION",
+      "error": "未知功能码"
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "01c101b050",
+      "byte_length": 5,
+      "slave_id": 1,
+      "function_code": 193,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "c1",
+          "value": 193
+        },
+        {
+          "offset": 2,
+          "length": 1,
+          "name": "异常码",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 3,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "b0",
+          "value": 176
+        },
+        {
+          "offset": 4,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "50",
+          "value": 80
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 20656,
+      "crc_computed": 20656,
+      "status": "EXCEPTION",
+      "error": "非法功能码",
+      "exception_code": 1
+    },
+    "matched": true,
+    "status": "EXCEPTION",
+    "error": "非法功能码",
+    "sequence": 24,
+    "tx_ns": 36645753771037,
+    "rx_ns": 36645924218631
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "01030008000105c8",
+      "byte_length": 8,
+      "slave_id": 1,
+      "function_code": 3,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "03",
+          "value": 3
+        },
+        {
+          "offset": 2,
+          "length": 2,
+          "name": "起始地址",
+          "raw_hex": "0008",
+          "value": 8
+        },
+        {
+          "offset": 4,
+          "length": 2,
+          "name": "数量",
+          "raw_hex": "0001",
+          "value": 1
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "05",
+          "value": 5
+        },
+        {
+          "offset": 7,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "c8",
+          "value": 200
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 51205,
+      "crc_computed": 51205,
+      "status": "OK",
+      "error": null,
+      "address": 8,
+      "quantity": 1
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "018302c0f1",
+      "byte_length": 5,
+      "slave_id": 1,
+      "function_code": 131,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "83",
+          "value": 131
+        },
+        {
+          "offset": 2,
+          "length": 1,
+          "name": "异常码",
+          "raw_hex": "02",
+          "value": 2
+        },
+        {
+          "offset": 3,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "c0",
+          "value": 192
+        },
+        {
+          "offset": 4,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "f1",
+          "value": 241
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 61888,
+      "crc_computed": 61888,
+      "status": "EXCEPTION",
+      "error": "非法数据地址",
+      "exception_code": 2
+    },
+    "matched": true,
+    "status": "EXCEPTION",
+    "error": "非法数据地址",
+    "sequence": 25,
+    "tx_ns": 36645932952881,
+    "rx_ns": 36646103486885
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "010600010000d80a",
+      "byte_length": 8,
+      "slave_id": 1,
+      "function_code": 6,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "06",
+          "value": 6
+        },
+        {
+          "offset": 2,
+          "length": 2,
+          "name": "地址",
+          "raw_hex": "0001",
+          "value": 1
+        },
+        {
+          "offset": 4,
+          "length": 2,
+          "name": "寄存器值",
+          "raw_hex": "0000",
+          "value": 0
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "d8",
+          "value": 216
+        },
+        {
+          "offset": 7,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "0a",
+          "value": 10
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 2776,
+      "crc_computed": 2776,
+      "status": "OK",
+      "error": null,
+      "address": 1,
+      "values": [
+        0
+      ]
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "0186030261",
+      "byte_length": 5,
+      "slave_id": 1,
+      "function_code": 134,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "86",
+          "value": 134
+        },
+        {
+          "offset": 2,
+          "length": 1,
+          "name": "异常码",
+          "raw_hex": "03",
+          "value": 3
+        },
+        {
+          "offset": 3,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "02",
+          "value": 2
+        },
+        {
+          "offset": 4,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "61",
+          "value": 97
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 24834,
+      "crc_computed": 24834,
+      "status": "EXCEPTION",
+      "error": "非法数据值",
+      "exception_code": 3
+    },
+    "matched": true,
+    "status": "EXCEPTION",
+    "error": "非法数据值",
+    "sequence": 26,
+    "tx_ns": 36646111908605,
+    "rx_ns": 36646282579137
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "01030000000045ca",
+      "byte_length": 8,
+      "slave_id": 1,
+      "function_code": 3,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "03",
+          "value": 3
+        },
+        {
+          "offset": 2,
+          "length": 2,
+          "name": "起始地址",
+          "raw_hex": "0000",
+          "value": 0
+        },
+        {
+          "offset": 4,
+          "length": 2,
+          "name": "数量",
+          "raw_hex": "0000",
+          "value": 0
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "45",
+          "value": 69
+        },
+        {
+          "offset": 7,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "ca",
+          "value": 202
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 51781,
+      "crc_computed": 51781,
+      "status": "VALUE_ERROR",
+      "error": "地址或数量超出协议范围",
+      "address": 0,
+      "quantity": 0
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "0183030131",
+      "byte_length": 5,
+      "slave_id": 1,
+      "function_code": 131,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "83",
+          "value": 131
+        },
+        {
+          "offset": 2,
+          "length": 1,
+          "name": "异常码",
+          "raw_hex": "03",
+          "value": 3
+        },
+        {
+          "offset": 3,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 4,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "31",
+          "value": 49
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 12545,
+      "crc_computed": 12545,
+      "status": "EXCEPTION",
+      "error": "非法数据值",
+      "exception_code": 3
+    },
+    "matched": true,
+    "status": "EXCEPTION",
+    "error": "非法数据值",
+    "sequence": 27,
+    "tx_ns": 36646290967545,
+    "rx_ns": 36646461594324
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "01100004000204006400017243",
+      "byte_length": 13,
+      "slave_id": 1,
+      "function_code": 16,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "10",
+          "value": 16
+        },
+        {
+          "offset": 2,
+          "length": 2,
+          "name": "起始地址",
+          "raw_hex": "0004",
+          "value": 4
+        },
+        {
+          "offset": 4,
+          "length": 2,
+          "name": "数量",
+          "raw_hex": "0002",
+          "value": 2
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "Byte Count",
+          "raw_hex": "04",
+          "value": 4
+        },
+        {
+          "offset": 7,
+          "length": 2,
+          "name": "寄存器 4",
+          "raw_hex": "0064",
+          "value": 100
+        },
+        {
+          "offset": 9,
+          "length": 2,
+          "name": "寄存器 5",
+          "raw_hex": "0001",
+          "value": 1
+        },
+        {
+          "offset": 11,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "72",
+          "value": 114
+        },
+        {
+          "offset": 12,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "43",
+          "value": 67
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 17266,
+      "crc_computed": 17266,
+      "status": "OK",
+      "error": null,
+      "address": 4,
+      "quantity": 2,
+      "values": [
+        100,
+        1
+      ]
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "019002cdc1",
+      "byte_length": 5,
+      "slave_id": 1,
+      "function_code": 144,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "90",
+          "value": 144
+        },
+        {
+          "offset": 2,
+          "length": 1,
+          "name": "异常码",
+          "raw_hex": "02",
+          "value": 2
+        },
+        {
+          "offset": 3,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "cd",
+          "value": 205
+        },
+        {
+          "offset": 4,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "c1",
+          "value": 193
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 49613,
+      "crc_computed": 49613,
+      "status": "EXCEPTION",
+      "error": "非法数据地址",
+      "exception_code": 2
+    },
+    "matched": true,
+    "status": "EXCEPTION",
+    "error": "非法数据地址",
+    "sequence": 28,
+    "tx_ns": 36646469735532,
+    "rx_ns": 36646640334569
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "010f0007000201032b56",
+      "byte_length": 10,
+      "slave_id": 1,
+      "function_code": 15,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "0f",
+          "value": 15
+        },
+        {
+          "offset": 2,
+          "length": 2,
+          "name": "起始地址",
+          "raw_hex": "0007",
+          "value": 7
+        },
+        {
+          "offset": 4,
+          "length": 2,
+          "name": "数量",
+          "raw_hex": "0002",
+          "value": 2
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "Byte Count",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 7,
+          "length": 1,
+          "name": "线圈 / DI 位数据（低位先）",
+          "raw_hex": "03",
+          "value": [
+            {
+              "address": 7,
+              "value": 1
+            },
+            {
+              "address": 8,
+              "value": 1
+            }
+          ]
+        },
+        {
+          "offset": 8,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "2b",
+          "value": 43
+        },
+        {
+          "offset": 9,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "56",
+          "value": 86
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 22059,
+      "crc_computed": 22059,
+      "status": "OK",
+      "error": null,
+      "address": 7,
+      "quantity": 2,
+      "values": [
+        1,
+        1
+      ]
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "018f02c5f1",
+      "byte_length": 5,
+      "slave_id": 1,
+      "function_code": 143,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "8f",
+          "value": 143
+        },
+        {
+          "offset": 2,
+          "length": 1,
+          "name": "异常码",
+          "raw_hex": "02",
+          "value": 2
+        },
+        {
+          "offset": 3,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "c5",
+          "value": 197
+        },
+        {
+          "offset": 4,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "f1",
+          "value": 241
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 61893,
+      "crc_computed": 61893,
+      "status": "EXCEPTION",
+      "error": "非法数据地址",
+      "exception_code": 2
+    },
+    "matched": true,
+    "status": "EXCEPTION",
+    "error": "非法数据地址",
+    "sequence": 29,
+    "tx_ns": 36646648720391,
+    "rx_ns": 36646819204841
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "0110000000020400010000a26f",
+      "byte_length": 13,
+      "slave_id": 1,
+      "function_code": 16,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "10",
+          "value": 16
+        },
+        {
+          "offset": 2,
+          "length": 2,
+          "name": "起始地址",
+          "raw_hex": "0000",
+          "value": 0
+        },
+        {
+          "offset": 4,
+          "length": 2,
+          "name": "数量",
+          "raw_hex": "0002",
+          "value": 2
+        },
+        {
+          "offset": 6,
+          "length": 1,
+          "name": "Byte Count",
+          "raw_hex": "04",
+          "value": 4
+        },
+        {
+          "offset": 7,
+          "length": 2,
+          "name": "寄存器 0",
+          "raw_hex": "0001",
+          "value": 1
+        },
+        {
+          "offset": 9,
+          "length": 2,
+          "name": "寄存器 1",
+          "raw_hex": "0000",
+          "value": 0
+        },
+        {
+          "offset": 11,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "a2",
+          "value": 162
+        },
+        {
+          "offset": 12,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "6f",
+          "value": 111
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 28578,
+      "crc_computed": 28578,
+      "status": "OK",
+      "error": null,
+      "address": 0,
+      "quantity": 2,
+      "values": [
+        1,
+        0
+      ]
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "0190030c01",
+      "byte_length": 5,
+      "slave_id": 1,
+      "function_code": 144,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "90",
+          "value": 144
+        },
+        {
+          "offset": 2,
+          "length": 1,
+          "name": "异常码",
+          "raw_hex": "03",
+          "value": 3
+        },
+        {
+          "offset": 3,
+          "length": 1,
+          "name": "CRC Lo",
+          "raw_hex": "0c",
+          "value": 12
+        },
+        {
+          "offset": 4,
+          "length": 1,
+          "name": "CRC Hi",
+          "raw_hex": "01",
+          "value": 1
+        }
+      ],
+      "crc_ok": true,
+      "crc_received": 268,
+      "crc_computed": 268,
+      "status": "EXCEPTION",
+      "error": "非法数据值",
+      "exception_code": 3
+    },
+    "matched": true,
+    "status": "EXCEPTION",
+    "error": "非法数据值",
+    "sequence": 30,
+    "tx_ns": 36646827754017,
+    "rx_ns": 36646998386519
+  },
+  {
+    "tx": {
+      "direction": "TX",
+      "raw_hex": "010600",
+      "byte_length": 3,
+      "slave_id": 1,
+      "function_code": 6,
+      "decoded_fields": [
+        {
+          "offset": 0,
+          "length": 1,
+          "name": "从站地址",
+          "raw_hex": "01",
+          "value": 1
+        },
+        {
+          "offset": 1,
+          "length": 1,
+          "name": "功能码",
+          "raw_hex": "06",
+          "value": 6
+        },
+        {
+          "offset": 2,
+          "length": 1,
+          "name": "未解析字节",
+          "raw_hex": "00",
+          "value": 0
+        }
+      ],
+      "crc_ok": null,
+      "crc_received": null,
+      "crc_computed": null,
+      "status": "PARTIAL",
+      "error": "ADU 不完整"
+    },
+    "rx": {
+      "direction": "RX",
+      "raw_hex": "",
+      "byte_length": 0,
+      "slave_id": null,
+      "function_code": null,
+      "decoded_fields": [],
+      "crc_ok": null,
+      "crc_received": null,
+      "crc_computed": null,
+      "status": "PARTIAL",
+      "error": "ADU 不完整"
+    },
+    "matched": null,
+    "status": "PARTIAL",
+    "error": "ADU 不完整",
+    "sequence": 33,
+    "tx_ns": 36647086175563,
+    "rx_ns": null
+  }
+]
