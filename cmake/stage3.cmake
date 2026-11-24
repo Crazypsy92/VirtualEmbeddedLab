@@ -55,3 +55,5 @@ set_tests_properties(arm_memory rtos_vendor PROPERTIES TIMEOUT 15)
 set_tests_properties(rtos_scheduler rtos_gdb rtos_vendor PROPERTIES LABELS "Stage3_1")
 set_tests_properties(arm_fatfs arm_fatfs_gdb PROPERTIES LABELS "Stage3_2")
 set_tests_properties(logger_0 logger_1 logger_2 logger_3 logger_4 logger_5 logger_6 logger_gdb arm_memory PROPERTIES LABELS "Stage3_3")
+
+vel_arm_firmware(rtos_inspector apps/rtos_inspector/main.c)
