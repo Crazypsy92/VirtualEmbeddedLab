@@ -1,0 +1,1103 @@
+{
+  "base": "4fa470ac3df4b8459fca2dc8eccb13aad70c7ef9",
+  "zephyr_commit": "dccb09599635bdff17633fa7e9dab014b91dce90",
+  "environment": {
+    "guest": "Bridge-Ubuntu-24.04 / 24.04.5 LTS / x86_64",
+    "kernel": "6.18.54.1-microsoft-standard-WSL2",
+    "user": "bridge",
+    "zephyr": "4.4.2 / native_sim/native/64",
+    "gcc": "13.3.0",
+    "cmake": "3.28.3",
+    "ninja": "1.11.1",
+    "qemu": "8.2.2",
+    "python": "3.12.3",
+    "west": "1.5.0",
+    "pymodbus": "3.11.4",
+    "pyserial": "3.5"
+  },
+  "source_sha256": {
+    "host/modbus_master/test_master.py": "4c68270537e5e97d13de347a182721625b0ddff8d13db1a7a3c412e9fd055e68",
+    "host/modbus_master/pty_control.py": "850dd32adf7e4879233e8bfb0c9e3875de98f1f06dbccf6748d80b186c689f13",
+    "host/modbus_master/trace_pty.c": "aa0bf7e4b28dad312633263d05d13d154f52e23e8c027b992c8367e52755336d",
+    "zephyr/apps/modbus_rtu_slave/src/main.c": "fb12890e09d1aa16c262e48279d14a11282eeaf0e0eaf856849bf1f2a776305a",
+    "scripts/audit_stage8_2_rtu.py": "45d4a330d636c189fac13cfa4f137454aa890365f3e61376532ec29dcec01a70",
+    "scripts/diagnose_stage8_2.py": "2ad6ebbebf23229e401ba6ebe004252dede422b29c3b5c41033e11ef016a8e61",
+    "scripts/retest_stage8_2_rtu.py": "28479438bf165818fabc2f73f65839289c99247c935056227dacbd9416c1a933"
+  },
+  "baseline": [
+    {
+      "run": "baseline-1",
+      "exit": 1,
+      "successful": 565,
+      "failed_sequence": 566,
+      "failed_stress_sequence": 547,
+      "fc": 5,
+      "address": 0,
+      "request": "01050000ff008c3a",
+      "rx_bytes": 0,
+      "error": "pymodbus.exceptions.ModbusIOException",
+      "timeout_seconds": 0.15,
+      "retries": 0,
+      "slave_exit": 0,
+      "elf_sha256": "e2ad01c7ef3e8d3de4b451071a732ce4a94d1d4ef92f4b41d233f0ef83cb7470",
+      "last_periodic_stats": "STATS requests=566 valid=566 responses=566 errors=0 crc=0 exceptions=0 edges=12 rising=6 falling=6 samples=851 beats=171 de_high=566 de_low=567 direction=131072 di=0 do=137 commands=278 unused=4056",
+      "full_host_wire": "build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/runs/master-31618030661876/wire.json"
+    },
+    {
+      "run": "baseline-2",
+      "exit": 1,
+      "successful": 415,
+      "failed_sequence": 416,
+      "failed_stress_sequence": 397,
+      "fc": 6,
+      "address": 3,
+      "request": "01060003006339e3",
+      "rx_bytes": 0,
+      "error": "pymodbus.exceptions.ModbusIOException",
+      "timeout_seconds": 0.15,
+      "retries": 0,
+      "slave_exit": 0,
+      "elf_sha256": "e53e06bf5525b71cf51b897b7125dfb27e45899ef395f66d7f9814749acf4c37",
+      "last_periodic_stats": "STATS requests=399 valid=399 responses=399 errors=0 crc=0 exceptions=0 edges=12 rising=6 falling=6 samples=601 beats=121 de_high=399 de_low=400 direction=131072 di=0 do=94 commands=194 unused=4056",
+      "full_host_wire": "build/rtu-r1/baseline-2/work/modbus_stage8_2_ws/runs/master-31654710193960/wire.json"
+    },
+    {
+      "run": "baseline-3",
+      "exit": 1,
+      "successful": 426,
+      "failed_sequence": 427,
+      "failed_stress_sequence": 408,
+      "fc": 1,
+      "address": 5,
+      "request": "010100050001edcb",
+      "rx_bytes": 0,
+      "error": "pymodbus.exceptions.ModbusIOException",
+      "timeout_seconds": 0.15,
+      "retries": 0,
+      "slave_exit": 0,
+      "elf_sha256": "48e8cf36a17d0d9095dca2fc9bbd293567e5cdb04e723490a5f65856167841cd",
+      "last_periodic_stats": "STATS requests=399 valid=399 responses=399 errors=0 crc=0 exceptions=0 edges=12 rising=6 falling=6 samples=601 beats=121 de_high=399 de_low=400 direction=131072 di=0 do=94 commands=194 unused=4056",
+      "full_host_wire": "build/rtu-r1/baseline-3/work/modbus_stage8_2_ws/runs/master-31686613758501/wire.json"
+    }
+  ],
+  "controlled_diagnostics": {
+    "trace-original": {
+      "status": "PASS",
+      "successful": 1000,
+      "attempted": 1000,
+      "timeout_seconds": 0.15,
+      "gap_requested_ms": 0,
+      "transport": "pymodbus",
+      "retries": 0,
+      "argv": [
+        "scripts/diagnose_stage8_2.py",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/trace-original"
+      ],
+      "slave_command": [
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "-rt",
+        "-stop_at=110"
+      ],
+      "elf_sha256": "e2ad01c7ef3e8d3de4b451071a732ce4a94d1d4ef92f4b41d233f0ef83cb7470",
+      "gap_ms": {
+        "min": 0.050021,
+        "median": 0.08502,
+        "max": 0.647812
+      }
+    },
+    "trace-timeout": {
+      "status": "FAIL",
+      "successful": 985,
+      "attempted": 986,
+      "timeout_seconds": 0.6,
+      "gap_requested_ms": 0,
+      "transport": "pymodbus",
+      "retries": 0,
+      "argv": [
+        "scripts/diagnose_stage8_2.py",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/trace-timeout",
+        "--timeout",
+        ".6"
+      ],
+      "slave_command": [
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "-rt",
+        "-stop_at=110"
+      ],
+      "elf_sha256": "e2ad01c7ef3e8d3de4b451071a732ce4a94d1d4ef92f4b41d233f0ef83cb7470",
+      "gap_ms": {
+        "min": 0.050367,
+        "median": 0.091639,
+        "max": 0.790482
+      },
+      "failure_sequence": 986,
+      "classification": "empty",
+      "late": "01040200f63976",
+      "actual_ns": 25877186
+    },
+    "trace-gap": {
+      "status": "PASS",
+      "successful": 1000,
+      "attempted": 1000,
+      "timeout_seconds": 0.15,
+      "gap_requested_ms": 20.0,
+      "transport": "pymodbus",
+      "retries": 0,
+      "argv": [
+        "scripts/diagnose_stage8_2.py",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/trace-gap",
+        "--gap-ms",
+        "20"
+      ],
+      "slave_command": [
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "-rt",
+        "-stop_at=110"
+      ],
+      "elf_sha256": "e2ad01c7ef3e8d3de4b451071a732ce4a94d1d4ef92f4b41d233f0ef83cb7470",
+      "gap_ms": {
+        "min": 20.111913,
+        "median": 20.292044,
+        "max": 21.134485
+      }
+    },
+    "trace-raw": {
+      "status": "FAIL",
+      "successful": 312,
+      "attempted": 313,
+      "timeout_seconds": 0.15,
+      "gap_requested_ms": 0,
+      "transport": "raw",
+      "retries": 0,
+      "argv": [
+        "scripts/diagnose_stage8_2.py",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/trace-raw",
+        "--transport",
+        "raw"
+      ],
+      "slave_command": [
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "-rt",
+        "-stop_at=110"
+      ],
+      "elf_sha256": "e2ad01c7ef3e8d3de4b451071a732ce4a94d1d4ef92f4b41d233f0ef83cb7470",
+      "gap_ms": {
+        "min": 0.057648,
+        "median": 0.115687,
+        "max": 0.722157
+      },
+      "failure_sequence": 313,
+      "classification": "empty",
+      "late": "",
+      "actual_ns": 150276491
+    },
+    "fifo-1": {
+      "status": "FAIL",
+      "successful": 174,
+      "attempted": 175,
+      "timeout_seconds": 0.15,
+      "gap_requested_ms": 0,
+      "transport": "raw",
+      "retries": 0,
+      "argv": [
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/scripts/diagnose_stage8_2.py",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/fifo-1",
+        "--transport",
+        "raw"
+      ],
+      "slave_command": [
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "-rt",
+        "-stop_at=110"
+      ],
+      "elf_sha256": "e2ad01c7ef3e8d3de4b451071a732ce4a94d1d4ef92f4b41d233f0ef83cb7470",
+      "gap_ms": {
+        "min": 0.072383,
+        "median": 0.204783,
+        "max": 0.853302
+      },
+      "failure_sequence": 175,
+      "classification": "empty",
+      "late": "",
+      "actual_ns": 150405966
+    },
+    "ready-trace-1": {
+      "status": "FAIL",
+      "successful": 748,
+      "attempted": 749,
+      "timeout_seconds": 0.15,
+      "gap_requested_ms": 0,
+      "transport": "pymodbus",
+      "retries": 0,
+      "argv": [
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/scripts/diagnose_stage8_2.py",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/fixed/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/ready-trace-1",
+        "--ready"
+      ],
+      "slave_command": [
+        "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/fixed/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+        "-rt",
+        "-stop_at=110"
+      ],
+      "elf_sha256": "4f6882e73152200bb6328cc934eeb05f6953d658a2a2d03edbf265a051bb9fec",
+      "gap_ms": {
+        "min": 0.056006,
+        "median": 0.2130125,
+        "max": 0.923597
+      },
+      "failure_sequence": 749,
+      "classification": "empty",
+      "late": "0106000300bb39b9",
+      "actual_ns": 26850695
+    }
+  },
+  "preliminary_both_changes": [
+    {
+      "exit": 0,
+      "seconds": 3.7417953129988746,
+      "run": "fault",
+      "cases": [
+        {
+          "name": "eight_functions_gpio_and_registers",
+          "status": "PASS",
+          "seconds": 0.8505336930029443
+        },
+        {
+          "name": "fault_matrix_and_atomic_rejection",
+          "status": "PASS",
+          "seconds": 2.2159225409995997
+        },
+        {
+          "name": "configuration_applied_to_state_machine",
+          "status": "PASS",
+          "seconds": 0.3486534940020647
+        }
+      ]
+    },
+    {
+      "exit": 1,
+      "seconds": 40.6973585559972,
+      "run": "protocol-1",
+      "completed": 1018,
+      "error": "TimeoutError: native_sim RTU receive-ready acknowledgement timed out",
+      "next_rtu_request_sent": false
+    },
+    {
+      "exit": 0,
+      "seconds": 41.0357703089976,
+      "run": "protocol-2",
+      "check": {
+        "status": "PASS",
+        "all_request_response_pairs": 1026,
+        "stress_request_response_pairs": 1000,
+        "wire_mismatches": 0,
+        "retries": 0,
+        "rtu_timeout_seconds": 0.15,
+        "stats": {
+          "requests": 1026,
+          "valid": 1026,
+          "responses": 1026,
+          "errors": 0,
+          "crc": 0,
+          "exceptions": 0,
+          "edges": 12,
+          "rising": 6,
+          "falling": 6,
+          "samples": 2063,
+          "beats": 415,
+          "de_high": 1026,
+          "de_low": 1027,
+          "direction": 131072,
+          "di": 0,
+          "do": 251,
+          "commands": 506,
+          "unused": 4056
+        },
+        "response_elapsed_ns": {
+          "min": 13155583,
+          "median": 28171925,
+          "max": 65168687
+        },
+        "previous_rx_to_tx_ns": {
+          "min": 4741655,
+          "median": 14043800,
+          "max": 35541860
+        },
+        "slave_process_exit": 0
+      }
+    },
+    {
+      "exit": 0,
+      "seconds": 40.733346182001696,
+      "run": "protocol-3",
+      "check": {
+        "status": "PASS",
+        "all_request_response_pairs": 1026,
+        "stress_request_response_pairs": 1000,
+        "wire_mismatches": 0,
+        "retries": 0,
+        "rtu_timeout_seconds": 0.15,
+        "stats": {
+          "requests": 1026,
+          "valid": 1026,
+          "responses": 1026,
+          "errors": 0,
+          "crc": 0,
+          "exceptions": 0,
+          "edges": 12,
+          "rising": 6,
+          "falling": 6,
+          "samples": 2065,
+          "beats": 415,
+          "de_high": 1026,
+          "de_low": 1027,
+          "direction": 131072,
+          "di": 0,
+          "do": 251,
+          "commands": 506,
+          "unused": 4056
+        },
+        "response_elapsed_ns": {
+          "min": 18834663,
+          "median": 28241407,
+          "max": 61925217
+        },
+        "previous_rx_to_tx_ns": {
+          "min": 2058907,
+          "median": 16117328,
+          "max": 27030589
+        },
+        "slave_process_exit": 0
+      }
+    },
+    {
+      "exit": 0,
+      "seconds": 40.425316444998316,
+      "run": "protocol-4",
+      "check": {
+        "status": "PASS",
+        "all_request_response_pairs": 1026,
+        "stress_request_response_pairs": 1000,
+        "wire_mismatches": 0,
+        "retries": 0,
+        "rtu_timeout_seconds": 0.15,
+        "stats": {
+          "requests": 1026,
+          "valid": 1026,
+          "responses": 1026,
+          "errors": 0,
+          "crc": 0,
+          "exceptions": 0,
+          "edges": 12,
+          "rising": 6,
+          "falling": 6,
+          "samples": 2062,
+          "beats": 415,
+          "de_high": 1026,
+          "de_low": 1027,
+          "direction": 131072,
+          "di": 0,
+          "do": 251,
+          "commands": 506,
+          "unused": 4056
+        },
+        "response_elapsed_ns": {
+          "min": 18299238,
+          "median": 27643466,
+          "max": 44276773
+        },
+        "previous_rx_to_tx_ns": {
+          "min": 4833218,
+          "median": 9800903,
+          "max": 27165395
+        },
+        "slave_process_exit": 0
+      }
+    },
+    {
+      "exit": 0,
+      "seconds": 40.50602619900019,
+      "run": "protocol-5",
+      "check": {
+        "status": "PASS",
+        "all_request_response_pairs": 1026,
+        "stress_request_response_pairs": 1000,
+        "wire_mismatches": 0,
+        "retries": 0,
+        "rtu_timeout_seconds": 0.15,
+        "stats": {
+          "requests": 1026,
+          "valid": 1026,
+          "responses": 1026,
+          "errors": 0,
+          "crc": 0,
+          "exceptions": 0,
+          "edges": 12,
+          "rising": 6,
+          "falling": 6,
+          "samples": 2061,
+          "beats": 415,
+          "de_high": 1026,
+          "de_low": 1027,
+          "direction": 131072,
+          "di": 0,
+          "do": 251,
+          "commands": 506,
+          "unused": 4056
+        },
+        "response_elapsed_ns": {
+          "min": 9654870,
+          "median": 24788207,
+          "max": 42973512
+        },
+        "previous_rx_to_tx_ns": {
+          "min": 5539748,
+          "median": 15606620,
+          "max": 25390757
+        },
+        "slave_process_exit": 0
+      }
+    }
+  ],
+  "acceptance_sessions": {
+    "protocol-1": {
+      "exit": 0,
+      "seconds": 40.75807348200033,
+      "status": "PASS",
+      "all_request_response_pairs": 1026,
+      "stress_request_response_pairs": 1000,
+      "wire_mismatches": 0,
+      "retries": 0,
+      "rtu_timeout_seconds": 0.15,
+      "stats": {
+        "requests": 1026,
+        "valid": 1026,
+        "responses": 1026,
+        "errors": 0,
+        "crc": 0,
+        "exceptions": 0,
+        "edges": 12,
+        "rising": 6,
+        "falling": 6,
+        "samples": 2062,
+        "beats": 415,
+        "de_high": 1026,
+        "de_low": 1027,
+        "direction": 131072,
+        "di": 0,
+        "do": 251,
+        "commands": 506,
+        "unused": 4056
+      },
+      "response_elapsed_ns": {
+        "min": 19862781,
+        "median": 29113970,
+        "max": 45746295
+      },
+      "previous_rx_to_tx_ns": {
+        "min": 1241882,
+        "median": 13923895,
+        "max": 28944383
+      },
+      "slave_process_exit": 0,
+      "runs": [
+        "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32612959646973"
+      ]
+    },
+    "protocol-2": {
+      "exit": 0,
+      "seconds": 40.70792821000214,
+      "status": "PASS",
+      "all_request_response_pairs": 1026,
+      "stress_request_response_pairs": 1000,
+      "wire_mismatches": 0,
+      "retries": 0,
+      "rtu_timeout_seconds": 0.15,
+      "stats": {
+        "requests": 1026,
+        "valid": 1026,
+        "responses": 1026,
+        "errors": 0,
+        "crc": 0,
+        "exceptions": 0,
+        "edges": 12,
+        "rising": 6,
+        "falling": 6,
+        "samples": 2063,
+        "beats": 415,
+        "de_high": 1026,
+        "de_low": 1027,
+        "direction": 131072,
+        "di": 0,
+        "do": 251,
+        "commands": 506,
+        "unused": 4056
+      },
+      "response_elapsed_ns": {
+        "min": 8989479,
+        "median": 29120163,
+        "max": 43453063
+      },
+      "previous_rx_to_tx_ns": {
+        "min": 6075651,
+        "median": 16003242,
+        "max": 27102501
+      },
+      "slave_process_exit": 0,
+      "runs": [
+        "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32653703944030"
+      ]
+    },
+    "protocol-3": {
+      "exit": 0,
+      "seconds": 40.69545049500084,
+      "status": "PASS",
+      "all_request_response_pairs": 1026,
+      "stress_request_response_pairs": 1000,
+      "wire_mismatches": 0,
+      "retries": 0,
+      "rtu_timeout_seconds": 0.15,
+      "stats": {
+        "requests": 1026,
+        "valid": 1026,
+        "responses": 1026,
+        "errors": 0,
+        "crc": 0,
+        "exceptions": 0,
+        "edges": 12,
+        "rising": 6,
+        "falling": 6,
+        "samples": 2061,
+        "beats": 415,
+        "de_high": 1026,
+        "de_low": 1027,
+        "direction": 131072,
+        "di": 0,
+        "do": 251,
+        "commands": 506,
+        "unused": 4056
+      },
+      "response_elapsed_ns": {
+        "min": 20041669,
+        "median": 29509374,
+        "max": 34559729
+      },
+      "previous_rx_to_tx_ns": {
+        "min": 4432100,
+        "median": 9957816,
+        "max": 27797598
+      },
+      "slave_process_exit": 0,
+      "runs": [
+        "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32694436206476"
+      ]
+    },
+    "protocol-4": {
+      "exit": 0,
+      "seconds": 42.02796476000367,
+      "status": "PASS",
+      "all_request_response_pairs": 1026,
+      "stress_request_response_pairs": 1000,
+      "wire_mismatches": 0,
+      "retries": 0,
+      "rtu_timeout_seconds": 0.15,
+      "stats": {
+        "requests": 1026,
+        "valid": 1026,
+        "responses": 1026,
+        "errors": 0,
+        "crc": 0,
+        "exceptions": 0,
+        "edges": 12,
+        "rising": 6,
+        "falling": 6,
+        "samples": 2064,
+        "beats": 415,
+        "de_high": 1026,
+        "de_low": 1027,
+        "direction": 131072,
+        "di": 0,
+        "do": 251,
+        "commands": 506,
+        "unused": 4056
+      },
+      "response_elapsed_ns": {
+        "min": 20005689,
+        "median": 29329649,
+        "max": 47191802
+      },
+      "previous_rx_to_tx_ns": {
+        "min": 5787836,
+        "median": 16710279,
+        "max": 27658818
+      },
+      "slave_process_exit": 0,
+      "runs": [
+        "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32735158543442"
+      ]
+    },
+    "protocol-5": {
+      "exit": 0,
+      "seconds": 42.383326625000336,
+      "status": "PASS",
+      "all_request_response_pairs": 1026,
+      "stress_request_response_pairs": 1000,
+      "wire_mismatches": 0,
+      "retries": 0,
+      "rtu_timeout_seconds": 0.15,
+      "stats": {
+        "requests": 1026,
+        "valid": 1026,
+        "responses": 1026,
+        "errors": 0,
+        "crc": 0,
+        "exceptions": 0,
+        "edges": 12,
+        "rising": 6,
+        "falling": 6,
+        "samples": 2061,
+        "beats": 415,
+        "de_high": 1026,
+        "de_low": 1027,
+        "direction": 131072,
+        "di": 0,
+        "do": 251,
+        "commands": 506,
+        "unused": 4056
+      },
+      "response_elapsed_ns": {
+        "min": 9791040,
+        "median": 29581922,
+        "max": 50994936
+      },
+      "previous_rx_to_tx_ns": {
+        "min": 4656479,
+        "median": 16035461,
+        "max": 30867418
+      },
+      "slave_process_exit": 0,
+      "runs": [
+        "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32777226678993"
+      ]
+    },
+    "fault": {
+      "exit": 0,
+      "seconds": 3.7845822400049656,
+      "status": "PASS",
+      "mode": "fault",
+      "cases": [
+        {
+          "name": "eight_functions_gpio_and_registers",
+          "status": "PASS",
+          "seconds": 0.8830796839974937
+        },
+        {
+          "name": "fault_matrix_and_atomic_rejection",
+          "status": "PASS",
+          "seconds": 2.2184116119969985
+        },
+        {
+          "name": "configuration_applied_to_state_machine",
+          "status": "PASS",
+          "seconds": 0.3513763760056463
+        }
+      ],
+      "tests": 3,
+      "successful_transactions": 31,
+      "stats": {
+        "requests": 42,
+        "valid": 39,
+        "responses": 39,
+        "errors": 9,
+        "crc": 1,
+        "exceptions": 7,
+        "edges": 12,
+        "rising": 6,
+        "falling": 6,
+        "samples": 172,
+        "beats": 37,
+        "de_high": 39,
+        "de_low": 40,
+        "direction": 131072,
+        "di": 0,
+        "do": 150,
+        "commands": 6,
+        "unused": 4056
+      },
+      "scope": "Real PTY bytes; parity unsupported physically; official Zephyr RTU plus independent pymodbus",
+      "process_exit": 0,
+      "runs": [
+        "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32819648573290"
+      ]
+    }
+  },
+  "release_elf_sha256": "a006e6dcbade6fc7965195698badc6a6772b132a2375af283fa670d042b26a15",
+  "gui": {
+    "tests": 7,
+    "exit": 0
+  },
+  "gateway": {
+    "concurrency/acceptance.json": {
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "four_independent_tcp_masters",
+          "status": "PASS",
+          "transactions": 320,
+          "fd_baseline": 7,
+          "fd_after_20_reconnects": 7
+        }
+      ]
+    },
+    "fault/acceptance.json": {
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "socket_serial_process_fault_matrix",
+          "status": "PASS",
+          "queue_overload_responses": [
+            [
+              717,
+              1,
+              "8306"
+            ],
+            [
+              718,
+              1,
+              "8306"
+            ],
+            [
+              719,
+              1,
+              "8306"
+            ],
+            [
+              720,
+              1,
+              "8306"
+            ],
+            [
+              721,
+              1,
+              "8306"
+            ],
+            [
+              722,
+              1,
+              "8306"
+            ],
+            [
+              723,
+              1,
+              "8306"
+            ],
+            [
+              700,
+              1,
+              "830b"
+            ],
+            [
+              701,
+              1,
+              "830b"
+            ],
+            [
+              702,
+              1,
+              "830b"
+            ],
+            [
+              703,
+              1,
+              "830b"
+            ],
+            [
+              704,
+              1,
+              "830b"
+            ],
+            [
+              705,
+              1,
+              "830b"
+            ],
+            [
+              706,
+              1,
+              "830b"
+            ],
+            [
+              707,
+              1,
+              "830b"
+            ],
+            [
+              708,
+              1,
+              "830b"
+            ],
+            [
+              709,
+              1,
+              "830b"
+            ],
+            [
+              710,
+              1,
+              "830b"
+            ],
+            [
+              711,
+              1,
+              "830b"
+            ],
+            [
+              712,
+              1,
+              "830b"
+            ],
+            [
+              713,
+              1,
+              "830b"
+            ],
+            [
+              714,
+              1,
+              "830b"
+            ],
+            [
+              715,
+              1,
+              "830b"
+            ],
+            [
+              716,
+              1,
+              "830b"
+            ]
+          ],
+          "hidden_retries": false
+        }
+      ]
+    },
+    "rtu/consistency.json": {
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "independent_device_status_crosscheck",
+          "status": "PASS"
+        }
+      ]
+    },
+    "tcp/protocol.json": {
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "eight_functions_gpio",
+          "status": "PASS"
+        },
+        {
+          "name": "tcp_rtu_consistency",
+          "status": "PASS"
+        },
+        {
+          "name": "tcp_fragment_coalesced_stream",
+          "status": "PASS"
+        },
+        {
+          "name": "1000_mixed_transactions",
+          "status": "PASS",
+          "transactions": 1000,
+          "final": [
+            1,
+            10,
+            500,
+            251,
+            100,
+            504,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "tests_all.json": {
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "eight_functions_gpio",
+          "status": "PASS"
+        },
+        {
+          "name": "tcp_rtu_consistency",
+          "status": "PASS"
+        },
+        {
+          "name": "tcp_fragment_coalesced_stream",
+          "status": "PASS"
+        },
+        {
+          "name": "1000_mixed_transactions",
+          "status": "PASS",
+          "transactions": 1000,
+          "final": [
+            1,
+            10,
+            500,
+            251,
+            100,
+            504,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "four_independent_tcp_masters",
+          "status": "PASS",
+          "transactions": 320,
+          "fd_baseline": 7,
+          "fd_after_20_reconnects": 7
+        },
+        {
+          "name": "socket_serial_process_fault_matrix",
+          "status": "PASS",
+          "queue_overload_responses": [
+            [
+              717,
+              1,
+              "8306"
+            ],
+            [
+              718,
+              1,
+              "8306"
+            ],
+            [
+              719,
+              1,
+              "8306"
+            ],
+            [
+              720,
+              1,
+              "8306"
+            ],
+            [
+              721,
+              1,
+              "8306"
+            ],
+            [
+              722,
+              1,
+              "8306"
+            ],
+            [
+              723,
+              1,
+              "8306"
+            ],
+            [
+              700,
+              1,
+              "830b"
+            ],
+            [
+              701,
+              1,
+              "830b"
+            ],
+            [
+              702,
+              1,
+              "830b"
+            ],
+            [
+              703,
+              1,
+              "830b"
+            ],
+            [
+              704,
+              1,
+              "830b"
+            ],
+            [
+              705,
+              1,
+              "830b"
+            ],
+            [
+              706,
+              1,
+              "830b"
+            ],
+            [
+              707,
+              1,
+              "830b"
+            ],
+            [
+              708,
+              1,
+              "830b"
+            ],
+            [
+              709,
+              1,
+              "830b"
+            ],
+            [
+              710,
+              1,
+              "830b"
+            ],
+            [
+              711,
+              1,
+              "830b"
+            ],
+            [
+              712,
+              1,
+              "830b"
+            ],
+            [
+              713,
+              1,
+              "830b"
+            ],
+            [
+              714,
+              1,
+              "830b"
+            ],
+            [
+              715,
+              1,
+              "830b"
+            ],
+            [
+              716,
+              1,
+              "830b"
+            ]
+          ],
+          "hidden_retries": false
+        }
+      ]
+    }
+  },
+  "hardware": "NOT TESTED",
+  "physical_rs485": "NOT TESTED",
+  "ethernet": "NOT TESTED",
+  "historical_133": "NOT RUN",
+  "stage8_3_1": "NOT RUN"
+}

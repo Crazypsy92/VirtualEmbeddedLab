@@ -1,0 +1,698 @@
+{
+  "full_trace": "build/rtu-r1/fifo-1",
+  "summary": {
+    "status": "FAIL",
+    "successful": 174,
+    "attempted": 175,
+    "timeout_seconds": 0.15,
+    "gap_requested_ms": 0,
+    "transport": "raw",
+    "retries": 0,
+    "argv": [
+      "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/scripts/diagnose_stage8_2.py",
+      "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+      "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/fifo-1",
+      "--transport",
+      "raw"
+    ],
+    "slave_command": [
+      "/home/bridge/projects/stm32/VirtualEmbeddedLab-rtu-r1/build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/build/zephyr/zephyr.exe",
+      "-rt",
+      "-stop_at=110"
+    ],
+    "elf_sha256": "e2ad01c7ef3e8d3de4b451071a732ce4a94d1d4ef92f4b41d233f0ef83cb7470",
+    "gap_ms": {
+      "min": 0.072383,
+      "median": 0.204783,
+      "max": 0.853302
+    },
+    "failure_sequence": 175,
+    "classification": "empty",
+    "late": "",
+    "actual_ns": 150405966
+  },
+  "slave_exit": 0,
+  "transaction_window": [
+    {
+      "sequence": 165,
+      "started_ns": 32099467051118,
+      "finished_ns": 32099493502493,
+      "gap_ns": 387293,
+      "fc": 6,
+      "address": 3,
+      "value": 41,
+      "expected_hex": "010600030029b814",
+      "tx": "010600030029b814",
+      "tx_crc_ok": true,
+      "rx": "010600030029b814",
+      "rx_bytes": 8,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099467054404,
+          "ns": 32099467207569,
+          "bytes": 8,
+          "hex": "010600030029b814"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099493424086,
+          "ns": 32099493488437,
+          "bytes": 8,
+          "hex": "010600030029b814"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 166,
+      "started_ns": 32099493997586,
+      "finished_ns": 32099520742968,
+      "gap_ns": 495093,
+      "fc": 4,
+      "address": 7,
+      "value": 1,
+      "expected_hex": "010402002978ee",
+      "tx": "010400070001800b",
+      "tx_crc_ok": true,
+      "rx": "010402002978ee",
+      "rx_bytes": 7,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099494001876,
+          "ns": 32099494186531,
+          "bytes": 8,
+          "hex": "010400070001800b"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099520674053,
+          "ns": 32099520732106,
+          "bytes": 7,
+          "hex": "010402002978ee"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 167,
+      "started_ns": 32099520952907,
+      "finished_ns": 32099547750865,
+      "gap_ns": 209939,
+      "fc": 5,
+      "address": 1,
+      "value": 65280,
+      "expected_hex": "01050001ff00ddfa",
+      "tx": "01050001ff00ddfa",
+      "tx_crc_ok": true,
+      "rx": "01050001ff00ddfa",
+      "rx_bytes": 8,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099520955007,
+          "ns": 32099521091650,
+          "bytes": 8,
+          "hex": "01050001ff00ddfa"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099547691535,
+          "ns": 32099547741007,
+          "bytes": 8,
+          "hex": "01050001ff00ddfa"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 168,
+      "started_ns": 32099547902569,
+      "finished_ns": 32099576221768,
+      "gap_ns": 151704,
+      "fc": 1,
+      "address": 1,
+      "value": 1,
+      "expected_hex": "010101019048",
+      "tx": "010100010001ac0a",
+      "tx_crc_ok": true,
+      "rx": "010101019048",
+      "rx_bytes": 6,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099547904121,
+          "ns": 32099547994304,
+          "bytes": 8,
+          "hex": "010100010001ac0a"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099576110591,
+          "ns": 32099576204699,
+          "bytes": 6,
+          "hex": "010101019048"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 169,
+      "started_ns": 32099576507924,
+      "finished_ns": 32099603473104,
+      "gap_ns": 286156,
+      "fc": 6,
+      "address": 3,
+      "value": 42,
+      "expected_hex": "01060003002af815",
+      "tx": "01060003002af815",
+      "tx_crc_ok": true,
+      "rx": "01060003002af815",
+      "rx_bytes": 8,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099576510845,
+          "ns": 32099576651231,
+          "bytes": 8,
+          "hex": "01060003002af815"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099603373793,
+          "ns": 32099603456765,
+          "bytes": 8,
+          "hex": "01060003002af815"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 170,
+      "started_ns": 32099603777973,
+      "finished_ns": 32099630567716,
+      "gap_ns": 304869,
+      "fc": 4,
+      "address": 7,
+      "value": 1,
+      "expected_hex": "010402002a38ef",
+      "tx": "010400070001800b",
+      "tx_crc_ok": true,
+      "rx": "010402002a38ef",
+      "rx_bytes": 7,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099603780802,
+          "ns": 32099603917445,
+          "bytes": 8,
+          "hex": "010400070001800b"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099630450058,
+          "ns": 32099630551651,
+          "bytes": 7,
+          "hex": "010402002a38ef"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 171,
+      "started_ns": 32099630835799,
+      "finished_ns": 32099657907500,
+      "gap_ns": 268083,
+      "fc": 5,
+      "address": 2,
+      "value": 65280,
+      "expected_hex": "01050002ff002dfa",
+      "tx": "01050002ff002dfa",
+      "tx_crc_ok": true,
+      "rx": "01050002ff002dfa",
+      "rx_bytes": 8,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099630838173,
+          "ns": 32099630961763,
+          "bytes": 8,
+          "hex": "01050002ff002dfa"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099657808372,
+          "ns": 32099657890614,
+          "bytes": 8,
+          "hex": "01050002ff002dfa"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 172,
+      "started_ns": 32099658169103,
+      "finished_ns": 32099685133005,
+      "gap_ns": 261603,
+      "fc": 1,
+      "address": 2,
+      "value": 1,
+      "expected_hex": "010101019048",
+      "tx": "0101000200015c0a",
+      "tx_crc_ok": true,
+      "rx": "010101019048",
+      "rx_bytes": 6,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099658171568,
+          "ns": 32099658306203,
+          "bytes": 8,
+          "hex": "0101000200015c0a"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099685043461,
+          "ns": 32099685117396,
+          "bytes": 6,
+          "hex": "010101019048"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 173,
+      "started_ns": 32099685420805,
+      "finished_ns": 32099712186359,
+      "gap_ns": 287800,
+      "fc": 6,
+      "address": 3,
+      "value": 43,
+      "expected_hex": "01060003002b39d5",
+      "tx": "01060003002b39d5",
+      "tx_crc_ok": true,
+      "rx": "01060003002b39d5",
+      "rx_bytes": 8,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099685424729,
+          "ns": 32099685612580,
+          "bytes": 8,
+          "hex": "01060003002b39d5"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099712120821,
+          "ns": 32099712171754,
+          "bytes": 8,
+          "hex": "01060003002b39d5"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 174,
+      "started_ns": 32099712422769,
+      "finished_ns": 32099740359330,
+      "gap_ns": 236410,
+      "fc": 4,
+      "address": 7,
+      "value": 1,
+      "expected_hex": "010402002bf92f",
+      "tx": "010400070001800b",
+      "tx_crc_ok": true,
+      "rx": "010402002bf92f",
+      "rx_bytes": 7,
+      "rx_crc_ok": true,
+      "classification": "ok",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099712425873,
+          "ns": 32099712524727,
+          "bytes": 8,
+          "hex": "010400070001800b"
+        },
+        {
+          "op": "rx",
+          "started_ns": 32099740249796,
+          "ns": 32099740340253,
+          "bytes": 7,
+          "hex": "010402002bf92f"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    },
+    {
+      "sequence": 175,
+      "started_ns": 32099740623032,
+      "finished_ns": 32099891028998,
+      "gap_ns": 263702,
+      "fc": 5,
+      "address": 3,
+      "value": 65280,
+      "expected_hex": "01050003ff007c3a",
+      "tx": "01050003ff007c3a",
+      "tx_crc_ok": true,
+      "rx": "",
+      "rx_bytes": 0,
+      "rx_crc_ok": false,
+      "classification": "empty",
+      "error": null,
+      "serial": [
+        {
+          "op": "tx",
+          "started_ns": 32099740625770,
+          "ns": 32099740783225,
+          "bytes": 8,
+          "hex": "01050003ff007c3a"
+        }
+      ],
+      "clock_reads": [],
+      "clock_offset_span_ns": null
+    }
+  ],
+  "pty_events": [
+    {
+      "ns": 32099466219484,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 6,
+      "requested": 6,
+      "hex": "010101019048"
+    },
+    {
+      "ns": 32099483774353,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099483818805,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "0600030029b814"
+    },
+    {
+      "ns": 32099493037888,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 8,
+      "requested": 8,
+      "hex": "010600030029b814"
+    },
+    {
+      "ns": 32099511299523,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099511363691,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "0400070001800b"
+    },
+    {
+      "ns": 32099520425046,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 7,
+      "requested": 7,
+      "hex": "010402002978ee"
+    },
+    {
+      "ns": 32099538442512,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099538495727,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "050001ff00ddfa"
+    },
+    {
+      "ns": 32099547485064,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 8,
+      "requested": 8,
+      "hex": "01050001ff00ddfa"
+    },
+    {
+      "ns": 32099565731364,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099565801009,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "0100010001ac0a"
+    },
+    {
+      "ns": 32099575523125,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 6,
+      "requested": 6,
+      "hex": "010101019048"
+    },
+    {
+      "ns": 32099593395916,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099593467934,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "060003002af815"
+    },
+    {
+      "ns": 32099602878062,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 8,
+      "requested": 8,
+      "hex": "01060003002af815"
+    },
+    {
+      "ns": 32099620617221,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099620699189,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "0400070001800b"
+    },
+    {
+      "ns": 32099630091518,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 7,
+      "requested": 7,
+      "hex": "010402002a38ef"
+    },
+    {
+      "ns": 32099648175617,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099648241611,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "050002ff002dfa"
+    },
+    {
+      "ns": 32099657430207,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 8,
+      "requested": 8,
+      "hex": "01050002ff002dfa"
+    },
+    {
+      "ns": 32099675277075,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099675348089,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "01000200015c0a"
+    },
+    {
+      "ns": 32099684739414,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 6,
+      "requested": 6,
+      "hex": "010101019048"
+    },
+    {
+      "ns": 32099702636484,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099702672995,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "060003002b39d5"
+    },
+    {
+      "ns": 32099711879939,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 8,
+      "requested": 8,
+      "hex": "01060003002b39d5"
+    },
+    {
+      "ns": 32099730131989,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "01"
+    },
+    {
+      "ns": 32099730205285,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 7,
+      "requested": 255,
+      "hex": "0400070001800b"
+    },
+    {
+      "ns": 32099739795596,
+      "pty": 4,
+      "dir": "tx",
+      "bytes": 7,
+      "requested": 7,
+      "hex": "010402002bf92f"
+    },
+    {
+      "ns": 32099740885730,
+      "pty": 4,
+      "dir": "rx",
+      "bytes": 8,
+      "requested": 8,
+      "hex": "01050003ff007c3a",
+      "stack": [
+        "0x7a96852b158b",
+        "0x7a96852b1788",
+        "0x40eb58",
+        "0x4095dc"
+      ]
+    },
+    {
+      "ns": 32099903313654,
+      "pty": 3,
+      "dir": "rx",
+      "bytes": 1,
+      "requested": 1,
+      "hex": "53"
+    }
+  ],
+  "data_pty": 4,
+  "stats_and_thread": [
+    "THREAD name=sysworkq size=4096 unused=4056 rc=0",
+    "THREAD name=idle size=256 unused=216 rc=0",
+    "THREAD name=main size=4096 unused=4056 rc=0",
+    "STATS requests=174 valid=174 responses=174 errors=0 crc=0 exceptions=0 edges=0 rising=0 falling=0 samples=290 beats=58 de_high=174 de_low=175 direction=131072 di=0 do=43 commands=87 unused=4056",
+    "THREAD name= size=40 unused=0 rc=0",
+    "THREAD name=sysworkq size=4096 unused=4056 rc=0",
+    "THREAD name=idle size=256 unused=216 rc=0",
+    "THREAD name=main size=4096 unused=4056 rc=0"
+  ]
+}

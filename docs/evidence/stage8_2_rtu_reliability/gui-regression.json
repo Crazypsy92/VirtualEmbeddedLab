@@ -1,0 +1,369 @@
+{
+  "exit": 0,
+  "pr_head": "85b1eb4363ba78ef67b6aba9f85691f3c19d693b",
+  "pr_blobs_verified": 16,
+  "status": "CANCELLED",
+  "slave_exit": 0,
+  "supervisor_exit": 130,
+  "worker_exit": 143,
+  "pty_paths_absent_on_postcheck": true,
+  "pids_absent_on_postcheck": true,
+  "snapshots": [
+    {
+      "event": "ready",
+      "time": 1795513111.287519,
+      "coils": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "inputs": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "holding": [
+        1,
+        10,
+        500,
+        0,
+        100,
+        0,
+        0,
+        0
+      ],
+      "registers": [
+        1,
+        240,
+        0,
+        4,
+        3,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "event": "result",
+      "time": 1795513111.680699,
+      "request": {
+        "op": "write",
+        "index": 0,
+        "value": true
+      },
+      "coils": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "inputs": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "holding": [
+        1,
+        10,
+        500,
+        1,
+        100,
+        1,
+        0,
+        0
+      ],
+      "registers": [
+        1,
+        670,
+        0,
+        9,
+        8,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "event": "result",
+      "time": 1795513112.1663928,
+      "request": {
+        "op": "write",
+        "index": 0,
+        "value": false
+      },
+      "coils": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "inputs": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "holding": [
+        1,
+        10,
+        500,
+        0,
+        100,
+        2,
+        0,
+        0
+      ],
+      "registers": [
+        1,
+        1200,
+        0,
+        14,
+        13,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "event": "result",
+      "time": 1795513112.6251478,
+      "request": {
+        "op": "input",
+        "mask": 5
+      },
+      "coils": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "inputs": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "holding": [
+        1,
+        10,
+        500,
+        0,
+        100,
+        2,
+        0,
+        0
+      ],
+      "registers": [
+        1,
+        1700,
+        0,
+        18,
+        17,
+        0,
+        5,
+        0
+      ]
+    }
+  ],
+  "wire": [
+    {
+      "time": 1795513111.1235204,
+      "direction": "tx",
+      "hex": "0101000000083dcc"
+    },
+    {
+      "time": 1795513111.1448703,
+      "direction": "rx",
+      "hex": "010101005188"
+    },
+    {
+      "time": 1795513111.1652803,
+      "direction": "tx",
+      "hex": "01020000000479c9"
+    },
+    {
+      "time": 1795513111.1941218,
+      "direction": "rx",
+      "hex": "01020100a188"
+    },
+    {
+      "time": 1795513111.2146592,
+      "direction": "tx",
+      "hex": "010300000008440c"
+    },
+    {
+      "time": 1795513111.2407463,
+      "direction": "rx",
+      "hex": "0103100001000a01f400000064000000000000f365"
+    },
+    {
+      "time": 1795513111.2610862,
+      "direction": "tx",
+      "hex": "010400000008f1cc"
+    },
+    {
+      "time": 1795513111.2873182,
+      "direction": "rx",
+      "hex": "010410000100f0000000040003000000000000d51d"
+    },
+    {
+      "time": 1795513111.4782035,
+      "direction": "tx",
+      "hex": "01050000ff008c3a"
+    },
+    {
+      "time": 1795513111.4974344,
+      "direction": "rx",
+      "hex": "01050000ff008c3a"
+    },
+    {
+      "time": 1795513111.5178921,
+      "direction": "tx",
+      "hex": "0101000000083dcc"
+    },
+    {
+      "time": 1795513111.542241,
+      "direction": "rx",
+      "hex": "010101019048"
+    },
+    {
+      "time": 1795513111.5625398,
+      "direction": "tx",
+      "hex": "01020000000479c9"
+    },
+    {
+      "time": 1795513111.5890257,
+      "direction": "rx",
+      "hex": "01020100a188"
+    },
+    {
+      "time": 1795513111.6095963,
+      "direction": "tx",
+      "hex": "010300000008440c"
+    },
+    {
+      "time": 1795513111.634859,
+      "direction": "rx",
+      "hex": "0103100001000a01f400010064000100000000c335"
+    },
+    {
+      "time": 1795513111.6553,
+      "direction": "tx",
+      "hex": "010400000008f1cc"
+    },
+    {
+      "time": 1795513111.68038,
+      "direction": "rx",
+      "hex": "0104100001029e0000000900080000000000016261"
+    },
+    {
+      "time": 1795513111.9601278,
+      "direction": "tx",
+      "hex": "010500000000cdca"
+    },
+    {
+      "time": 1795513111.982186,
+      "direction": "rx",
+      "hex": "010500000000cdca"
+    },
+    {
+      "time": 1795513112.0024915,
+      "direction": "tx",
+      "hex": "0101000000083dcc"
+    },
+    {
+      "time": 1795513112.0280366,
+      "direction": "rx",
+      "hex": "010101005188"
+    },
+    {
+      "time": 1795513112.0482402,
+      "direction": "tx",
+      "hex": "01020000000479c9"
+    },
+    {
+      "time": 1795513112.0744987,
+      "direction": "rx",
+      "hex": "01020100a188"
+    },
+    {
+      "time": 1795513112.094858,
+      "direction": "tx",
+      "hex": "010300000008440c"
+    },
+    {
+      "time": 1795513112.120563,
+      "direction": "rx",
+      "hex": "0103100001000a01f4000000640002000000008aa5"
+    },
+    {
+      "time": 1795513112.1409957,
+      "direction": "tx",
+      "hex": "010400000008f1cc"
+    },
+    {
+      "time": 1795513112.1662798,
+      "direction": "rx",
+      "hex": "010410000104b00000000e000d000000000000bf79"
+    },
+    {
+      "time": 1795513112.462264,
+      "direction": "tx",
+      "hex": "0101000000083dcc"
+    },
+    {
+      "time": 1795513112.4863937,
+      "direction": "rx",
+      "hex": "010101005188"
+    },
+    {
+      "time": 1795513112.5066895,
+      "direction": "tx",
+      "hex": "01020000000479c9"
+    },
+    {
+      "time": 1795513112.5329196,
+      "direction": "rx",
+      "hex": "01020105618b"
+    },
+    {
+      "time": 1795513112.5535262,
+      "direction": "tx",
+      "hex": "010300000008440c"
+    },
+    {
+      "time": 1795513112.5797918,
+      "direction": "rx",
+      "hex": "0103100001000a01f4000000640002000000008aa5"
+    },
+    {
+      "time": 1795513112.6000867,
+      "direction": "tx",
+      "hex": "010400000008f1cc"
+    },
+    {
+      "time": 1795513112.6249676,
+      "direction": "rx",
+      "hex": "010410000106a4000000120011000000050000d9af"
+    }
+  ]
+}
