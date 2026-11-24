@@ -1,0 +1,435 @@
+[
+  {
+    "sequence": 1,
+    "monotonic_ns": 39908979151171,
+    "filter": "all",
+    "requested": {
+      "id": 0,
+      "ide": false,
+      "flags": 0,
+      "dlc": 0,
+      "data": ""
+    },
+    "tx": {
+      "id": 0,
+      "ide": false,
+      "flags": 0,
+      "dlc": 0,
+      "data": "",
+      "sim_ms": 20,
+      "host_ns": 39909004456853,
+      "queue": 0
+    },
+    "rx": [
+      {
+        "id": 0,
+        "ide": false,
+        "flags": 0,
+        "dlc": 0,
+        "data": "",
+        "sim_ms": 20,
+        "host_ns": 39909004638034,
+        "queue": 1
+      }
+    ],
+    "latency_ms": 25.486863,
+    "status": "PASS",
+    "matched": true,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 0,
+    "finished_ns": 39909004718659
+  },
+  {
+    "sequence": 2,
+    "monotonic_ns": 39909004999996,
+    "filter": "all",
+    "requested": {
+      "id": 536866817,
+      "ide": true,
+      "flags": 1,
+      "dlc": 1,
+      "data": "01"
+    },
+    "tx": {
+      "id": 536866817,
+      "ide": true,
+      "flags": 1,
+      "dlc": 1,
+      "data": "01",
+      "sim_ms": 40,
+      "host_ns": 39909014484619,
+      "queue": 0
+    },
+    "rx": [
+      {
+        "id": 536866817,
+        "ide": true,
+        "flags": 1,
+        "dlc": 1,
+        "data": "01",
+        "sim_ms": 40,
+        "host_ns": 39909014819138,
+        "queue": 2
+      }
+    ],
+    "latency_ms": 9.819142,
+    "status": "PASS",
+    "matched": true,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 0,
+    "finished_ns": 39909014938523
+  },
+  {
+    "sequence": 8,
+    "monotonic_ns": 39909117326059,
+    "filter": "all",
+    "requested": {
+      "id": 536866823,
+      "ide": true,
+      "flags": 1,
+      "dlc": 7,
+      "data": "072c51769bc0e5"
+    },
+    "tx": {
+      "id": 536866823,
+      "ide": true,
+      "flags": 1,
+      "dlc": 7,
+      "data": "072c51769bc0e5",
+      "sim_ms": 160,
+      "host_ns": 39909134612593,
+      "queue": 0
+    },
+    "rx": [
+      {
+        "id": 536866823,
+        "ide": true,
+        "flags": 1,
+        "dlc": 7,
+        "data": "072c51769bc0e5",
+        "sim_ms": 160,
+        "host_ns": 39909134637632,
+        "queue": 2
+      }
+    ],
+    "latency_ms": 17.311573,
+    "status": "PASS",
+    "matched": true,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 0,
+    "finished_ns": 39909134823019
+  },
+  {
+    "sequence": 9,
+    "monotonic_ns": 39909135090034,
+    "filter": "all",
+    "requested": {
+      "id": 4,
+      "ide": false,
+      "flags": 0,
+      "dlc": 8,
+      "data": "082d52779cc1e60b"
+    },
+    "tx": {
+      "id": 4,
+      "ide": false,
+      "flags": 0,
+      "dlc": 8,
+      "data": "082d52779cc1e60b",
+      "sim_ms": 180,
+      "host_ns": 39909154677539,
+      "queue": 0
+    },
+    "rx": [
+      {
+        "id": 4,
+        "ide": false,
+        "flags": 0,
+        "dlc": 8,
+        "data": "082d52779cc1e60b",
+        "sim_ms": 180,
+        "host_ns": 39909154736631,
+        "queue": 1
+      }
+    ],
+    "latency_ms": 19.646597,
+    "status": "PASS",
+    "matched": true,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 0,
+    "finished_ns": 39909154787911
+  },
+  {
+    "sequence": 999,
+    "monotonic_ns": 39928695125527,
+    "filter": "all",
+    "requested": {
+      "id": 499,
+      "ide": false,
+      "flags": 0,
+      "dlc": 8,
+      "data": "e60b30557a9fc4e9"
+    },
+    "tx": {
+      "id": 499,
+      "ide": false,
+      "flags": 0,
+      "dlc": 8,
+      "data": "e60b30557a9fc4e9",
+      "sim_ms": 19800,
+      "host_ns": 39928714709842,
+      "queue": 0
+    },
+    "rx": [
+      {
+        "id": 499,
+        "ide": false,
+        "flags": 0,
+        "dlc": 8,
+        "data": "e60b30557a9fc4e9",
+        "sim_ms": 19800,
+        "host_ns": 39928715054530,
+        "queue": 1
+      }
+    ],
+    "latency_ms": 19.929003,
+    "status": "PASS",
+    "matched": true,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 0,
+    "finished_ns": 39928715097504
+  },
+  {
+    "sequence": 1000,
+    "monotonic_ns": 39928715253782,
+    "filter": "all",
+    "requested": {
+      "id": 536867815,
+      "ide": true,
+      "flags": 1,
+      "dlc": 0,
+      "data": ""
+    },
+    "tx": {
+      "id": 536867815,
+      "ide": true,
+      "flags": 1,
+      "dlc": 0,
+      "data": "",
+      "sim_ms": 19820,
+      "host_ns": 39928734579955,
+      "queue": 0
+    },
+    "rx": [
+      {
+        "id": 536867815,
+        "ide": true,
+        "flags": 1,
+        "dlc": 0,
+        "data": "",
+        "sim_ms": 19820,
+        "host_ns": 39928734993580,
+        "queue": 2
+      }
+    ],
+    "latency_ms": 19.739798,
+    "status": "PASS",
+    "matched": true,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 0,
+    "finished_ns": 39928735037648
+  },
+  {
+    "sequence": 1001,
+    "monotonic_ns": 39928735171644,
+    "filter": "standard",
+    "requested": {
+      "id": 801,
+      "ide": false,
+      "flags": 0,
+      "dlc": 1,
+      "data": "a5"
+    },
+    "tx": {
+      "id": 801,
+      "ide": false,
+      "flags": 0,
+      "dlc": 1,
+      "data": "a5",
+      "sim_ms": 19840,
+      "host_ns": 39928754532833,
+      "queue": 0
+    },
+    "rx": [
+      {
+        "id": 801,
+        "ide": false,
+        "flags": 0,
+        "dlc": 1,
+        "data": "a5",
+        "sim_ms": 19840,
+        "host_ns": 39928754839022,
+        "queue": 1
+      }
+    ],
+    "latency_ms": 19.667378,
+    "status": "PASS",
+    "matched": true,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 1,
+    "finished_ns": 39928754896620
+  },
+  {
+    "sequence": 1002,
+    "monotonic_ns": 39928755065830,
+    "filter": "standard",
+    "requested": {
+      "id": 801,
+      "ide": true,
+      "flags": 1,
+      "dlc": 1,
+      "data": "a5"
+    },
+    "tx": {
+      "id": 801,
+      "ide": true,
+      "flags": 1,
+      "dlc": 1,
+      "data": "a5",
+      "sim_ms": 19860,
+      "host_ns": 39928774311029,
+      "queue": 0
+    },
+    "rx": [],
+    "latency_ms": null,
+    "status": "FILTERED",
+    "matched": false,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 1,
+    "finished_ns": 39928814086668
+  },
+  {
+    "sequence": 1003,
+    "monotonic_ns": 39928814206537,
+    "filter": "extended",
+    "requested": {
+      "id": 801,
+      "ide": false,
+      "flags": 0,
+      "dlc": 1,
+      "data": "a5"
+    },
+    "tx": {
+      "id": 801,
+      "ide": false,
+      "flags": 0,
+      "dlc": 1,
+      "data": "a5",
+      "sim_ms": 19920,
+      "host_ns": 39928833930021,
+      "queue": 0
+    },
+    "rx": [],
+    "latency_ms": null,
+    "status": "FILTERED",
+    "matched": false,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 2,
+    "finished_ns": 39928873730728
+  },
+  {
+    "sequence": 1004,
+    "monotonic_ns": 39928873867310,
+    "filter": "extended",
+    "requested": {
+      "id": 801,
+      "ide": true,
+      "flags": 1,
+      "dlc": 1,
+      "data": "a5"
+    },
+    "tx": {
+      "id": 801,
+      "ide": true,
+      "flags": 1,
+      "dlc": 1,
+      "data": "a5",
+      "sim_ms": 19980,
+      "host_ns": 39928893717727,
+      "queue": 0
+    },
+    "rx": [
+      {
+        "id": 801,
+        "ide": true,
+        "flags": 1,
+        "dlc": 1,
+        "data": "a5",
+        "sim_ms": 19980,
+        "host_ns": 39928894046000,
+        "queue": 2
+      }
+    ],
+    "latency_ms": 20.17869,
+    "status": "PASS",
+    "matched": true,
+    "error": null,
+    "api_result": 0,
+    "active_filter": 2,
+    "finished_ns": 39928894109467
+  },
+  {
+    "sequence": 1005,
+    "monotonic_ns": 39928894241771,
+    "filter": "all",
+    "requested": null,
+    "tx": null,
+    "rx": [],
+    "latency_ms": null,
+    "status": "INVALID",
+    "matched": false,
+    "error": "Zephyr 返回 -22",
+    "api_result": -22,
+    "active_filter": 2,
+    "finished_ns": 39928913573912
+  },
+  {
+    "sequence": 1006,
+    "monotonic_ns": 39928913755259,
+    "filter": "all",
+    "requested": null,
+    "tx": null,
+    "rx": [],
+    "latency_ms": null,
+    "status": "INVALID",
+    "matched": false,
+    "error": "Zephyr 返回 -22",
+    "api_result": -22,
+    "active_filter": 2,
+    "finished_ns": 39928933553649
+  },
+  {
+    "sequence": 1007,
+    "monotonic_ns": 39928933683764,
+    "filter": "all",
+    "requested": null,
+    "tx": null,
+    "rx": [],
+    "latency_ms": null,
+    "status": "INVALID",
+    "matched": false,
+    "error": "Zephyr 返回 -22",
+    "api_result": -22,
+    "active_filter": 2,
+    "finished_ns": 39928953593767
+  }
+]

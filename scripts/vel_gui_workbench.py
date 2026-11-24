@@ -11,6 +11,7 @@ import time
 import tkinter as tk
 from tkinter import ttk
 
+from vel_can_panel import CanPanel
 from vel_env import ROOT, tool_environment, work
 from vel_gui_features import BY_ID, CATEGORIES, FEATURES, capabilities, invocation
 from vel_gui_results import output_summary
@@ -109,6 +110,7 @@ class Workbench:
         self.start_button = None
         self.ops = []
         self.inspector = None
+        self.can_panel = None
         self.table = None
         self.log_box = None
         self.tail_key = None
@@ -155,6 +157,7 @@ class Workbench:
             widget.destroy()
         self.ops = []
         self.inspector = None
+        self.can_panel = None
         self.table = None
         ttk.Label(self.panel, text=feature.description, wraplength=650).pack(anchor="w")
         ttk.Label(self.panel, text=f"后端：{feature.backend}  ·  结果：{feature.evidence}",
@@ -175,6 +178,9 @@ class Workbench:
             self.render_modbus(self.panel)
             if self.live and self.running_feature == "rtu" and hasattr(self, "last_snapshot"):
                 self.present(self.last_snapshot)
+        if feature.id == "can":
+            self.can_panel = CanPanel(self.panel, ProtocolPanel.tree, self.send)
+            self.can_panel.pack(fill="both", expand=True)
         self.update_controls()
 
     def render_modbus(self, parent):
@@ -222,7 +228,7 @@ class Workbench:
         if self.history_folder and not self.job:
             ttk.Button(bar, text="载入最近历史", command=self.load_history_log).pack(side="left", padx=4)
         ttk.Combobox(bar, textvariable=self.log_source, state="readonly", width=18,
-                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
+                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
         if self.advanced:
             ttk.Button(bar, text="打开寄存器与实时 RTOS 监控", command=self.open_advanced).pack(side="left", padx=5)
         self.log_path = ttk.Label(self.content, wraplength=650)
@@ -272,6 +278,8 @@ class Workbench:
             widget.configure(state="normal" if connected else "disabled")
         if self.inspector:
             self.inspector.set_active(connected)
+        if self.can_panel:
+            self.can_panel.set_active(connected)
         if getattr(self, "history_id", None) != feature.id:
             self.load_history(feature.id)
 
@@ -355,7 +363,7 @@ class Workbench:
             self.job.stdin.write((json.dumps(data) + "\n").encode())
             self.job.stdin.flush()
             self.pending = True
-            self.status.set("等待真实 Modbus 回读…")
+            self.status.set("等待 CAN API 回环…" if self.running_feature == "can" else "等待真实 Modbus 回读…")
         except OSError as error:
             self.status.set(str(error))
         self.update_controls()
@@ -381,6 +389,19 @@ class Workbench:
             except ValueError:
                 continue
             kind = event.get("event")
+            if kind in ("can_ready", "can_result", "can_error"):
+                if kind == "can_ready":
+                    self.live = True
+                    self.status.set("LIVE · CAN 软件回环已连接")
+                elif kind == "can_result":
+                    self.status.set("LIVE · CAN API 批次已完成")
+                else:
+                    self.last_error = event.get("reason")
+                    self.status.set(self.last_error or "CAN 会话错误")
+                if self.can_panel:
+                    self.can_panel.outcome(event)
+                self.pending = False
+                continue
             if kind in ("ready", "result"):
                 self.live = True
                 if self.feature and self.feature.id == self.running_feature:
@@ -448,6 +469,9 @@ class Workbench:
         if self.inspector:
             path = self.folder / "rtu-transactions.jsonl" if self.folder and self.running_feature == "rtu" else None
             self.inspector.update_log(path)
+        if self.can_panel:
+            path = self.folder / "can-transactions.jsonl" if self.folder and self.running_feature == "can" else None
+            self.can_panel.update_log(path)
         self.refresh_log()
         if self.closing and not self.job and not (self.detail_window and self.detail_window.winfo_exists()):
             self.window.destroy()

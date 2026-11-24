@@ -1,0 +1,111 @@
+{
+  "base": "fc5740b0eb067309efc298818219679d5120e3f5",
+  "target": "Zephyr native_sim CAN API software loopback",
+  "exits": {
+    "native": 0,
+    "legacy-can": 0,
+    "rtu": 0,
+    "guih1": 0,
+    "fault": 0,
+    "gateway": 0,
+    "window": 1,
+    "wslg-final": 0
+  },
+  "native": {
+    "batch": 1000,
+    "rx": 1000,
+    "matched": 1000,
+    "duplicates": 0,
+    "mismatches": 0,
+    "loss": 0,
+    "tx_formats": {
+      "standard": 500,
+      "extended": 500
+    },
+    "dlc_counts": {
+      "0": 112,
+      "1": 111,
+      "2": 111,
+      "3": 111,
+      "4": 111,
+      "5": 111,
+      "6": 111,
+      "7": 111,
+      "8": 111
+    },
+    "filter_matches": 2,
+    "filter_excluded": 2,
+    "invalid_rejected": 3
+  },
+  "wslg": {
+    "requests": 14,
+    "rx": 13,
+    "matched": 13,
+    "filtered": 1,
+    "lost": 0,
+    "stop_and_close_clean": true
+  },
+  "logs": {
+    "build/can-h1/native/command.log": {
+      "bytes": 751,
+      "sha256": "edc0dde010fa05d5422903227ffc381d65a9f2c972ab82b5dddbc5501f900681"
+    },
+    "build/can-h1/legacy-can/command.log": {
+      "bytes": 10139,
+      "sha256": "27711cbdd0b7ed62fc8ee9778c66a92be98e59aad0561f486c07cdc848c9e180"
+    },
+    "build/can-h1/rtu/command.log": {
+      "bytes": 949,
+      "sha256": "6da7308b0fb51f73e86cd297b6981fc2b11967142ca57ff2ef13ddafdb48f1f7"
+    },
+    "build/can-h1/guih1/command.log": {
+      "bytes": 866,
+      "sha256": "2f9b372f9ca3bbb222099ef94fc6ee46a0ab3b095b0e8f9500e4b0bcdc83b89d"
+    },
+    "build/can-h1/fault/command.log": {
+      "bytes": 20,
+      "sha256": "788416c973e3d505016065a5438d1d652d6eeeab1a063dc0b824d537dc327377"
+    },
+    "build/can-h1/gateway/command.log": {
+      "bytes": 1141,
+      "sha256": "dcde734b4e2c0188253f02d79bc8e078561f2d01b58496390b42a509b2ba571a"
+    },
+    "build/can-h1/window/command.log": {
+      "bytes": 1034,
+      "sha256": "e995c2ebc9a4431ca1067d372154eaae2e4e1edac82f42d1bd39b9d0b5bc8062"
+    },
+    "build/can-h1/wslg-final/command.log": {
+      "bytes": 470,
+      "sha256": "fad6c087fe5baf9abed3204b6cd29157d9ed0f79620a47fe907b7a10259ce9fa"
+    },
+    "build/can-h1/native/work/can-h1-test/loopback-7dm5cb49/can-firmware.log": {
+      "bytes": 104726,
+      "sha256": "6931e902a441fa423c32d3f8e82279dcf0fd99d57763c7ff7c4d2efc3b1df5e3"
+    },
+    "build/can-h1/native/work/can-h1-test/loopback-7dm5cb49/can-transactions.jsonl": {
+      "bytes": 564522,
+      "sha256": "219a2abfabdd02de6a5a44db399ae9b4df7b6e4d9d17a588b14bd81ca56595c5"
+    },
+    "build/can-h1/native/work/can-h1-test/loopback-7dm5cb49/can-exit.json": {
+      "bytes": 25,
+      "sha256": "d45f38cd92b464a49f72b00f96f64001ec4d090df772472b6767da2802b3ba44"
+    },
+    "build/can-h1/wslg-final/work/gui-h1/runs/can-zipxj4hf/can-exit.json": {
+      "bytes": 25,
+      "sha256": "0177cee7445b3dd498fa81f82b79d587f85f289c9b18eb1061836d831d20892e"
+    },
+    "build/can-h1/wslg-final/work/gui-h1/runs/can-zipxj4hf/result.json": {
+      "bytes": 416,
+      "sha256": "cd320ccef9e679c23082fcd8f0e353f1224ec7d310c71aed865d4cb7de150d64"
+    },
+    "build/can-h1/wslg-final/work/gui-h1/runs/can-odv9b7h7/can-exit.json": {
+      "bytes": 25,
+      "sha256": "280e6a21a47b9ed4888f68f2ef201a6b035102f6efc1f0300664d4ffcebef33a"
+    },
+    "build/can-h1/wslg-final/work/gui-h1/runs/can-odv9b7h7/result.json": {
+      "bytes": 416,
+      "sha256": "66d4c0ecd3bc4930b0e6178f76547cc5a6d3cd6049ceefc2644046a55511578c"
+    }
+  },
+  "physical_can": "NOT TESTED"
+}

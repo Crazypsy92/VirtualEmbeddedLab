@@ -28,8 +28,11 @@ FEATURES = (
             {"单项实验": ("stage4_case.py", "kernel")}, ("qemu-system-arm", "Zephyr ELF")),
     Feature("gpio", "GPIO / EXTI", "GPIO / EXTI", "Renode", "运行 STM32F103 模拟 GPIO、外部中断和 UART 检查。",
             {"单项实验": ("accept_stage8_1.py", "--backend", "renode")}, ("arm-none-eabi-gcc", "gdb-multiarch", "Renode cache")),
-    Feature("can", "CAN Loopback", "CAN", "Zephyr native_sim", "测试模式：回环发送、接收与帧一致性验证。包含 GPIO 和 UART 检查。",
-            {"单项实验": ("accept_stage8_1.py", "--backend", "native_sim")}, ("Zephyr",)),
+    Feature("can", "CAN Loopback · 帧实验台", "CAN", "Zephyr native_sim 软件 Loopback / CAN API 帧级",
+            "发送 Classical CAN 标准帧与扩展帧，按 IDE 过滤并对照真实 TX/RX。",
+            {"交互会话": ("vel_gui_can.py",),
+             "单项实验": ("accept_stage8_1.py", "--backend", "native_sim")}, ("Zephyr",),
+            "CAN API 事务 JSONL"),
     Feature("rtu", "Modbus RTU · 协议检查与 GPIO", "Modbus", "Zephyr native_sim / PTY",
             "执行八种 RTU 操作，查看真实帧、字段和 CRC，写入后复核设备状态。",
             {"交互会话": ("vel_gui_modbus.py",),
@@ -100,6 +103,6 @@ def invocation(feature, mode, folder, available):
     path = ROOT / "scripts" / script
     if not path.is_file():
         raise ValueError(f"Missing entrypoint: {script}")
-    if script == "vel_gui_modbus.py":
+    if script in ("vel_gui_modbus.py", "vel_gui_can.py"):
         args.append(str(folder))
     return [sys.executable, str(path), *args]
