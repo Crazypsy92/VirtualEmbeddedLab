@@ -1,0 +1,682 @@
+{
+  "build/rtu-r1/baseline-1/command.log": {
+    "bytes": 2062,
+    "sha256": "4158a37e8ceb5a218a4cdeea43a739bafa2325a91e3945e600ea3511e2c864d7"
+  },
+  "build/rtu-r1/baseline-1/exit.json": {
+    "bytes": 41,
+    "sha256": "8eae8665f959c2cda3735177d25e53a72408bc79446e753adfa6b9c501d007ba"
+  },
+  "build/rtu-r1/baseline-1/report/acceptance.json": {
+    "bytes": 924,
+    "sha256": "295dd82f6d1b340d01fcfef129c67d757b65e5ce571b6d44a9a27dfa4b458c7b"
+  },
+  "build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/runs/master-31618030661876/wire.json": {
+    "bytes": 108200,
+    "sha256": "9594a4421f2635123ae6980684b40b721d73f286c6849201d2868c773a9609fd"
+  },
+  "build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/runs/master-31618030661876/slave.log": {
+    "bytes": 213070,
+    "sha256": "0e28bf5927215636c65d561d74584ebc467043ce88ec38243c32c8178c736b10"
+  },
+  "build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/runs/master-31618030661876/exit.json": {
+    "bytes": 25,
+    "sha256": "68a9a976ec7361e8b2bc4a29bb5e57819e9c846a87959217ea74df3cdb39d4c8"
+  },
+  "build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/runs/build-31592015772393.log": {
+    "bytes": 13858,
+    "sha256": "1348f82f5ca0dd02d7e49ed825eda9444d194bcb2161cf5f7e0665a8e445556c"
+  },
+  "build/rtu-r1/baseline-1/work/modbus_stage8_2_ws/runs/master-31617922341552.log": {
+    "bytes": 2061,
+    "sha256": "826bff7672172ef17cdbd17fd7bd120e35f0da2999bb897fedee4e2a422dd4da"
+  },
+  "build/rtu-r1/baseline-2/command.log": {
+    "bytes": 2143,
+    "sha256": "e714fccc984e57f5801ee3ba355252eceff8131d9755c789cbcd5345e729d6eb"
+  },
+  "build/rtu-r1/baseline-2/exit.json": {
+    "bytes": 42,
+    "sha256": "0653c44adcdad592e569fc31bec0487b179d29ef725805ec2be72f9e8783db96"
+  },
+  "build/rtu-r1/baseline-2/report/acceptance.json": {
+    "bytes": 923,
+    "sha256": "29ffe31bb128344503bf13d664e18bd04365bca9ce88fa6fc5182868d67ab5cf"
+  },
+  "build/rtu-r1/baseline-2/work/modbus_stage8_2_ws/runs/master-31654710193960/wire.json": {
+    "bytes": 79511,
+    "sha256": "defd18ff3f2292a9fd469b83aeadf355028b9fb24bbdb85e1327d0787a6ecafc"
+  },
+  "build/rtu-r1/baseline-2/work/modbus_stage8_2_ws/runs/master-31654710193960/slave.log": {
+    "bytes": 156361,
+    "sha256": "7df3c91a5e005b923a84e7f0063a10fea7ab97afe08e61b5beeba7105969d7e6"
+  },
+  "build/rtu-r1/baseline-2/work/modbus_stage8_2_ws/runs/master-31654710193960/exit.json": {
+    "bytes": 25,
+    "sha256": "7a860c7e9914d122391219d975f5173c0cef144b51e3c63f83fd9a9ed5dc2b73"
+  },
+  "build/rtu-r1/baseline-2/work/modbus_stage8_2_ws/runs/build-31634843227576.log": {
+    "bytes": 13858,
+    "sha256": "11337f2c22341fe93826675b044943a7b56c2a431d55a3aa30b7fbb0f0ea1ad0"
+  },
+  "build/rtu-r1/baseline-2/work/modbus_stage8_2_ws/runs/master-31654629608614.log": {
+    "bytes": 2142,
+    "sha256": "c11f76df6c7221bd8972c49c04cbb8c98edc9f753f599c9339f7f6e5cc943729"
+  },
+  "build/rtu-r1/baseline-3/command.log": {
+    "bytes": 2237,
+    "sha256": "34c24d5171da641847e592b5716b035e9f1d8acfbe144a5c234afd53dbd65504"
+  },
+  "build/rtu-r1/baseline-3/exit.json": {
+    "bytes": 42,
+    "sha256": "b3404c4a65c8465d17c3cf3eaa24f9b8b3b774b3ec1f858810cbcd4ea405bda8"
+  },
+  "build/rtu-r1/baseline-3/report/acceptance.json": {
+    "bytes": 925,
+    "sha256": "af9e274bbcfb4489d5300478a463de88a15c985b6d0d82be9f5e0ac5ec24b81d"
+  },
+  "build/rtu-r1/baseline-3/work/modbus_stage8_2_ws/runs/master-31686613758501/wire.json": {
+    "bytes": 81611,
+    "sha256": "86a61a659921a93c454aefe63d9dca5dc90069055de0ab4f0ebe56dea675641c"
+  },
+  "build/rtu-r1/baseline-3/work/modbus_stage8_2_ws/runs/master-31686613758501/slave.log": {
+    "bytes": 160789,
+    "sha256": "be71673da5f585de2c795d806d519feba8359551cdf2430e9f3b6b53a6ae74f7"
+  },
+  "build/rtu-r1/baseline-3/work/modbus_stage8_2_ws/runs/master-31686613758501/exit.json": {
+    "bytes": 25,
+    "sha256": "fd5cfc519dc87baac1f9b7ff03169dcb18e1f676205e725d4d553c2948e9ea0a"
+  },
+  "build/rtu-r1/baseline-3/work/modbus_stage8_2_ws/runs/build-31667099319620.log": {
+    "bytes": 13858,
+    "sha256": "365a381e0b53db56b626ee2e3dde45d944af69df2849316e856786800630a72c"
+  },
+  "build/rtu-r1/baseline-3/work/modbus_stage8_2_ws/runs/master-31686535563190.log": {
+    "bytes": 2236,
+    "sha256": "4b5cb1fddaf88c3a612a4c06cf3de5b79a509949b62bffabffe40302034bdf19"
+  },
+  "build/rtu-r1/trace-original/result.json": {
+    "bytes": 10840,
+    "sha256": "d932a6e4818b0f13dcbbf74f996af7b13ff3540ac39c34859b416e1820b200f1"
+  },
+  "build/rtu-r1/trace-original/wire.jsonl": {
+    "bytes": 530163,
+    "sha256": "b815b3ac5e91c443ed6cc76764627c7d6c550c45a40b741a61786c1b4d46323c"
+  },
+  "build/rtu-r1/trace-original/slave.log": {
+    "bytes": 375729,
+    "sha256": "a20c22e201b093b010baded554ce0e2eebe42bb23a43d43599e80e3281012f03"
+  },
+  "build/rtu-r1/trace-original/slave-pty.jsonl": {
+    "bytes": 210562,
+    "sha256": "b3b5d7a74e8375de9d050f040bacee390591f876f4466919d98be356ba150d38"
+  },
+  "build/rtu-r1/trace-timeout/result.json": {
+    "bytes": 10514,
+    "sha256": "d6d000d637a114bd1a5e66ceadbd70c8f1dfebd6a379e52ef8a6a2f1d43ae19e"
+  },
+  "build/rtu-r1/trace-timeout/wire.jsonl": {
+    "bytes": 522870,
+    "sha256": "412b4392b6e72da5834b0b07f50575fdb0a2dc957485074e196e928463fea1e6"
+  },
+  "build/rtu-r1/trace-timeout/slave.log": {
+    "bytes": 370722,
+    "sha256": "7ce3189b3f678270add2f0dc47dfaff9f6bfbc708f3455e82becbb30f36dcecc"
+  },
+  "build/rtu-r1/trace-timeout/slave-pty.jsonl": {
+    "bytes": 207678,
+    "sha256": "3672998136318c7f988745bf1a7aaec889d9ff1ad9bf5d70b1d5ae57f0ad98f0"
+  },
+  "build/rtu-r1/trace-gap/result.json": {
+    "bytes": 10895,
+    "sha256": "753ea0095c8b5b0a9f0e18740b120feb62d50df8e5682740da8a87760f2f245a"
+  },
+  "build/rtu-r1/trace-gap/wire.jsonl": {
+    "bytes": 532779,
+    "sha256": "7ab809bfc93121e7300cd23a387ee3da755c4f4e0e22c7d5db49e2b4a956b22a"
+  },
+  "build/rtu-r1/trace-gap/slave.log": {
+    "bytes": 379672,
+    "sha256": "09f49515d061225b6bc72c2abbbbb81f5ff59d67d2fa2f5f9a8cfc4f2b73f657"
+  },
+  "build/rtu-r1/trace-gap/slave-pty.jsonl": {
+    "bytes": 210562,
+    "sha256": "62574d91072c034c14d1abfc8100707fc3fd705ba2ac4d18fe2351ec6bfe0d33"
+  },
+  "build/rtu-r1/trace-raw/result.json": {
+    "bytes": 10900,
+    "sha256": "a698f10b36831d61088e42b9b9263d8cfbfa2b21cf4b7d5083b5024652079aa0"
+  },
+  "build/rtu-r1/trace-raw/wire.jsonl": {
+    "bytes": 181114,
+    "sha256": "7a729692e293fbf15feda3c0a05bfc73fdab6e74d0ac003e83ed8ed477cf73d6"
+  },
+  "build/rtu-r1/trace-raw/slave.log": {
+    "bytes": 118063,
+    "sha256": "9da92a6bdf044671becd0cda0be93a077466fb2a1493d6659deb0d7df036bafc"
+  },
+  "build/rtu-r1/trace-raw/slave-pty.jsonl": {
+    "bytes": 65876,
+    "sha256": "68523412676c20e6bb8dd1db47ea655fa9ab232923c69fc78f533351cb8f0b71"
+  },
+  "build/rtu-r1/fifo-1/result.json": {
+    "bytes": 10960,
+    "sha256": "bfbfc7e523786da35a21251c6bf9c64e0f927592e65b33d6d0c3ab8a4fe29f24"
+  },
+  "build/rtu-r1/fifo-1/wire.jsonl": {
+    "bytes": 101202,
+    "sha256": "d3cd8b4f94a842b98b9b63f4a758c2d7d1a521e55e11c32102a453dff014f00e"
+  },
+  "build/rtu-r1/fifo-1/slave.log": {
+    "bytes": 66357,
+    "sha256": "65c8e62d53929da4f82ba23326d3348a80b41e98f1017da05a60ff046c9098bd"
+  },
+  "build/rtu-r1/fifo-1/slave-pty.jsonl": {
+    "bytes": 44592,
+    "sha256": "98190da2cc5a4d4da5fbb9c47466c64d9e1aa1c5e56078d43e10e68270bbd053"
+  },
+  "build/rtu-r1/ready-trace-1/result.json": {
+    "bytes": 11958,
+    "sha256": "43e4cb60bce759630a4fa3c39f8b935d939cc19b655ce7a2ee4d5122fb6810e4"
+  },
+  "build/rtu-r1/ready-trace-1/wire.jsonl": {
+    "bytes": 434624,
+    "sha256": "6d6edf25454bac38aa8f862d1b99b0d160914ad23da6296c8cc3ecf02f4b1275"
+  },
+  "build/rtu-r1/ready-trace-1/slave.log": {
+    "bytes": 283458,
+    "sha256": "c99c1e61b5eecc04f3745b83d8d0a48b646ee492ba78dcd64c3bbe2c39ba7aba"
+  },
+  "build/rtu-r1/ready-trace-1/slave-pty.jsonl": {
+    "bytes": 304622,
+    "sha256": "cda56150dba86aad9d52bc007fe93fc3f5786c6746c8908f41e522820caa1a01"
+  },
+  "build/rtu-r1/stable/fault/exit.json": {
+    "bytes": 177,
+    "sha256": "bb83900f0bb6a5cdb763936ad17564de1eb0abd1c943ba0ba3d949854d6d85d5"
+  },
+  "build/rtu-r1/stable/fault/command.log": {
+    "bytes": 193,
+    "sha256": "2e3f2b96443c1cf66e09dab16e6b37f10907b7be5d69e2c7fef34b900a984b59"
+  },
+  "build/rtu-r1/stable/fault/slave-pty.jsonl": {
+    "bytes": 17738,
+    "sha256": "6ba09e5a0773e953dbb28170738b153d4c559dcdd80b6c4e57c371bc8d593f8a"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32543591968827/wire.json": {
+    "bytes": 8146,
+    "sha256": "e1aeb549db7406d31851b50ed15330b032293938eb2eed01173273f9fb070b92"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32543591968827/slave.log": {
+    "bytes": 18794,
+    "sha256": "617f6ef0fa96d5418d79f1edff404ff6fc7b2845fa8c32e55dfe2db772e72a3f"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32543591968827/exit.json": {
+    "bytes": 25,
+    "sha256": "2143c3ff3a846e713b4b356ca4c23ba57295dfd1d9fd1d6c7d752a41a2bea308"
+  },
+  "build/rtu-r1/stable/fault/fault/acceptance.json": {
+    "bytes": 1714,
+    "sha256": "43fdd8873406376322c65e05c672018b2390733ee0ef76e9271c3634ae66691b"
+  },
+  "build/rtu-r1/stable/protocol-1/exit.json": {
+    "bytes": 175,
+    "sha256": "8095ac4eb0f11cb8ca469dade91c4298b5eef685c4f9a5fb85a8492657d34697"
+  },
+  "build/rtu-r1/stable/protocol-1/command.log": {
+    "bytes": 1395,
+    "sha256": "71973a388c4b0853ec831a9fc93cce4efb9a692540a738b4eef103ac92659541"
+  },
+  "build/rtu-r1/stable/protocol-1/slave-pty.jsonl": {
+    "bytes": 414305,
+    "sha256": "c482ed47954da1346f0d182de413dc6d05f8032ad736ae21a8a9e0042299b730"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32340358818845/wire.json": {
+    "bytes": 194722,
+    "sha256": "54789b39a30b581a89911a1987c0473d56bb98590bee8dc84844966c99648d1b"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32340358818845/slave.log": {
+    "bytes": 384420,
+    "sha256": "c43a54dda91bb00e094a4b6c0a88294143ba80468992734da479b9608a4f74ac"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32340358818845/exit.json": {
+    "bytes": 25,
+    "sha256": "c6bcd915f2de4ca3e38bd2017574cfc6dc8bc0d5d696d6c03669f4062972b353"
+  },
+  "build/rtu-r1/stable/protocol-2/exit.json": {
+    "bytes": 175,
+    "sha256": "d1b41d8caec4523211c928a51afa63ed605af14364727df28e73b7c7b9245444"
+  },
+  "build/rtu-r1/stable/protocol-2/command.log": {
+    "bytes": 201,
+    "sha256": "2b0f289edffe4513a93482adcaa02a59bb2c5ecbd4fafa846e273cc254d55093"
+  },
+  "build/rtu-r1/stable/protocol-2/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "33a6ad40154e88a826db6c0e9a052d3528289e19f9fb83e4f33662c514539995"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32380947318782/wire.json": {
+    "bytes": 196357,
+    "sha256": "5c47d070b141eaaef0581e8a2c5bdba97692779135c79d6bbd3fa32d37a73971"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32380947318782/slave.log": {
+    "bytes": 389286,
+    "sha256": "978418cc5d46c77eef2f11369af263966dc274ce09eaa1ba3b6b4b25f416ad07"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32380947318782/exit.json": {
+    "bytes": 25,
+    "sha256": "4879e947d53279d2efae25d76bf1f22a5dbab8c7639f7a0ce3db1d0e5ceb98d0"
+  },
+  "build/rtu-r1/stable/protocol-2/protocol/acceptance.json": {
+    "bytes": 1722,
+    "sha256": "005be181dc22cae0192f87741794c22605ef1c0bb2d526baeb9f31bee5b178e6"
+  },
+  "build/rtu-r1/stable/protocol-3/exit.json": {
+    "bytes": 177,
+    "sha256": "516a4203654a550c136db5bd07d8ddddd262d72d3f526ccefe7da3dde92985e8"
+  },
+  "build/rtu-r1/stable/protocol-3/command.log": {
+    "bytes": 201,
+    "sha256": "10b5a852ee3acd4fc009c93841e91aab4a79655483280aa5f8c604c707604976"
+  },
+  "build/rtu-r1/stable/protocol-3/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "743387f6f4140b7b1abf4a938bd641593b63d1936b3e8377ff382acbde14e086"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32421910609836/wire.json": {
+    "bytes": 196358,
+    "sha256": "ee448237f9adb6cd8e1c459db64832f09d923fc017834dcba2ef2c95f68c2372"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32421910609836/slave.log": {
+    "bytes": 389287,
+    "sha256": "c955aa512965c2444a37c50be077d1151207dff6aca51613398746ae36b3e3e1"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32421910609836/exit.json": {
+    "bytes": 25,
+    "sha256": "3169c8e2be8c8b3e0847c0a9d3feb86fd4ec04bf14d1d4267f81f35b3a5f51cd"
+  },
+  "build/rtu-r1/stable/protocol-3/protocol/acceptance.json": {
+    "bytes": 1720,
+    "sha256": "9b379ff5f517c1604c8e843996e4657cbf79b6ced8aac4809a674a2d89ada286"
+  },
+  "build/rtu-r1/stable/protocol-4/exit.json": {
+    "bytes": 177,
+    "sha256": "1aea85ddee0d16348e76efd53df21759580145141e607fa4e85b790bc6d0df1a"
+  },
+  "build/rtu-r1/stable/protocol-4/command.log": {
+    "bytes": 201,
+    "sha256": "ecc0852d14b7c1e2775eb87623f3f740421d2734691baa1426228aff3bb3491b"
+  },
+  "build/rtu-r1/stable/protocol-4/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "7fa5c68ac4428ae84222f4b2333c89c6310a58a42821980a621af47eb827cfa6"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32462658105805/wire.json": {
+    "bytes": 196349,
+    "sha256": "7445093ba77e8d02075297419fb8dcd5a0b2823607928a42e270a270bf7e29ac"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32462658105805/slave.log": {
+    "bytes": 389284,
+    "sha256": "e359eadbaf7095926329e39e0818a78767ca3444d9a60ad5762d1e4f3efa321a"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32462658105805/exit.json": {
+    "bytes": 25,
+    "sha256": "9283decf2fb655c9e7b38ec71507c214fedacb64125cda5a7ee5d734193449dd"
+  },
+  "build/rtu-r1/stable/protocol-4/protocol/acceptance.json": {
+    "bytes": 1721,
+    "sha256": "e6fb6e21e3daa3a41455677073434b95e22b52f6214d8173b82344a92e64fc14"
+  },
+  "build/rtu-r1/stable/protocol-5/exit.json": {
+    "bytes": 176,
+    "sha256": "5f5603bd4061af5780c7a59c298d37aa68358c7bf5aa68ef3e7c30fbe8f141ad"
+  },
+  "build/rtu-r1/stable/protocol-5/command.log": {
+    "bytes": 201,
+    "sha256": "095c1bac43ddf0d770c6a3dc99cb69dc2b2956b4163d5ea059ca0c6a39b06d03"
+  },
+  "build/rtu-r1/stable/protocol-5/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "cd892e2b8cccbe43a1e95374f7fa2181672079197d8130df8882e7ea47a3e1a7"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32503080512977/wire.json": {
+    "bytes": 196343,
+    "sha256": "ecacbdc91b1568578d3fc06ae030f998edc335ef9cd3a1b9f9afdae86a7ef44a"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32503080512977/slave.log": {
+    "bytes": 389284,
+    "sha256": "df1c31edf4fca24ff83aeba1c1c440ee1ecc076ac14c8f747afd2a11bb5680e6"
+  },
+  "build/rtu-r1/fixed/work/modbus_stage8_2_ws/runs/master-32503080512977/exit.json": {
+    "bytes": 25,
+    "sha256": "0247e3424f238ee0fa9a828874ed67e220978553ec58cdcaa0ed2999390a4194"
+  },
+  "build/rtu-r1/stable/protocol-5/protocol/acceptance.json": {
+    "bytes": 1720,
+    "sha256": "2533591e0fddbe834f0352fcb0c1f8ec2e7106d0be6a509cbf4d4a07279cb263"
+  },
+  "build/rtu-r1/acceptance/result.json": {
+    "bytes": 8195,
+    "sha256": "4842d8eff8b29d1d4093d505b7f1381ee65128901ec8531d3eced8ba610d72a9"
+  },
+  "build/rtu-r1/acceptance/build.log": {
+    "bytes": 131,
+    "sha256": "e74e1b8c66e55389f31e5838ebdf346f0cd0108d8dffed8a73abbf5c1c9fdacc"
+  },
+  "build/rtu-r1/acceptance/tracer-build.log": {
+    "bytes": 228,
+    "sha256": "6388ddf1efd0b47f4682d675a273840a74d782fe63121a3a2f73cd968a6ed825"
+  },
+  "build/rtu-r1/acceptance/build-report/acceptance.json": {
+    "bytes": 523,
+    "sha256": "aec09f7e5b1fec754126aae2305f772612de0197dc4e5a12094498efb3af46da"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/build-32593199533720.log": {
+    "bytes": 13857,
+    "sha256": "4eaca10f1dac7931fa1419a31deea385f5b94f8810f4731e17b2a3d305e626cf"
+  },
+  "build/rtu-r1/acceptance/protocol-1/command.log": {
+    "bytes": 269,
+    "sha256": "603d887fea4acb099fa9efde07d9c7a21a14a348287b08f95be3d3738d0a293f"
+  },
+  "build/rtu-r1/acceptance/protocol-1/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "a1e1ad8a597a2575535f662ea2484beefa95d3159309e5dd94f3ecf5b76f33a5"
+  },
+  "build/rtu-r1/acceptance/protocol-1/result.json": {
+    "bytes": 950,
+    "sha256": "14d54e99244304999af15f1be5b5836ee33e67758f43a1e81452e43cec720949"
+  },
+  "build/rtu-r1/acceptance/protocol-1/protocol/acceptance.json": {
+    "bytes": 1730,
+    "sha256": "7dacdc1e177f27958f4aa43cbcfbd926a79a6edf7f5c5a07da780158d6cf6ebe"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32612959646973/wire.json": {
+    "bytes": 196329,
+    "sha256": "8f36bcd8d5e6c09ca6e5ef1e493b98492be6b5ed6cdae6c1768a3d362dbacc28"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32612959646973/slave.log": {
+    "bytes": 389286,
+    "sha256": "48bbd500e832ba9f501d65a8b1c49f7cd58d52afb9d58d639a394675c4e34118"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32612959646973/exit.json": {
+    "bytes": 25,
+    "sha256": "a02bffb48900ef598204d990748bed53accc671d79a8e1e1f1f7de3f8c373ed7"
+  },
+  "build/rtu-r1/acceptance/protocol-2/command.log": {
+    "bytes": 269,
+    "sha256": "ab140c7d73dde5452094249ceba86544ef62c8a452cba6f06a17552d5c920e1a"
+  },
+  "build/rtu-r1/acceptance/protocol-2/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "838c46e2b63bb20de11db1f407c61e6e249cec734e6a4889d9c05c1601d18496"
+  },
+  "build/rtu-r1/acceptance/protocol-2/result.json": {
+    "bytes": 949,
+    "sha256": "5cc227ec2a96d9651497cfaa2f10f6565f71cb97b4aa5d528d2512b5d1c7984a"
+  },
+  "build/rtu-r1/acceptance/protocol-2/protocol/acceptance.json": {
+    "bytes": 1729,
+    "sha256": "6297960589b125471866611f4bc76087b66fb0eef816d43de5b2772117f0fe3e"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32653703944030/wire.json": {
+    "bytes": 196323,
+    "sha256": "545d6373f95093bde5c0b605d25f8f6b00a61f875cb9666abcf40decc49632c6"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32653703944030/slave.log": {
+    "bytes": 389284,
+    "sha256": "d0cb9964ab7413f6b88cff92698a1314c875114788c3b6dbf9d315868729711b"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32653703944030/exit.json": {
+    "bytes": 25,
+    "sha256": "730e13feff5d6433f9229db7f2e8a211a45e4f09c6c88d451e325c383625b042"
+  },
+  "build/rtu-r1/acceptance/protocol-3/command.log": {
+    "bytes": 269,
+    "sha256": "ecaa153488e937bf360a5771c1a33e6ba948c85119d34a7f41a9979092b90eff"
+  },
+  "build/rtu-r1/acceptance/protocol-3/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "dbebbfb370f17d56f0d2cf5ae670877b66e53ace61530d35dc52e34c13d9a2c4"
+  },
+  "build/rtu-r1/acceptance/protocol-3/result.json": {
+    "bytes": 949,
+    "sha256": "e1cc1a27f4b172eb73f541a0f734a2cd4fb3ebdcf298b4d4cdc7f17be72d82d2"
+  },
+  "build/rtu-r1/acceptance/protocol-3/protocol/acceptance.json": {
+    "bytes": 1729,
+    "sha256": "3230f7663cdfcb0385177acf7caaf8d70b0b68111f2f40eaa3098570f22a51de"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32694436206476/wire.json": {
+    "bytes": 196344,
+    "sha256": "950aaba57325f9d6eed908698d1753521dbb3f05b0484ebec3d736fcbc09e4b1"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32694436206476/slave.log": {
+    "bytes": 389284,
+    "sha256": "f7559b0361ee10b0a5b7409fbefe63398aa9f7ff35a2b98890012fa1e8fb13af"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32694436206476/exit.json": {
+    "bytes": 25,
+    "sha256": "f2972f21325fb14ca0eedce3738f6f6743686bfcf49c4196fa5926ca3ad0d23e"
+  },
+  "build/rtu-r1/acceptance/protocol-4/command.log": {
+    "bytes": 269,
+    "sha256": "52b58a20bad58721d7472cac30d33b47e7516388e538e6f039f8d274f3906c93"
+  },
+  "build/rtu-r1/acceptance/protocol-4/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "dfb210552c168b471606cf994087515b6edf238452118ba888269428e80ab4c5"
+  },
+  "build/rtu-r1/acceptance/protocol-4/result.json": {
+    "bytes": 950,
+    "sha256": "6658a024a4551ae17f6a7b1e5143728d4453c5b9114e9763b9cc24ac07473723"
+  },
+  "build/rtu-r1/acceptance/protocol-4/protocol/acceptance.json": {
+    "bytes": 1731,
+    "sha256": "6e37fcd15f32dcea8eee385172eb405047a48cd5aa74b01c205f67c7224ce7a7"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32735158543442/wire.json": {
+    "bytes": 196347,
+    "sha256": "c2d92f409ad6951971a5fd111d1cfd3333c82c79d012ec9f57a80876d1492cb6"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32735158543442/slave.log": {
+    "bytes": 389286,
+    "sha256": "79f12343c23f85f62a634fa48bfdeabfa91bd4ac129942af5ee396cb432008a9"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32735158543442/exit.json": {
+    "bytes": 25,
+    "sha256": "d70d7f094f12a31a3458375620b5234ced8d7ffe202c7130b87038e4bed3a742"
+  },
+  "build/rtu-r1/acceptance/protocol-5/command.log": {
+    "bytes": 269,
+    "sha256": "23e653be18afac5a77b1d3fb832bbfb04d97651f2b7a451989fbba2fd53ab579"
+  },
+  "build/rtu-r1/acceptance/protocol-5/slave-pty.jsonl": {
+    "bytes": 417932,
+    "sha256": "d522b181b381ed1f0387610b105355642bdba623b27dfe590cc9e7d8eb983567"
+  },
+  "build/rtu-r1/acceptance/protocol-5/result.json": {
+    "bytes": 950,
+    "sha256": "d9ba5fb58c6d654bf20089a576d4983647368554735dbe310fbeaa0787361230"
+  },
+  "build/rtu-r1/acceptance/protocol-5/protocol/acceptance.json": {
+    "bytes": 1730,
+    "sha256": "5dd8f9f71bc14566bb955cc55b1ce46f9e8d6d88a216debb728755ecfde4496e"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32777226678993/wire.json": {
+    "bytes": 196380,
+    "sha256": "c1f1d8040191c7f6d954279c91772e3a0fbb9b2d96240fbeea31acc05264ad6c"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32777226678993/slave.log": {
+    "bytes": 389284,
+    "sha256": "d67d636b7310ac49c885ddeb5d1de9673f25b7c5f657b34e8eff63b503dd822d"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32777226678993/exit.json": {
+    "bytes": 25,
+    "sha256": "8ddd1feb3f88459eb9ea4ef435d3e3b35f072594d2b27118ff7a6ad5a663f6ef"
+  },
+  "build/rtu-r1/acceptance/fault/command.log": {
+    "bytes": 261,
+    "sha256": "b36f902c6714b372c048503c334d6ec9ad8c4f7f9f980653bfe2075bf032200f"
+  },
+  "build/rtu-r1/acceptance/fault/slave-pty.jsonl": {
+    "bytes": 17738,
+    "sha256": "ab63a331bb6b4e422cce3df9ec44530fb31ba91377a86c98cc9d9c3b13280141"
+  },
+  "build/rtu-r1/acceptance/fault/result.json": {
+    "bytes": 1922,
+    "sha256": "7ec61d004317b98123f4f0854fb007f778680bedf7ec4e543b29d43e150b85ab"
+  },
+  "build/rtu-r1/acceptance/fault/fault/acceptance.json": {
+    "bytes": 1724,
+    "sha256": "79fdacf00e46e9b400dd2cce1eb593b3d009b92c3393b27c05e36ad52fbf24b4"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32819648573290/wire.json": {
+    "bytes": 8148,
+    "sha256": "31e9993761ee9c46fdb77b1d1d0599a8aa316d2a3656dfe86756cf9fc1a2d508"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32819648573290/slave.log": {
+    "bytes": 18794,
+    "sha256": "44fdc917371a391a21a12577320e5604f3569835ae95a94ef9b593abf31a3769"
+  },
+  "build/rtu-r1/acceptance/work/modbus_stage8_2_ws/runs/master-32819648573290/exit.json": {
+    "bytes": 25,
+    "sha256": "220d73048e6c958a0644bc796a9ed3e57dd8736838b4f81b6b01d333264d4ca6"
+  },
+  "build/rtu-r1/gui-recheck/command.log": {
+    "bytes": 879,
+    "sha256": "6c81edb1d7063d56d5e211228dc13f8fb3fef4869c073ea85a4cf95a7fc5d28d"
+  },
+  "build/rtu-r1/gui-recheck/exit.json": {
+    "bytes": 1386,
+    "sha256": "dfc0d4915bf2646b061915bc7dc6e79f46aabf91ee544e1c683c7208611e95ae"
+  },
+  "build/rtu-r1/gui-recheck/work/gui-h1/runs/rtu-itkefrg3/rtu-wire.jsonl": {
+    "bytes": 2865,
+    "sha256": "9feab333d2d55cd81207b9420b36c0c24d344d10d838e909a98d06713de74938"
+  },
+  "build/rtu-r1/gui-recheck/work/gui-h1/runs/rtu-itkefrg3/slave-exit.json": {
+    "bytes": 25,
+    "sha256": "62a93977367ed6b8262c6ebc72f4f40b170d0954a4733c4aec13b22390a91d4d"
+  },
+  "build/rtu-r1/gui-recheck/work/gui-h1/runs/rtu-itkefrg3/result.json": {
+    "bytes": 438,
+    "sha256": "65ba04c184d9e148ab4190528cb43449bc9f1e68ab4cd18c56dd5d2954c78875"
+  },
+  "build/rtu-r1/gui-recheck/work/gui-h1/runs/rtu-itkefrg3/slave.log": {
+    "bytes": 8361,
+    "sha256": "8db26da32a058d14fc73684dc11c96816d53e1fdd7d331ca14253c5e9dd336d1"
+  },
+  "build/rtu-r1/gui-recheck/work/gui-h1/runs/rtu-itkefrg3/build.log": {
+    "bytes": 14487,
+    "sha256": "65e36ed83bf5cd3f6c6da7a1e2a3c38e240de20056d34c326f9d006b700e0c15"
+  },
+  "build/rtu-r1/gui-recheck/work/gui-h1/runs/rtu-itkefrg3/console.log": {
+    "bytes": 1344,
+    "sha256": "a240680c294e335a2683d313a9872fa64de9454d08139f20cc90ba0b8e2675e1"
+  },
+  "build/rtu-r1/gui/command.log": {
+    "bytes": 2371,
+    "sha256": "8322478a505adfe02babc4406f378fe3419568d19553e298f078cf02d7433c85"
+  },
+  "build/rtu-r1/gui/exit.json": {
+    "bytes": 1386,
+    "sha256": "9e6907b7d864c58e1b38e89725ef960bcbc3b51381b64d6d8f1135ff41eddcb5"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/concurrency-f1smk8xd/process_exits.json": {
+    "bytes": 248,
+    "sha256": "5297cdcc6c52505b7721ef4a702bbbbad01150430a46b718c3508d981ad5688f"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/concurrency-f1smk8xd/gateway1.log": {
+    "bytes": 76163,
+    "sha256": "7cba0b3c24090d0b2d1d1d96de963b83f8a348412a7d18bf0b1f319ed10c565a"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/concurrency-f1smk8xd/slave0.log": {
+    "bytes": 130164,
+    "sha256": "25ba87d57a1d9f3a8ecf729d1b284ca84e8aea4a389221e252ce122a31ec7cc4"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/fault-nzslw3va/process_exits.json": {
+    "bytes": 166,
+    "sha256": "433af0a800639d4588b998e0a512472ca99f5f3f489ec78c7d1910ad063bcb23"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/fault-nzslw3va/gateway3.log": {
+    "bytes": 449,
+    "sha256": "e7a54865f217476bf088cc7d4fd76fdeb6566b2a27dd06d7528dbf0240a9b724"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/fault-nzslw3va/slave2.log": {
+    "bytes": 1386,
+    "sha256": "31693783262593b710a913dfee8fbf6d1580db5bd63cd4616021406158861bc4"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/status-crosscheck-hch3i9ar/process_exits.json": {
+    "bytes": 84,
+    "sha256": "8327d50ec917e8aa8ba90db3a0695548aed8418cc0e4034fa0b61c12dd12f313"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/status-crosscheck-hch3i9ar/gateway1.log": {
+    "bytes": 1367,
+    "sha256": "d7c556cd12f4ee07900174a60dc475dd30b51b6ef18a8b39f96dcea2c2ed4f4a"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/status-crosscheck-hch3i9ar/slave0.log": {
+    "bytes": 4387,
+    "sha256": "6c6198777fb5c537b5b5bfd4007fa539567db1275fab098a32cae731ace16f38"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/protocol-wbw997yc/process_exits.json": {
+    "bytes": 84,
+    "sha256": "1701f4a6e9be43cefd4ab95d501a8e917201b32ddee853f81f092a5da62af26f"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/protocol-wbw997yc/gateway1.log": {
+    "bytes": 231431,
+    "sha256": "fc57d393de50fdfe1df2c2f8142b214430221e42b1c545632f3ce73f4e8fde86"
+  },
+  "build/rtu-r1/gateway/work/gateway_stage8_3_ws/runs/protocol-wbw997yc/slave0.log": {
+    "bytes": 391960,
+    "sha256": "3dbb135f2bcfa521bd4ba485161cb4683e76291475770ba163e7cf01194ebcca"
+  },
+  "build/rtu-r1/gateway/exit.json": {
+    "bytes": 146,
+    "sha256": "f526fead86fc3fa7afe27b002d168750c5119507f69d0ba7a20e379d3123c7bc"
+  },
+  "build/rtu-r1/gateway/command.log": {
+    "bytes": 1186,
+    "sha256": "e1c7f1b30951d7f4cb0757f9ef3136800f6c6718c4cc2552bc749af7fd4a5b40"
+  },
+  "build/rtu-r1/gateway/report/stage8_3_build.log": {
+    "bytes": 17504,
+    "sha256": "26241dbab864a168291a912fb05d00736fa163c99f642eb2fa7df20ba8728b06"
+  },
+  "build/rtu-r1/gateway/report/stage8_2_build.log": {
+    "bytes": 13934,
+    "sha256": "df0617131e185643317406746d4a4ff4a32645b37efc052efa57f39e6cf98242"
+  },
+  "build/rtu-r1/gateway/report/stage8_3_consistency.log": {
+    "bytes": 133,
+    "sha256": "bf3966ec67149d90b874d15660e091ac237646adee41e30030564aa8e6f77bc9"
+  },
+  "build/rtu-r1/gateway/report/stage8_3_test.log": {
+    "bytes": 132,
+    "sha256": "d3d97ddb94e5a01a68ca0bba49f2dac9420133c2d085c404b4675a989e79244c"
+  },
+  "build/rtu-r1/gateway/report/acceptance.json": {
+    "bytes": 944,
+    "sha256": "f477e2e98ec3c0b120d601060658e7d65380ba8ed9e0dbe2d3d415dc7fbe7ab8"
+  },
+  "build/rtu-r1/gateway/report/tests_all.json": {
+    "bytes": 2426,
+    "sha256": "ace2f867e1c3580bbdf20e39f4630425170e034066926755ce242d268fa1d60e"
+  },
+  "build/rtu-r1/gateway/report/fault/acceptance.json": {
+    "bytes": 2584,
+    "sha256": "8ff7f68143e74ca0cae1dfeb5d1dedc890b0fd571a491563b6f6c9fa4d7ab855"
+  },
+  "build/rtu-r1/gateway/report/tcp/protocol.json": {
+    "bytes": 397212,
+    "sha256": "6ef977f2ad994cdc59c9cf4f536244449a9db1cdc7ffbd4f4648f196ddade7ac"
+  },
+  "build/rtu-r1/gateway/report/rtu/consistency.json": {
+    "bytes": 1610,
+    "sha256": "ececf8a54196a8355840aaa397fb0a6ba36310b0a989837bdc7dfb341ff9634b"
+  },
+  "build/rtu-r1/gateway/report/concurrency/acceptance.json": {
+    "bytes": 146844,
+    "sha256": "601989eede10023833aba9f364c5015ed768f3980dbd5b3f3aa510ba27d4b1da"
+  }
+}

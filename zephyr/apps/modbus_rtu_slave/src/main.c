@@ -46,6 +46,18 @@ bool __wrap_modbus_server_handler(struct modbus_context *ctx){
 static struct modbus_user_callbacks callbacks={.coil_rd=coil_rd,.coil_wr=coil_wr,.discrete_input_rd=di_rd,.holding_reg_rd=hr_rd,.holding_reg_wr=hr_wr,.input_reg_rd=ir_rd};
 static void thread_stats(const struct k_thread *t,void *arg){(void)arg;size_t free=0;int rc=k_thread_stack_space_get(t,&free);printk("THREAD name=%s size=%u unused=%u rc=%d\n",k_thread_name_get((k_tid_t)t),(unsigned)t->stack_info.size,(unsigned)free,rc);}
 static void stats(void){size_t unused=0;(void)k_thread_stack_space_get(k_current_get(),&unused);gpio_port_value_t v=0;(void)gpio_emul_output_get_masked(gpio,0x30000,&v);printk("STATS requests=%u valid=%u responses=%u errors=%u crc=%u exceptions=%u edges=%u rising=%u falling=%u samples=%u beats=%u de_high=%u de_low=%u direction=%u di=%u do=%u commands=%u unused=%u\n",requests,valid,responses,errors,crc_errors,exceptions,edges,rising,falling,samples,beats,de_high,de_low,(unsigned)(v&0x30000),bitmap(8,4),output(),holding[5],(unsigned)unused);}
+/* The PTY exposes TX bytes before Zephyr finishes the half-duplex turn-around.
+ * Answer on UART0 from main, after the higher-priority UART callback has
+ * drained any local echo and enabled RX. UART1 carries only RTU frames.
+ */
+static bool rtu_rx_ready(void)
+{
+ gpio_port_value_t direction;
+
+ return gpio_emul_output_get_masked(gpio, BIT(16) | BIT(17), &direction) == 0 &&
+        (direction & (BIT(16) | BIT(17))) == BIT(17);
+}
+
 int main(void){
  if(!device_is_ready(gpio)||!device_is_ready(control))return 2;
  for(unsigned i=0;i<8;i++)if(gpio_pin_configure(gpio,i,GPIO_OUTPUT_LOW))return 2;
@@ -53,8 +65,13 @@ int main(void){
  gpio_init_callback(&cb,change,0xf00|BIT(16));(void)gpio_add_callback(gpio,&cb);
  struct modbus_iface_param p={.mode=MODBUS_MODE_RTU,.server={.unit_id=1,.user_cb=&callbacks},.serial={.baud=115200,.parity=UART_CFG_PARITY_EVEN}};
  int iface=modbus_iface_get_by_name(DEVICE_DT_NAME(DT_NODELABEL(rtu)));int rc=modbus_init_server(iface,p);printk("MODBUS_INIT rc=%d iface=%d software=115200_8E1\n",rc,iface);if(rc)return 2;
+ bool ready_requested = false;
  int64_t next=0,heartbeat=0,report=1000;while(k_uptime_get()<120000){
-  unsigned char c;while(uart_poll_in(control,&c)==0){if(c>='A'&&c<='P'){unsigned bits=c-'A';for(unsigned i=0;i<4;i++)(void)gpio_emul_input_set(gpio,8+i,!!(bits&BIT(i)));printk("INPUT bits=%u\n",bits);}else if(c=='S'){stats();k_thread_foreach(thread_stats,NULL);}}
+  unsigned char c;while(uart_poll_in(control,&c)==0){if(c>='A'&&c<='P'){unsigned bits=c-'A';for(unsigned i=0;i<4;i++)(void)gpio_emul_input_set(gpio,8+i,!!(bits&BIT(i)));printk("INPUT bits=%u\n",bits);}else if(c=='S'){stats();k_thread_foreach(thread_stats,NULL);}else if(c=='R'){ready_requested=true;}}
+  if (ready_requested && rtu_rx_ready()) {
+   uart_poll_out(control, 'R');
+   ready_requested = false;
+  }
   int64_t now=k_uptime_get();if(holding[0]&&now>=next){samples++;next=now+holding[1];}if(now>=heartbeat){beats++;heartbeat=now+holding[4];}if(now>=report){stats();report=now+1000;}k_msleep(1);
  }stats();return 0;
 }
