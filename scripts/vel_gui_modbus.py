@@ -14,6 +14,9 @@ from vel_env import ROOT, native_build
 from vel_jobs import install_cancel_handlers
 from vel_rtu_session import RecordedMaster, SessionTransportError, run_protocol, validate_protocol
 
+from vel_rtu_fault_rules import RULES
+from vel_rtu_inject import FaultLink
+
 APP = ROOT / "zephyr/apps/modbus_rtu_slave"
 
 
@@ -25,6 +28,8 @@ def validate(request):
     if not isinstance(request, dict):
         raise ValueError("Expected an operation object.")
     op = request.get("op")
+    if op == "fault" and set(request) == {"op", "rule"} and isinstance(request["rule"], str) and request["rule"] in RULES:
+        return op
     if op == "protocol":
         validate_protocol(request)
         return op
@@ -68,6 +73,7 @@ def commands(process):
             yield line
         if len(pending) > 4096:
             raise ValueError("Command exceeds input limit.")
+    raise SessionTransportError(f"从站在会话期间退出：{process.returncode}")
 
 
 def session(folder):
@@ -79,7 +85,8 @@ def session(folder):
     argv = [build / "zephyr/zephyr.exe", "-rt", "-stop_at=115"]
     event("step", phase="slave", command=list(map(str, argv)))
     with (slave_log.open("w") as log, (folder / "rtu-wire.jsonl").open("w") as wire,
-          (folder / "rtu-transactions.jsonl").open("w") as transactions):
+          (folder / "rtu-transactions.jsonl").open("w") as transactions,
+          (folder / "rtu-faults.jsonl").open("w") as audit):
         # The worker owns the slave shutdown. Separate its process group so the
         # supervisor's worker cancellation cannot deliver a second SIGTERM.
         process = subprocess.Popen(argv, stdin=subprocess.DEVNULL, stdout=log,
@@ -87,12 +94,14 @@ def session(folder):
         client = None
         control = None
         try:
+            event("slave_started", pid=process.pid)
             ctl, serial_port = wait_for_slave(process, slave_log)
             control = os.open(ctl, os.O_RDWR | os.O_NOCTTY)
             tty.setraw(control)
 
             client = RecordedMaster(serial_port, control, wire, transactions)
             call = client.call
+            link = FaultLink(client, audit)
 
             def readback():
                 coils = call("read_coils", 0, count=8).bits[:8]
@@ -109,6 +118,10 @@ def session(folder):
                 try:
                     req = json.loads(line)
                     op = validate(req)
+                    if op == "fault":
+                        outcome = link.run(req["rule"])
+                        event("fault_result", **outcome)
+                        continue
                     if op == "protocol":
                         outcome = run_protocol(req, call)
                         event("protocol_result", request=req, **outcome)

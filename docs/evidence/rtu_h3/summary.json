@@ -1,0 +1,265 @@
+{
+  "status": "PASS",
+  "base": "2d6ea44a4b471ecfbb9c67f6b50b94137ccfa90d",
+  "cases": {
+    "tx_crc": {
+      "executions": 10,
+      "status": {
+        "TIMEOUT": 10
+      },
+      "exception": null,
+      "slave_replied": 0,
+      "master_received": 0
+    },
+    "tx_truncate": {
+      "executions": 5,
+      "status": {
+        "TIMEOUT": 5
+      },
+      "exception": null,
+      "slave_replied": 0,
+      "master_received": 0
+    },
+    "tx_drop": {
+      "executions": 5,
+      "status": {
+        "TIMEOUT": 5
+      },
+      "exception": null,
+      "slave_replied": 0,
+      "master_received": 0
+    },
+    "tx_unit": {
+      "executions": 5,
+      "status": {
+        "TIMEOUT": 5
+      },
+      "exception": null,
+      "slave_replied": 0,
+      "master_received": 0
+    },
+    "tx_function": {
+      "executions": 5,
+      "status": {
+        "EXCEPTION": 5
+      },
+      "exception": 1,
+      "slave_replied": 5,
+      "master_received": 5
+    },
+    "tx_address": {
+      "executions": 5,
+      "status": {
+        "EXCEPTION": 5
+      },
+      "exception": 2,
+      "slave_replied": 5,
+      "master_received": 5
+    },
+    "tx_value": {
+      "executions": 5,
+      "status": {
+        "EXCEPTION": 5
+      },
+      "exception": 3,
+      "slave_replied": 5,
+      "master_received": 5
+    },
+    "rx_crc": {
+      "executions": 10,
+      "status": {
+        "CRC_ERROR": 10
+      },
+      "exception": null,
+      "slave_replied": 10,
+      "master_received": 10
+    },
+    "rx_drop": {
+      "executions": 5,
+      "status": {
+        "TIMEOUT": 5
+      },
+      "exception": null,
+      "slave_replied": 5,
+      "master_received": 0
+    },
+    "rx_delay": {
+      "executions": 5,
+      "status": {
+        "LATE_RESPONSE": 5
+      },
+      "exception": null,
+      "slave_replied": 5,
+      "master_received": 0
+    }
+  },
+  "recoveries": 60,
+  "state_unchanged": 60,
+  "real_crc_cases": 20,
+  "rx_delay_actual_quarantine_ms": [
+    220.444,
+    220.317,
+    220.299,
+    220.426,
+    220.203
+  ],
+  "tests": {
+    "wire-final": 0,
+    "h3-headless": 0,
+    "window-final": 0,
+    "rtuh2": 0,
+    "guih1": 0,
+    "canh1": 0,
+    "canh2": 0,
+    "fault-old": 0,
+    "gateway": 0,
+    "stage81": 0,
+    "historical": 1,
+    "renode": 0
+  },
+  "cleanup": {
+    "native-b0u9h86p": "COMPLETED",
+    "rtu-48jwebfm": "CANCELLED",
+    "slave_exit-s52pgtuz": "FAIL",
+    "supervisor_timeout-qt9l83fm": "TIMEOUT"
+  },
+  "historical_133": "BLOCKED",
+  "historical_gate_output": [
+    "$ /usr/bin/python3 /home/bridge/projects/stm32/VirtualEmbeddedLab/scripts/accept_stage7.py",
+    "Stage 7 dependency set requires ROS 2 Lyrical. Active ROS: jazzy",
+    "Missing recovered project input: micro_ros/dependencies.lock.json",
+    "Missing recovered project input: micro_ros/arm/colcon.meta",
+    "Missing recovered project input: micro_ros/stage7_arm.meta"
+  ],
+  "physical_rs485": "NOT TESTED",
+  "logs": {
+    "build/rtu-h3/wire-final/command.log": {
+      "bytes": 671,
+      "sha256": "ed5e6626b5e9a8d684bb9a5838473fb93f9ffc676c7cc5328b1a5af9194b3645"
+    },
+    "build/rtu-h3/h3-headless/command.log": {
+      "bytes": 1096,
+      "sha256": "579a8bacbba693afe0502ead6173323a79ae4e04751b53815a474dba432a94e1"
+    },
+    "build/rtu-h3/window-final/command.log": {
+      "bytes": 355,
+      "sha256": "138829cc8469055fee0c9e8612697f50f5552674bd878ca0173878fb95fb34c7"
+    },
+    "build/rtu-h3/rtuh2/command.log": {
+      "bytes": 950,
+      "sha256": "4c83c064b88570599cc5afa204ff2b7f4d27cb2e72540a2e4a93b31c56c688f3"
+    },
+    "build/rtu-h3/guih1/command.log": {
+      "bytes": 866,
+      "sha256": "45298ffc68f9ddd93799d61772b346ed58b9cf4529f03dbcc52ccef1e30837b6"
+    },
+    "build/rtu-h3/canh1/command.log": {
+      "bytes": 1112,
+      "sha256": "d2bada38447aa03cf6db83f29c3cebae8f2e40f8087fbe2bd374544371ac1457"
+    },
+    "build/rtu-h3/canh2/command.log": {
+      "bytes": 1424,
+      "sha256": "0c9bf00f48d661e1cd21ee5b82f9ed371df6e34c69d442383f7f4ee6c139d968"
+    },
+    "build/rtu-h3/fault-old/command.log": {
+      "bytes": 20,
+      "sha256": "788416c973e3d505016065a5438d1d652d6eeeab1a063dc0b824d537dc327377"
+    },
+    "build/rtu-h3/gateway/command.log": {
+      "bytes": 1141,
+      "sha256": "169b6f4d7e90dfba525886656cacea3b5307610dd8ea3ed2425eedc81b7c5932"
+    },
+    "build/rtu-h3/stage81/command.log": {
+      "bytes": 10108,
+      "sha256": "8a441feb042b6c5ac7f0a22c2baf0d172c49457b7d5aa3859c4893d5144fd607"
+    },
+    "build/rtu-h3/historical/command.log": {
+      "bytes": 540,
+      "sha256": "0c3ebd18394fe77351dbcf8489ba94911e574750364f3d1e2ec1323e97ee1f65"
+    },
+    "build/rtu-h3/historical/work/simulation_stage8_1_ws/runs/qemu_regression-43678683002894.log": {
+      "bytes": 340,
+      "sha256": "3e91ecc5f411a3a119766576d258a91954bdf2d9678a5f3d9ba5835a9bcffd72"
+    },
+    "build/rtu-h3/wire-final/work/rtu-h3-test/native-b0u9h86p/rtu-faults.jsonl": {
+      "bytes": 68375,
+      "sha256": "aa8e2c62cdc3298dc78c9eefc19f6b38dabd6632e9b06004d4e45a48269cb71a"
+    },
+    "build/rtu-h3/wire-final/work/rtu-h3-test/native-b0u9h86p/rtu-transactions.jsonl": {
+      "bytes": 662560,
+      "sha256": "0592f2cc68fe15be7e2df408700278a3ef63a2172c557cc6bd178ad7130a957a"
+    },
+    "build/rtu-h3/wire-final/work/rtu-h3-test/native-b0u9h86p/slave-pty.jsonl": {
+      "bytes": 216116,
+      "sha256": "8aff780c51deda8d52d58cf9ba2c4a6dcbaf05e2110515da35275af88fa31329"
+    },
+    "build/rtu-h3/wire-final/work/rtu-h3-test/native-b0u9h86p/slave.log": {
+      "bytes": 234065,
+      "sha256": "36a451c26e8b6439ca40e3465b17131c74be740d03a0c82d5979f39c57efcfe3"
+    },
+    "build/rtu-h3/wire-final/work/rtu-h3-test/native-b0u9h86p/result.json": {
+      "bytes": 419,
+      "sha256": "890af2ffa91c2831b74e131f51c72b24032c4a04ec50674e0b6668f06e5642d9"
+    },
+    "build/rtu-h3/wire-final/work/rtu-h3-test/native-b0u9h86p/slave-exit.json": {
+      "bytes": 26,
+      "sha256": "3bd89e532246ecd62653aac38038e09e1cf3ac7889fc512d020826be4d1d4459"
+    },
+    "build/rtu-h3/window-final/work/gui-h1/runs/rtu-48jwebfm/rtu-faults.jsonl": {
+      "bytes": 4907,
+      "sha256": "c03d34efb7ec186880febb12c8ca70b2e059ce2bed9d060c7f681eff37de03ab"
+    },
+    "build/rtu-h3/window-final/work/gui-h1/runs/rtu-48jwebfm/slave.log": {
+      "bytes": 18786,
+      "sha256": "b13363419711b3d2444ac2f053d36a2065fe54f1d735a68d9b771c22e52c255d"
+    },
+    "build/rtu-h3/window-final/work/gui-h1/runs/rtu-48jwebfm/result.json": {
+      "bytes": 421,
+      "sha256": "3124c7b0875932da7b400768cb82c1c1c39f9ff05f379d744d93fa0e66c44f0a"
+    },
+    "build/rtu-h3/window-final/work/gui-h1/runs/rtu-48jwebfm/slave-exit.json": {
+      "bytes": 26,
+      "sha256": "934d90440fae06b18b3c8a82c649b6a621ec0a57ab6d647ae96e4bdf018a12f6"
+    },
+    "build/rtu-h3/h3-headless/work/rtu-h3-test/slave_exit-s52pgtuz/rtu-faults.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/rtu-h3/h3-headless/work/rtu-h3-test/slave_exit-s52pgtuz/slave.log": {
+      "bytes": 3533,
+      "sha256": "0d45d344509fe530114c4f933716cae8cb18723572c6349b1f367922a7496f85"
+    },
+    "build/rtu-h3/h3-headless/work/rtu-h3-test/slave_exit-s52pgtuz/result.json": {
+      "bytes": 419,
+      "sha256": "b319c26458875e97db25b10ae7e89d32940172a5eae0f0a9c09e56871c30417e"
+    },
+    "build/rtu-h3/h3-headless/work/rtu-h3-test/slave_exit-s52pgtuz/slave-exit.json": {
+      "bytes": 27,
+      "sha256": "142d06f92fd915c4259633a071117176a1e67574cfb6ad791c266a9480b61dec"
+    },
+    "build/rtu-h3/h3-headless/work/rtu-h3-test/supervisor_timeout-qt9l83fm/rtu-faults.jsonl": {
+      "bytes": 1452,
+      "sha256": "823637643356b7bc9c38b539f3b3c84e2e1ab5cd7e8a44617d540f232d995d4b"
+    },
+    "build/rtu-h3/h3-headless/work/rtu-h3-test/supervisor_timeout-qt9l83fm/slave.log": {
+      "bytes": 15660,
+      "sha256": "b2c8616f5bd87de8a8a38ba1d6b795c9317c7c0025d81b917aa2fdf681173fa6"
+    },
+    "build/rtu-h3/h3-headless/work/rtu-h3-test/supervisor_timeout-qt9l83fm/result.json": {
+      "bytes": 433,
+      "sha256": "dad3982b634fa46a80445485bc502bddeef04053d48a533078c6694696d80991"
+    },
+    "build/rtu-h3/h3-headless/work/rtu-h3-test/supervisor_timeout-qt9l83fm/slave-exit.json": {
+      "bytes": 26,
+      "sha256": "09efc44aa55df791919918f00a355dbc884b41e495aeb73816dbd4d7778e8160"
+    },
+    "build/rtu-h3/renode/command.log": {
+      "bytes": 3392,
+      "sha256": "412448ac3b26d33405f6801767435b533918b9f7b0b696168d85eb2e2b4259d1"
+    },
+    "build/rtu-h3/renode/stage8_1/renode/acceptance.json": {
+      "bytes": 2478,
+      "sha256": "12dab820139766c0effc8131e2b25a7554c93247c0c949bf05e0c5a10382fb00"
+    }
+  }
+}

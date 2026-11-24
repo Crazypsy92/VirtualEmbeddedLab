@@ -2,6 +2,8 @@
 import tkinter as tk
 from tkinter import ttk
 
+from vel_rtu_fault_rules import RULES
+from vel_rtu_frames import decode
 from vel_rtu_layers import BIT_US, CHAR_US, UART_LABELS, direction_event, host_events, uart_bits
 
 COLORS = {"address": "#d5e9fa", "function": "#ece0fb", "data": "#d7eee6", "crc": "#f9e5b8"}
@@ -82,6 +84,16 @@ class LayerView:
         self.uart_rows.bind("<<TreeviewSelect>>", self.uart_selected)
         ttk.Button(self.uart, text="定位 ADU 字段", command=self.open_adu).pack(anchor="w")
 
+        self.injection_tab = ttk.Frame(self.tabs)
+        self.tabs.add(self.injection_tab, text="注入证据")
+        self.injection_note = tk.StringVar(value="选中故障事务可查看四处字节记录。")
+        ttk.Label(self.injection_tab, textvariable=self.injection_note, wraplength=880).pack(fill="x", pady=4)
+        self.injection = tree(self.injection_tab, [("stage", "链路边界", 190), ("hex", "HEX", 358),
+                                                  ("crc", "CRC / 解码", 236)], 4)
+        self.edits = tree(self.injection_tab, [("direction", "方向", 92), ("offset", "偏移", 62),
+                                             ("old", "变更前", 110), ("new", "变更后", 110)], 4)
+        self.edits.bind("<<TreeviewSelect>>", self.open_fault_byte)
+
         self.boundary = tk.StringVar()
         ttk.Label(self.rs485, textvariable=self.boundary, wraplength=820).pack(fill="x", pady=3)
         self.scope = tk.Canvas(self.rs485, height=71, highlightthickness=0, background="#f5f8fa")
@@ -122,11 +134,12 @@ class LayerView:
         self.field_bytes.clear()
         self.raw.set("    ".join(f"{key.upper()}  {spaced(record[key]['raw_hex']) or '—'}"
                                   for key in ("tx", "rx")) if record else "")
-        for table in (self.detail, self.uart_rows, self.timeline, self.comparison):
+        for table in (self.detail, self.uart_rows, self.timeline, self.comparison, self.injection, self.edits):
             table.delete(*table.get_children())
         self.hex_view.configure(state="normal")
         self.hex_view.delete("1.0", "end")
         self.compare_note.set("")
+        self.injection_note.set("选中故障事务可查看四处字节记录。")
         if record is None:
             self.hex_view.configure(state="disabled")
             self.boundary.set("")
@@ -171,6 +184,46 @@ class LayerView:
         note = record.get("error") or "按从站地址、功能码与协议响应结构配对。"
         self.compare_note.set(f"#{record['sequence']} · {record['status']} · {note}")
         self.render_direction()
+        if record.get("injection"):
+            self.present_injection(record)
+        elif record.get("recovery_of") is not None:
+            self.injection_note.set(f"本笔为 #{record['recovery_of']} 注入后的 FC03 恢复验证。")
+
+    def present_injection(self, record):
+        audit = record["injection"]
+        note = RULES[audit["rule"]].label + " · " + record["status"]
+        if record["error"]:
+            note += " · " + record["error"]
+        self.injection_note.set(note)
+        source = decode(bytes.fromhex(audit["original_tx_hex"]), True)
+        raw = decode(bytes.fromhex(audit["slave_tx_hex"]), False, record["tx"])
+        for label, frame in (("主站原始 TX", source), ("实际写入从站 PTY", record["tx"]),
+                             ("从站原始响应（PTY）", raw), ("交给主站解析", record["rx"])):
+            self.injection.insert("", "end", values=(label, spaced(frame["raw_hex"]) or "— 无字节",
+                                  self.injection_crc(frame)))
+        for key in ("tx", "rx"):
+            for change in audit[f"{key}_changes"]:
+                self.edits.insert("", "end", values=(key, change["offset"], change["before"] or "—",
+                                                        change["after"] or "—"))
+
+    @staticmethod
+    def injection_crc(frame):
+        if frame["crc_ok"] is None:
+            return frame["status"] if frame["byte_length"] else "—"
+        return (f"{'PASS' if frame['crc_ok'] else 'FAIL'} · "
+                f"帧 0x{frame['crc_received']:04X} / 算 0x{frame['crc_computed']:04X}")
+
+    def open_fault_byte(self, _event=None):
+        selection = self.edits.selection()
+        if not selection:
+            return
+        key, offset, *_ = self.edits.item(selection[0], "values")
+        iid = f"{key}:{offset}"
+        if self.uart_rows.exists(iid):
+            self.uart_rows.selection_set(iid)
+            self.uart_rows.see(iid)
+            self.uart_selected()
+            self.tabs.select(self.adu)
 
     def select_field(self, _event=None):
         selected = self.detail.selection()

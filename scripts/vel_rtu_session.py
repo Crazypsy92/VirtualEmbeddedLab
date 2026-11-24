@@ -50,7 +50,7 @@ class RecordedMaster:
         self.tx.extend(data[:count])
         return count
 
-    def call(self, method, *args, device_id=1, purpose="请求", **kwargs):
+    def call(self, method, *args, device_id=1, purpose="请求", recovery_of=None, **kwargs):
         self.sequence += 1
         self.tx, self.rx, self.stale = bytearray(), bytearray(), bytearray()
         self.tx_ns = self.rx_ns = None
@@ -80,22 +80,30 @@ class RecordedMaster:
                            latency_ms=(self.rx_ns - self.tx_ns) / 1e6
                            if self.tx_ns is not None and self.rx_ns is not None else None,
                            transport_error=error, pre_tx_rx_hex=self.stale.hex())
-            for frame in (checked["tx"], checked["rx"]):
-                if frame["byte_length"]:
-                    self.frames.write(json.dumps({"sequence": self.sequence,
-                                                 "monotonic_ns": self.tx_ns if frame["direction"] == "TX" else self.rx_ns,
-                                                 "direction": frame["direction"].lower(),
-                                                 "hex": frame["raw_hex"]}) + "\n")
-            self.frames.flush()
-            self.transactions.write(json.dumps(checked, ensure_ascii=False) + "\n")
-            self.transactions.flush()
+            if recovery_of is not None:
+                checked["recovery_of"] = recovery_of
+                if checked["status"] == "PASS":
+                    checked["status"] = "RECOVERED"
+            self.record(checked)
         if caught is not None and not isinstance(caught, Exception):
             raise caught
         if checked["status"] in ("NOT_SENT", "STALE_RX"):
             raise SessionTransportError(f"#{self.sequence} {checked['status']} · {checked['error']}")
-        if checked["status"] != "PASS":
+        if checked["status"] not in ("PASS", "RECOVERED"):
             raise TransactionError(f"#{self.sequence} {checked['status']} · {checked['error'] or error}")
         return result
+
+    def record(self, checked):
+        for frame in (checked["tx"], checked["rx"]):
+            if frame["byte_length"]:
+                key = "tx_ns" if frame["direction"] == "TX" else "rx_ns"
+                self.frames.write(json.dumps({"sequence": checked["sequence"],
+                                             "monotonic_ns": checked[key],
+                                             "direction": frame["direction"].lower(),
+                                             "hex": frame["raw_hex"]}) + "\n")
+        self.frames.flush()
+        self.transactions.write(json.dumps(checked, ensure_ascii=False) + "\n")
+        self.transactions.flush()
 
     def close(self):
         self.client.close()

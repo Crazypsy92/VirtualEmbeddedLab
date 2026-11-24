@@ -244,7 +244,7 @@ class Workbench:
         if self.history_folder and not self.job:
             ttk.Button(bar, text="载入最近历史", command=self.load_history_log).pack(side="left", padx=4)
         ttk.Combobox(bar, textvariable=self.log_source, state="readonly", width=18,
-                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "can-bus.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
+                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "rtu-faults.jsonl", "can-bus.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
         if self.advanced:
             ttk.Button(bar, text="打开寄存器与实时 RTOS 监控", command=self.open_advanced).pack(side="left", padx=5)
         self.log_path = ttk.Label(self.content, wraplength=650)
@@ -351,6 +351,8 @@ class Workbench:
         self.update_controls()
 
     def cancel(self):
+        if self.inspector:
+            self.inspector.faults.cancel(report=False)
         if self.job and self.job.poll() is None:
             self.job.send_signal(signal.SIGTERM)
             self.status.set("正在停止并清理当前任务…")
@@ -433,6 +435,10 @@ class Workbench:
                 self.status.set("LIVE · FC05 已由 FC01 和 GPIO 位图确认" if
                                 event.get("request", {}).get("op") == "write" else
                                 "LIVE · 已读取实际 DO / DI / 寄存器")
+            elif kind == "fault_result":
+                if self.inspector:
+                    self.inspector.outcome(event)
+                self.status.set(f"LIVE · 注入 #{event['sequence']} · {event['observed']}")
             elif kind == "protocol_result":
                 if self.inspector:
                     self.inspector.outcome(event)
@@ -444,7 +450,7 @@ class Workbench:
                     self.inspector.outcome(event)
                 self.last_error = f"{kind} · {event.get('reason', 'N/A')}"
                 self.status.set(self.last_error)
-            if kind in ("ready", "result", "protocol_result", "operation_error", "session_error"):
+            if kind in ("ready", "result", "protocol_result", "fault_result", "operation_error", "session_error"):
                 self.pending = False
 
     def refresh_log(self, *_):

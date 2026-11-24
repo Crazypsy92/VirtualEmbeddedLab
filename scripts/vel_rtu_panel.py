@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from vel_rtu_frames import FC_NAMES
+from vel_rtu_fault_panel import FaultControls
 from vel_rtu_layer_view import LayerView
 
 
@@ -16,6 +17,7 @@ class ProtocolPanel(ttk.Frame):
         self.path = None
         self.result_time = None
         self.offset = 0
+        self.fault_selection = None
         self.choice = tk.StringVar()
         self.message = tk.StringVar(value="启动交互会话后可发送请求。")
         options = ttk.Frame(self)
@@ -39,6 +41,9 @@ class ProtocolPanel(ttk.Frame):
         self.send_button.pack(side="left")
         ttk.Button(options, text="清空显示", command=self.clear).pack(side="left", padx=5)
         ttk.Label(self, textvariable=self.message, wraplength=840).pack(fill="x", pady=4)
+
+        self.faults = FaultControls(self, send, self.clear_faults)
+        self.faults.pack(fill="x", pady=(0, 3))
 
         panes = ttk.Panedwindow(self, orient="vertical")
         panes.pack(fill="both", expand=True)
@@ -103,10 +108,18 @@ class ProtocolPanel(ttk.Frame):
         self.send(command)
 
     def set_active(self, active):
-        self.send_button.configure(state="normal" if active else "disabled")
+        self.faults.enable(active)
+        self.send_button.configure(state="normal" if active and not self.faults.running else "disabled")
 
     def outcome(self, event):
+        if event["event"] == "fault_result":
+            self.faults.outcome(event)
+            self.fault_selection = str(event["sequence"])
+            return
         if "reason" in event:
+            if self.faults.running:
+                self.faults.cancel(report=False)
+                self.faults.status.set(event["reason"])
             self.message.set(event["reason"])
             return
         label = "写入及回读通过" if event["verified"] else "读取通过"
@@ -116,7 +129,17 @@ class ProtocolPanel(ttk.Frame):
     def clear(self):
         self.rows.clear()
         self.list.delete(*self.list.get_children())
+        self.fault_selection = None
         self.layers.present(None)
+
+    def clear_faults(self):
+        selected = set(self.list.selection())
+        ids = [key for key, row in self.rows.items() if "injection" in row or "recovery_of" in row]
+        for key in ids:
+            del self.rows[key]
+            self.list.delete(key)
+        if selected.intersection(ids):
+            self.layers.present(None)
 
     def update_log(self, path):
         if path != self.path:
@@ -132,6 +155,11 @@ class ProtocolPanel(ttk.Frame):
                     break
                 self.offset = log.tell()
                 self.add(json.loads(line))
+        if self.fault_selection and self.list.exists(self.fault_selection):
+            self.list.selection_set(self.fault_selection)
+            self.list.see(self.fault_selection)
+            self.fault_selection = None
+            self.layers.tabs.select(self.layers.injection_tab)
         if self.rows and not self.list.selection():
             first = next(iter(self.rows))
             self.list.selection_set(first)
