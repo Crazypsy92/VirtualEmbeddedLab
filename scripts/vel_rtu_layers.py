@@ -28,8 +28,9 @@ def direction_event(line):
 
 
 def host_events(record):
+    device = "串口" if record.get("transport", {}).get("scope") == "SERIAL_DEVICE" else "PTY"
     return [(label, (record[key] - record["monotonic_ns"]) / 1e6)
-            for key, label in (("tx_ns", "Host TX · 写入 PTY"),
-                               ("rx_ns", "Host RX · 读到最后一批 PTY 字节"),
+            for key, label in (("tx_ns", f"Host TX · 写入{device}"),
+                               ("rx_ns", f"Host RX · 读到最后一批{device}字节"),
                                ("finished_ns", "主站结束 · " + record["status"]))
             if record.get(key) is not None]

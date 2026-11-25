@@ -56,7 +56,7 @@ class LayerView:
         self.tabs.pack(fill="both", expand=True)
         self.adu, self.uart, self.rs485, self.compare = [ttk.Frame(self.tabs) for _ in range(4)]
         for tab, title in zip((self.adu, self.uart, self.rs485, self.compare),
-                              ("RTU ADU", "UART 8E1", "RS-485 方向", "TX/RX 对照")):
+                              ("RTU ADU", "UART 8E1 模型", "RS-485 方向", "TX/RX 对照")):
             self.tabs.add(tab, text=title)
         raw_box = ttk.Frame(self.adu)
         raw_box.pack(fill="x", pady=(2, 3))
@@ -77,7 +77,8 @@ class LayerView:
         ttk.Button(self.adu, text="查看所选字段的 UART 位", command=self.open_uart).pack(anchor="w")
 
         ttk.Label(self.uart, text=f"115200 baud · 8 数据位 · 偶校验 · 1 停止位 | 理论 {BIT_US:.2f} μs/bit，"
-                                  f"{CHAR_US:.2f} μs/字符。由采集字节推导。", wraplength=800).pack(fill="x", pady=3)
+                                  f"{CHAR_US:.2f} μs/字符。固定教学模型，由采集字节推导；实际端口参数见传输配置。",
+                  wraplength=800).pack(fill="x", pady=3)
         self.uart_rows = tree(self.uart, [("dir", "方向", 46), ("pos", "偏移", 47), ("byte", "HEX", 50),
                                         *((f"b{i}", label, 42) for i, label in enumerate(UART_LABELS)),
                                         ("field", "ADU 字段", 158)], 8)
@@ -273,7 +274,10 @@ class LayerView:
                 label += " · 发送" if event["de"] else " · 接收" if event["re"] else " · 切换中"
             self.timeline.insert("", "end", values=("Zephyr 仿真", event["sim_ms"] - origin,
                                                    label, event["de"], event["re"]))
+        physical = self.record.get("transport", {}).get("scope") == "SERIAL_DEVICE"
         gap = "" if any(e["de"] for e in events) else " · 本笔未观测到从站发送使能"
+        if physical:
+            gap = " · 实际总线方向未采集"
         latency = self.record.get("latency_ms")
         timing = f" · TX→RX {latency:.2f} ms" if latency is not None else ""
         self.draw_gpio()

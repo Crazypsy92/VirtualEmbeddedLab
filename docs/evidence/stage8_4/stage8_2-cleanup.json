@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "scenario": "terminate_host_master",
+  "master_pid": 171939,
+  "native_child_pid": 171964,
+  "exit": 143,
+  "child_reaped": true,
+  "log": "/home/bridge/projects/stm32/VirtualEmbeddedLab/build/stage84/protocol82/work/modbus_stage8_2_ws/runs/termination-94315486835647.log"
+}

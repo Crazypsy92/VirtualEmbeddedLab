@@ -1,0 +1,6 @@
+/usr/bin/python3 /home/bridge/projects/stm32/VirtualEmbeddedLab/scripts/stage8_3_1_tests.py --mode rtu-late
+Traceback (most recent call last):
+  File "/home/bridge/projects/stm32/VirtualEmbeddedLab/scripts/stage8_3_1_tests.py", line 117, in <module>
+    assert a==(first,1,b'\x03\x02\x00\x11'),a
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (108, 1, b'\x83\x0b')

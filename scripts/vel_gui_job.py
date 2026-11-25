@@ -9,7 +9,7 @@ import subprocess
 import time
 
 from vel_env import ROOT, tool_environment, work
-from vel_gui_features import BY_ID, capabilities, dependencies_for, invocation
+from vel_gui_features import BY_ID, capabilities, dependencies_for, invocation, requires_simulation
 from vel_jobs import BusyWorkspace, workspace_lock
 
 EVIDENCE = ("VEL_STAGE1_EVIDENCE", "VEL_STAGE3_EVIDENCE", "VEL_STAGE4_EVIDENCE",
@@ -66,7 +66,9 @@ def run(args, resolve=invocation):
     try:
         if ctypes.CDLL(None, use_errno=True).prctl(36, 1, 0, 0, 0) != 0:  # PR_SET_CHILD_SUBREAPER
             raise OSError(ctypes.get_errno(), "Cannot enable owned process cleanup")
-        argv = resolve(args.feature, args.mode, args.folder, capabilities(dependencies_for(BY_ID[args.feature], args.mode)))
+        simulation = requires_simulation(args.folder) if args.feature == "rtu" else True
+        argv = resolve(args.feature, args.mode, args.folder,
+                       capabilities(dependencies_for(BY_ID[args.feature], args.mode, simulation)))
         result["command"] = argv
         env = tool_environment()
         env["PYTHONUNBUFFERED"] = "1"
@@ -122,6 +124,9 @@ def run(args, resolve=invocation):
         print(str(error), flush=True)
         return result["exit"]
     finally:
+        transport = args.folder / "transport.json"
+        if args.feature == "rtu" and transport.is_file():
+            result["transport"] = json.loads(transport.read_text(encoding="utf-8"))
         result["finished"] = time.time()
         (args.folder / "result.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n")
 

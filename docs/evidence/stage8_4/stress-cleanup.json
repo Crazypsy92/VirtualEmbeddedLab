@@ -1,0 +1,20 @@
+{
+  "pids": [
+    175513,
+    175525,
+    175596,
+    175597,
+    175598,
+    175599
+  ],
+  "pids_absent": true,
+  "ptys": [
+    "/dev/pts/18",
+    "/dev/pts/19",
+    "/dev/pts/20",
+    "/dev/pts/21"
+  ],
+  "ptys_absent": true,
+  "pty_paths_reused": [],
+  "pty_instances_still_present": []
+}

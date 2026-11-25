@@ -1,0 +1,167 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "eight_functions_gpio",
+      "status": "PASS"
+    },
+    {
+      "name": "tcp_rtu_consistency",
+      "status": "PASS"
+    },
+    {
+      "name": "tcp_fragment_coalesced_stream",
+      "status": "PASS"
+    },
+    {
+      "name": "1000_mixed_transactions",
+      "status": "PASS",
+      "transactions": 1000,
+      "final": [
+        1,
+        10,
+        500,
+        251,
+        100,
+        504,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "four_independent_tcp_masters",
+      "status": "PASS",
+      "transactions": 320,
+      "fd_baseline": 7,
+      "fd_after_20_reconnects": 7
+    },
+    {
+      "name": "socket_serial_process_fault_matrix",
+      "status": "PASS",
+      "queue_overload_responses": [
+        [
+          717,
+          1,
+          "8306"
+        ],
+        [
+          718,
+          1,
+          "8306"
+        ],
+        [
+          719,
+          1,
+          "8306"
+        ],
+        [
+          720,
+          1,
+          "8306"
+        ],
+        [
+          721,
+          1,
+          "8306"
+        ],
+        [
+          722,
+          1,
+          "8306"
+        ],
+        [
+          723,
+          1,
+          "8306"
+        ],
+        [
+          700,
+          1,
+          "830b"
+        ],
+        [
+          701,
+          1,
+          "830b"
+        ],
+        [
+          702,
+          1,
+          "830b"
+        ],
+        [
+          703,
+          1,
+          "830b"
+        ],
+        [
+          704,
+          1,
+          "830b"
+        ],
+        [
+          705,
+          1,
+          "830b"
+        ],
+        [
+          706,
+          1,
+          "830b"
+        ],
+        [
+          707,
+          1,
+          "830b"
+        ],
+        [
+          708,
+          1,
+          "830b"
+        ],
+        [
+          709,
+          1,
+          "830b"
+        ],
+        [
+          710,
+          1,
+          "830b"
+        ],
+        [
+          711,
+          1,
+          "830b"
+        ],
+        [
+          712,
+          1,
+          "830b"
+        ],
+        [
+          713,
+          1,
+          "830b"
+        ],
+        [
+          714,
+          1,
+          "830b"
+        ],
+        [
+          715,
+          1,
+          "830b"
+        ],
+        [
+          716,
+          1,
+          "830b"
+        ]
+      ],
+      "hidden_retries": false
+    }
+  ],
+  "tests": 6
+}

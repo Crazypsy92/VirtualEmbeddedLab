@@ -1,0 +1,1252 @@
+{
+  "stage": "8.4",
+  "issue": 11,
+  "baseline": "3b2e7855aa5ef8e0c420ca2896b1188d47528a71",
+  "hardware": "NOT TESTED",
+  "physical_rs485": "NOT TESTED",
+  "hardware_can": "NOT TESTED",
+  "host_transport": {
+    "status": "PASS",
+    "tests": 7,
+    "log": "build/stage84/contracts-final/command.log",
+    "exchange_totals": [
+      {
+        "case": "serial_totals",
+        "classification": "PTY",
+        "count": 12,
+        "mismatches": 0,
+        "timeout": true,
+        "disconnect": true,
+        "reconnect": true
+      },
+      {
+        "case": "serial_totals",
+        "classification": "SERIAL_BACKEND_ON_PTY",
+        "count": 1000,
+        "mismatches": 0,
+        "timeout": true,
+        "disconnect": true,
+        "reconnect": true
+      },
+      {
+        "case": "tcp_totals",
+        "endpoint": "127.0.0.2",
+        "count": 1000,
+        "mismatches": 0,
+        "timeout": true,
+        "half_close": true,
+        "rst": true,
+        "refused": true,
+        "reconnect": true
+      }
+    ]
+  },
+  "rtu_backend_parity": {
+    "status": "PASS",
+    "tests": 2,
+    "log": "build/stage84/protocol-pair-final/command.log",
+    "pty": {
+      "transport": {
+        "backend": "pty",
+        "configuration": {
+          "port": "/dev/pts/9",
+          "baudrate": 115200,
+          "bytesize": 8,
+          "parity": "N",
+          "stopbits": 1,
+          "read_timeout": 0.15,
+          "write_timeout": 0.15,
+          "inter_byte_timeout": null,
+          "rs485_rts": false
+        },
+        "connected": false,
+        "scope": "PTY_SIMULATION"
+      },
+      "result": "COMPLETED",
+      "protocol": [
+        {
+          "event": "protocol_result",
+          "time": 1795574572.1165907,
+          "request": {
+            "op": "protocol",
+            "fc": 3,
+            "unit": 1,
+            "address": 1,
+            "count": 1
+          },
+          "values": [
+            10
+          ],
+          "verified": null
+        },
+        {
+          "event": "protocol_result",
+          "time": 1795574572.1956568,
+          "request": {
+            "op": "protocol",
+            "fc": 6,
+            "unit": 1,
+            "address": 1,
+            "values": [
+              37
+            ]
+          },
+          "values": [
+            37
+          ],
+          "verified": true
+        },
+        {
+          "event": "protocol_result",
+          "time": 1795574572.226305,
+          "request": {
+            "op": "protocol",
+            "fc": 3,
+            "unit": 1,
+            "address": 1,
+            "count": 1
+          },
+          "values": [
+            37
+          ],
+          "verified": null
+        }
+      ],
+      "recovery": 6
+    },
+    "serial": {
+      "transport": {
+        "backend": "serial",
+        "configuration": {
+          "port": "/dev/pts/10",
+          "baudrate": 115200,
+          "bytesize": 8,
+          "parity": "N",
+          "stopbits": 1,
+          "read_timeout": 0.15,
+          "write_timeout": 0.15,
+          "inter_byte_timeout": null,
+          "rs485_rts": false
+        },
+        "connected": false,
+        "scope": "SERIAL_BACKEND_ON_PTY"
+      },
+      "result": "COMPLETED",
+      "protocol": [
+        {
+          "event": "protocol_result",
+          "time": 1795574617.5551257,
+          "request": {
+            "op": "protocol",
+            "fc": 3,
+            "unit": 1,
+            "address": 1,
+            "count": 1
+          },
+          "values": [
+            10
+          ],
+          "verified": null
+        },
+        {
+          "event": "protocol_result",
+          "time": 1795574617.635564,
+          "request": {
+            "op": "protocol",
+            "fc": 6,
+            "unit": 1,
+            "address": 1,
+            "values": [
+              37
+            ]
+          },
+          "values": [
+            37
+          ],
+          "verified": true
+        },
+        {
+          "event": "protocol_result",
+          "time": 1795574617.6668444,
+          "request": {
+            "op": "protocol",
+            "fc": 3,
+            "unit": 1,
+            "address": 1,
+            "count": 1
+          },
+          "values": [
+            37
+          ],
+          "verified": null
+        }
+      ],
+      "recovery": 6
+    }
+  },
+  "wslg_transport": {
+    "status": "PASS",
+    "tests": 1,
+    "log": "build/stage84/gui84-verify/command.log",
+    "sessions": [
+      {
+        "status": "CANCELLED",
+        "exit": 130,
+        "child_exit": 143,
+        "transport": {
+          "backend": "pty",
+          "configuration": {
+            "port": "/dev/pts/14",
+            "baudrate": 115200,
+            "bytesize": 8,
+            "parity": "N",
+            "stopbits": 1,
+            "read_timeout": 0.15,
+            "write_timeout": 0.15,
+            "inter_byte_timeout": null,
+            "rs485_rts": false
+          },
+          "connected": false,
+          "scope": "PTY_SIMULATION"
+        },
+        "observed": [
+          {
+            "event": "transport_probe",
+            "time": 1795575188.09307,
+            "transport": {
+              "backend": "pty",
+              "configuration": {
+                "port": "/dev/pts/14",
+                "baudrate": 115200,
+                "bytesize": 8,
+                "parity": "N",
+                "stopbits": 1,
+                "read_timeout": 0.15,
+                "write_timeout": 0.15,
+                "inter_byte_timeout": null,
+                "rs485_rts": false
+              },
+              "connected": true,
+              "scope": "PTY_SIMULATION"
+            },
+            "registers": [
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "status": "FAIL",
+        "exit": 1,
+        "child_exit": 1,
+        "transport": {
+          "backend": "serial",
+          "scope": "SERIAL_DEVICE",
+          "configuration": {
+            "port": "/dev/vel-stage84-port-not-connected",
+            "baudrate": 115200,
+            "bytesize": 8,
+            "parity": "N",
+            "stopbits": 1.0,
+            "read_timeout": 0.15,
+            "write_timeout": 0.15,
+            "inter_byte_timeout": null
+          },
+          "connected": false,
+          "error": "[Errno 2] could not open port /dev/vel-stage84-port-not-connected: [Errno 2] No such file or directory: '/dev/vel-stage84-port-not-connected'"
+        },
+        "observed": [
+          {
+            "event": "session_error",
+            "time": 1795575231.3366385,
+            "reason": "[Errno 2] could not open port /dev/vel-stage84-port-not-connected: [Errno 2] No such file or directory: '/dev/vel-stage84-port-not-connected'"
+          }
+        ]
+      },
+      {
+        "status": "FAIL",
+        "exit": 1,
+        "child_exit": 1,
+        "transport": {
+          "backend": "serial",
+          "configuration": {
+            "port": "/dev/pts/14",
+            "baudrate": 115200,
+            "bytesize": 8,
+            "parity": "N",
+            "stopbits": 1.0,
+            "read_timeout": 0.15,
+            "write_timeout": 0.15,
+            "inter_byte_timeout": null,
+            "rs485_rts": false
+          },
+          "connected": false,
+          "scope": "SERIAL_BACKEND_ON_PTY",
+          "error": "从站在会话期间退出：-9"
+        },
+        "observed": [
+          {
+            "event": "transport_probe",
+            "time": 1795575229.4835744,
+            "transport": {
+              "backend": "serial",
+              "configuration": {
+                "port": "/dev/pts/14",
+                "baudrate": 115200,
+                "bytesize": 8,
+                "parity": "N",
+                "stopbits": 1.0,
+                "read_timeout": 0.15,
+                "write_timeout": 0.15,
+                "inter_byte_timeout": null,
+                "rs485_rts": false
+              },
+              "connected": true,
+              "scope": "SERIAL_BACKEND_ON_PTY"
+            },
+            "registers": [
+              1
+            ]
+          },
+          {
+            "event": "session_error",
+            "time": 1795575230.2354302,
+            "reason": "从站在会话期间退出：-9"
+          }
+        ]
+      }
+    ]
+  },
+  "rtu_h2_layers": {
+    "status": "PASS",
+    "tests": 3,
+    "log": "build/stage84/rtuh2-layers/command.log"
+  },
+  "rtu_h2_wslg": {
+    "status": "PASS",
+    "tests": 7,
+    "log": "build/stage84/rtuh2-release/command.log"
+  },
+  "rtu_h3": {
+    "status": "PASS",
+    "tests": 5,
+    "log": "build/stage84/rtuh3/command.log"
+  },
+  "gui_h1": {
+    "status": "PASS",
+    "tests": 7,
+    "log": "build/stage84/guih1-final/command.log"
+  },
+  "can_h1": {
+    "status": "PASS",
+    "tests": 6,
+    "log": "build/stage84/canh1/command.log"
+  },
+  "can_h2": {
+    "status": "PASS",
+    "tests": 7,
+    "log": "build/stage84/canh2/command.log"
+  },
+  "tcp_master_alternate_host": {
+    "status": "PASS",
+    "test": "Alternate loopback address with fragmented MBAP response",
+    "transport": {
+      "backend": "tcp",
+      "configuration": {
+        "host": "127.0.0.2",
+        "port": 57029,
+        "connect_timeout": 2,
+        "read_timeout": 2,
+        "write_timeout": 2
+      },
+      "connected": true
+    },
+    "tid": 481,
+    "unit": 17,
+    "fc": 3,
+    "registers": [
+      4660
+    ],
+    "wire": [
+      {
+        "sending": true,
+        "monotonic": 94566.519160177,
+        "hex": "01e100000006110300050001"
+      },
+      {
+        "sending": false,
+        "monotonic": 94566.51990844,
+        "hex": "01e10000"
+      },
+      {
+        "sending": false,
+        "monotonic": 94566.530384028,
+        "hex": "01e1000000051103"
+      },
+      {
+        "sending": false,
+        "monotonic": 94566.541029402,
+        "hex": "01e1000000051103021234"
+      }
+    ]
+  },
+  "stage8_2": {
+    "all_steps": {
+      "build": 0,
+      "master": 0,
+      "cleanup": 0,
+      "resources": 0,
+      "regression": 1
+    },
+    "all_local": "PASS",
+    "all_historical_gate": "BLOCKED",
+    "pty_protocol": {
+      "status": "PASS",
+      "transport": {
+        "backend": "pty",
+        "configuration": {
+          "port": "/dev/pts/8",
+          "baudrate": 115200,
+          "bytesize": 8,
+          "parity": "N",
+          "stopbits": 1,
+          "read_timeout": 0.15,
+          "write_timeout": 0.15,
+          "inter_byte_timeout": null,
+          "rs485_rts": false
+        },
+        "connected": true,
+        "scope": "PTY_SIMULATION"
+      },
+      "tests": 3,
+      "successful_transactions": 1026,
+      "cases": [
+        {
+          "name": "eight_functions_gpio_and_registers",
+          "status": "PASS",
+          "seconds": 0.8743339219945483
+        },
+        {
+          "name": "1000_transactions",
+          "status": "PASS",
+          "seconds": 40.36095059799845
+        },
+        {
+          "name": "configuration_applied_to_state_machine",
+          "status": "PASS",
+          "seconds": 0.351075395999942
+        }
+      ]
+    },
+    "serial_protocol": {
+      "status": "PASS",
+      "transport": {
+        "backend": "serial",
+        "configuration": {
+          "port": "/dev/pts/6",
+          "baudrate": 115200,
+          "bytesize": 8,
+          "parity": "N",
+          "stopbits": 1,
+          "read_timeout": 0.15,
+          "write_timeout": 0.15,
+          "inter_byte_timeout": null,
+          "rs485_rts": false
+        },
+        "connected": true,
+        "scope": "SERIAL_BACKEND_ON_PTY"
+      },
+      "tests": 3,
+      "successful_transactions": 1026,
+      "cases": [
+        {
+          "name": "eight_functions_gpio_and_registers",
+          "status": "PASS",
+          "seconds": 0.8748436220048461
+        },
+        {
+          "name": "1000_transactions",
+          "status": "PASS",
+          "seconds": 40.29703213099856
+        },
+        {
+          "name": "configuration_applied_to_state_machine",
+          "status": "PASS",
+          "seconds": 0.3509202639979776
+        }
+      ]
+    },
+    "pty_fault": {
+      "status": "PASS",
+      "transport": {
+        "backend": "pty",
+        "configuration": {
+          "port": "/dev/pts/16",
+          "baudrate": 115200,
+          "bytesize": 8,
+          "parity": "N",
+          "stopbits": 1,
+          "read_timeout": 0.15,
+          "write_timeout": 0.15,
+          "inter_byte_timeout": null,
+          "rs485_rts": false
+        },
+        "connected": true,
+        "scope": "PTY_SIMULATION"
+      },
+      "tests": 3,
+      "successful_transactions": 31,
+      "cases": [
+        {
+          "name": "eight_functions_gpio_and_registers",
+          "status": "PASS",
+          "seconds": 0.8736815980082611
+        },
+        {
+          "name": "fault_matrix_and_atomic_rejection",
+          "status": "PASS",
+          "seconds": 2.202418493994628
+        },
+        {
+          "name": "configuration_applied_to_state_machine",
+          "status": "PASS",
+          "seconds": 0.3469575060007628
+        }
+      ]
+    }
+  },
+  "stage8_3": {
+    "status": "PASS",
+    "cases": [
+      {
+        "name": "eight_functions_gpio",
+        "status": "PASS"
+      },
+      {
+        "name": "tcp_rtu_consistency",
+        "status": "PASS"
+      },
+      {
+        "name": "tcp_fragment_coalesced_stream",
+        "status": "PASS"
+      },
+      {
+        "name": "1000_mixed_transactions",
+        "status": "PASS",
+        "transactions": 1000,
+        "final": [
+          1,
+          10,
+          500,
+          251,
+          100,
+          504,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "four_independent_tcp_masters",
+        "status": "PASS",
+        "transactions": 320,
+        "fd_baseline": 7,
+        "fd_after_20_reconnects": 7
+      },
+      {
+        "name": "socket_serial_process_fault_matrix",
+        "status": "PASS",
+        "queue_overload_responses": [
+          [
+            717,
+            1,
+            "8306"
+          ],
+          [
+            718,
+            1,
+            "8306"
+          ],
+          [
+            719,
+            1,
+            "8306"
+          ],
+          [
+            720,
+            1,
+            "8306"
+          ],
+          [
+            721,
+            1,
+            "8306"
+          ],
+          [
+            722,
+            1,
+            "8306"
+          ],
+          [
+            723,
+            1,
+            "8306"
+          ],
+          [
+            700,
+            1,
+            "830b"
+          ],
+          [
+            701,
+            1,
+            "830b"
+          ],
+          [
+            702,
+            1,
+            "830b"
+          ],
+          [
+            703,
+            1,
+            "830b"
+          ],
+          [
+            704,
+            1,
+            "830b"
+          ],
+          [
+            705,
+            1,
+            "830b"
+          ],
+          [
+            706,
+            1,
+            "830b"
+          ],
+          [
+            707,
+            1,
+            "830b"
+          ],
+          [
+            708,
+            1,
+            "830b"
+          ],
+          [
+            709,
+            1,
+            "830b"
+          ],
+          [
+            710,
+            1,
+            "830b"
+          ],
+          [
+            711,
+            1,
+            "830b"
+          ],
+          [
+            712,
+            1,
+            "830b"
+          ],
+          [
+            713,
+            1,
+            "830b"
+          ],
+          [
+            714,
+            1,
+            "830b"
+          ],
+          [
+            715,
+            1,
+            "830b"
+          ],
+          [
+            716,
+            1,
+            "830b"
+          ]
+        ],
+        "hidden_retries": false
+      }
+    ],
+    "tests": 6,
+    "additional_consistency_check_exit": 0
+  },
+  "stage8_3_1_quick": {
+    "tid": {
+      "tests": 1,
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "tid",
+          "status": "PASS"
+        }
+      ],
+      "unique_request_tids": 400
+    },
+    "rtu_late": {
+      "tests": 12,
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "delay_1",
+          "status": "PASS",
+          "tid_a": 100,
+          "tid_b": 101,
+          "response_A": "03020011",
+          "response_B": "03020258",
+          "target_seconds": 0.1,
+          "release_after_first_rtu_tx_seconds": 0.10014099600084592,
+          "tcp_elapsed_seconds": 0.18274550700152759
+        },
+        {
+          "name": "delay_2",
+          "status": "PASS",
+          "tid_a": 102,
+          "tid_b": 103,
+          "response_A": "03020011",
+          "response_B": "03020258",
+          "target_seconds": 0.44,
+          "release_after_first_rtu_tx_seconds": 0.44022399598907214,
+          "tcp_elapsed_seconds": 0.5135467860091012
+        },
+        {
+          "name": "delay_3",
+          "status": "PASS",
+          "tid_a": 104,
+          "tid_b": 105,
+          "response_A": "03020011",
+          "response_B": "03020258",
+          "target_seconds": 0.46,
+          "release_after_first_rtu_tx_seconds": 0.4601930850039935,
+          "tcp_elapsed_seconds": 0.5294386570021743
+        },
+        {
+          "name": "delay_4",
+          "status": "PASS",
+          "tid_a": 106,
+          "tid_b": 107,
+          "response_A": "03020011",
+          "response_B": "03020258",
+          "target_seconds": 0.46,
+          "release_after_first_rtu_tx_seconds": 0.46019160498690326,
+          "tcp_elapsed_seconds": 0.5366755479917629
+        },
+        {
+          "name": "delay_5",
+          "status": "PASS",
+          "tid_a": 108,
+          "tid_b": 109,
+          "response_A": "03020011",
+          "response_B": "03020258",
+          "target_seconds": 0.47,
+          "release_after_first_rtu_tx_seconds": 0.47019970099790953,
+          "tcp_elapsed_seconds": 0.5370994640106801
+        },
+        {
+          "name": "delay_6",
+          "status": "PASS",
+          "tid_a": 110,
+          "tid_b": 111,
+          "response_A": "830b",
+          "response_B": "03020258",
+          "target_seconds": 0.53,
+          "release_after_first_rtu_tx_seconds": 0.5301224720024038,
+          "tcp_elapsed_seconds": 1.2780858370097121
+        },
+        {
+          "name": "delay_7",
+          "status": "PASS",
+          "tid_a": 112,
+          "tid_b": 113,
+          "response_A": "830b",
+          "response_B": "03020258",
+          "target_seconds": 0.54,
+          "release_after_first_rtu_tx_seconds": 0.5401795460056746,
+          "tcp_elapsed_seconds": 1.2784908920002636
+        },
+        {
+          "name": "delay_8",
+          "status": "PASS",
+          "tid_a": 114,
+          "tid_b": 115,
+          "response_A": "830b",
+          "response_B": "03020258",
+          "target_seconds": 0.54,
+          "release_after_first_rtu_tx_seconds": 0.5402505380043294,
+          "tcp_elapsed_seconds": 1.2980483529972844
+        },
+        {
+          "name": "delay_9",
+          "status": "PASS",
+          "tid_a": 116,
+          "tid_b": 117,
+          "response_A": "830b",
+          "response_B": "03020258",
+          "target_seconds": 0.56,
+          "release_after_first_rtu_tx_seconds": 0.5601730560010765,
+          "tcp_elapsed_seconds": 1.2818208419921575
+        },
+        {
+          "name": "delay_10",
+          "status": "PASS",
+          "tid_a": 118,
+          "tid_b": 119,
+          "response_A": "830b",
+          "response_B": "03020258",
+          "target_seconds": 0.7,
+          "release_after_first_rtu_tx_seconds": 0.7001594329922227,
+          "tcp_elapsed_seconds": 1.2819066160009243
+        },
+        {
+          "name": "delay_11",
+          "status": "PASS",
+          "tid_a": 120,
+          "tid_b": 121,
+          "response_A": "830b",
+          "response_B": "03020258",
+          "target_seconds": 0.9,
+          "release_after_first_rtu_tx_seconds": 0.9001778210076736,
+          "tcp_elapsed_seconds": 1.2822409070067806
+        },
+        {
+          "name": "delay_12",
+          "status": "PASS",
+          "tid_a": 122,
+          "tid_b": 123,
+          "response_A": "830b",
+          "response_B": "03020258",
+          "target_seconds": 0.98,
+          "release_after_first_rtu_tx_seconds": 0.9801529649994336,
+          "tcp_elapsed_seconds": 1.29786327900365
+        }
+      ]
+    },
+    "tcp_stream": {
+      "tests": 15,
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "bytes",
+          "status": "PASS"
+        },
+        {
+          "name": "random",
+          "status": "PASS"
+        },
+        {
+          "name": "header_pause",
+          "status": "PASS"
+        },
+        {
+          "name": "pdu_pause",
+          "status": "PASS"
+        },
+        {
+          "name": "coalesced_2",
+          "status": "PASS"
+        },
+        {
+          "name": "coalesced_4",
+          "status": "PASS"
+        },
+        {
+          "name": "coalesced_8",
+          "status": "PASS"
+        },
+        {
+          "name": "mixed_functions_same_tid_write_count",
+          "status": "PASS"
+        },
+        {
+          "name": "queue_full_and_tid_preserved",
+          "status": "PASS",
+          "busy_tids": [
+            617,
+            618,
+            619,
+            620,
+            621,
+            622,
+            623,
+            624
+          ]
+        },
+        {
+          "name": "stale_job_and_reused_slot",
+          "status": "PASS",
+          "tcp_received": [
+            {
+              "tid": 801,
+              "slot": 0,
+              "generation": 5,
+              "received": 3323,
+              "queued": 0
+            },
+            {
+              "tid": 802,
+              "slot": 0,
+              "generation": 7,
+              "received": 3508,
+              "queued": 1
+            }
+          ]
+        },
+        {
+          "name": "timed_out_write_remains_uncertain",
+          "status": "PASS",
+          "write_dispatch": {
+            "tid": 811,
+            "slot": 0,
+            "generation": 9,
+            "received": 3718,
+            "start": 3718,
+            "end": 4219,
+            "rc": -110,
+            "issued": 1,
+            "uncertain": 1
+          },
+          "readback": 47,
+          "counter_before": 3,
+          "counter_after": 4
+        },
+        {
+          "name": "same_tid_on_two_sockets_distinct_units",
+          "status": "PASS",
+          "tid": 900,
+          "valid_unit": 1,
+          "unconfigured_unit": 2,
+          "exception": 10
+        },
+        {
+          "name": "partial_frame_absolute_deadline",
+          "status": "PASS"
+        },
+        {
+          "name": "fin_rst_halfclose_slow_incomplete",
+          "status": "PASS"
+        },
+        {
+          "name": "reconnect_with_four_slots_occupied",
+          "status": "PASS",
+          "retired_tid": 920,
+          "replacement_tid": 924,
+          "unaffected_tids": [
+            925,
+            926,
+            927
+          ]
+        }
+      ]
+    },
+    "recovery": {
+      "tests": 3,
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "100_recovery_rounds",
+          "status": "PASS"
+        },
+        {
+          "name": "slave_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "gateway_restart",
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "initial_attempts": {
+    "quick": {
+      "status": "FAIL",
+      "exit": 1,
+      "tid": 108,
+      "request_fc": 3,
+      "exception_pdu": "830b"
+    },
+    "stress": {
+      "status": "FAIL",
+      "exit": 1,
+      "gateway_stats": "GW_STATS received=6999 sent=6997 timeouts=2 rejected=0 stale=0 active=0 max_active=1 queued=1 completed=0 connections=0 exceptions=2"
+    },
+    "stress_irq_repeat": {
+      "status": "FAIL",
+      "exit": 1,
+      "gateway_timeout_exceptions": 2
+    },
+    "quick_async_100hz": {
+      "status": "FAIL",
+      "exit": 1,
+      "tid": 104,
+      "exception_pdu": "830b"
+    },
+    "rtu_h2_follow_up": {
+      "status": "FAIL",
+      "exit": 1,
+      "reason": "36-second GUI test elapsed while the simulator build was still running"
+    }
+  },
+  "stage8_3_1_stress": {
+    "status": "PASS",
+    "wall_seconds": 382.4463967009942,
+    "transactions": 10000,
+    "coils": [
+      true,
+      false,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "holding": [
+      1,
+      17,
+      600,
+      5,
+      100,
+      4996,
+      0,
+      0
+    ],
+    "audit": {
+      "functions": {
+        "6": 1252,
+        "1": 1252,
+        "2": 1252,
+        "3": 1252,
+        "4": 1252,
+        "5": 1248,
+        "15": 1248,
+        "16": 1248
+      },
+      "actual_worker_requests": 10004,
+      "crc_checked_relay_pairs": 10008,
+      "throughput_per_second": 26.369,
+      "wall_active_seconds": 379.3899642789911,
+      "latency_ms": {
+        "min": 37.357,
+        "p50": 154.375,
+        "p95": 170.173,
+        "p99": 175.743,
+        "max": 196.221
+      },
+      "client_metrics": [
+        {
+          "transactions": 2501,
+          "functions": {
+            "6": 313,
+            "1": 313,
+            "2": 313,
+            "3": 313,
+            "4": 313,
+            "5": 312,
+            "15": 312,
+            "16": 312
+          },
+          "latency_ms": {
+            "min": 70.084,
+            "p50": 154.347,
+            "p95": 170.165,
+            "p99": 176.454,
+            "max": 193.936
+          }
+        },
+        {
+          "transactions": 2501,
+          "functions": {
+            "6": 313,
+            "1": 313,
+            "2": 313,
+            "3": 313,
+            "4": 313,
+            "5": 312,
+            "15": 312,
+            "16": 312
+          },
+          "latency_ms": {
+            "min": 37.357,
+            "p50": 154.465,
+            "p95": 170.073,
+            "p99": 175.252,
+            "max": 196.221
+          }
+        },
+        {
+          "transactions": 2501,
+          "functions": {
+            "6": 313,
+            "1": 313,
+            "2": 313,
+            "3": 313,
+            "4": 313,
+            "5": 312,
+            "15": 312,
+            "16": 312
+          },
+          "latency_ms": {
+            "min": 123.163,
+            "p50": 154.335,
+            "p95": 170.089,
+            "p99": 173.458,
+            "max": 195.205
+          }
+        },
+        {
+          "transactions": 2501,
+          "functions": {
+            "6": 313,
+            "1": 313,
+            "2": 313,
+            "3": 313,
+            "4": 313,
+            "5": 312,
+            "15": 312,
+            "16": 312
+          },
+          "latency_ms": {
+            "min": 113.49,
+            "p50": 154.316,
+            "p95": 170.255,
+            "p99": 175.978,
+            "max": 185.944
+          }
+        }
+      ],
+      "rtu_max_active": 1,
+      "request_queue_observed_peak": 2,
+      "timeouts": 0,
+      "exceptions": 0,
+      "stale": 0,
+      "rejected": 0
+    },
+    "wire_counts_including_setup_write": [
+      {
+        "client": 0,
+        "wire_records": 2501,
+        "by_fc": {
+          "6": 313,
+          "1": 313,
+          "2": 313,
+          "3": 313,
+          "4": 313,
+          "5": 312,
+          "15": 312,
+          "16": 312
+        }
+      },
+      {
+        "client": 1,
+        "wire_records": 2501,
+        "by_fc": {
+          "6": 313,
+          "1": 313,
+          "2": 313,
+          "3": 313,
+          "4": 313,
+          "5": 312,
+          "15": 312,
+          "16": 312
+        }
+      },
+      {
+        "client": 2,
+        "wire_records": 2501,
+        "by_fc": {
+          "6": 313,
+          "1": 313,
+          "2": 313,
+          "3": 313,
+          "4": 313,
+          "5": 312,
+          "15": 312,
+          "16": 312
+        }
+      },
+      {
+        "client": 3,
+        "wire_records": 2501,
+        "by_fc": {
+          "6": 313,
+          "1": 313,
+          "2": 313,
+          "3": 313,
+          "4": 313,
+          "5": 312,
+          "15": 312,
+          "16": 312
+        }
+      }
+    ],
+    "cleanup": {
+      "pids": [
+        175513,
+        175525,
+        175596,
+        175597,
+        175598,
+        175599
+      ],
+      "pids_absent": true,
+      "ptys": [
+        "/dev/pts/18",
+        "/dev/pts/19",
+        "/dev/pts/20",
+        "/dev/pts/21"
+      ],
+      "ptys_absent": true,
+      "pty_paths_reused": [],
+      "pty_instances_still_present": []
+    }
+  },
+  "stage8_1": {
+    "native_sim": {
+      "status": "PASS",
+      "tests": 4,
+      "socketcan": "BLOCKED: CAP_NET_ADMIN absent; no interface created",
+      "uart_frames": 101
+    },
+    "renode": {
+      "status": "PASS",
+      "tests": 3,
+      "uart_frames": 20,
+      "can": "UNSUPPORTED: no bxCAN platform instance"
+    }
+  },
+  "historical_133": {
+    "status": "BLOCKED",
+    "active_ros": "jazzy",
+    "required_ros": "lyrical",
+    "missing": [
+      "micro_ros/dependencies.lock.json",
+      "micro_ros/arm/colcon.meta",
+      "micro_ros/stage7_arm.meta"
+    ]
+  },
+  "baseline_ctest": {
+    "baseline-arm": {
+      "status": "PASS",
+      "tests": 6
+    },
+    "baseline-host": {
+      "status": "PASS",
+      "tests": 20
+    }
+  },
+  "stage8_3_1_endurance": "NOT RUN",
+  "status": "PASS"
+}

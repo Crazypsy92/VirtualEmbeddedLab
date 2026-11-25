@@ -1,8 +1,15 @@
-import os,pathlib,subprocess,time,re,json,tty,signal,sys,serial
+import os,pathlib,subprocess,time,re,json,tty,signal,sys
 def terminated(signum,frame):raise SystemExit(128+signum)
 signal.signal(signal.SIGTERM,terminated)
 from pymodbus.framer.rtu import FramerRTU
-from pty_control import PtySerialClient, wait_rx_ready
+from pty_control import wait_rx_ready
+sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[2]/'scripts'))
+from vel_modbus_transport import TransportSerialClient
+from vel_transport import PtyTransport, SerialConfig, SerialTransport
+backend = os.environ.get('VEL_RTU_TRANSPORT','pty')
+if backend not in ('pty','serial'):
+ raise SystemExit('VEL_RTU_TRANSPORT must be pty or serial')
+scope = 'SERIAL_BACKEND_ON_PTY' if backend == 'serial' else 'PTY_SIMULATION'
 ROOT=pathlib.Path(__file__).resolve().parents[2];WS=pathlib.Path(os.environ.get('VEL_WORK_ROOT',ROOT/'build/workspaces'))/'modbus_stage8_2_ws';mode=sys.argv[1] if len(sys.argv)>1 else 'all';d=WS/'runs'/('master-'+str(time.monotonic_ns()));d.mkdir();log=d/'slave.log';f=log.open('w');p=subprocess.Popen([str(WS/'build/zephyr/zephyr.exe'),'-rt','-stop_at=110'],stdout=f,stderr=subprocess.STDOUT,start_new_session=True);transcript=[];cases=[];transactions=0;writes=0;control=None;c=None
 
 def trace(sending,data):transcript.append({'time':time.monotonic(),'direction':'request' if sending else 'response','hex':data.hex()});return data
@@ -35,7 +42,8 @@ def raw(payload,expect=None,fragment=False,corrupt=False):
  return response
 try:
  wait(lambda:'MODBUS_INIT rc=0' in log.read_text());paths=re.findall(r'/dev/pts/\d+',log.read_text());control=os.open(paths[0],os.O_RDWR|os.O_NOCTTY);tty.setraw(control)
- c=PtySerialClient(paths[1],baudrate=115200,parity='N',stopbits=1,timeout=.15,retries=0,trace_packet=trace);assert c.connect()
+ channel=(SerialTransport if backend=='serial' else PtyTransport)(SerialConfig(paths[1]))
+ c=TransportSerialClient(channel,trace_packet=trace);assert c.connect()
  def functions():
   call('write_coil',0,True);assert call('read_coils',0,count=8).bits[:8]==[True]+[False]*7
   bits=[True,False,True,False,False,True,True,False];call('write_coils',0,bits);assert call('read_coils',0,count=8).bits[:8]==bits
@@ -69,7 +77,7 @@ try:
  case('configuration_applied_to_state_machine',effects)
  assert call('read_holding_registers',5,count=1).registers==[writes],writes
  final={'holding':call('read_holding_registers',0,count=8).registers,'inputs':call('read_input_registers',0,count=8).registers,'coils':call('read_coils',0,count=8).bits[:8]};os.write(control,b'S');time.sleep(.03);statsline=[l for l in log.read_text().splitlines() if l.startswith('STATS')][-1];stats={k:int(v) for k,v in re.findall(r'(\w+)=(\d+)',statsline)};assert stats['direction']==1<<17 and stats['de_high']>0 and stats['de_low']>0,stats
- result={'status':'PASS','mode':mode,'cases':cases,'tests':len(cases),'successful_transactions':transactions,'stats':stats,'final':final,'log':str(log),'transcript':str(d/'wire.json'),'host_memory':{k:v.strip() for k,v in (line.split(':',1) for line in pathlib.Path('/proc/'+str(p.pid)+'/status').read_text().splitlines() if line.startswith(('VmRSS:','VmHWM:','VmSize:','Threads:')))},'scope':'Real PTY bytes; parity unsupported physically; official Zephyr RTU plus independent pymodbus'}
+ result={'transport':channel.metadata | {'scope':scope},'status':'PASS','mode':mode,'cases':cases,'tests':len(cases),'successful_transactions':transactions,'stats':stats,'final':final,'log':str(log),'transcript':str(d/'wire.json'),'host_memory':{k:v.strip() for k,v in (line.split(':',1) for line in pathlib.Path('/proc/'+str(p.pid)+'/status').read_text().splitlines() if line.startswith(('VmRSS:','VmHWM:','VmSize:','Threads:')))},'scope':'Real PTY bytes; parity unsupported physically; official Zephyr RTU plus independent pymodbus'}
 finally:
  if c:c.close()
  if control is not None:os.close(control)

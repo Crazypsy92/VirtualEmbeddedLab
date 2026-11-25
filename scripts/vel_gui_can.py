@@ -11,6 +11,7 @@ import sys
 import time
 import tty
 
+from vel_frame_transport import loopback_frame
 from vel_can_frames import FILTERS, IDE, parse_request
 from vel_env import ROOT, native_build
 from vel_jobs import install_cancel_handlers
@@ -101,8 +102,7 @@ class CanSession:
             fields = {"id": int(identifier, 16), "ide": bool(flag_bits & IDE), "flags": flag_bits,
                       "dlc": int(dlc), "data": "" if payload == "-" else payload,
                       "sim_ms": int(millis), "host_ns": time.monotonic_ns(), "queue": int(queue)}
-            if fields["dlc"] * 2 != len(fields["data"]):
-                raise ValueError("固件记录的 DLC 和 DATA 长度不一致")
+            fields.update(loopback_frame(fields, fields["host_ns"]).event())
             if direction == "TX" and record["tx"] is None and not record["rx"]:
                 record["tx"] = fields
             elif direction == "RX" and record["tx"] is not None:

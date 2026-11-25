@@ -107,8 +107,8 @@ class ProtocolPanel(ttk.Frame):
         self.message.set("正在等待实际串口响应…")
         self.send(command)
 
-    def set_active(self, active):
-        self.faults.enable(active)
+    def set_active(self, active, *, simulation=True):
+        self.faults.enable(active and simulation)
         self.send_button.configure(state="normal" if active and not self.faults.running else "disabled")
 
     def outcome(self, event):

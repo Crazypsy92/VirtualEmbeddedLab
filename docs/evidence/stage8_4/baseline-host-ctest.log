@@ -1,0 +1,59 @@
+Preset CMake variables:
+
+  CMAKE_BUILD_TYPE="Debug"
+
+-- Configuring done (3.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/bridge/projects/stm32/VirtualEmbeddedLab/build/host
+ninja: no work to do.
+Test project /home/bridge/projects/stm32/VirtualEmbeddedLab/build/host
+      Start  1: host_smoke
+ 1/20 Test  #1: host_smoke .......................   Passed    0.00 sec
+      Start  2: block_basic
+ 2/20 Test  #2: block_basic ......................   Passed    0.15 sec
+      Start  3: block_geometry
+ 3/20 Test  #3: block_geometry ...................   Passed    0.12 sec
+      Start  4: block_persistence
+ 4/20 Test  #4: block_persistence ................   Passed    0.16 sec
+      Start  5: block_faults
+ 5/20 Test  #5: block_faults .....................   Passed    0.13 sec
+      Start  6: block_safety
+ 6/20 Test  #6: block_safety .....................   Passed    0.13 sec
+      Start  7: fatfs_format
+ 7/20 Test  #7: fatfs_format .....................   Passed    0.20 sec
+      Start  8: fatfs_fileio
+ 8/20 Test  #8: fatfs_fileio .....................   Passed    0.20 sec
+      Start  9: fatfs_directory
+ 9/20 Test  #9: fatfs_directory ..................   Passed    0.16 sec
+      Start 10: fatfs_remount
+10/20 Test #10: fatfs_remount ....................   Passed    0.11 sec
+      Start 11: fatfs_diskio
+11/20 Test #11: fatfs_diskio .....................   Passed    0.11 sec
+      Start 12: fatfs_cross-process
+12/20 Test #12: fatfs_cross-process ..............   Passed    0.14 sec
+      Start 13: fatfs_write-fault
+13/20 Test #13: fatfs_write-fault ................   Passed    0.14 sec
+      Start 14: fatfs_sync-fault
+14/20 Test #14: fatfs_sync-fault .................   Passed    0.20 sec
+      Start 15: fatfs_readonly
+15/20 Test #15: fatfs_readonly ...................   Passed    0.19 sec
+      Start 16: fatfs_truncate
+16/20 Test #16: fatfs_truncate ...................   Passed    0.13 sec
+      Start 17: fatfs_corrupt
+17/20 Test #17: fatfs_corrupt ....................   Passed    0.20 sec
+      Start 18: fatfs_crash
+18/20 Test #18: fatfs_crash ......................   Passed    0.16 sec
+      Start 19: fatfs_stress
+19/20 Test #19: fatfs_stress .....................   Passed    0.84 sec
+      Start 20: fatfs_provenance
+20/20 Test #20: fatfs_provenance .................   Passed    0.23 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Label Time Summary:
+BlockDevice    =   0.68 sec*proc (5 tests)
+FatFs          =   2.77 sec*proc (13 tests)
+Provenance     =   0.23 sec*proc (1 test)
+Stage2         =   3.69 sec*proc (19 tests)
+
+Total Test time (real) =   3.72 sec

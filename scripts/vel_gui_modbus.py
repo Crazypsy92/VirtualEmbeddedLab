@@ -1,5 +1,6 @@
 """Independent interactive RTU master. JSON commands in, readback events out."""
 import argparse
+from contextlib import closing, contextmanager
 import json
 import os
 from pathlib import Path
@@ -15,6 +16,7 @@ from vel_jobs import install_cancel_handlers
 from vel_rtu_session import RecordedMaster, SessionTransportError, run_protocol, validate_protocol
 
 from vel_rtu_fault_rules import RULES
+from vel_rtu_connection import RtuConnection
 from vel_rtu_inject import FaultLink
 
 APP = ROOT / "zephyr/apps/modbus_rtu_slave"
@@ -33,7 +35,7 @@ def validate(request):
     if op == "protocol":
         validate_protocol(request)
         return op
-    if op == "read" and set(request) == {"op"}:
+    if op in ("read", "probe") and set(request) == {"op"}:
         return op
     if (op == "write" and set(request) == {"op", "index", "value"}
             and type(request["index"]) is int and 0 <= request["index"] < 8
@@ -61,7 +63,7 @@ def wait_for_slave(process, path):
 
 def commands(process):
     pending = b""
-    while process.poll() is None:
+    while process is None or process.poll() is None:
         if not select.select([sys.stdin], [], [], .25)[0]:
             continue
         data = os.read(sys.stdin.fileno(), 4096)
@@ -76,82 +78,28 @@ def commands(process):
     raise SessionTransportError(f"从站在会话期间退出：{process.returncode}")
 
 
-def session(folder):
-    # The interactive slave never shares an executable or a PTY with CLI acceptance.
+@contextmanager
+def endpoint(folder, connection):
+    if not connection.simulation:
+        yield connection.port, None, None, None
+        return
     build = folder / "slave-build"
     with (folder / "build.log").open("w") as log:
         native_build(APP, build, log=log)
     slave_log = folder / "slave.log"
     argv = [build / "zephyr/zephyr.exe", "-rt", "-stop_at=115"]
     event("step", phase="slave", command=list(map(str, argv)))
-    with (slave_log.open("w") as log, (folder / "rtu-wire.jsonl").open("w") as wire,
-          (folder / "rtu-transactions.jsonl").open("w") as transactions,
-          (folder / "rtu-faults.jsonl").open("w") as audit):
-        # The worker owns the slave shutdown. Separate its process group so the
-        # supervisor's worker cancellation cannot deliver a second SIGTERM.
+    with slave_log.open("w") as log:
         process = subprocess.Popen(argv, stdin=subprocess.DEVNULL, stdout=log,
                                    stderr=subprocess.STDOUT, start_new_session=True)
-        client = None
         control = None
         try:
             event("slave_started", pid=process.pid)
             ctl, serial_port = wait_for_slave(process, slave_log)
             control = os.open(ctl, os.O_RDWR | os.O_NOCTTY)
             tty.setraw(control)
-
-            client = RecordedMaster(serial_port, control, wire, transactions)
-            call = client.call
-            link = FaultLink(client, audit)
-
-            def readback():
-                coils = call("read_coils", 0, count=8).bits[:8]
-                inputs = call("read_discrete_inputs", 0, count=4).bits[:4]
-                holding = call("read_holding_registers", 0, count=8).registers
-                registers = call("read_input_registers", 0, count=8).registers
-                do_mask = sum(1 << i for i, state in enumerate(coils) if state)
-                if registers[7] != do_mask or holding[3] != do_mask:
-                    raise RuntimeError("FC01 and the slave GPIO output bitmap disagree.")
-                return dict(coils=coils, inputs=inputs, holding=holding, registers=registers)
-
-            event("ready", **readback())
-            for line in commands(process):
-                try:
-                    req = json.loads(line)
-                    op = validate(req)
-                    if op == "fault":
-                        outcome = link.run(req["rule"])
-                        event("fault_result", **outcome)
-                        continue
-                    if op == "protocol":
-                        outcome = run_protocol(req, call)
-                        event("protocol_result", request=req, **outcome)
-                        continue
-                    if op == "write":
-                        call("write_coil", req["index"], req["value"])
-                    elif op == "input":
-                        offset = slave_log.stat().st_size
-                        os.write(control, bytes([65 + req["mask"]]))
-                        until = time.monotonic() + 1
-                        with slave_log.open() as monitor:
-                            monitor.seek(offset)
-                            expected = f"INPUT bits={req['mask']}"
-                            while not any(line.strip() == expected for line in monitor):
-                                if time.monotonic() >= until:
-                                    raise RuntimeError("Slave did not acknowledge DI stimulus.")
-                                time.sleep(.02)
-                    data = readback()
-                    if op == "write" and data["coils"][req["index"]] != req["value"]:
-                        raise RuntimeError("FC01 readback did not confirm FC05.")
-                    if op == "input" and data["registers"][6] != req["mask"]:
-                        raise RuntimeError("FC02/IR6 did not confirm the input stimulus.")
-                    event("result", request=req, **data)
-                except SessionTransportError:
-                    raise
-                except (ValueError, OSError, RuntimeError) as error:
-                    event("operation_error", reason=str(error))
+            yield serial_port, control, process, slave_log
         finally:
-            if client:
-                client.close()
             if control is not None:
                 os.close(control)
             if process.poll() is None:
@@ -164,13 +112,98 @@ def session(folder):
             (folder / "slave-exit.json").write_text(json.dumps({"pid": process.pid, "exit": process.returncode}))
 
 
+def session(folder, connection, probe):
+    transport_result = folder / "transport.json"
+    metadata = {"backend": connection.backend, "scope": connection.scope,
+                "configuration": {"port": connection.port, **connection.settings}, "connected": False}
+    try:
+        with (endpoint(folder, connection) as (serial_port, control, process, slave_log),
+              (folder / "rtu-wire.jsonl").open("w") as wire,
+              (folder / "rtu-transactions.jsonl").open("w") as transactions,
+              (folder / "rtu-faults.jsonl").open("w") as audit):
+            with closing(RecordedMaster(serial_port, control, wire, transactions, connection)) as client:
+                metadata = client.metadata
+                protocol_loop(client, audit, process, slave_log, control, probe, metadata)
+    except Exception as error:
+        metadata["error"] = str(error)
+        raise
+    finally:
+        metadata["connected"] = False
+        pending = transport_result.with_suffix(".tmp")
+        pending.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        pending.replace(transport_result)
+
+
+def protocol_loop(client, audit, process, slave_log, control, probe, transport):
+    call = client.call
+    link = FaultLink(client, audit)
+
+    def readback():
+        coils = call("read_coils", 0, count=8).bits[:8]
+        inputs = call("read_discrete_inputs", 0, count=4).bits[:4]
+        holding = call("read_holding_registers", 0, count=8).registers
+        registers = call("read_input_registers", 0, count=8).registers
+        do_mask = sum(1 << i for i, state in enumerate(coils) if state)
+        if registers[7] != do_mask or holding[3] != do_mask:
+            raise RuntimeError("FC01 and the slave GPIO output bitmap disagree.")
+        return dict(coils=coils, inputs=inputs, holding=holding, registers=registers)
+
+    if probe:
+        registers = call("read_holding_registers", 0, count=1, purpose="连接测试").registers
+        transport["probe"] = registers
+        event("transport_probe", transport=transport, registers=registers)
+        return
+    event("ready", transport=transport, **readback())
+    for line in commands(process):
+        try:
+            req = json.loads(line)
+            op = validate(req)
+            if op == "probe":
+                registers = call("read_holding_registers", 0, count=1, purpose="连接测试").registers
+                event("transport_probe", transport=transport, registers=registers)
+                continue
+            if op in ("fault", "input") and process is None:
+                raise ValueError("此操作只用于仿真端点")
+            if op == "fault":
+                outcome = link.run(req["rule"])
+                event("fault_result", **outcome)
+                continue
+            if op == "protocol":
+                outcome = run_protocol(req, call)
+                event("protocol_result", request=req, **outcome)
+                continue
+            if op == "write":
+                call("write_coil", req["index"], req["value"])
+            elif op == "input":
+                offset = slave_log.stat().st_size
+                os.write(control, bytes([65 + req["mask"]]))
+                until = time.monotonic() + 1
+                with slave_log.open() as monitor:
+                    monitor.seek(offset)
+                    expected = f"INPUT bits={req['mask']}"
+                    while not any(line.strip() == expected for line in monitor):
+                        if time.monotonic() >= until:
+                            raise RuntimeError("Slave did not acknowledge DI stimulus.")
+                        time.sleep(.02)
+            data = readback()
+            if op == "write" and data["coils"][req["index"]] != req["value"]:
+                raise RuntimeError("FC01 readback did not confirm FC05.")
+            if op == "input" and data["registers"][6] != req["mask"]:
+                raise RuntimeError("FC02/IR6 did not confirm the input stimulus.")
+            event("result", request=req, **data)
+        except SessionTransportError:
+            raise
+        except (ValueError, OSError, RuntimeError) as error:
+            event("operation_error", reason=str(error))
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("folder", type=Path)
     args = parser.parse_args()
     install_cancel_handlers()
     try:
-        session(args.folder)
+        session(args.folder, *RtuConnection.requested(args.folder))
     except Exception as error:
         event("session_error", reason=str(error))
         sys.exit(1)

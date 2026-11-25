@@ -1,0 +1,239 @@
+{
+  "baseline-arm-ctest.log": {
+    "bytes": 1581,
+    "sha256": "b014c070f7c9814ddc4ff437d43300f0d4a7245bd77abdd8ca0d6a61274f2173",
+    "sources": [
+      {
+        "path": "build/stage84/baseline-arm/command.log",
+        "sha256": "b014c070f7c9814ddc4ff437d43300f0d4a7245bd77abdd8ca0d6a61274f2173"
+      }
+    ]
+  },
+  "baseline-host-ctest.log": {
+    "bytes": 2622,
+    "sha256": "ab1f4e1757690b78376e138b03cfa5118450c45ccbc502d2c16bb2c21bbfd4d9",
+    "sources": [
+      {
+        "path": "build/stage84/baseline-host/command.log",
+        "sha256": "ab1f4e1757690b78376e138b03cfa5118450c45ccbc502d2c16bb2c21bbfd4d9"
+      }
+    ]
+  },
+  "environment.txt": {
+    "bytes": 306,
+    "sha256": "58d81b7f84c36afd9cbbdd123380cae868c15996503ee4c329259e5fa725e8f2",
+    "sources": [
+      {
+        "path": "build/stage84/environment.txt",
+        "sha256": "58d81b7f84c36afd9cbbdd123380cae868c15996503ee4c329259e5fa725e8f2"
+      }
+    ]
+  },
+  "historical-stage7-preflight.log": {
+    "bytes": 340,
+    "sha256": "3e91ecc5f411a3a119766576d258a91954bdf2d9678a5f3d9ba5835a9bcffd72",
+    "sources": [
+      {
+        "path": "build/stage84/historical/work/simulation_stage8_1_ws/runs/qemu_regression-93141746082084.log",
+        "sha256": "3e91ecc5f411a3a119766576d258a91954bdf2d9678a5f3d9ba5835a9bcffd72"
+      }
+    ]
+  },
+  "missing-port.png": {
+    "bytes": 151209,
+    "sha256": "cfe9f53201207ebf8a547417bb52fa7cb421ff1821b2b3733b6a894879bdf649",
+    "sources": [
+      {
+        "path": "build/stage84/gui84-verify/missing-port.png",
+        "sha256": "cfe9f53201207ebf8a547417bb52fa7cb421ff1821b2b3733b6a894879bdf649"
+      }
+    ]
+  },
+  "pty-probe.png": {
+    "bytes": 162540,
+    "sha256": "92811fe16e92aadcf82d708381af040636befa6a89b28366a76f9fd58506e058",
+    "sources": [
+      {
+        "path": "build/stage84/gui84-verify/pty-probe.png",
+        "sha256": "92811fe16e92aadcf82d708381af040636befa6a89b28366a76f9fd58506e058"
+      }
+    ]
+  },
+  "quick-first-rtu-late.log": {
+    "bytes": 378,
+    "sha256": "dc59df0249300114bbbcccf296cd99cba247c2a556ae96cd9bd0501bca3a2f6c",
+    "sources": [
+      {
+        "path": "build/stage84/quick831/work/gateway_stage8_3_1_ws/accept-5ymjqrqy/runner-rtu-late/stage8_3_1_tests.log",
+        "sha256": "dc59df0249300114bbbcccf296cd99cba247c2a556ae96cd9bd0501bca3a2f6c"
+      }
+    ]
+  },
+  "rtu-pty-faults.jsonl": {
+    "bytes": 7151,
+    "sha256": "5c0bc001628334a19e730d76427243137a27c03d94145f3a324a534a78ad2e39",
+    "sources": [
+      {
+        "path": "build/stage84/protocol-pair-final/work/rtu-h3-test/stage84-pty-9gr43x6x/rtu-faults.jsonl",
+        "sha256": "5c0bc001628334a19e730d76427243137a27c03d94145f3a324a534a78ad2e39"
+      }
+    ]
+  },
+  "rtu-pty-transactions.jsonl": {
+    "bytes": 48432,
+    "sha256": "17545bb1340fe8a0e9dad22f6bd4eb3c1aae0a9f53f41bf376e8b7ab19541bfa",
+    "sources": [
+      {
+        "path": "build/stage84/protocol-pair-final/work/rtu-h3-test/stage84-pty-9gr43x6x/rtu-transactions.jsonl",
+        "sha256": "6e3ba95cf552c787d53cb7944ebc875fd11dd4ca6f973c38850d8eb42a10c4fb"
+      }
+    ]
+  },
+  "rtu-serial-faults.jsonl": {
+    "bytes": 7151,
+    "sha256": "dc9dbeefed7c3458e11231653807c4e609f70e9301ffd6dc3183169ddd509dc5",
+    "sources": [
+      {
+        "path": "build/stage84/protocol-pair-final/work/rtu-h3-test/stage84-serial-_evjhfbx/rtu-faults.jsonl",
+        "sha256": "dc9dbeefed7c3458e11231653807c4e609f70e9301ffd6dc3183169ddd509dc5"
+      }
+    ]
+  },
+  "rtu-serial-transactions.jsonl": {
+    "bytes": 48653,
+    "sha256": "130e624c813d29236d44badee4f7f58c36d21df038ea9df0985a4310e58a9499",
+    "sources": [
+      {
+        "path": "build/stage84/protocol-pair-final/work/rtu-h3-test/stage84-serial-_evjhfbx/rtu-transactions.jsonl",
+        "sha256": "f8d8f86a18656c87fe3b3ad59e916affe9f55d908429a10bf8976830ac4c160b"
+      }
+    ]
+  },
+  "serial-disconnected.png": {
+    "bytes": 168550,
+    "sha256": "20527a72277d1d7681050213395334a632adcd5d0b8464d485143262b7dc890c",
+    "sources": [
+      {
+        "path": "build/stage84/gui84-verify/serial-disconnected.png",
+        "sha256": "20527a72277d1d7681050213395334a632adcd5d0b8464d485143262b7dc890c"
+      }
+    ]
+  },
+  "serial-pty.png": {
+    "bytes": 164167,
+    "sha256": "c27501cbdeee1e2f6cc3b16474929b78ce8d554093c95fad588678064d4f659c",
+    "sources": [
+      {
+        "path": "build/stage84/gui84-verify/serial-pty.png",
+        "sha256": "c27501cbdeee1e2f6cc3b16474929b78ce8d554093c95fad588678064d4f659c"
+      }
+    ]
+  },
+  "stage8_2-cleanup.json": {
+    "bytes": 299,
+    "sha256": "55f6f24e5f6a73c4294375a0c0521b7f520c022f3d9d31e9998e7844bb72105a",
+    "sources": [
+      {
+        "path": "build/stage84/stage82-full-final/stage8_2/fault/cleanup.json",
+        "sha256": "55f6f24e5f6a73c4294375a0c0521b7f520c022f3d9d31e9998e7844bb72105a"
+      }
+    ]
+  },
+  "stage8_3-cases.json": {
+    "bytes": 2426,
+    "sha256": "ace2f867e1c3580bbdf20e39f4630425170e034066926755ce242d268fa1d60e",
+    "sources": [
+      {
+        "path": "build/stage84/tcp83-release/stage8_3/tests_all.json",
+        "sha256": "ace2f867e1c3580bbdf20e39f4630425170e034066926755ce242d268fa1d60e"
+      }
+    ]
+  },
+  "stress-cleanup.json": {
+    "bytes": 291,
+    "sha256": "333adb14483f6f506f0b1e77b579dce0b9dca0866a536fa2b5bcd4eeaf49a5b0",
+    "sources": [
+      {
+        "path": "build/stage84/stress831-clock/work/gateway_stage8_3_1_ws/runs/stress-nthewris/cleanup.json",
+        "sha256": "333adb14483f6f506f0b1e77b579dce0b9dca0866a536fa2b5bcd4eeaf49a5b0"
+      }
+    ]
+  },
+  "stress-first-client-error.log": {
+    "bytes": 482,
+    "sha256": "57c6263737b7c19a570b8d653f6708664a4c8e7fb7486d84daeae5a3d11ecf7d",
+    "sources": [
+      {
+        "path": "build/stage84/stress831/work/gateway_stage8_3_1_ws/runs/stress-4e4cofbj/client1.log",
+        "sha256": "57c6263737b7c19a570b8d653f6708664a4c8e7fb7486d84daeae5a3d11ecf7d"
+      }
+    ]
+  },
+  "stress-first-window.jsonl": {
+    "bytes": 966,
+    "sha256": "bf100c76a4d6f9957a6ec91fb89ec423a8a1de4c08d38d418838cb55f190712d",
+    "sources": [
+      {
+        "path": "build/stage84/stress831/work/gateway_stage8_3_1_ws/runs/stress-4e4cofbj/wire1.jsonl",
+        "sha256": "3324f84af2c4902c7f15011417634c9e1cff84a6cec5a83ecb683334ba55d4e9"
+      }
+    ]
+  },
+  "stress-irq-repeat-window.jsonl": {
+    "bytes": 945,
+    "sha256": "02bc2cc26a0a58405faff5839883b31f1c37b70f239ac2250b1a8175937bc7ec",
+    "sources": [
+      {
+        "path": "build/stage84/stress831/work/gateway_stage8_3_1_ws/runs/stress-9k7ob5nt/wire0.jsonl",
+        "sha256": "41a3c0dab8eb48bd1b0046937c8cf2378948294a4f0c62ad836ab5cd34b7a3ab"
+      }
+    ]
+  },
+  "stress-mbap.jsonl": {
+    "bytes": 2839,
+    "sha256": "9d0ae6595b232ad48441b7857f863de73ce30f8900f3ed6bc8dd69c734d634d4",
+    "sources": [
+      {
+        "path": "build/stage84/stress831-clock/work/gateway_stage8_3_1_ws/runs/stress-nthewris/wire0.jsonl",
+        "sha256": "77b117b94a0b0936be69f26cfa67d73888026468fabdb2780d6ad1947a9c86d8"
+      },
+      {
+        "path": "build/stage84/stress831-clock/work/gateway_stage8_3_1_ws/runs/stress-nthewris/wire1.jsonl",
+        "sha256": "e07148d11926c6629b82568dd6d1482e9c32daf751d97d7cd0e360cb1c8dce1f"
+      },
+      {
+        "path": "build/stage84/stress831-clock/work/gateway_stage8_3_1_ws/runs/stress-nthewris/wire2.jsonl",
+        "sha256": "a920cfe834c1b52c425f3882858b3057269babf6a2150d42dec9e7036486fcbb"
+      },
+      {
+        "path": "build/stage84/stress831-clock/work/gateway_stage8_3_1_ws/runs/stress-nthewris/wire3.jsonl",
+        "sha256": "3bb0a66ebed5051069463461eca1fc0bb591ef6b23ab9988403bfafe7c9c5d7f"
+      }
+    ]
+  },
+  "summary.json": {
+    "bytes": 29141,
+    "sha256": "cf4b4a095cdefd317e4734c584a01a7880fdbdece3250794684f6cd7402a78b1",
+    "sources": []
+  },
+  "tcp-master-alternate-host.json": {
+    "bytes": 631,
+    "sha256": "480d4236147c8484da5b65de293cb3a15c69ff2a6f03304bacfa761d56d3c945",
+    "sources": [
+      {
+        "path": "build/stage84/master-alt-host.json",
+        "sha256": "480d4236147c8484da5b65de293cb3a15c69ff2a6f03304bacfa761d56d3c945"
+      }
+    ]
+  },
+  "transport-contract.jsonl": {
+    "bytes": 3910,
+    "sha256": "ac78f08238462b233105d1d8f8967a1a2a304ea9afd80ff6d8b44119408556c4",
+    "sources": [
+      {
+        "path": "build/stage84/contracts-final/records.jsonl",
+        "sha256": "ac78f08238462b233105d1d8f8967a1a2a304ea9afd80ff6d8b44119408556c4"
+      }
+    ]
+  }
+}

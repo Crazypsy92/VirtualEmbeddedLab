@@ -1,0 +1,10 @@
+$ whoami
+bridge
+$ uname -srmo
+Linux 6.18.54.1-microsoft-standard-WSL2 x86_64 GNU/Linux
+$ lsb_release -ds
+Ubuntu 24.04.5 LTS
+$ python3 -c import sys,serial,pymodbus;print(sys.version.split()[0]);print("pyserial",serial.__version__);print("pymodbus",pymodbus.__version__)
+3.12.3
+pyserial 3.5
+pymodbus 3.11.4

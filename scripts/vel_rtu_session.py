@@ -1,13 +1,10 @@
 """Record real pyserial reads and writes around each pymodbus transaction."""
-from pathlib import Path
 import json
-import sys
 import time
 
 from vel_rtu_frames import pair
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "host/modbus_master"))
-from pty_control import PtySerialClient, wait_rx_ready
+from vel_rtu_connection import RtuConnection
 
 
 class TransactionError(RuntimeError):
@@ -19,18 +16,28 @@ class SessionTransportError(TransactionError):
 
 
 class RecordedMaster:
-    def __init__(self, port, control, frames, transactions):
+    def __init__(self, port, control, frames, transactions, connection=None):
         self.control = control
         self.frames = frames
         self.transactions = transactions
         self.sequence = 0
-        self.client = PtySerialClient(port, baudrate=115200, parity="N", timeout=.15, retries=0)
-        if not self.client.connect():
-            raise ConnectionError("无法连接 RTU PTY")
-        self.port = self.client.socket
+        self.connection = connection or RtuConnection()
+        self.client, self.port, self.ready = self.connection.activate(port, control)
+        self.client.connect()
         self.read_bytes = self.port.read
         self.write_bytes = self.port.write
         self.port.read, self.port.write = self.read, self.write
+
+    @property
+    def metadata(self):
+        return self.port.metadata | {"scope": self.connection.scope}
+
+    def prepare(self, sequence):
+        self.port.correlation = sequence
+        if not self.port.connected:
+            raise SessionTransportError("串口传输已断开")
+        if self.ready is not None:
+            self.ready(sequence)
 
     def read(self, size):
         data = self.read_bytes(size)
@@ -59,7 +66,7 @@ class RecordedMaster:
         error = None
         caught = None
         try:
-            wait_rx_ready(self.control, sequence=self.sequence)
+            self.prepare(self.sequence)
             result = getattr(self.client, method)(*args, device_id=device_id, **kwargs)
             if result.isError():
                 error = str(result)
@@ -87,19 +94,21 @@ class RecordedMaster:
             self.record(checked)
         if caught is not None and not isinstance(caught, Exception):
             raise caught
-        if checked["status"] in ("NOT_SENT", "STALE_RX"):
+        if not self.port.connected or checked["status"] in ("NOT_SENT", "STALE_RX"):
             raise SessionTransportError(f"#{self.sequence} {checked['status']} · {checked['error']}")
         if checked["status"] not in ("PASS", "RECOVERED"):
             raise TransactionError(f"#{self.sequence} {checked['status']} · {checked['error'] or error}")
         return result
 
     def record(self, checked):
+        checked["transport"] = self.metadata
         for frame in (checked["tx"], checked["rx"]):
             if frame["byte_length"]:
                 key = "tx_ns" if frame["direction"] == "TX" else "rx_ns"
                 self.frames.write(json.dumps({"sequence": checked["sequence"],
                                              "monotonic_ns": checked[key],
                                              "direction": frame["direction"].lower(),
+                                             "backend": self.port.backend,
                                              "hex": frame["raw_hex"]}) + "\n")
         self.frames.flush()
         self.transactions.write(json.dumps(checked, ensure_ascii=False) + "\n")

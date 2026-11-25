@@ -1,0 +1,4 @@
+{"start": 93901.173108968, "end": 93901.301986332, "request": "096d00000006010400070001", "request_tid": 2413, "response_tid": 2413, "request_unit": 1, "unit": 1, "request_fc": 4, "response_fc": 4, "backend": "tcp", "pdu": "0402000a"}
+{"start": 93901.302201437, "end": 93901.4695382, "request": "096e0000000601050000ff00", "request_tid": 2414, "response_tid": 2414, "request_unit": 1, "unit": 1, "request_fc": 5, "response_fc": 5, "backend": "tcp", "pdu": "050000ff00"}
+{"start": 93901.469737679, "end": 93901.627973989, "request": "096f00000006010600000001", "request_tid": 2415, "response_tid": 2415, "request_unit": 1, "unit": 1, "request_fc": 6, "response_fc": 6, "backend": "tcp", "pdu": "0600000001"}
+{"start": 93901.628295014, "end": 93902.231417294, "request": "097000000008010f000000010101", "request_tid": 2416, "response_tid": 2416, "request_unit": 1, "unit": 1, "request_fc": 15, "response_fc": 143, "backend": "tcp", "pdu": "8f0b"}

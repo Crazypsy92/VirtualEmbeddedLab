@@ -393,4 +393,8 @@ See docs/stage8_2_modbus_compatibility.md, docs/stage8_2_register_map.md and doc
 
 Run `/usr/bin/python3 scripts/accept_stage8_3.py --mode all`. Modes build/protocol/concurrency/fault select partial checks. The all mode validates the native_sim gateway locally. Use --historical to also request the historical chain. The local test builds an independent Zephyr native_sim gateway and the unchanged Stage8.2 slave, uses real dual PTY byte relay, then performs fresh Stage8.2/8.1 and 133 historical regressions. Reuses the existing fixed pymodbus3.11.4 venv.
 
-The gateway binds loopback only, defaults to port15020; acceptance selects a free port at build time. Four clients, queue16, one official RTU client worker, bounded timeouts, no hidden write retries. See docs/stage8_3_compatibility.md, docs/stage8_3_architecture.md and docs/stage8_3_gateway_design.md（本仓库随附）；stage8_3_report / stage8_3_performance 未随仓库分发，可运行 `scripts/accept_stage8_3.py` 生成。Physical Ethernet/RS485 and hardware are NOT TESTED. No Stage8.4 work is included.
+The gateway binds loopback only, defaults to port15020; acceptance selects a free port at build time. Four clients, queue16, one official RTU client worker, bounded timeouts, no hidden write retries. See docs/stage8_3_compatibility.md, docs/stage8_3_architecture.md and docs/stage8_3_gateway_design.md（本仓库随附）；stage8_3_report / stage8_3_performance 未随仓库分发，可运行 `scripts/accept_stage8_3.py` 生成。Physical Ethernet/RS485 and hardware are NOT TESTED.
+
+## Stage 8.4 Host transport
+
+在工作台的 **Modbus → 连接 / 传输配置** 中可切换 PTY 仿真与 Serial 设备，执行真实 FC03 连接测试。无硬件复验可勾选 Serial-on-PTY。命令行 RTU 验收支持 `--transport pty` 或 `--transport serial`，TCP 主站支持 `--host`。详见[验收报告与复验命令](docs/stage8_4_transport_abstraction_report.md)。

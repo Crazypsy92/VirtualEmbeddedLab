@@ -1,0 +1,32 @@
+Preset CMake variables:
+
+  CMAKE_BUILD_TYPE="Debug"
+  CMAKE_TOOLCHAIN_FILE:FILEPATH="/home/bridge/projects/stm32/VirtualEmbeddedLab/cmake/arm-none-eabi.cmake"
+  VEL_ARM="ON"
+
+-- Configuring done (3.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/bridge/projects/stm32/VirtualEmbeddedLab/build/arm
+[1/4] Building ASM object CMakeFiles/cortex_m3_demo.dir/platform/qemu_mps2/startup/startup.S.obj
+[2/4] Building C object CMakeFiles/cortex_m3_demo.dir/platform/qemu_mps2/drivers/uart.c.obj
+[3/4] Building C object CMakeFiles/cortex_m3_demo.dir/apps/cortex_m3_demo/main.c.obj
+[4/4] Linking C executable cortex_m3_demo.elf
+   text	   data	    bss	    dec	    hex	filename
+   2176	     20	   1144	   3340	    d0c	/home/bridge/projects/stm32/VirtualEmbeddedLab/build/arm/cortex_m3_demo.elf
+Test project /home/bridge/projects/stm32/VirtualEmbeddedLab/build/arm
+    Start 1: qemu_boot_uart_ticks_exceptions
+1/6 Test #1: qemu_boot_uart_ticks_exceptions ...   Passed    0.45 sec
+    Start 2: qemu_timeout_cleanup
+2/6 Test #2: qemu_timeout_cleanup ..............   Passed    0.65 sec
+    Start 3: qemu_abnormal_exit
+3/6 Test #3: qemu_abnormal_exit ................   Passed    0.41 sec
+    Start 4: qemu_missing_evidence_rejected
+4/6 Test #4: qemu_missing_evidence_rejected ....   Passed    0.35 sec
+    Start 5: elf_layout
+5/6 Test #5: elf_layout ........................   Passed    0.13 sec
+    Start 6: gdb_verify
+6/6 Test #6: gdb_verify ........................   Passed    0.67 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =   2.66 sec

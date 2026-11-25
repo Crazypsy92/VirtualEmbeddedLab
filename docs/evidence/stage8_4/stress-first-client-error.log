@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/bridge/projects/stm32/VirtualEmbeddedLab/scripts/stage8_3_1_worker.py", line 26, in <module>
+    if fn==1:assert raw.txn(tid,fn,struct.pack('>HH',index,1))==bytes([1,1,int(state)])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bridge/projects/stm32/VirtualEmbeddedLab/scripts/stage8_3_1_runtime.py", line 74, in txn
+    else:assert pdu[0]==fc,pdu
+                ^^^^^^^^^^
+AssertionError: b'\x81\x0b'

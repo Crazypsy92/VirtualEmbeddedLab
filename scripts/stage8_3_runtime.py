@@ -1,4 +1,5 @@
 from vel_env import work, tool_environment
+from vel_transport import TcpConfig, TcpTransport
 import pathlib,os,json,subprocess,socket,time,signal,re,sys,tempfile,tty
 from stage6_arm_runtime import Processes,wait_for
 from stage8_3_pty_relay import Relay
@@ -15,7 +16,7 @@ class Lab:
   name='gateway'+str(len(self.ps.items));self.gateway=self.ps.start(name,[W/'build/zephyr/zephyr.exe','-rt','-stop_at=180']);self.gateway_log=self.d/(name+'.log');wait_for(lambda:'TCP_READY' in self.gateway_log.read_text(),8);self.gateway_paths=re.findall(r'/dev/pts/\d+',self.gateway_log.read_text())
  def connect_relay(self):self.relay=Relay(self.slave_paths[1],self.gateway_paths[1],self.d)
  def master(self,base=0):m=Master(self.port,base);self.clients.append(m);return m
- def raw(self):s=socket.create_connection(('127.0.0.1',self.port),timeout=3);s.settimeout(12);self.clients.append(s);return s
+ def raw(self):s=TcpTransport(TcpConfig('127.0.0.1',self.port,3,12,12)).open();self.clients.append(s);return s
  def close(self):
   for c in self.clients:
    try:c.close()

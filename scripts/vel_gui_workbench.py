@@ -11,6 +11,7 @@ import time
 import tkinter as tk
 from tkinter import ttk
 
+from vel_rtu_connection_panel import ConnectionPanel
 from vel_can_bus_panel import BusPanel
 from vel_can_panel import CanPanel
 from vel_env import ROOT, tool_environment, work
@@ -36,6 +37,9 @@ class Workbench:
         self.detail_window = None
         self.detail_dashboard = None
         self.last_error = None
+        self.connection_panel = None
+        self.rtu_selection = None
+        self.rtu_transport = None
         self.window.title("VirtualEmbeddedLab · 仿真实验工作台")
         self.window.geometry("1080x720")
         self.window.minsize(900, 600)
@@ -105,6 +109,8 @@ class Workbench:
         self.content.pack(fill="both", expand=True)
 
     def select(self, category):
+        if self.connection_panel:
+            self.rtu_selection = self.connection_panel.selection()
         self.category.set(category)
         for widget in self.content.winfo_children():
             widget.destroy()
@@ -112,6 +118,7 @@ class Workbench:
         self.start_button = None
         self.ops = []
         self.inspector = None
+        self.connection_panel = None
         self.can_panel = None
         self.table = None
         self.log_box = None
@@ -154,11 +161,14 @@ class Workbench:
         self.overview.configure(text=text + "\n物理硬件、RS485 电气特性：NOT TESTED")
 
     def render_feature(self, feature):
+        if self.connection_panel:
+            self.rtu_selection = self.connection_panel.selection()
         self.feature = feature
         for widget in self.panel.winfo_children():
             widget.destroy()
         self.ops = []
         self.inspector = None
+        self.connection_panel = None
         self.can_panel = None
         self.table = None
         ttk.Label(self.panel, text=feature.description, wraplength=650).pack(anchor="w")
@@ -200,6 +210,12 @@ class Workbench:
         self.update_controls()
 
     def render_modbus(self, parent):
+        self.connection_panel = ConnectionPanel(parent, self.start, self.cancel, self.test_rtu_connection)
+        if self.rtu_selection:
+            self.connection_panel.restore(self.rtu_selection)
+        if self.rtu_transport:
+            self.connection_panel.result(self.rtu_transport)
+        self.connection_panel.pack(fill="x", pady=(1, 3))
         tabs = ttk.Notebook(parent)
         tabs.pack(fill="both", expand=True)
         self.inspector = ProtocolPanel(tabs, self.send)
@@ -234,7 +250,7 @@ class Workbench:
                                   ("holding", "Holding 0–7", "FC03"),
                                   ("registers", "Input 0–7", "FC04 · IR6/7 为 DI/DO 位图")]:
             self.table.insert("", "end", iid=key, values=(name, "N/A", origin))
-        ttk.Label(parent, text="交互会话使用独立从站。启动后约 115 秒后自动结束，或可手动停止。",
+        ttk.Label(parent, text="仿真从站约运行 115 秒。可随时断开会话。",
                   wraplength=640).pack(anchor="w")
 
     def render_logs(self):
@@ -244,7 +260,7 @@ class Workbench:
         if self.history_folder and not self.job:
             ttk.Button(bar, text="载入最近历史", command=self.load_history_log).pack(side="left", padx=4)
         ttk.Combobox(bar, textvariable=self.log_source, state="readonly", width=18,
-                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "rtu-faults.jsonl", "can-bus.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
+                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "rtu-faults.jsonl", "transport.json", "can-bus.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
         if self.advanced:
             ttk.Button(bar, text="打开寄存器与实时 RTOS 监控", command=self.open_advanced).pack(side="left", padx=5)
         self.log_path = ttk.Label(self.content, wraplength=650)
@@ -280,7 +296,8 @@ class Workbench:
         if not self.feature:
             return
         feature = self.feature
-        dependencies = dependencies_for(feature, self.mode.get())
+        simulation = self.connection_panel.simulation if self.connection_panel else True
+        dependencies = dependencies_for(feature, self.mode.get(), simulation)
         missing = [dep for dep in dependencies if not (self.available or {}).get(dep)]
         executable = self.available is not None and not missing and bool(feature.modes)
         self.details.set("状态：正在探测" if self.available is None else
@@ -295,7 +312,13 @@ class Workbench:
         for widget in self.ops:
             widget.configure(state="normal" if connected else "disabled")
         if self.inspector:
-            self.inspector.set_active(connected)
+            self.inspector.set_active(connected, simulation=simulation)
+            if len(self.ops) >= 4 and not simulation:
+                self.ops[3].configure(state="disabled")
+        if self.connection_panel:
+            interactive = self.mode.get() == "交互会话"
+            self.connection_panel.controls(executable=interactive and executable, busy=bool(self.job),
+                                           active=interactive and self.live, pending=self.pending)
         if self.can_panel:
             self.can_panel.set_active(connected)
         if getattr(self, "history_id", None) != feature.id:
@@ -319,15 +342,30 @@ class Workbench:
             self.history.set("HISTORY · N/A")
         self.history_id = feature
 
-    def start(self):
+    def test_rtu_connection(self):
+        if self.live and self.running_feature == "rtu":
+            self.send({"op": "probe"})
+        elif not self.job:
+            self.start(probe=True)
+
+    def start(self, probe=False):
         if self.job or not self.feature:
             return
+        config = None
         try:
-            invocation(self.feature.id, self.mode.get(), self.runs, self.available or {})
-        except ValueError as error:
+            if self.connection_panel and self.mode.get() == "交互会话":
+                config = self.connection_panel.configuration(probe)
+            self.folder = folder = type(self.runs)(tempfile.mkdtemp(prefix=self.feature.id + "-", dir=self.runs))
+            if config:
+                self.rtu_transport = None
+                (folder / "transport-request.json").write_text(json.dumps(config, ensure_ascii=False),
+                                                                 encoding="utf-8")
+            invocation(self.feature.id, self.mode.get(), folder, self.available or {})
+        except (ValueError, OSError) as error:
             self.status.set(str(error))
+            if self.connection_panel:
+                self.connection_panel.message.set(str(error))
             return
-        self.folder = folder = type(self.runs)(tempfile.mkdtemp(prefix=self.feature.id + "-", dir=self.runs))
         self.offset = 0
         self.partial = ""
         self.tail_key = None
@@ -425,8 +463,18 @@ class Workbench:
                     self.can_panel.outcome(event)
                 self.pending = False
                 continue
+            if kind == "transport_probe":
+                self.rtu_transport = event["transport"] | {"probe": event["registers"]}
+                if self.connection_panel:
+                    self.connection_panel.result(self.rtu_transport)
+                self.pending = False
+                continue
             if kind in ("ready", "result"):
                 self.live = True
+                if "transport" in event:
+                    self.rtu_transport = event["transport"]
+                    if self.connection_panel:
+                        self.connection_panel.result(self.rtu_transport)
                 if self.feature and self.feature.id == self.running_feature:
                     self.state.set("LIVE · 已连接")
                 self.last_snapshot = event
@@ -485,6 +533,10 @@ class Workbench:
                 status = data.get("status", "FAIL")
                 self.status.set(f"{STATES.get(status, status)} · 退出码 {rc} · "
                                 f"{data.get('reason') or self.last_error or self.folder.name} · 详见日志")
+                if "transport" in data:
+                    self.rtu_transport = data["transport"]
+                    if self.connection_panel:
+                        self.connection_panel.result(self.rtu_transport)
                 self.job.stdin.close()
                 self.job = None
                 self.live = self.pending = False

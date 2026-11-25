@@ -6,7 +6,7 @@ from pathlib import Path
 import subprocess,os,signal,time,json
 R=Path(__file__).resolve().parents[1];W=work('modbus_stage8_2_ws');log=W/'runs'/('termination-'+str(time.monotonic_ns())+'.log')
 with log.open('w') as f:
- p=subprocess.Popen([str(W/'venv/bin/python'),str(R/'host/modbus_master/test_master.py'),'fault'],stdout=f,stderr=subprocess.STDOUT,start_new_session=True)
+ p=subprocess.Popen([sys.executable,str(R/'host/modbus_master/test_master.py'),'fault'],stdout=f,stderr=subprocess.STDOUT,start_new_session=True,env=tool_environment())
  child=None
  for _ in range(100):
   path=Path('/proc')/str(p.pid)/'task'/str(p.pid)/'children'

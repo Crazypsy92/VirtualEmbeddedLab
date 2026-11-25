@@ -4,6 +4,7 @@ import sys
 import pathlib,os,time,json,sys,re,subprocess,struct,socket,tty,signal
 from stage8_3_runtime import Lab as Base,wait_for,frame,receive,R
 from stage8_3_1_relay import DelayRelay
+from vel_transport import TcpConfig, TcpTransport
 W=work('gateway_stage8_3_1_ws');O=pathlib.Path(os.environ.get('VEL_STAGE8_3_1_EVIDENCE',R/'evidence/stage8_3_1'));V=sys.executable
 import stage8_3_runtime as legacy
 legacy.W=W
@@ -66,9 +67,9 @@ class Lab(Base):
  def sample(self):
   p=pathlib.Path('/proc')/str(self.gateway.pid);status={k:v.strip() for k,v in (l.split(':',1) for l in (p/'status').read_text().splitlines() if l.startswith(('VmRSS:','VmHWM:','VmSize:','Threads:')))};lines=[l for l in self.gateway_log.read_text().splitlines() if l.startswith('GW_STATS')];status.update({k:int(v) for k,v in re.findall(r'(\w+)=(\d+)',lines[-1])} if lines else {});status.update(monotonic=time.monotonic(),pid=self.gateway.pid,fds=len(list((p/'fd').iterdir())),relay_alive=self.relay.thread.is_alive() if self.relay else False);return status
 class Raw:
- def __init__(self,port,path):self.s=socket.create_connection(('127.0.0.1',port),timeout=5);self.s.settimeout(5);self.log=path.open('w');self.path=path
+ def __init__(self,port,path):self.s=TcpTransport(TcpConfig('127.0.0.1',port,5,5,5)).open();self.log=path.open('w');self.path=path
  def txn(self,tid,fc,payload,exception=None):
-  req=frame(tid,1,fc,payload);start=time.monotonic();self.s.sendall(req);rtid,unit,pdu=receive(self.s);self.log.write(json.dumps({'start':start,'end':time.monotonic(),'request':req.hex(),'request_tid':tid,'response_tid':rtid,'request_unit':1,'unit':unit,'request_fc':fc,'response_fc':pdu[0],'pdu':pdu.hex()})+'\n');self.log.flush();assert rtid==tid and unit==1,(rtid,tid,unit)
+  req=frame(tid,1,fc,payload);start=time.monotonic();self.s.sendall(req);rtid,unit,pdu=receive(self.s);self.log.write(json.dumps({'start':start,'end':time.monotonic(),'request':req.hex(),'request_tid':tid,'response_tid':rtid,'request_unit':1,'unit':unit,'request_fc':fc,'response_fc':pdu[0],'backend':self.s.backend,'pdu':pdu.hex()})+'\n');self.log.flush();assert rtid==tid and unit==1,(rtid,tid,unit)
   if exception is not None:assert pdu==bytes([fc|128,exception]),pdu
   else:assert pdu[0]==fc,pdu
   return pdu

@@ -2,6 +2,9 @@
 import json
 import os
 import sys
+import time
+
+from vel_frame_transport import model_frame
 
 from vel_can_bus_model import Confinement
 
@@ -28,9 +31,10 @@ def dispatch(identity, command, config, stats, fault):
         result["offer"] = command["frame"]
     if op == "receive":
         frame = command["frame"]
+        message = model_frame(frame, time.monotonic_ns())
         fault.valid_rx()
-        accepted = (config["format"] in ("all", "extended" if frame["ide"] else "standard") and
-                    frame["id"] & config["mask"] == config["id"] & config["mask"])
+        accepted = (config["format"] in ("all", "extended" if message.ide else "standard") and
+                    message.identifier & config["mask"] == config["id"] & config["mask"])
         if accepted:
             stats["rx"] += 1
             result["received"] = {"delivery": command["delivery"], "source": command["source"], "frame": frame}

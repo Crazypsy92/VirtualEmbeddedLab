@@ -34,12 +34,12 @@ FEATURES = (
              "多节点总线": ("vel_can_bus.py",),
              "单项实验": ("accept_stage8_1.py", "--backend", "native_sim")}, ("Zephyr",),
             "CAN API / Host 总线事件 JSONL"),
-    Feature("rtu", "Modbus RTU · 协议检查与 GPIO", "Modbus", "Zephyr native_sim / PTY",
+    Feature("rtu", "Modbus RTU · 协议检查与 GPIO", "Modbus", "PTY 仿真 / Serial 设备",
             "执行八种 RTU 操作，查看真实帧、字段和 CRC，写入后复核设备状态。",
             {"交互会话": ("vel_gui_modbus.py",),
              "快速测试": ("accept_stage8_2.py", "--mode", "fault"),
              "协议与压力": ("accept_stage8_2.py", "--mode", "protocol")},
-            ("Zephyr", "Modbus Python"), "逐帧 PTY JSONL · GPIO / 寄存器回读"),
+            ("Zephyr", "Modbus Python"), "逐帧 JSONL · GPIO / 寄存器回读"),
     Feature("gateway", "Modbus TCP Gateway", "Modbus", "Zephyr native_sim / TCP",
             "现有网关测试，包含实验所选范围的从站和网关构建。",
             {"快速测试": ("accept_stage8_3.py", "--mode", "fault"),
@@ -94,7 +94,16 @@ def capabilities(dependencies=None):
             "Renode cache": (work("simulation_stage8_1_ws") / "renode-1.17.0.tar.gz").is_file()}
 
 
-def dependencies_for(feature, mode):
+def requires_simulation(folder):
+    from vel_rtu_connection import RtuConnection
+
+    connection, _ = RtuConnection.requested(folder)
+    return connection.simulation
+
+
+def dependencies_for(feature, mode, simulation=True):
+    if feature.id == "rtu" and mode == "交互会话" and not simulation:
+        return ("Modbus Python",)
     return () if feature.id == "can" and mode == "多节点总线" else feature.dependencies
 
 
@@ -102,7 +111,8 @@ def invocation(feature, mode, folder, available):
     item = BY_ID.get(feature)
     if item is None or not isinstance(mode, str) or mode not in item.modes:
         raise ValueError("Unknown feature or mode.")
-    if missing := [dep for dep in dependencies_for(item, mode) if not available.get(dep)]:
+    simulation = requires_simulation(folder) if feature == "rtu" else True
+    if missing := [dep for dep in dependencies_for(item, mode, simulation) if not available.get(dep)]:
         raise ValueError("Missing dependencies: " + ", ".join(missing))
     script, *args = item.modes[mode]
     path = ROOT / "scripts" / script

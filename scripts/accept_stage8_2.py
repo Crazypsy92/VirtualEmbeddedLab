@@ -6,7 +6,7 @@ import pathlib,os,subprocess,json,time,signal,argparse,hashlib
 def terminated(signum,frame):raise SystemExit(128+signum)
 signal.signal(signal.SIGTERM,terminated)
 R=pathlib.Path(__file__).resolve().parents[1];W=work('modbus_stage8_2_ws');O=pathlib.Path(os.environ.get('VEL_STAGE8_2_EVIDENCE',str(R/'evidence/stage8_2')));O.mkdir(parents=True,exist_ok=True)
-a=argparse.ArgumentParser();a.add_argument('--mode',choices=['build','protocol','fault','all'],default='all');mode=a.parse_args().mode;steps={}
+a=argparse.ArgumentParser();a.add_argument('--mode',choices=['build','protocol','fault','all'],default='all');a.add_argument('--transport',choices=['pty','serial'],default='pty');args=a.parse_args();mode=args.mode;steps={}
 def run(name,cmd,timeout,env=None):
  log=W/'runs'/(name+'-'+str(time.monotonic_ns())+'.log');t=time.monotonic()
  with log.open('w') as f:
@@ -21,10 +21,12 @@ def run(name,cmd,timeout,env=None):
  steps[name]={'command':list(map(str,cmd)),'exit':rc,'seconds':time.monotonic()-t,'log':str(log)};publish('IN_PROGRESS' if rc==0 else 'FAIL')
  if rc:print(log.read_text()[-3000:]);raise SystemExit(rc)
 def publish(status):
- (O/'acceptance.json').write_text(json.dumps({'status':status,'mode':mode,'steps':steps,'hardware':'NOT TESTED','physical_rs485':'NOT TESTED','stage8_3':'NOT IMPLEMENTED'},indent=2)+'\n')
+ (O/'acceptance.json').write_text(json.dumps({'status':status,'mode':mode,'transport':args.transport,'steps':steps,'hardware':'NOT TESTED','physical_rs485':'NOT TESTED','stage8_3':'NOT IMPLEMENTED'},indent=2)+'\n')
 nonroot();(W/'runs').mkdir(parents=True,exist_ok=True);publish('IN_PROGRESS')
 run('build',['/usr/bin/python3',R/'scripts/stage8_2_build.py'],360)
-if mode!='build':run('master',[sys.executable,R/'host/modbus_master/test_master.py',mode],180)
+if mode!='build':
+ env=tool_environment();env['VEL_RTU_TRANSPORT']=args.transport
+ run('master',[sys.executable,R/'host/modbus_master/test_master.py',mode],180,env)
 if mode=='all':
  run('cleanup',['/usr/bin/python3',R/'scripts/stage8_2_cleanup.py'],20)
  run('resources',['/usr/bin/python3',R/'scripts/stage8_2_resources.py'],60)

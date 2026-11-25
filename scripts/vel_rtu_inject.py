@@ -1,12 +1,10 @@
 """Apply one transaction-scoped injection on the real RTU PTY byte path."""
 import json
-import os
-import select
 import time
 
 from vel_rtu_fault_rules import DELAY, RULES, TIMEOUT, changes, original_request, request_bytes, response_bytes
 from vel_rtu_frames import pair
-from vel_rtu_session import SessionTransportError, wait_rx_ready
+from vel_rtu_session import SessionTransportError
 
 
 class FaultLink:
@@ -15,7 +13,6 @@ class FaultLink:
     def __init__(self, master, audit):
         self.master = master
         self.audit = audit
-        self.fd = master.port.fileno()
 
     def note(self, kind, **fields):
         row = {"kind": kind, **fields}
@@ -34,11 +31,9 @@ class FaultLink:
         buffer = bytearray()
         first_ns = last_ns = None
         while (remaining := deadline - time.monotonic()) > 0:
-            if not select.select([self.fd], [], [], remaining)[0]:
-                break
-            data = os.read(self.fd, 4096)
+            data = self.master.port.read_available(4096, remaining)
             if not data:
-                raise ConnectionError("RTU 数据 PTY 已关闭")
+                break
             last_ns = time.monotonic_ns()
             if first_ns is None:
                 first_ns = last_ns
@@ -57,9 +52,9 @@ class FaultLink:
         error = None
         caught = None
         try:
-            wait_rx_ready(self.master.control, sequence=seq)
-            if select.select([self.fd], [], [], 0)[0]:
-                drained = os.read(self.fd, 4096)
+            self.master.prepare(seq)
+            drained = self.master.port.read_available(4096, 0)
+            if drained:
                 raise SessionTransportError("注入前存在串口残留，结束会话以避免误配")
             if outgoing:
                 tx_ns = time.monotonic_ns()
