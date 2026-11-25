@@ -1,0 +1,85 @@
+{
+  "ci": {
+    "run_id": 45583473528,
+    "tested_sha": "2132034f512ea035f98341d836dbf52775bc71dc",
+    "job_ids": {
+      "core": 139099041110,
+      "zephyr": 139099041667
+    },
+    "runner": "fresh GitHub-hosted Ubuntu 24.04.5 x86_64",
+    "jobs": {
+      "core": "PASS",
+      "zephyr": "PASS"
+    },
+    "test_counts": {
+      "host_debug": 20,
+      "host_release": 20,
+      "host_sanitize": 20,
+      "arm_qemu_gdb": 6,
+      "i2c_host_headless": 7,
+      "gui_supervisor": 5,
+      "xvfb_gui_smoke": 1,
+      "i2c_zephyr": 6,
+      "native_sim": 4
+    },
+    "artifacts": [
+      {
+        "id": 15008037124,
+        "name": "zephyr-acceptance",
+        "digest": "sha256:2e0690e5830e2fd5b8e32caf82024ca0cd14b0c5953657dc3bc780a4b5329809",
+        "expires_at": "2027-02-23T09:14:12Z"
+      },
+      {
+        "id": 15007456699,
+        "name": "core-acceptance",
+        "digest": "sha256:36c47596ac159c56c965541761625d270d2ad4a7d076ddb1e6fcf994a70de687",
+        "expires_at": "2027-02-23T09:14:12Z"
+      }
+    ]
+  },
+  "local": {
+    "scope": "WSL2 Ubuntu 24.04; existing system packages",
+    "ros_jazzy": {
+      "status": "PASS",
+      "ros_distro": "jazzy",
+      "verified_sequences": [
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "listener_received": 10,
+      "service_sum": 42,
+      "owned_processes_reaped": true
+    },
+    "ros_lyrical": "BLOCKED",
+    "historical_133": "BLOCKED",
+    "hardware": "NOT TESTED"
+  },
+  "license_provenance": {
+    "middleware/fatfs/PROVENANCE.json": {
+      "matched": 5,
+      "total": 5
+    },
+    "os/freertos/PROVENANCE.json": {
+      "matched": 30,
+      "total": 30
+    }
+  },
+  "hygiene": {
+    "credential_pattern": {
+      "matched_files": 0
+    },
+    "absolute_local_path": {
+      "matched_files": 17
+    },
+    "unwanted_generated": [],
+    "largest_tracked_blob_bytes": 361476
+  }
+}

@@ -6,7 +6,7 @@
 
 一个纯软件的虚拟嵌入式实验室：在 QEMU / Zephyr `native_sim` / Renode 上运行 Cortex-M3 固件（裸机 / FreeRTOS / Zephyr），端到端验证虚拟传感器、micro-ROS、Modbus RTU/TCP 网关，并内置故障注入、性能测量与回归验收流水线。全程不依赖真实硬件（`Hardware: NOT TESTED`）。
 
-> **License**: MIT — 见 [LICENSE](LICENSE)。FatFs、FreeRTOS 等第三方组件保留各自许可，详见各子目录。
+> **License**: MIT — 见 [LICENSE](../LICENSE)。FatFs、FreeRTOS 等第三方组件保留各自许可，详见各子目录。
 >
 > 历史恢复与迁移记录：[恢复记录](recovery_2026-11-21.md) · [迁移报告](recovery_migration_report.md)。
 >
@@ -100,7 +100,7 @@ Stage 2 已实现 Host 虚拟 SD 卡 + FatFs。FatFs on QEMU: NOT IMPLEMENTED；
 
 ## Stage 2：Virtual SD Card + FatFs v1
 
-Stage 2 验收报告（未随仓库分发，可由对应 stage 验收脚本生成） · [HAL 契约](storage_design.md) · [FatFs 来源/哈希](middleware/fatfs/PROVENANCE.json) · [许可](middleware/fatfs/LICENSE.txt)
+Stage 2 验收报告（未随仓库分发，可由对应 stage 验收脚本生成） · [HAL 契约](storage_design.md) · [FatFs 来源/哈希](../middleware/fatfs/PROVENANCE.json) · [许可](../middleware/fatfs/LICENSE.txt)
 
 官方 FatFs R0.16 已依次应用 patch-1、patch-2。源代码已纳入仓库，正常构建无需联网；可用 `python3 scripts/verify_fatfs.py` 离线重放补丁并校验哈希，或 `python3 scripts/fetch_fatfs.py` 检查/下载固定官方输入。
 
@@ -154,7 +154,7 @@ build/host/fatfs_demo --read-only "$PWD/build/stage2-demo"
 
 ## Stage 2：Virtual SD Card + FatFs v1
 
-验收报告（未随仓库分发，可由对应 stage 验收脚本生成） · [HAL 契约](storage_design.md) · [来源与哈希](middleware/fatfs/PROVENANCE.json) · [许可](middleware/fatfs/LICENSE.txt)
+验收报告（未随仓库分发，可由对应 stage 验收脚本生成） · [HAL 契约](storage_design.md) · [来源与哈希](../middleware/fatfs/PROVENANCE.json) · [许可](../middleware/fatfs/LICENSE.txt)
 
 官方 FatFs R0.16 已依次应用 patch-1、patch-2。源码纳入仓库，普通构建无需网络。依赖现有 GCC、CMake、Ninja、Python3、patch 及 GCC Sanitizer 运行库，无需 sudo 挂载镜像。
 
@@ -205,7 +205,7 @@ HAL、Host 后端与 diskio 分层，文件操作由官方 FatFs 完成。测试
 
 ## Stage 3：FreeRTOS + ARM RAM Disk + 多任务记录
 
-验收报告（未随仓库分发，可由对应 stage 验收脚本生成） · 架构（未随仓库分发，可由对应 stage 验收脚本生成） · 内存/栈统计（未随仓库分发，可由对应 stage 验收脚本生成） · [官方内核固定版本](os/freertos/PROVENANCE.json)
+验收报告（未随仓库分发，可由对应 stage 验收脚本生成） · 架构（未随仓库分发，可由对应 stage 验收脚本生成） · 内存/栈统计（未随仓库分发，可由对应 stage 验收脚本生成） · [官方内核固定版本](../os/freertos/PROVENANCE.json)
 
 一键清洁构建及全部验收：
 
@@ -245,7 +245,7 @@ RAM Disk 2 MiB，FAT12/SFD，512 字节扇区、1 KiB 簇，仅同次 QEMU 运�
 
 ## Stage 4：Zephyr 与标准传感器驱动
 
-验收报告（未随仓库分发，可由对应 stage 验收脚本生成） · 架构（未随仓库分发，可由对应 stage 验收脚本生成） · 资源（未随仓库分发，可由对应 stage 验收脚本生成） · FreeRTOS 对比（未随仓库分发，可由对应 stage 验收脚本生成） · [独立环境与操作说明](zephyr/README.md)
+验收报告（未随仓库分发，可由对应 stage 验收脚本生成） · 架构（未随仓库分发，可由对应 stage 验收脚本生成） · 资源（未随仓库分发，可由对应 stage 验收脚本生成） · FreeRTOS 对比（未随仓库分发，可由对应 stage 验收脚本生成） · [独立环境与操作说明](../zephyr/README.md)
 
 ```sh
 python3 scripts/setup_stage4.py      # 默认仅核查已固定的外部环境

@@ -1,0 +1,16 @@
+2026-11-25T09:14:55.6564376Z No broken requirements found.
+2026-11-25T09:15:00.5404785Z Platform: Ubuntu 24.04.5 LTS / x86_64 / 7.0.0-1017-azure
+2026-11-25T09:15:00.5429123Z core: READY
+2026-11-25T09:15:01.4059566Z Platform: Ubuntu 24.04.5 LTS / x86_64 / 7.0.0-1017-azure
+2026-11-25T09:15:01.4099142Z core: READY
+2026-11-25T09:15:30.8652646Z Test project <checkout>/build/host
+2026-11-25T09:15:31.8323897Z 100% tests passed, 0 tests failed out of 20
+2026-11-25T09:15:32.9726920Z Test project <checkout>/build/host-release
+2026-11-25T09:15:33.8211442Z 100% tests passed, 0 tests failed out of 20
+2026-11-25T09:15:34.7788613Z Test project <checkout>/build/host-sanitize
+2026-11-25T09:15:36.3973911Z 100% tests passed, 0 tests failed out of 20
+2026-11-25T09:15:36.7665095Z Test project <checkout>/build/arm
+2026-11-25T09:15:38.0872488Z 100% tests passed, 0 tests failed out of 6
+2026-11-25T09:15:38.7743654Z   "tests_executed": 7,
+2026-11-25T09:15:40.8304063Z DASHBOARD_SMOKE_PASS
+2026-11-25T09:15:42.0367087Z Ran 5 tests in 1.143s
