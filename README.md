@@ -398,3 +398,7 @@ The gateway binds loopback only, defaults to port15020; acceptance selects a fre
 ## Stage 8.4 Host transport
 
 在工作台的 **Modbus → 连接 / 传输配置** 中可切换 PTY 仿真与 Serial 设备，执行真实 FC03 连接测试。无硬件复验可勾选 Serial-on-PTY。命令行 RTU 验收支持 `--transport pty` 或 `--transport serial`，TCP 主站支持 `--host`。详见[验收报告与复验命令](docs/stage8_4_transport_abstraction_report.md)。
+
+## Stage 8.5 I2C 实验台
+
+在 WSLg 运行 `python3 scripts/vel.py dashboard`，进入 **I2C**。选择 Zephyr I2C 或 Host I2C，扫描地址、读写寄存器或 24C02 类 EEPROM，并查看 SCL/SDA 仿真波形。完整软件验收使用 `python3 scripts/accept_i2c.py --gui required`。[使用说明、验收与证据](docs/i2c_inspector_report.md)

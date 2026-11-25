@@ -1,0 +1,137 @@
+{
+  "historical-preflight.log": {
+    "sha256": "b5c0e7d30feec049223f8f3aafc9175d0a1322f395d5c2720cdc67b7d1b19ff0",
+    "bytes": 276,
+    "sources": [
+      {
+        "path": "build/stage85/historical/command.log",
+        "sha256": "b5c0e7d30feec049223f8f3aafc9175d0a1322f395d5c2720cdc67b7d1b19ff0"
+      }
+    ]
+  },
+  "host-key-transactions.jsonl": {
+    "sha256": "0830a653c626c0f545f8f98e58b691d510e37fc2de10eeedad3f9a29fa2c987e",
+    "bytes": 58484,
+    "sources": [
+      {
+        "path": "build/stage85/acceptance/run-c9n4tcxr/host-i2c-model-results.jsonl",
+        "sha256": "0830a653c626c0f545f8f98e58b691d510e37fc2de10eeedad3f9a29fa2c987e"
+      }
+    ]
+  },
+  "i2c-fields.png": {
+    "sha256": "6dd481b544af882d06f1e3b539b2da8e6c407be8285b864c7f6281af51eadfac",
+    "bytes": 165983,
+    "sources": [
+      {
+        "path": "build/stage85/wslg-final/i2c-fields.png",
+        "sha256": "6dd481b544af882d06f1e3b539b2da8e6c407be8285b864c7f6281af51eadfac"
+      }
+    ]
+  },
+  "i2c-scan.png": {
+    "sha256": "0a3f1f6afbd64ac03e165e87d52420debe4a3f76fd1c43c870f5cb995e75a4e8",
+    "bytes": 154935,
+    "sources": [
+      {
+        "path": "build/stage85/wslg-final/i2c-scan.png",
+        "sha256": "0a3f1f6afbd64ac03e165e87d52420debe4a3f76fd1c43c870f5cb995e75a4e8"
+      }
+    ]
+  },
+  "i2c-selected-byte.png": {
+    "sha256": "9cd9dc36a823a042c63d0056dfeb5118b8a779c0007142d4f11a04fb6868ab74",
+    "bytes": 149306,
+    "sources": [
+      {
+        "path": "build/stage85/wslg-final/i2c-selected-byte.png",
+        "sha256": "9cd9dc36a823a042c63d0056dfeb5118b8a779c0007142d4f11a04fb6868ab74"
+      }
+    ]
+  },
+  "i2c-waveform.png": {
+    "sha256": "e27a8d2c1b57dbf5b889914514a011cf842d1e958a36b45358bd4e5d6340ba21",
+    "bytes": 154868,
+    "sources": [
+      {
+        "path": "build/stage85/wslg-final/i2c-waveform.png",
+        "sha256": "e27a8d2c1b57dbf5b889914514a011cf842d1e958a36b45358bd4e5d6340ba21"
+      }
+    ]
+  },
+  "summary.json": {
+    "sha256": "e34ac8d1009f8b6249a34e198e5cbdc7053f507a7412005831e6cc8b24e01b75",
+    "bytes": 4703,
+    "sources": []
+  },
+  "test-headless.log": {
+    "sha256": "23f8b7b9f3bc49cbe1887f801ae6a99e8f7e0eccba2979e9335d688e2fa7a306",
+    "bytes": 315,
+    "sources": [
+      {
+        "path": "build/stage85/acceptance/run-c9n4tcxr/headless.log",
+        "sha256": "23f8b7b9f3bc49cbe1887f801ae6a99e8f7e0eccba2979e9335d688e2fa7a306"
+      }
+    ]
+  },
+  "test-host.log": {
+    "sha256": "9da0d1b13ab83528c3b6b60463cc60882fdbd8af6085de90f4ff5cd7d2b44e6a",
+    "bytes": 744,
+    "sources": [
+      {
+        "path": "build/stage85/acceptance/run-c9n4tcxr/host.log",
+        "sha256": "9da0d1b13ab83528c3b6b60463cc60882fdbd8af6085de90f4ff5cd7d2b44e6a"
+      }
+    ]
+  },
+  "test-zephyr.log": {
+    "sha256": "9a3d503a130bcf15bff572facaee70f2367563f4b804af700ea3aae327f19d17",
+    "bytes": 759,
+    "sources": [
+      {
+        "path": "build/stage85/acceptance/run-c9n4tcxr/zephyr.log",
+        "sha256": "9a3d503a130bcf15bff572facaee70f2367563f4b804af700ea3aae327f19d17"
+      }
+    ]
+  },
+  "wslg-events.jsonl": {
+    "sha256": "838cbaa03982388d8c29c4fc82298d771768632e8c9be28db1968bb45188d8eb",
+    "bytes": 855,
+    "sources": [
+      {
+        "path": "build/stage85/wslg-final/work/gui-h1/runs/i2c-i229qm7w/console.log",
+        "sha256": "838cbaa03982388d8c29c4fc82298d771768632e8c9be28db1968bb45188d8eb"
+      }
+    ]
+  },
+  "wslg-key-transactions.jsonl": {
+    "sha256": "27306c16cf63d50b38afe465dadf01b45bd7898b98c9de699d00e24dad221d97",
+    "bytes": 17386,
+    "sources": [
+      {
+        "path": "build/stage85/wslg-final/work/gui-h1/runs/i2c-i229qm7w/i2c-transactions.jsonl",
+        "sha256": "8fa874fb89a8ebdc008e80f09c0c51ef52efca32cc321a9cf41544393971850d"
+      }
+    ]
+  },
+  "zephyr-controller-eeprom.log": {
+    "sha256": "daeef1b71d540b59c968b1e4ad85ffbd942aca9563a98471c4d489d74aa7b66f",
+    "bytes": 486,
+    "sources": [
+      {
+        "path": "build/stage85/acceptance/run-c9n4tcxr/native-test_eeprom_write_poll_cross_page_and_sequential_rollover.log",
+        "sha256": "daeef1b71d540b59c968b1e4ad85ffbd942aca9563a98471c4d489d74aa7b66f"
+      }
+    ]
+  },
+  "zephyr-key-transactions.jsonl": {
+    "sha256": "905cbf475a08a864b9231f3b156d7d38e7856f0e5b83ade6d5eb9b63a2c6a14e",
+    "bytes": 59419,
+    "sources": [
+      {
+        "path": "build/stage85/acceptance/run-c9n4tcxr/zephyr-i2c-emul-results.jsonl",
+        "sha256": "905cbf475a08a864b9231f3b156d7d38e7856f0e5b83ade6d5eb9b63a2c6a14e"
+      }
+    ]
+  }
+}

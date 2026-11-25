@@ -11,6 +11,9 @@ def json_report(path):
 
 
 def output_summary(feature, folder):
+    if feature == "i2c":
+        result = json_report(folder / "i2c-summary.json")
+        return f"{result.get('backend', 'SIMULATED')} · 事务 {result.get('transactions', 'N/A')}"
     if feature in ("gpio", "can"):
         backend = "renode" if feature == "gpio" else "native_sim"
         result = json_report(folder / "stage8_1_evidence" / backend / "acceptance.json")

@@ -98,7 +98,7 @@ def run(args, resolve=invocation):
                 elif cancelled:
                     result.update(status="CANCELLED", exit=130)
                 else:
-                    outcome = "COMPLETED" if args.mode in ("交互会话", "多节点总线") else "PASS"
+                    outcome = "COMPLETED" if args.feature == "i2c" or args.mode in ("交互会话", "多节点总线") else "PASS"
                     result.update(status=outcome if proc.returncode == 0 else "FAIL", exit=proc.returncode)
             finally:
                 if proc.poll() is None:

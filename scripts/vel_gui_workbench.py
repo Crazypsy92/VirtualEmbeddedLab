@@ -18,6 +18,7 @@ from vel_env import ROOT, tool_environment, work
 from vel_gui_features import BY_ID, CATEGORIES, FEATURES, capabilities, dependencies_for, invocation
 from vel_gui_results import output_summary
 from vel_rtu_panel import ProtocolPanel
+from vel_i2c_panel import I2cPanel
 
 STATES = {"PASS": "通过", "COMPLETED": "会话结束", "FAIL": "失败", "CANCELLED": "已取消", "TIMEOUT": "超时",
           "BUSY": "工作区占用", "UNAVAILABLE": "依赖不可用"}
@@ -40,6 +41,7 @@ class Workbench:
         self.connection_panel = None
         self.rtu_selection = None
         self.rtu_transport = None
+        self.i2c_ready = None
         self.window.title("VirtualEmbeddedLab · 仿真实验工作台")
         self.window.geometry("1080x720")
         self.window.minsize(900, 600)
@@ -120,6 +122,7 @@ class Workbench:
         self.inspector = None
         self.connection_panel = None
         self.can_panel = None
+        self.i2c_panel = None
         self.table = None
         self.log_box = None
         self.tail_key = None
@@ -128,7 +131,7 @@ class Workbench:
             ttk.Label(self.content, text="选择实验，运行并查看本次结果。", font=("Sans", 13)).pack(anchor="w", pady=10)
             self.overview = ttk.Label(self.content, text="正在检查可用后端…", wraplength=650)
             self.overview.pack(anchor="w", pady=8)
-            for name in ("Modbus", "MCU / RTOS", "CAN", "FatFs"):
+            for name in ("Modbus", "MCU / RTOS", "CAN", "I2C", "FatFs"):
                 ttk.Button(self.content, text=name, command=lambda n=name: self.select(n)).pack(anchor="w", pady=4)
             self.update_overview()
             return
@@ -170,6 +173,7 @@ class Workbench:
         self.inspector = None
         self.connection_panel = None
         self.can_panel = None
+        self.i2c_panel = None
         self.table = None
         ttk.Label(self.panel, text=feature.description, wraplength=650).pack(anchor="w")
         ttk.Label(self.panel, text=f"后端：{feature.backend}  ·  结果：{feature.evidence}",
@@ -191,6 +195,12 @@ class Workbench:
             self.render_modbus(self.panel)
             if self.live and self.running_feature == "rtu" and hasattr(self, "last_snapshot"):
                 self.present(self.last_snapshot)
+        if feature.id == "i2c":
+            self.i2c_panel = I2cPanel(self.panel, ProtocolPanel.tree, self.send)
+            self.i2c_panel.pack(fill="both", expand=True)
+            if self.live and self.running_feature == "i2c" and self.i2c_ready:
+                self.i2c_panel.outcome(self.i2c_ready)
+            self.mode_picker.bind("<<ComboboxSelected>>", lambda _: self.update_controls())
         if feature.id == "can":
             self.render_can()
             self.mode_picker.bind("<<ComboboxSelected>>", lambda _: self.change_can_mode())
@@ -260,7 +270,7 @@ class Workbench:
         if self.history_folder and not self.job:
             ttk.Button(bar, text="载入最近历史", command=self.load_history_log).pack(side="left", padx=4)
         ttk.Combobox(bar, textvariable=self.log_source, state="readonly", width=18,
-                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "rtu-faults.jsonl", "transport.json", "can-bus.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
+                     values=("console.log", "rtu-wire.jsonl", "rtu-transactions.jsonl", "rtu-faults.jsonl", "transport.json", "i2c-transactions.jsonl", "i2c-summary.json", "i2c-native.log", "can-bus.jsonl", "can-transactions.jsonl", "can-firmware.log", "slave.log", "build.log", "result.json")).pack(side="left", padx=5)
         if self.advanced:
             ttk.Button(bar, text="打开寄存器与实时 RTOS 监控", command=self.open_advanced).pack(side="left", padx=5)
         self.log_path = ttk.Label(self.content, wraplength=650)
@@ -321,6 +331,8 @@ class Workbench:
                                            active=interactive and self.live, pending=self.pending)
         if self.can_panel:
             self.can_panel.set_active(connected)
+        if self.i2c_panel:
+            self.i2c_panel.set_active(connected, self.live and self.running_feature == "i2c")
         if getattr(self, "history_id", None) != feature.id:
             self.load_history(feature.id)
 
@@ -423,7 +435,8 @@ class Workbench:
             self.job.stdin.flush()
             self.pending = True
             self.status.set("等待 Host CAN 总线事件…" if self.running_mode == "多节点总线" else
-                            "等待 CAN API 回环…" if self.running_feature == "can" else "等待真实 Modbus 回读…")
+                            "等待 CAN API 回环…" if self.running_feature == "can" else
+                            "等待 I2C 总线事件…" if self.running_feature == "i2c" else "等待真实 Modbus 回读…")
         except OSError as error:
             self.status.set(str(error))
         self.update_controls()
@@ -449,6 +462,23 @@ class Workbench:
             except ValueError:
                 continue
             kind = event.get("event")
+            if kind in ("i2c_ready", "i2c_result", "i2c_invalid", "i2c_error"):
+                self.pending = False
+                if kind == "i2c_ready":
+                    self.i2c_ready = event
+                    self.live = True
+                    self.status.set("SIMULATED · I2C 已连接")
+                elif kind == "i2c_error":
+                    self.live = False
+                    self.last_error = event["reason"]
+                    self.status.set(self.last_error)
+                elif kind == "i2c_invalid":
+                    self.status.set("I2C · 未发送")
+                else:
+                    self.status.set("I2C · 操作已完成")
+                if self.i2c_panel:
+                    self.i2c_panel.outcome(event)
+                continue
             if kind in ("can_ready", "can_result", "can_error"):
                 backend = "Host CAN Bus Model" if self.running_mode == "多节点总线" else "CAN API Loopback"
                 if kind == "can_ready":
@@ -554,6 +584,9 @@ class Workbench:
                 path = self.folder / ("can-bus.jsonl" if self.running_mode == "多节点总线"
                                       else "can-transactions.jsonl")
             self.can_panel.update_log(path)
+        if self.i2c_panel:
+            folder = self.folder if self.running_feature == "i2c" else self.history_folder
+            self.i2c_panel.update_log(folder / "i2c-transactions.jsonl" if folder else None)
         self.refresh_log()
         if self.closing and not self.job and not (self.detail_window and self.detail_window.winfo_exists()):
             self.window.destroy()

@@ -1,0 +1,5 @@
+{"event": "i2c_ready", "scope": "SIMULATED", "backend": "zephyr-i2c-emul", "rates_khz": [100, 400], "devices": [{"address": 40, "model": "register", "capacity": 256}, {"address": 80, "model": "eeprom", "capacity": 256, "page_size": 8, "write_ns": 5000000}], "native_pid": 222836}
+{"event": "i2c_result", "count": 112, "time_ns": 13440000, "status": {"NACK": 110, "OK": 2}, "found": ["0x28", "0x50"]}
+{"event": "i2c_result", "count": 1, "time_ns": 13830000, "status": {"OK": 1}, "last": {"status": "OK", "reason": null, "data": "", "sequence": 113}}
+{"event": "i2c_result", "count": 1, "time_ns": 14325000, "status": {"OK": 1}, "last": {"status": "OK", "reason": null, "data": "abcd", "sequence": 114}}
+{"event": "i2c_result", "count": 1, "time_ns": 14448750, "status": {"OK": 1}, "last": {"status": "OK", "reason": null, "data": "ffff", "sequence": 115}}

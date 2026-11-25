@@ -1,0 +1,12 @@
+["/usr/bin/python3", "/home/bridge/projects/stm32/VirtualEmbeddedLab/tests/host/test_i2c.py", "Zephyr"]
+test_eeprom_write_poll_cross_page_and_sequential_rollover (__main__.Zephyr.test_eeprom_write_poll_cross_page_and_sequential_rollover) ... ok
+test_faults_recovery_and_invalid_no_wire (__main__.Zephyr.test_faults_recovery_and_invalid_no_wire) ... ok
+test_mixed_thousand (__main__.Zephyr.test_mixed_thousand) ... ok
+test_register_read_write (__main__.Zephyr.test_register_read_write) ... ok
+test_repeated_start_and_timing (__main__.Zephyr.test_repeated_start_and_timing) ... ok
+test_scan_and_address_stage (__main__.Zephyr.test_scan_and_address_stage) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 13.366s
+
+OK

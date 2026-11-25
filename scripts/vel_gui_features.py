@@ -34,6 +34,10 @@ FEATURES = (
              "多节点总线": ("vel_can_bus.py",),
              "单项实验": ("accept_stage8_1.py", "--backend", "native_sim")}, ("Zephyr",),
             "CAN API / Host 总线事件 JSONL"),
+    Feature("i2c", "I2C · 总线与时序", "I2C", "Zephyr I2C Emulator / Host I2C Model",
+            "扫描设备、读写寄存器与 EEPROM，并检查逐位时序。",
+            {"Zephyr I2C": ("vel_i2c_session.py", "native"),
+             "Host I2C": ("vel_i2c_session.py", "host")}, ("Zephyr",), "事务与 SCL/SDA JSONL"),
     Feature("rtu", "Modbus RTU · 协议检查与 GPIO", "Modbus", "PTY 仿真 / Serial 设备",
             "执行八种 RTU 操作，查看真实帧、字段和 CRC，写入后复核设备状态。",
             {"交互会话": ("vel_gui_modbus.py",),
@@ -60,7 +64,7 @@ FEATURES = (
 )
 
 BY_ID = {feature.id: feature for feature in FEATURES}
-CATEGORIES = ("系统概览", "MCU / RTOS", "GPIO / EXTI", "CAN", "Modbus", "FatFs",
+CATEGORIES = ("系统概览", "MCU / RTOS", "GPIO / EXTI", "CAN", "I2C", "Modbus", "FatFs",
               "ROS 2 / micro-ROS", "自动化验收", "日志与高级信息")
 
 
@@ -104,6 +108,8 @@ def requires_simulation(folder):
 def dependencies_for(feature, mode, simulation=True):
     if feature.id == "rtu" and mode == "交互会话" and not simulation:
         return ("Modbus Python",)
+    if feature.id == "i2c" and mode == "Host I2C":
+        return ()
     return () if feature.id == "can" and mode == "多节点总线" else feature.dependencies
 
 
@@ -118,6 +124,6 @@ def invocation(feature, mode, folder, available):
     path = ROOT / "scripts" / script
     if not path.is_file():
         raise ValueError(f"Missing entrypoint: {script}")
-    if script in ("vel_gui_modbus.py", "vel_gui_can.py", "vel_can_bus.py"):
+    if script in ("vel_gui_modbus.py", "vel_gui_can.py", "vel_can_bus.py", "vel_i2c_session.py"):
         args.append(str(folder))
     return [sys.executable, str(path), *args]

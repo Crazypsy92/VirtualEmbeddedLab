@@ -1,0 +1,5 @@
+$ scripts/accept_stage7.py
+Stage 7 dependency set requires ROS 2 Lyrical. Active ROS: jazzy
+Missing recovered project input: micro_ros/dependencies.lock.json
+Missing recovered project input: micro_ros/arm/colcon.meta
+Missing recovered project input: micro_ros/stage7_arm.meta

@@ -1,0 +1,7 @@
+["/usr/bin/python3", "/home/bridge/projects/stm32/VirtualEmbeddedLab/tests/gui/test_i2c_workbench.py", "Headless"]
+test_worker_scan_batch_and_validation (__main__.Headless.test_worker_scan_batch_and_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.753s
+
+OK

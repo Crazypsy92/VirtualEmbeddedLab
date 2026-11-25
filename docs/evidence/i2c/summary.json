@@ -1,0 +1,208 @@
+{
+  "task": "Stage 8.5",
+  "issue": 12,
+  "baseline": "ff8853cd3892464c59bcd694bab091511e1cccee",
+  "result": {
+    "status": "PASS",
+    "scope": "SIMULATED",
+    "hardware": "NOT TESTED",
+    "tests": {
+      "host": {
+        "status": "PASS",
+        "exit": 0,
+        "tests": 6,
+        "log": "host.log",
+        "seconds": 0.382
+      },
+      "headless": {
+        "status": "PASS",
+        "exit": 0,
+        "tests": 1,
+        "log": "headless.log",
+        "seconds": 0.999
+      },
+      "zephyr": {
+        "status": "PASS",
+        "exit": 0,
+        "tests": 6,
+        "log": "zephyr.log",
+        "seconds": 13.525
+      },
+      "wslg": {
+        "status": "PASS",
+        "exit": 0,
+        "tests": 1,
+        "log": "wslg.log",
+        "seconds": 77.13
+      }
+    },
+    "tests_executed": 14,
+    "owned_children_after": []
+  },
+  "models": {
+    "host-i2c-model": {
+      "mixed": {
+        "case": "mixed",
+        "backend": "host-i2c-model",
+        "count": 1000,
+        "first": 1,
+        "last": 1000,
+        "readbacks": 500
+      },
+      "repeated_start": {
+        "case": "repeated_start",
+        "backend": "host-i2c-model",
+        "checked": 120
+      },
+      "recovery": {
+        "case": "recovery",
+        "backend": "host-i2c-model",
+        "transactions": 100,
+        "invalid": 8
+      },
+      "scan": {
+        "found": [
+          40,
+          80
+        ],
+        "addresses": 112,
+        "status": {
+          "NACK": 110,
+          "OK": 2
+        }
+      },
+      "periods_ns": {
+        "100": 10000,
+        "400": 2500
+      }
+    },
+    "zephyr-i2c-emul": {
+      "mixed": {
+        "case": "mixed",
+        "backend": "zephyr-i2c-emul",
+        "count": 1000,
+        "first": 1,
+        "last": 1000,
+        "readbacks": 500
+      },
+      "repeated_start": {
+        "case": "repeated_start",
+        "backend": "zephyr-i2c-emul",
+        "checked": 120
+      },
+      "recovery": {
+        "case": "recovery",
+        "backend": "zephyr-i2c-emul",
+        "transactions": 100,
+        "invalid": 8
+      },
+      "scan": {
+        "found": [
+          40,
+          80
+        ],
+        "addresses": 112,
+        "status": {
+          "NACK": 110,
+          "OK": 2
+        }
+      },
+      "periods_ns": {
+        "100": 10000,
+        "400": 2500
+      }
+    }
+  },
+  "wslg_final": {
+    "status": "PASS",
+    "tests": 1,
+    "log": "build/stage85/wslg-final/command.log",
+    "loaded_transactions": 115,
+    "supervisor": "CANCELLED",
+    "exported_sha256": "8fa874fb89a8ebdc008e80f09c0c51ef52efca32cc321a9cf41544393971850d",
+    "readback": [
+      "abcd",
+      "ffff"
+    ]
+  },
+  "regressions": {
+    "host_ctest": {
+      "status": "PASS",
+      "tests": 20,
+      "log": "build/stage85/host/command.log"
+    },
+    "stage84_transport": {
+      "status": "PASS",
+      "tests": 7,
+      "log": "build/stage85/transport84/command.log"
+    },
+    "rtu_same_protocol": {
+      "status": "PASS",
+      "tests": 2,
+      "log": "build/stage85/rtu84-final/command.log"
+    },
+    "can_h1": {
+      "status": "PASS",
+      "tests": 6,
+      "log": "build/stage85/canh1-final/command.log"
+    },
+    "can_h2": {
+      "status": "PASS",
+      "tests": 7,
+      "log": "build/stage85/canh2/command.log"
+    },
+    "workbench": {
+      "status": "PASS",
+      "tests": 7,
+      "log": "build/stage85/guih1/command.log"
+    },
+    "stage82_rtu": {
+      "status": "PASS",
+      "tests": 3,
+      "successful_transactions": 1026
+    },
+    "stage83_tcp": {
+      "status": "PASS",
+      "tests": 6,
+      "consistency": 0
+    },
+    "native_sim": {
+      "status": "PASS",
+      "tests": 4,
+      "socketcan": "BLOCKED: CAP_NET_ADMIN absent; no interface created"
+    }
+  },
+  "historical_133": {
+    "status": "BLOCKED",
+    "exit": 2,
+    "checks": [
+      "Stage 7 dependency set requires ROS 2 Lyrical. Active ROS: jazzy",
+      "Missing recovered project input: micro_ros/dependencies.lock.json",
+      "Missing recovered project input: micro_ros/arm/colcon.meta",
+      "Missing recovered project input: micro_ros/stage7_arm.meta"
+    ]
+  },
+  "initial_regressions": {
+    "rtu84": {
+      "exit": 1,
+      "log": "build/stage85/rtu84/command.log"
+    },
+    "rtu82": {
+      "exit": 124,
+      "log": "build/stage85/rtu82/command.log"
+    },
+    "tcp83": {
+      "exit": 124,
+      "log": "build/stage85/tcp83/command.log"
+    },
+    "native81": {
+      "exit": 124,
+      "log": "build/stage85/native81/command.log"
+    },
+    "canh1": {
+      "exit": 124,
+      "log": "build/stage85/canh1/command.log"
+    },
+    "reason": "The initial concurrent cold-build run timed out; final results come from independent reruns."
+  }
+}
