@@ -26,6 +26,7 @@ def main():
     workspace.mkdir(parents=True, exist_ok=True)
     with workspace_lock(workspace / "accept.lock"):
         out = Path(tempfile.mkdtemp(prefix="accept-", dir=workspace))
+        print(f"Evidence directory: {out}", flush=True)
         env = tool_environment()
         env["VEL_STAGE8_3_1_EVIDENCE"] = str(out)
         with socket.socket() as listener:

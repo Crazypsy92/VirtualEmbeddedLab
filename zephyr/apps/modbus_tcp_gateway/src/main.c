@@ -108,12 +108,14 @@ int main(void){
   struct job j;while(k_msgq_get(&completed,&j,K_NO_WAIT)==0){if(clients[j.slot].fd>=0&&clients[j.slot].generation==j.generation)(void)send_response(j.slot,&j.adu);else atomic_inc(&stale);}
   struct zsock_pollfd fds[CLIENTS+1]={{.fd=serv,.events=ZSOCK_POLLIN}};for(unsigned i=0;i<CLIENTS;i++){fds[i+1].fd=clients[i].fd;fds[i+1].events=ZSOCK_POLLIN;}
   int rc=zsock_poll(fds,CLIENTS+1,5);if(rc<0){printk("POLL_FAIL errno=%d\n",errno);break;}
-  if(fds[0].revents&ZSOCK_POLLIN){int fd=zsock_accept(serv,NULL,NULL);unsigned i;for(i=0;i<CLIENTS;i++)if(clients[i].fd<0)break;if(fd>=0){if(i==CLIENTS)zsock_close(fd);else{clients[i].fd=fd;clients[i].generation++;atomic_set(&live_generation[i],clients[i].generation);clients[i].used=0;clients[i].last=k_uptime_get();(void)zsock_fcntl(fd,ZVFS_F_SETFL,ZVFS_O_NONBLOCK);}}}
   for(unsigned i=0;i<CLIENTS;i++){struct client*c=&clients[i];if(c->fd<0)continue;
    if(fds[i+1].revents&(ZSOCK_POLLERR|ZSOCK_POLLHUP|ZSOCK_POLLNVAL)){close_client(i);continue;}
    if(fds[i+1].revents&ZSOCK_POLLIN){int n=zsock_recv(c->fd,c->input+c->used,sizeof(c->input)-c->used,ZSOCK_MSG_DONTWAIT);if(n<=0){if(n==0||(errno!=EAGAIN&&errno!=EWOULDBLOCK))close_client(i);continue;}c->last=k_uptime_get();if(c->used==0)c->frame_started=c->last;c->used+=(size_t)n;parse(i);if(c->used==sizeof(c->input))close_client(i);}
    if(c->fd>=0&&(k_uptime_get()-c->last>CLIENT_IDLE_TIMEOUT_MS||(c->used&&k_uptime_get()-c->frame_started>CLIENT_FRAME_TIMEOUT_MS)))close_client(i);
   }
+  /* Retire descriptors signaled by this poll before allocating a slot.
+   * A FIN and its replacement connection can arrive in the same poll. */
+  if(fds[0].revents&ZSOCK_POLLIN){int fd=zsock_accept(serv,NULL,NULL);unsigned i;for(i=0;i<CLIENTS;i++)if(clients[i].fd<0)break;if(fd>=0){if(i==CLIENTS)zsock_close(fd);else{clients[i].fd=fd;clients[i].generation++;atomic_set(&live_generation[i],clients[i].generation);clients[i].used=0;clients[i].last=k_uptime_get();(void)zsock_fcntl(fd,ZVFS_F_SETFL,ZVFS_O_NONBLOCK);}}}
   if(k_uptime_get()>=report){thread_count=0;k_thread_foreach(count_thread,NULL);printk("GW_THREAD_COUNT %u\n",thread_count);unsigned connections=0;for(unsigned i=0;i<CLIENTS;i++)if(clients[i].fd>=0)connections++;printk("GW_STATS received=%u sent=%u timeouts=%u rejected=%u stale=%u active=%u max_active=%u queued=%u completed=%u connections=%u exceptions=%u\n",received_count,sent_count,(unsigned)atomic_get(&timeouts),rejected,(unsigned)atomic_get(&stale),(unsigned)atomic_get(&active),(unsigned)atomic_get(&max_active),k_msgq_num_used_get(&requests),k_msgq_num_used_get(&completed),connections,exceptions);report=k_uptime_get()+1000;}
   k_msleep(1);
  }

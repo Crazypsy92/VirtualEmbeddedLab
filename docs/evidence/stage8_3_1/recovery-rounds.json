@@ -1,0 +1,702 @@
+[
+  {
+    "round": 1,
+    "kind": "slave_pause",
+    "start": 88860.427061109,
+    "recovered": 88861.775683852,
+    "status": "PASS"
+  },
+  {
+    "round": 2,
+    "kind": "relay_detach",
+    "start": 88861.775705352,
+    "recovered": 88863.114676448,
+    "status": "PASS"
+  },
+  {
+    "round": 3,
+    "kind": "response_delay",
+    "start": 88863.114685848,
+    "recovered": 88864.454861167,
+    "status": "PASS"
+  },
+  {
+    "round": 4,
+    "kind": "slave_pause",
+    "start": 88864.454871567,
+    "recovered": 88865.795362098,
+    "status": "PASS"
+  },
+  {
+    "round": 5,
+    "kind": "disconnect",
+    "start": 88865.795381198,
+    "recovered": 88865.955557752,
+    "status": "PASS"
+  },
+  {
+    "round": 6,
+    "kind": "slave_pause",
+    "start": 88865.955578653,
+    "recovered": 88867.304796088,
+    "status": "PASS"
+  },
+  {
+    "round": 7,
+    "kind": "slave_pause",
+    "start": 88867.304804888,
+    "recovered": 88868.654793529,
+    "status": "PASS"
+  },
+  {
+    "round": 8,
+    "kind": "reconnect",
+    "start": 88868.654803729,
+    "recovered": 88868.814974383,
+    "status": "PASS"
+  },
+  {
+    "round": 9,
+    "kind": "slave_pause",
+    "start": 88868.814984583,
+    "recovered": 88870.165418227,
+    "status": "PASS"
+  },
+  {
+    "round": 10,
+    "kind": "slave_pause",
+    "start": 88870.165429727,
+    "recovered": 88871.505037835,
+    "status": "PASS"
+  },
+  {
+    "round": 11,
+    "kind": "disconnect",
+    "start": 88871.505046435,
+    "recovered": 88871.657822791,
+    "status": "PASS"
+  },
+  {
+    "round": 12,
+    "kind": "response_delay",
+    "start": 88871.657913892,
+    "recovered": 88872.994818888,
+    "status": "PASS"
+  },
+  {
+    "round": 13,
+    "kind": "response_delay",
+    "start": 88872.994837788,
+    "recovered": 88874.345797834,
+    "status": "PASS"
+  },
+  {
+    "round": 14,
+    "kind": "disconnect",
+    "start": 88874.345818634,
+    "recovered": 88874.495090753,
+    "status": "PASS"
+  },
+  {
+    "round": 15,
+    "kind": "reconnect",
+    "start": 88874.495103253,
+    "recovered": 88874.654888085,
+    "status": "PASS"
+  },
+  {
+    "round": 16,
+    "kind": "response_delay",
+    "start": 88874.654898885,
+    "recovered": 88875.995593819,
+    "status": "PASS"
+  },
+  {
+    "round": 17,
+    "kind": "reconnect",
+    "start": 88875.99560962,
+    "recovered": 88876.154983847,
+    "status": "PASS"
+  },
+  {
+    "round": 18,
+    "kind": "disconnect",
+    "start": 88876.154992147,
+    "recovered": 88876.265526746,
+    "status": "PASS"
+  },
+  {
+    "round": 19,
+    "kind": "disconnect",
+    "start": 88876.265549746,
+    "recovered": 88876.415574672,
+    "status": "PASS"
+  },
+  {
+    "round": 20,
+    "kind": "disconnect",
+    "start": 88876.415594572,
+    "recovered": 88876.525287362,
+    "status": "PASS"
+  },
+  {
+    "round": 21,
+    "kind": "slave_pause",
+    "start": 88876.525299762,
+    "recovered": 88877.875196795,
+    "status": "PASS"
+  },
+  {
+    "round": 22,
+    "kind": "reconnect",
+    "start": 88877.875208195,
+    "recovered": 88878.035043827,
+    "status": "PASS"
+  },
+  {
+    "round": 23,
+    "kind": "relay_detach",
+    "start": 88878.035051927,
+    "recovered": 88879.395355663,
+    "status": "PASS"
+  },
+  {
+    "round": 24,
+    "kind": "reconnect",
+    "start": 88879.395371363,
+    "recovered": 88879.515775236,
+    "status": "PASS"
+  },
+  {
+    "round": 25,
+    "kind": "relay_detach",
+    "start": 88879.515811436,
+    "recovered": 88880.86521876,
+    "status": "PASS"
+  },
+  {
+    "round": 26,
+    "kind": "disconnect",
+    "start": 88880.865227261,
+    "recovered": 88880.964884649,
+    "status": "PASS"
+  },
+  {
+    "round": 27,
+    "kind": "response_delay",
+    "start": 88880.964947449,
+    "recovered": 88882.315201081,
+    "status": "PASS"
+  },
+  {
+    "round": 28,
+    "kind": "relay_detach",
+    "start": 88882.315217681,
+    "recovered": 88883.655451323,
+    "status": "PASS"
+  },
+  {
+    "round": 29,
+    "kind": "disconnect",
+    "start": 88883.655461423,
+    "recovered": 88883.805132457,
+    "status": "PASS"
+  },
+  {
+    "round": 30,
+    "kind": "response_delay",
+    "start": 88883.805141757,
+    "recovered": 88885.15531514,
+    "status": "PASS"
+  },
+  {
+    "round": 31,
+    "kind": "relay_detach",
+    "start": 88885.15532504,
+    "recovered": 88886.49528014,
+    "status": "PASS"
+  },
+  {
+    "round": 32,
+    "kind": "response_delay",
+    "start": 88886.49528954,
+    "recovered": 88887.836200367,
+    "status": "PASS"
+  },
+  {
+    "round": 33,
+    "kind": "reconnect",
+    "start": 88887.836224167,
+    "recovered": 88887.995084656,
+    "status": "PASS"
+  },
+  {
+    "round": 34,
+    "kind": "slave_pause",
+    "start": 88887.995093256,
+    "recovered": 88889.335928782,
+    "status": "PASS"
+  },
+  {
+    "round": 35,
+    "kind": "reconnect",
+    "start": 88889.335959082,
+    "recovered": 88889.495563378,
+    "status": "PASS"
+  },
+  {
+    "round": 36,
+    "kind": "relay_detach",
+    "start": 88889.495581478,
+    "recovered": 88890.845852887,
+    "status": "PASS"
+  },
+  {
+    "round": 37,
+    "kind": "response_delay",
+    "start": 88890.845871987,
+    "recovered": 88892.185155298,
+    "status": "PASS"
+  },
+  {
+    "round": 38,
+    "kind": "response_delay",
+    "start": 88892.185162699,
+    "recovered": 88893.525756706,
+    "status": "PASS"
+  },
+  {
+    "round": 39,
+    "kind": "response_delay",
+    "start": 88893.525789406,
+    "recovered": 88894.866048181,
+    "status": "PASS"
+  },
+  {
+    "round": 40,
+    "kind": "response_delay",
+    "start": 88894.866075482,
+    "recovered": 88896.216571936,
+    "status": "PASS"
+  },
+  {
+    "round": 41,
+    "kind": "reconnect",
+    "start": 88896.216602637,
+    "recovered": 88896.365601865,
+    "status": "PASS"
+  },
+  {
+    "round": 42,
+    "kind": "reconnect",
+    "start": 88896.365619966,
+    "recovered": 88896.5054905,
+    "status": "PASS"
+  },
+  {
+    "round": 43,
+    "kind": "reconnect",
+    "start": 88896.505502301,
+    "recovered": 88896.665565343,
+    "status": "PASS"
+  },
+  {
+    "round": 44,
+    "kind": "reconnect",
+    "start": 88896.665578943,
+    "recovered": 88896.805204175,
+    "status": "PASS"
+  },
+  {
+    "round": 45,
+    "kind": "reconnect",
+    "start": 88896.805211575,
+    "recovered": 88896.96548572,
+    "status": "PASS"
+  },
+  {
+    "round": 46,
+    "kind": "slave_pause",
+    "start": 88896.96550042,
+    "recovered": 88898.295720667,
+    "status": "PASS"
+  },
+  {
+    "round": 47,
+    "kind": "relay_detach",
+    "start": 88898.295733967,
+    "recovered": 88899.645452013,
+    "status": "PASS"
+  },
+  {
+    "round": 48,
+    "kind": "relay_detach",
+    "start": 88899.645464014,
+    "recovered": 88900.995815667,
+    "status": "PASS"
+  },
+  {
+    "round": 49,
+    "kind": "disconnect",
+    "start": 88900.995835667,
+    "recovered": 88901.115314693,
+    "status": "PASS"
+  },
+  {
+    "round": 50,
+    "kind": "slave_pause",
+    "start": 88901.115324693,
+    "recovered": 88902.455229247,
+    "status": "PASS"
+  },
+  {
+    "round": 51,
+    "kind": "response_delay",
+    "start": 88902.455242047,
+    "recovered": 88903.805917617,
+    "status": "PASS"
+  },
+  {
+    "round": 52,
+    "kind": "response_delay",
+    "start": 88903.805943618,
+    "recovered": 88905.156527387,
+    "status": "PASS"
+  },
+  {
+    "round": 53,
+    "kind": "slave_pause",
+    "start": 88905.156564988,
+    "recovered": 88906.497041034,
+    "status": "PASS"
+  },
+  {
+    "round": 54,
+    "kind": "disconnect",
+    "start": 88906.497072434,
+    "recovered": 88906.616557691,
+    "status": "PASS"
+  },
+  {
+    "round": 55,
+    "kind": "reconnect",
+    "start": 88906.616588592,
+    "recovered": 88906.76569071,
+    "status": "PASS"
+  },
+  {
+    "round": 56,
+    "kind": "disconnect",
+    "start": 88906.76570541,
+    "recovered": 88906.925987965,
+    "status": "PASS"
+  },
+  {
+    "round": 57,
+    "kind": "slave_pause",
+    "start": 88906.926028665,
+    "recovered": 88908.2655551,
+    "status": "PASS"
+  },
+  {
+    "round": 58,
+    "kind": "response_delay",
+    "start": 88908.2655672,
+    "recovered": 88909.605870455,
+    "status": "PASS"
+  },
+  {
+    "round": 59,
+    "kind": "relay_detach",
+    "start": 88909.605888356,
+    "recovered": 88910.955526263,
+    "status": "PASS"
+  },
+  {
+    "round": 60,
+    "kind": "slave_pause",
+    "start": 88910.955536663,
+    "recovered": 88912.305372416,
+    "status": "PASS"
+  },
+  {
+    "round": 61,
+    "kind": "disconnect",
+    "start": 88912.305380716,
+    "recovered": 88912.425414555,
+    "status": "PASS"
+  },
+  {
+    "round": 62,
+    "kind": "relay_detach",
+    "start": 88912.425423155,
+    "recovered": 88913.755618824,
+    "status": "PASS"
+  },
+  {
+    "round": 63,
+    "kind": "relay_detach",
+    "start": 88913.755629124,
+    "recovered": 88915.106017812,
+    "status": "PASS"
+  },
+  {
+    "round": 64,
+    "kind": "response_delay",
+    "start": 88915.106035612,
+    "recovered": 88916.478231042,
+    "status": "PASS"
+  },
+  {
+    "round": 65,
+    "kind": "slave_pause",
+    "start": 88916.478253133,
+    "recovered": 88917.853248886,
+    "status": "PASS"
+  },
+  {
+    "round": 66,
+    "kind": "slave_pause",
+    "start": 88917.853260254,
+    "recovered": 88919.233771413,
+    "status": "PASS"
+  },
+  {
+    "round": 67,
+    "kind": "disconnect",
+    "start": 88919.233798471,
+    "recovered": 88919.397703624,
+    "status": "PASS"
+  },
+  {
+    "round": 68,
+    "kind": "reconnect",
+    "start": 88919.39773058,
+    "recovered": 88919.509204099,
+    "status": "PASS"
+  },
+  {
+    "round": 69,
+    "kind": "reconnect",
+    "start": 88919.509230986,
+    "recovered": 88919.631057536,
+    "status": "PASS"
+  },
+  {
+    "round": 70,
+    "kind": "slave_pause",
+    "start": 88919.631068942,
+    "recovered": 88920.99445731,
+    "status": "PASS"
+  },
+  {
+    "round": 71,
+    "kind": "relay_detach",
+    "start": 88920.99524908,
+    "recovered": 88922.364621856,
+    "status": "PASS"
+  },
+  {
+    "round": 72,
+    "kind": "disconnect",
+    "start": 88922.364633316,
+    "recovered": 88922.48593529,
+    "status": "PASS"
+  },
+  {
+    "round": 73,
+    "kind": "reconnect",
+    "start": 88922.485949666,
+    "recovered": 88922.587652883,
+    "status": "PASS"
+  },
+  {
+    "round": 74,
+    "kind": "response_delay",
+    "start": 88922.58768214,
+    "recovered": 88923.964608268,
+    "status": "PASS"
+  },
+  {
+    "round": 75,
+    "kind": "reconnect",
+    "start": 88923.964632729,
+    "recovered": 88924.115209696,
+    "status": "PASS"
+  },
+  {
+    "round": 76,
+    "kind": "reconnect",
+    "start": 88924.115238403,
+    "recovered": 88924.226661736,
+    "status": "PASS"
+  },
+  {
+    "round": 77,
+    "kind": "reconnect",
+    "start": 88924.226698529,
+    "recovered": 88924.347678366,
+    "status": "PASS"
+  },
+  {
+    "round": 78,
+    "kind": "disconnect",
+    "start": 88924.347706668,
+    "recovered": 88924.468802525,
+    "status": "PASS"
+  },
+  {
+    "round": 79,
+    "kind": "relay_detach",
+    "start": 88924.468827862,
+    "recovered": 88925.830724671,
+    "status": "PASS"
+  },
+  {
+    "round": 80,
+    "kind": "reconnect",
+    "start": 88925.830734955,
+    "recovered": 88925.952122377,
+    "status": "PASS"
+  },
+  {
+    "round": 81,
+    "kind": "disconnect",
+    "start": 88925.95214829,
+    "recovered": 88926.073428532,
+    "status": "PASS"
+  },
+  {
+    "round": 82,
+    "kind": "slave_pause",
+    "start": 88926.073449705,
+    "recovered": 88927.42322805,
+    "status": "PASS"
+  },
+  {
+    "round": 83,
+    "kind": "slave_pause",
+    "start": 88927.423287011,
+    "recovered": 88928.780771953,
+    "status": "PASS"
+  },
+  {
+    "round": 84,
+    "kind": "response_delay",
+    "start": 88928.780789447,
+    "recovered": 88930.127980422,
+    "status": "PASS"
+  },
+  {
+    "round": 85,
+    "kind": "disconnect",
+    "start": 88930.128187185,
+    "recovered": 88930.237610613,
+    "status": "PASS"
+  },
+  {
+    "round": 86,
+    "kind": "response_delay",
+    "start": 88930.23762066,
+    "recovered": 88931.584327245,
+    "status": "PASS"
+  },
+  {
+    "round": 87,
+    "kind": "relay_detach",
+    "start": 88931.584352233,
+    "recovered": 88932.927426352,
+    "status": "PASS"
+  },
+  {
+    "round": 88,
+    "kind": "slave_pause",
+    "start": 88932.927435981,
+    "recovered": 88934.281434507,
+    "status": "PASS"
+  },
+  {
+    "round": 89,
+    "kind": "slave_pause",
+    "start": 88934.281442228,
+    "recovered": 88935.630198603,
+    "status": "PASS"
+  },
+  {
+    "round": 90,
+    "kind": "relay_detach",
+    "start": 88935.630238484,
+    "recovered": 88936.975762784,
+    "status": "PASS"
+  },
+  {
+    "round": 91,
+    "kind": "reconnect",
+    "start": 88936.975784613,
+    "recovered": 88937.085501395,
+    "status": "PASS"
+  },
+  {
+    "round": 92,
+    "kind": "response_delay",
+    "start": 88937.0855307,
+    "recovered": 88938.430413407,
+    "status": "PASS"
+  },
+  {
+    "round": 93,
+    "kind": "reconnect",
+    "start": 88938.430422275,
+    "recovered": 88938.540507115,
+    "status": "PASS"
+  },
+  {
+    "round": 94,
+    "kind": "response_delay",
+    "start": 88938.540532919,
+    "recovered": 88939.875824785,
+    "status": "PASS"
+  },
+  {
+    "round": 95,
+    "kind": "reconnect",
+    "start": 88939.87585965,
+    "recovered": 88940.034338807,
+    "status": "PASS"
+  },
+  {
+    "round": 96,
+    "kind": "reconnect",
+    "start": 88940.034349565,
+    "recovered": 88940.154524014,
+    "status": "PASS"
+  },
+  {
+    "round": 97,
+    "kind": "response_delay",
+    "start": 88940.154550013,
+    "recovered": 88941.489363831,
+    "status": "PASS"
+  },
+  {
+    "round": 98,
+    "kind": "reconnect",
+    "start": 88941.489390121,
+    "recovered": 88941.638883552,
+    "status": "PASS"
+  },
+  {
+    "round": 99,
+    "kind": "reconnect",
+    "start": 88941.638909245,
+    "recovered": 88941.74780747,
+    "status": "PASS"
+  },
+  {
+    "round": 100,
+    "kind": "relay_detach",
+    "start": 88941.747832366,
+    "recovered": 88943.071806561,
+    "status": "PASS"
+  }
+]
