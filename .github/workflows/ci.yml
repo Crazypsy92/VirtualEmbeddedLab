@@ -21,7 +21,7 @@ jobs:
       - name: Initialize Core from this checkout
         run: |
           bash scripts/bootstrap_ubuntu.sh --profile core --install-system-deps --init
-          sudo apt-get install --no-install-recommends xvfb xauth
+          sudo apt-get install --assume-yes --no-install-recommends xvfb xauth
       - name: Doctor
         run: |
           source build/venvs/core/vel-env.sh
@@ -64,3 +64,34 @@ jobs:
             build/ci/i2c/run-*/acceptance.json
             build/host*/Testing/Temporary/LastTest.log
             build/arm/Testing/Temporary/LastTest.log
+
+
+  zephyr:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Initialize Zephyr from pinned upstream archives
+        run: bash scripts/bootstrap_ubuntu.sh --profile zephyr --install-system-deps --init
+      - name: Zephyr I2C emulator and native_sim acceptance
+        run: |
+          source build/venvs/zephyr/vel-env.sh
+          mkdir -p build/ci
+          export VEL_STAGE8_1_EVIDENCE="$PWD/build/ci/native-sim"
+          python3 scripts/accept_i2c.py --backend zephyr --gui skip --output build/ci/zephyr-i2c 2>&1 | tee build/ci/zephyr-i2c.log
+          python3 scripts/accept_stage8_1.py --backend native_sim 2>&1 | tee build/ci/native-sim.log
+      - name: Upload Zephyr evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: zephyr-acceptance
+          path: |
+            build/bootstrap/*.log
+            build/ci/*.log
+            build/ci/native-sim/native_sim/acceptance.json
+            build/ci/zephyr-i2c/run-*/acceptance.json
+            build/ci/zephyr-i2c/run-*/zephyr-build.log

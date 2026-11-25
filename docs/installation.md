@@ -45,7 +45,7 @@ python3 scripts/accept_i2c.py --backend zephyr --gui skip
 python3 scripts/accept_stage8_1.py --backend native_sim
 ```
 
-真实窗口 I2C 验收使用 `python3 scripts/accept_i2c.py --gui required`，额外需要 ImageMagick 的 `import`。Zephyr 源码归档下载、完整 GUI、ROS 2 以及历史 Stage 6/7 不属于基础 GitHub CI。
+真实窗口 I2C 验收使用 `python3 scripts/accept_i2c.py --gui required`，额外需要 ImageMagick 的 `import`。Zephyr 下载与 native_sim 在主分支推送或手动运行时单独验收。PR 的必跑 Core 工作不依赖 Zephyr。完整 WSLg、ROS 2 和历史 Stage 6/7 不在 CI 范围内。
 
 ## ROS 2 可选环境
 

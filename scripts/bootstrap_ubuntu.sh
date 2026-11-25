@@ -41,8 +41,8 @@ if "$install_system"; then
     fi
     printf '%s\n' '+ sudo apt-get update'
     sudo apt-get update
-    printf '+ sudo apt-get install --no-install-recommends'; printf ' %q' "${packages[@]}"; printf '\n'
-    sudo apt-get install --no-install-recommends "${packages[@]}"
+    printf '+ sudo apt-get install --assume-yes --no-install-recommends'; printf ' %q' "${packages[@]}"; printf '\n'
+    sudo apt-get install --assume-yes --no-install-recommends "${packages[@]}"
 fi
 
 if ! "$init"; then

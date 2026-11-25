@@ -50,7 +50,7 @@ def main(argv=None):
           "a non-root developer with a writable checkout", "Open the checkout as your normal Ubuntu user.")
     check("Python", platform.python_version() if sys.version_info[:2] == (3, 12) else "",
           f"3.12 (found {platform.python_version()})", "Use /usr/bin/python3 on Ubuntu 24.04.")
-    for name, minimum in (("git", None), ("gcc", None), ("g++", None), ("cmake", (3, 22)),
+    for name, minimum in (("git", None), ("curl", None), ("gcc", None), ("g++", None), ("cmake", (3, 22)),
                           ("ctest", (3, 22)), ("ninja", None), ("arm-none-eabi-gcc", None),
                           ("arm-none-eabi-objcopy", None), ("qemu-system-arm", None), ("gdb-multiarch", None)):
         path = shutil.which(name, path=env["PATH"])

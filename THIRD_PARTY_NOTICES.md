@@ -36,3 +36,4 @@
 | west | [west](https://pypi.org/project/west/)，Apache-2.0，包内 LICENSE |
 | setuptools、wheel | [setuptools](https://pypi.org/project/setuptools/) 和 [wheel](https://pypi.org/project/wheel/)，MIT，包内 LICENSE |
 | jsonschema、jsonschema-specifications、referencing、attrs、rpds-py | [jsonschema](https://pypi.org/project/jsonschema/)、[specifications](https://pypi.org/project/jsonschema-specifications/)、[referencing](https://pypi.org/project/referencing/)、[attrs](https://pypi.org/project/attrs/)、[rpds-py](https://pypi.org/project/rpds-py/) 均为 MIT，包内许可证 |
+| typing-extensions | [typing-extensions](https://pypi.org/project/typing-extensions/)，PSF-2.0，包内 LICENSE |
