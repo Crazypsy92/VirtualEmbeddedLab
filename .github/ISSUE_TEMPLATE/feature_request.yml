@@ -1,0 +1,21 @@
+name: 功能建议
+description: 建议新的功能、实验或文档改进
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题与使用场景
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期能力与验收方式
+    validations:
+      required: true
+  - type: input
+    id: modules
+    attributes:
+      label: 影响模块或后端
+    validations:
+      required: true

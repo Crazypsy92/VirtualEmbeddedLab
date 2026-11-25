@@ -28,3 +28,8 @@ env/
 *.swo
 .DS_Store
 Thumbs.db
+
+# Local dependency and test state
+.venv-*/
+.pytest_cache/
+.coverage

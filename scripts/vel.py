@@ -5,7 +5,7 @@ import os
 import subprocess
 import sys
 
-from vel_env import ROOT, nonroot, tool, tool_environment, zephyr_base
+from vel_env import ROOT, nonroot, tool_environment
 
 
 def main():
@@ -13,6 +13,9 @@ def main():
     parser.add_argument("target", choices=["doctor", "host", "sanitize", "arm", "freertos",
                                           "zephyr", "ros", "gateway", "reliability", "dashboard"])
     args, forwarded = parser.parse_known_args()
+    if args.target == "doctor":
+        from vel_doctor import main as doctor
+        return doctor(forwarded)
     nonroot()
     env = tool_environment()
     presets = {"host": "host-debug", "sanitize": "host-sanitize",
@@ -20,14 +23,6 @@ def main():
     scripts = {"zephyr": "accept_stage4.py", "ros": "setup_stage5.py",
                "gateway": "accept_stage8_3.py", "reliability": "accept_stage8_3_1.py",
                "dashboard": "vel_dashboard.py"}
-    if args.target == "doctor":
-        print("Project:", ROOT)
-        print("Zephyr:", zephyr_base())
-        for name in ("cmake", "ninja", "gcc", "arm-none-eabi-gcc", "dtc", "qemu-system-arm",
-                     "gdb-multiarch", "colcon"):
-            path = tool(name)
-            print(f"{name}: {path if path != name else 'not found'}")
-        return 0
     if args.target in presets:
         if forwarded:
             parser.error("This target does not accept additional arguments.")

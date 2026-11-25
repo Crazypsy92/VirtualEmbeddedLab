@@ -1,0 +1,66 @@
+name: Core acceptance
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Initialize Core from this checkout
+        run: |
+          bash scripts/bootstrap_ubuntu.sh --profile core --install-system-deps --init
+          sudo apt-get install --no-install-recommends xvfb xauth
+      - name: Doctor
+        run: |
+          source build/venvs/core/vel-env.sh
+          mkdir -p build/ci
+          python3 scripts/vel.py doctor | tee build/ci/doctor.log
+      - name: Host Debug, Release and ASan/UBSan
+        run: |
+          source build/venvs/core/vel-env.sh
+          for preset in host-debug host-release host-sanitize; do
+            {
+              cmake --preset "$preset"
+              cmake --build --preset "$preset" --parallel 4
+              ctest --preset "$preset"
+            } 2>&1 | tee "build/ci/$preset.log"
+          done
+      - name: ARM Cortex-M3 / QEMU / GDB
+        run: |
+          source build/venvs/core/vel-env.sh
+          python3 scripts/vel.py arm 2>&1 | tee build/ci/arm.log
+      - name: Host I2C and headless I2C worker
+        run: |
+          source build/venvs/core/vel-env.sh
+          python3 scripts/accept_i2c.py --backend host --gui skip --output build/ci/i2c \
+            2>&1 | tee build/ci/i2c.log
+      - name: Headless GUI and supervisor
+        run: |
+          source build/venvs/core/vel-env.sh
+          xvfb-run -a python3 scripts/vel.py dashboard --self-test 2>&1 | tee build/ci/gui.log
+          python3 tests/gui/test_gui_h1.py Registry \
+            Lifecycle.test_exit_success_and_rejected_mode Lifecycle.test_failed_job_reaps_separate_session \
+            Lifecycle.test_lock_conflict 2>&1 | tee build/ci/gui-supervisor.log
+      - name: Upload local evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: core-acceptance
+          path: |
+            build/bootstrap/*.log
+            build/ci/*.log
+            build/ci/i2c/run-*/acceptance.json
+            build/host*/Testing/Temporary/LastTest.log
+            build/arm/Testing/Temporary/LastTest.log
