@@ -21,6 +21,12 @@ python3 scripts/vel.py dashboard
 
 第一条 doctor 是安装前诊断，提示缺少依赖时继续执行安装步骤。GUI 中选择 **I2C → Host I2C → 启动实验 → 扫描地址**，即可观察 `0x28` 和 `0x50` 的响应。无显示器时运行 `python3 scripts/accept_i2c.py --backend host --gui skip`。
 
+## STM32-ModbusLab 真机 RTU（待硬件验收）
+
+使用现有 Modbus RTU 交互会话，展开连接/传输配置，点击 **STM32-ModbusLab · TTL**。预设自动选择真实 Serial 设备、关闭 PTY 仿真，填入 115200/8/E/1；用户需选择实际串口路径并点击测试连接或连接。默认仿真入口仍保持不变。
+
+目标固件及接线、寄存器映射见 [STM32-ModbusLab](https://github.com/Crazypsy92/STM32-ModbusLab/blob/main/docs/modbus_rtu.md)。Coil0 是实际 LED，其余 Coil 为逻辑位；DI0/1 是按键，DI2 为 EEPROM 在线状态，DI3 保留。原仿真故障注入与 DI 刺激仍仅用于仿真。串口、GUI 预设及实物联调待验收。
+
 ## 实验范围
 
 | 模块 | 后端及入口 |

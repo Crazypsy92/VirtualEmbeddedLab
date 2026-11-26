@@ -48,7 +48,23 @@ class ConnectionPanel(ttk.Frame):
             box = ttk.Entry(field, textvariable=var, width=width)
             box.pack(side="left", padx=(2, 0))
             self.serial_fields.append((field, box))
+        self.stm32_ttl_button = ttk.Button(self.body, text="STM32-ModbusLab · TTL", command=self.use_stm32_ttl)
+        self.stm32_ttl_button.grid(row=3, column=0, columnspan=3, sticky="w", pady=2)
         self.change()
+
+    def use_stm32_ttl(self):
+        if self.busy:
+            return
+        self.backend.set("Serial 设备")
+        self.fixture.set(False)
+        for key, value in {"baudrate": "115200", "bytesize": "8", "parity": "E",
+                           "stopbits": "1", "read_timeout": "0.15",
+                           "write_timeout": "0.15", "inter_byte_timeout": ""}.items():
+            self.entries[key].set(value)
+        if not self.entries["port"].get().strip():
+            self.entries["port"].set("/dev/ttyUSB0")
+        self.change()
+        self.message.set("STM32 TTL · 115200 8E1 · 请确认实际端口后测试连接")
 
     def selection(self):
         return (self.backend.get(), self.fixture.get(), self.expanded.get(),
@@ -107,6 +123,7 @@ class ConnectionPanel(ttk.Frame):
     def controls(self, *, executable, busy, active, pending):
         self.busy = busy
         self.selector.configure(state="disabled" if busy else "readonly")
+        self.stm32_ttl_button.configure(state="disabled" if busy else "normal")
         self.fixture_control.configure(state="disabled" if busy else "normal")
         for _, widget in self.serial_fields:
             widget.configure(state="disabled" if busy else "normal")
